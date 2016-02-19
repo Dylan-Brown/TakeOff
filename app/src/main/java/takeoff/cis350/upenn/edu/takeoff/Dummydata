@@ -1,0 +1,658 @@
+//Flight origins and destinations must be 3-character city/airport codes, e.g., NYC or LGA.
+
+//This is a JSON flight search data using QPX Express. I entered PHL->ORD, 2016-03-03, and this is
+the output.
+
+//Departure Code and City
+trips.data.airport.code[0]
+trips.data.airport.city[0]
+//Arrival Code and City
+trips.data.airport.code[1]
+trips.data.airport.city[1]
+
+
+{
+ "kind": "qpxExpress#tripsSearch",
+ "trips": {
+  "kind": "qpxexpress#tripOptions",
+  "requestId": "vJqvCbAu7OkI69y6Q0Np01",
+  "data": {
+   "kind": "qpxexpress#data",
+   "airport": [
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "ORD",
+     "city": "CHI",
+     "name": "Chicago O'Hare"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "PHL",
+     "city": "PHL",
+     "name": "Philadelphia/Wilmington Int'l"
+    }
+   ],
+   "city": [
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "CHI",
+     "name": "Chicago"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "PHL",
+     "name": "Philadelphia"
+    }
+   ],
+   "aircraft": [
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "319",
+     "name": "Airbus A319"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "320",
+     "name": "Airbus A320"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "739",
+     "name": "Boeing 737"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "E7W",
+     "name": "Embraer RJ-175"
+    }
+   ],
+   "tax": [
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "ZP",
+     "name": "US Flight Segment Tax"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "AY_001",
+     "name": "US September 11th Security Fee"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "US_001",
+     "name": "US Transportation Tax"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "XF",
+     "name": "US Passenger Facility Charge"
+    }
+   ],
+   "carrier": [
+    {
+     "kind": "qpxexpress#carrierData",
+     "code": "NK",
+     "name": "Spirit Airlines"
+    },
+    {
+     "kind": "qpxexpress#carrierData",
+     "code": "UA",
+     "name": "United Airlines, Inc."
+    }
+   ]
+  },
+  "tripOption": [
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD53.10",
+    "id": "ArkjnxFahNSVTJQKjLYbc2001",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 138,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 138,
+        "flight": {
+         "carrier": "UA",
+         "number": "1250"
+        },
+        "id": "GVjV5feJc9Z3wm9E",
+        "cabin": "COACH",
+        "bookingCode": "N",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "Lpb94umsbGf1xWFy",
+          "aircraft": "319",
+          "arrivalTime": "2016-03-03T08:33-06:00",
+          "departureTime": "2016-03-03T07:15-05:00",
+          "origin": "PHL",
+          "destination": "ORD",
+          "originTerminal": "D",
+          "destinationTerminal": "1",
+          "duration": 138,
+          "mileage": 675,
+          "meal": "Food and Beverages for Purchase",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AeIaEodz1nWj3nfD+4FB3k5I/Ri/QU+G8Wx5PO/bCFww",
+        "carrier": "UA",
+        "origin": "PHL",
+        "destination": "CHI",
+        "basisCode": "NAG07TWN"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AeIaEodz1nWj3nfD+4FB3k5I/Ri/QU+G8Wx5PO/bCFww",
+        "segmentId": "GVjV5feJc9Z3wm9E"
+       }
+      ],
+      "baseFareTotal": "USD36.28",
+      "saleFareTotal": "USD36.28",
+      "saleTaxTotal": "USD16.82",
+      "saleTotal": "USD53.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD2.72"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "PHL UA CHI 36.28NAG07TWN USD 36.28 END ZP PHL XT 2.72US 4.00ZP 5.60AY 4.50XF PHL4.50",
+      "latestTicketingTime": "2016-02-20T23:59-05:00",
+      "ptc": "ADT"
+     }
+    ]
+   },
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD53.10",
+    "id": "ArkjnxFahNSVTJQKjLYbc2002",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 143,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 143,
+        "flight": {
+         "carrier": "UA",
+         "number": "601"
+        },
+        "id": "GUtw2jd0Tk7XtbO-",
+        "cabin": "COACH",
+        "bookingCode": "N",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LYVkC+GIlzFq6vgg",
+          "aircraft": "739",
+          "arrivalTime": "2016-03-03T07:31-06:00",
+          "departureTime": "2016-03-03T06:08-05:00",
+          "origin": "PHL",
+          "destination": "ORD",
+          "originTerminal": "D",
+          "destinationTerminal": "1",
+          "duration": 143,
+          "mileage": 675,
+          "meal": "Food and Beverages for Purchase",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AeIaEodz1nWj3nfD+4FB3k5I/Ri/QU+G8Wx5PO/bCFww",
+        "carrier": "UA",
+        "origin": "PHL",
+        "destination": "CHI",
+        "basisCode": "NAG07TWN"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AeIaEodz1nWj3nfD+4FB3k5I/Ri/QU+G8Wx5PO/bCFww",
+        "segmentId": "GUtw2jd0Tk7XtbO-"
+       }
+      ],
+      "baseFareTotal": "USD36.28",
+      "saleFareTotal": "USD36.28",
+      "saleTaxTotal": "USD16.82",
+      "saleTotal": "USD53.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD2.72"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "PHL UA CHI 36.28NAG07TWN USD 36.28 END ZP PHL XT 2.72US 4.00ZP 5.60AY 4.50XF PHL4.50",
+      "latestTicketingTime": "2016-02-20T23:59-05:00",
+      "ptc": "ADT"
+     }
+    ]
+   },
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD58.10",
+    "id": "ArkjnxFahNSVTJQKjLYbc2003",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 140,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 140,
+        "flight": {
+         "carrier": "NK",
+         "number": "261"
+        },
+        "id": "GMo9PAiMb3PAXDPT",
+        "cabin": "COACH",
+        "bookingCode": "U",
+        "bookingCodeCount": 4,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "Lr0if0uf1F94uP3g",
+          "aircraft": "320",
+          "arrivalTime": "2016-03-03T07:20-06:00",
+          "departureTime": "2016-03-03T06:00-05:00",
+          "origin": "PHL",
+          "destination": "ORD",
+          "originTerminal": "A",
+          "destinationTerminal": "3",
+          "duration": 140,
+          "onTimePerformance": 80,
+          "mileage": 675,
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "ALh0hdUejzJPmz9ufTonx6u5uimmnaXkavr8qI+K9fl/",
+        "carrier": "NK",
+        "origin": "PHL",
+        "destination": "CHI",
+        "basisCode": "UA7NR"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "ALh0hdUejzJPmz9ufTonx6u5uimmnaXkavr8qI+K9fl/",
+        "segmentId": "GMo9PAiMb3PAXDPT"
+       }
+      ],
+      "baseFareTotal": "USD40.92",
+      "saleFareTotal": "USD40.92",
+      "saleTaxTotal": "USD17.18",
+      "saleTotal": "USD58.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD3.08"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "PHL NK CHI Q18.60 Q4.65 17.67UA7NR USD 40.92 END ZP PHL XT 3.08US 4.00ZP 5.60AY 4.50XF PHL4.50",
+      "latestTicketingTime": "2016-02-20T17:29-05:00",
+      "ptc": "ADT"
+     }
+    ]
+   },
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD133.10",
+    "id": "ArkjnxFahNSVTJQKjLYbc2004",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 142,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 142,
+        "flight": {
+         "carrier": "UA",
+         "number": "45"
+        },
+        "id": "Gb645S-CiK9Nuld2",
+        "cabin": "COACH",
+        "bookingCode": "L",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "L4ByugF1+SIVQZqO",
+          "aircraft": "319",
+          "arrivalTime": "2016-03-03T09:52-06:00",
+          "departureTime": "2016-03-03T08:30-05:00",
+          "origin": "PHL",
+          "destination": "ORD",
+          "originTerminal": "D",
+          "destinationTerminal": "1",
+          "duration": 142,
+          "mileage": 675,
+          "meal": "Food and Beverages for Purchase",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "ABM2q6CC+R7WPC2aJhl/WtNwRskPbo5FH75ESOh3Pnb2",
+        "carrier": "UA",
+        "origin": "PHL",
+        "destination": "CHI",
+        "basisCode": "LAA07AWN"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "ABM2q6CC+R7WPC2aJhl/WtNwRskPbo5FH75ESOh3Pnb2",
+        "segmentId": "Gb645S-CiK9Nuld2"
+       }
+      ],
+      "baseFareTotal": "USD110.70",
+      "saleFareTotal": "USD110.70",
+      "saleTaxTotal": "USD22.40",
+      "saleTotal": "USD133.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD8.30"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "PHL UA CHI 110.70LAA07AWN USD 110.70 END ZP PHL XT 8.30US 4.00ZP 5.60AY 4.50XF PHL4.50",
+      "latestTicketingTime": "2016-02-20T23:59-05:00",
+      "ptc": "ADT"
+     }
+    ]
+   },
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD295.10",
+    "id": "ArkjnxFahNSVTJQKjLYbc2005",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 142,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 142,
+        "flight": {
+         "carrier": "UA",
+         "number": "5495"
+        },
+        "id": "GlVjh3wzTMcRLmYV",
+        "cabin": "COACH",
+        "bookingCode": "H",
+        "bookingCodeCount": 3,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "L--20hgWOvrcM5dh",
+          "aircraft": "E7W",
+          "arrivalTime": "2016-03-03T12:52-06:00",
+          "departureTime": "2016-03-03T11:30-05:00",
+          "origin": "PHL",
+          "destination": "ORD",
+          "originTerminal": "D",
+          "destinationTerminal": "2",
+          "duration": 142,
+          "operatingDisclosure": "OPERATED BY SKYWEST DBA UNITED EXPRESS",
+          "mileage": 675,
+          "meal": "Food and Beverages for Purchase",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AC0B8eo7is+Ehs4qmzQ2MwLwbVsBtV8vXg9r1GAYJBjY",
+        "carrier": "UA",
+        "origin": "PHL",
+        "destination": "CHI",
+        "basisCode": "HAA10AKN"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AC0B8eo7is+Ehs4qmzQ2MwLwbVsBtV8vXg9r1GAYJBjY",
+        "segmentId": "GlVjh3wzTMcRLmYV"
+       }
+      ],
+      "baseFareTotal": "USD261.40",
+      "saleFareTotal": "USD261.40",
+      "saleTaxTotal": "USD33.70",
+      "saleTotal": "USD295.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD19.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "PHL UA CHI 261.40HAA10AKN USD 261.40 END ZP PHL XT 19.60US 4.00ZP 5.60AY 4.50XF PHL4.50",
+      "latestTicketingTime": "2016-02-20T23:59-05:00",
+      "ptc": "ADT"
+     }
+    ]
+   }
+  ]
+ }
+}
