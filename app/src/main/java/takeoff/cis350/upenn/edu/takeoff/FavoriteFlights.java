@@ -25,7 +25,7 @@ public class FavoriteFlights {
         return (null!=Favorites.remove(flight.id));
     }
 
-    public LinkedHashSet getFlights() {
-        return (LinkedHashSet) Favorites.values();
+    public Set getFlights() {
+        return (Set) Favorites.values();
     }
 }

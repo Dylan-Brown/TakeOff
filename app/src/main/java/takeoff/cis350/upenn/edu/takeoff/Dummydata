@@ -1,14 +1,3 @@
-//Flight origins and destinations must be 3-character city/airport codes, e.g., NYC or LGA.
-
-//This is a JSON flight search data using QPX Express. I entered PHL->ORD, 2016-03-03, and this is
-the output.
-
-//Departure Code and City
-trips.data.airport.code[0]
-trips.data.airport.city[0]
-//Arrival Code and City
-trips.data.airport.code[1]
-trips.data.airport.city[1]
 
 
 {

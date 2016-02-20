@@ -14,7 +14,7 @@ import android.view.*;
  */
 
 /*PER FLIGHT*/
-    
+
 public class FlightResultActivity  extends ListActivity {
 
         // This is the Adapter being used to display the list's data
@@ -56,4 +56,3 @@ public class FlightResultActivity  extends ListActivity {
             // Do something when a list item is clicked
         }
     }
-    Note
