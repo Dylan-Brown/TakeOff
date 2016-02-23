@@ -1,7 +1,6 @@
 package takeoff.cis350.upenn.edu.takeoff;
 
 import java.util.*;
-import java.util.Date;
 
 /**
  * Created by tangson on 2/19/16.
