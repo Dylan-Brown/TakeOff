@@ -1,6 +1,7 @@
 package takeoff.cis350.upenn.edu.takeoff;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,8 +40,11 @@ public class FavoriteActivity extends ListActivity {
     return super.onOptionsItemSelected(item);
     }
 
-    @Override
     private class MyListAdapter extends ArrayAdapter<String>{
         private int layout;
+
+        public MyListAdapter(Context context, int resource) {
+            super(context, resource);
+        }
     }
 }

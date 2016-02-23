@@ -12,7 +12,8 @@ public class User {
     FavoriteFlights favoriteFlights;
 
     public User (){
-        favoriteFlights=new FavoriteFlights();
+        // TODO: Actually use a unique ID for the flight
+        favoriteFlights=new FavoriteFlights("unique flight number example");
     }
     public boolean addFavorite(Flight flight){
         return favoriteFlights.add(flight);

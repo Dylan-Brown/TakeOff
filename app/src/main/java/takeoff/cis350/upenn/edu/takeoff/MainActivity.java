@@ -5,11 +5,6 @@ package takeoff.cis350.upenn.edu.takeoff;
         import android.view.View;
         import android.content.Intent;
         import android.widget.AdapterView;
-        import java.util.List;
-        import java.util.ArrayList;
-
-        import android.widget.ArrayAdapter;
-        import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //Keep the default board size as 4
@@ -40,8 +35,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void login(View view){
         // So Login is a default Activity. Dylan, you can make it facy IF you want
         // I'd say leave it till the end :D
-        Intent intent = new  Intent (this, LoginActivity.class);
+        Intent intent = new  Intent (this, LogInActivity.class);
         //start Activity intent
+        // TODO: Fix! This causes the app to crash when clicking button
         startActivity(intent);
     }
 
@@ -49,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Goes to my Dashboard
         Intent intent = new  Intent (this, SearchInfo.class);
         //start Activity intent
+        // TODO: Fix! This causes the app to crash when clicking button
         startActivity(intent);
     }
 
@@ -56,8 +53,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // DYLAN, YOU NEED TO IMPLEMENT THIS
         // This is the sign in page
         // Change the Activity call later :)
-        Intent intent = new  Intent (this, LoginActivity.class);
+        Intent intent = new  Intent (this, LogInActivity.class);
         //start Activity intent
+        // TODO: Fix! This causes the app to crash when clicking button
         startActivity(intent);
     }
 }
