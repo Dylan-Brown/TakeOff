@@ -5,11 +5,11 @@ import java.util.*;
  * Created by tangson on 2/19/16.
  */
 public class FavoriteFlights {
-    private AbstractMap Favorites;
-    public String uniqueID;
+    private Map Favorites;
+    public Integer uniqueID;
 
-    public FavoriteFlights(String uniqueID){
-        Favorites=new LinkedHashMap<String, Flight>();
+    public FavoriteFlights(int uniqueID){
+        Favorites=new LinkedHashMap<Integer, Flight>(); //Flight.stringID, Flight
         this.uniqueID=uniqueID;
     }
 
