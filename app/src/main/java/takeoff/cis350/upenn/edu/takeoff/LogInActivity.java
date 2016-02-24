@@ -3,6 +3,8 @@ package takeoff.cis350.upenn.edu.takeoff;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -28,6 +30,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,14 +40,14 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LogInActivity extends AppCompatActivity {
 
     private static final int REQUEST_READ_CONTACTS = 0;
 
     // Keep track of the login task to ensure we can cancel it if requested.
-    private UserLoginTask mAuthTask = null;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private User loggedInUser;
     UserDatabase database = UserDatabase.getInstance();
 
     @Override
@@ -89,9 +92,6 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
 
     // Attempts to sign in or register the account specified by the login form, handles errors
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -99,6 +99,8 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        System.out.println("Email entered: " + email);
+        System.out.println("Password entered: " + password);
 
         boolean cancel = false;
         View focusView = null;
@@ -126,93 +128,24 @@ public class LogInActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView.requestFocus();
         } else {
             // perform the user login attempt.
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
-        }
-    }
-
-
-
-    // Loader methods
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-    }
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LogInActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
-    }
-    private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-        int ADDRESS = 0;
-        int IS_PRIMARY = 1;
-    }
-
-    // Represents an asynchronous login/registration task used to authenticate the user
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-        private final String mEmail;
-        private final String mPassword;
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
-        }
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-            return database.validate(mEmail, mPassword);
-        }
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            if (success) {
-                finish();
+            if (database.validate(email, password)) {
+                loggedInUser = database.getUser(email);
+                System.out.println("Successful login");
+                // TODO: Handle case where login is successful
+                // TODO: Go to search page
+                Intent intent = new  Intent(this, SearchInfo.class);
+                //start Activity intent
+                startActivity(intent);
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                Context context = getApplicationContext();
+                CharSequence text = "Incorrect email or password.";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         }
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-        }
     }
+
 }
 

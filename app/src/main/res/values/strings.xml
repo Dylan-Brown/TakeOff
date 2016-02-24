@@ -3,8 +3,10 @@
     <string name="action_settings">Settings</string>
     <string name="prompt_email">email</string>
     <string name="prompt_password">password</string>
+    <string name="prompt_password_2">confirm password</string>
     <string name="action_sign_in_short">Log In</string>
     <string name="action_sign_in">Log In</string>
+    <string name="action_sign_up">Sign Up</string>
     <string name="error_invalid_password">Invalid password</string>
     <string name="error_incorrect_password">Invalid password</string>
     <string name="error_invalid_email">Invalid email</string>
@@ -14,4 +16,5 @@
         completions."
     </string>
     <string name="title_activity_search_info">SearchInfo</string>
+    <string name="title_activity_sign_up">Sign in</string>
 </resources>
