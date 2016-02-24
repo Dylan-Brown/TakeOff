@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // I'd say leave it till the end :D
         Intent intent = new  Intent (this, LogInActivity.class);
         //start Activity intent
-        // TODO: Fix! This causes the app to crash when clicking button
         startActivity(intent);
     }
 
@@ -53,9 +52,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // DYLAN, YOU NEED TO IMPLEMENT THIS
         // This is the sign in page
         // Change the Activity call later :)
-        Intent intent = new  Intent (this, LogInActivity.class);
+        Intent intent = new  Intent (this, SignUpActivity.class);
         //start Activity intent
-        // TODO: Fix! This causes the app to crash when clicking button
         startActivity(intent);
     }
 }

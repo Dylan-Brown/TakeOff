@@ -35,7 +35,7 @@
         android:layout_marginTop="350dp"
         android:layout_centerHorizontal="true"
         android:onClick="login"
-        android:text="Login" />
+        android:text="Log In" />
 
 
     <TextView
