@@ -36,7 +36,7 @@
         android:layout_above="@+id/favoriteButton"
         android:layout_centerHorizontal="true" />
 
-    <Button
+    <!--<Button
         android:id="@+id/favoriteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
         android:layout_alignRight="@+id/welcome"
         android:onClick="favorite"
         android:text="Favorites" />
-
+-->
 
 
     <TextView

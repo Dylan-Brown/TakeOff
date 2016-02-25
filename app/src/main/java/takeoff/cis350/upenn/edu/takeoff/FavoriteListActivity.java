@@ -29,7 +29,7 @@ public class FavoriteListActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         flights=new Flight[1];
-        flights[1]=new Flight();
+        flights[0]=new Flight();
         flights[0].arrivalCityCode="BOS";
         flights[0].departureCityCode="PHL";
         flights[0].departureDate="2016-03-14";
