@@ -19,10 +19,6 @@
     <string name="title_activity_sign_up">Sign in</string>
 
 
-
-
-
-
     <!-- SEARCH PAGE STRINGS START HERE-->
         <string name="search_message">Please set your search parameters.\nDeparture Date, Arrival Date,
     Minimum Budget, and at least 1 Country and 1 City is required</string>
@@ -66,6 +62,7 @@
         <item>Business</item>
         <item>First</item>
     </string-array>
+    <string name="title_activity_flight_info">FlightInfo</string>
 
 
     <!-- SEARCH PAGE STRINGS END HERE-->

@@ -35,8 +35,10 @@ public class Dashboard extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         l = getListView();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, flight);
-        l.setAdapter(adapter);
+        setListAdapter(new ArrayAdapter(this,
+                android.R.layout.simple_list_item_single_choice, flight));
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, flight);
+        //l.setAdapter(adapter);
     }
 
     @Override

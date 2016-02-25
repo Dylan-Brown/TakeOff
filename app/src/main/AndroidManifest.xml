@@ -32,18 +32,17 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SignUpActivity"
-            android:label="@string/title_activity_sign_up"></activity>
-        <activity
-            android:name=".SearchPage"></activity>
-        <activity
-            android:name=".Dashboard"></activity>
-        <activity
-            android:name=".FlightResultActivity"></activity>
-
-
+            android:label="@string/title_activity_sign_up" />
+        <activity android:name=".SearchPage" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".FlightResultActivity" />
         <activity
             android:name=".FavoriteListActivity"
             android:label="Favorite " />
+        <activity
+            android:name=".FlightInfo"
+            android:label="@string/title_activity_flight_info"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
