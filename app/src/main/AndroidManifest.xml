@@ -32,6 +32,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SignUpActivity"
+<<<<<<< HEAD
             android:label="@string/title_activity_sign_up" />
         <activity android:name=".SearchPage" />
         <activity android:name=".Dashboard" />
@@ -43,6 +44,21 @@
             android:name=".FlightInfo"
             android:label="@string/title_activity_flight_info"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+            android:label="@string/title_activity_sign_up"></activity>
+
+
+        <activity
+            android:name=".FavoriteListActivity"
+            android:label="Favorite " />
+
+
+
+
+        <activity
+            android:name=".FlightResultActivity"
+            android:label="Result " />
+>>>>>>> d80f6e2b409b94870f169d7e6980743bc3bbfee5
     </application>
 
 </manifest>
