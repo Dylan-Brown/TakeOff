@@ -20,9 +20,9 @@ public class FlightAdapter extends ArrayAdapter {
     }
     static class DataHandler{
     TextView departureCityCode;
-    TextView departureTime;
+    TextView departureDate;
     TextView arrivalCityCode;
-    TextView arrivalTime;
+    TextView arrivalDate;
 }
 
     @Override
@@ -52,8 +52,8 @@ public class FlightAdapter extends ArrayAdapter {
             handler = new DataHandler();
             handler.departureCityCode = (TextView) row.findViewById(R.id.departureTextView);
             handler.arrivalCityCode = (TextView) row.findViewById(R.id.arrivalTextView);
-            handler.arrivalTime = (TextView) row.findViewById(R.id.arrivalDateTextView);
-            handler.departureTime = (TextView) row.findViewById(R.id.departureDateTextView);
+            handler.arrivalDate = (TextView) row.findViewById(R.id.arrivalDateTextView);
+            handler.departureDate = (TextView) row.findViewById(R.id.departureDateTextView);
             row.setTag(handler);
         }
         else{
@@ -63,8 +63,8 @@ public class FlightAdapter extends ArrayAdapter {
         flight = (Flight) this.getItem(position);
         handler.departureCityCode.setText(flight.departureCityCode);
         handler.arrivalCityCode.setText(flight.arrivalCityCode);
-        handler.arrivalTime.setText(flight.arrivalTime.toString());
-        handler.departureTime.setText(flight.departureTime.toString());
+        handler.arrivalDate.setText(flight.arrivalDate.toString());
+        handler.departureDate.setText(flight.departureDate.toString());
         return row;
     }
 }

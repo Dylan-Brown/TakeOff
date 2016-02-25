@@ -17,12 +17,12 @@ public class Flight {
     String departureCity;
     String departureCityCode;
     String departureCountry;
-    String departureTime;
+    String departureDate;
 
     String arrivalCity;
     String arrivalCityCode;
     String arrivalCountry;
-    String arrivalTime;
+    String arrivalDate;
 
 //    int totalTravelTime;    //in minutes
 
