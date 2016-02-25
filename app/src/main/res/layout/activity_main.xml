@@ -38,8 +38,6 @@
         android:layout_above="@+id/signupButton"
         android:layout_alignEnd="@+id/welcome" />
 
-<<<<<<< HEAD
-=======
     <Button
         android:id="@+id/favoriteButton"
         android:layout_width="wrap_content"
@@ -49,7 +47,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/loginButton" />
 
->>>>>>> bc968524d43ab079ed8f72ba517fb623ff0ea38c
 
     <TextView
         android:id="@+id/welcome"
