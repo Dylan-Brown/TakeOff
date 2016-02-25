@@ -24,9 +24,11 @@ public class DummyFlightInfo {
             temp.totalCost = (float)basecost;
 
             temp.departureCityCode = "PHL";
+            temp.departureCity = "PHL";
             temp.departureDate = "01/01/2016";
             temp.arrivalDate = "01/01/2017";
             temp.arrivalCityCode = "NY";
+            temp.arrivalCity = "NY";
 
             flights[i] = "Airline : " + temp.airline + '\n';
             flights[i] += "Total Cost : " + temp.totalCost + '\n';
