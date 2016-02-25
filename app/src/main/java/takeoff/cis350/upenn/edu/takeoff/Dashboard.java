@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -39,6 +41,8 @@ public class Dashboard extends ListActivity {
                 android.R.layout.simple_list_item_single_choice, flight));
         //ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, flight);
         //l.setAdapter(adapter);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setActionBar(myToolbar);
     }
 
     @Override
@@ -50,5 +54,17 @@ public class Dashboard extends ListActivity {
         Intent intent = new  Intent (this, FlightInfo.class);
         System.out.println("Entering the new activity. Not sure how to pass information");
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_dashboard, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public void sortByAirline() {
+        System.out.println("Here~!");
     }
 }
