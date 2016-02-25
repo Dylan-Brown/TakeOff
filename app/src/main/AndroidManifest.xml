@@ -33,6 +33,11 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"></activity>
+
+
+        <activity
+            android:name=".FavoriteActivity"
+            android:label="@string/title_activity_log_in" />
     </application>
 
 </manifest>

@@ -25,14 +25,14 @@ public class Flight {
     String arrivalCountry;
     Calendar arrivalTime;
 
-    int totalTravelTime;    //in minutes
+//    int totalTravelTime;    //in minutes
 
     boolean isSegment;
     Flight[] segments;
 
-    String flightNumber;   //eg UA93
+//    String flightNumber;   //eg UA93
 
     String cabinClass;
 
-    int mileage;
+   // int mileage;
 }

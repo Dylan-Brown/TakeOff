@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -14,7 +16,7 @@ import android.widget.ListView;
  */
 //THIS IS IT!!!
 
-public class FlightListActivity extends ListActivity {
+public class FavoriteListActivity extends ListActivity {
     Flight[] flights;///flight list will be bundled in. Get the flights from the favorite_list.
     String[] arrivalCityCodes;
     String[] departureCityCodes;
@@ -32,9 +34,13 @@ public class FlightListActivity extends ListActivity {
             adapter.add(flight);
         }
         listView.setAdapter(adapter);
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                // your code is here on item click
+            }
+        });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
