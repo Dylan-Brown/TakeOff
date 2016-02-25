@@ -9,7 +9,6 @@ import java.util.*;
 /*
 * This is the Flight datatype. Flight segments are sub-flights (i.e. layovers). */
 
-
 public class Flight {
     String id;  //unique per flights
     String airline;
@@ -18,12 +17,12 @@ public class Flight {
     String departureCity;
     String departureCityCode;
     String departureCountry;
-    Calendar departureTime;
+    String departureTime;
 
     String arrivalCity;
     String arrivalCityCode;
     String arrivalCountry;
-    Calendar arrivalTime;
+    String arrivalTime;
 
 //    int totalTravelTime;    //in minutes
 

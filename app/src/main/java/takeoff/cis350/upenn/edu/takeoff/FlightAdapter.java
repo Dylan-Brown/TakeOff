@@ -18,7 +18,7 @@ public class FlightAdapter extends ArrayAdapter {
     public FlightAdapter(Context context, int resource){
         super(context, resource);
     }
-static class DataHandler{
+    static class DataHandler{
     TextView departureCityCode;
     TextView departureTime;
     TextView arrivalCityCode;
