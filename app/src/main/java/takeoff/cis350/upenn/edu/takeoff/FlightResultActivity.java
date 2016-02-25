@@ -9,10 +9,15 @@ import android.widget.TextView;
  * Created by tangson on 2/25/16.
  */
 public class FlightResultActivity extends Activity {
+<<<<<<< HEAD
+
+    //Hey Jason I created a new activity called FlightInfo which does what this Activity is supposed to do.
+=======
 
 
     //Hey Jason I created a new activity called FlightInfo which does what this Activity is supposed to do.
 
+>>>>>>> origin/master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
