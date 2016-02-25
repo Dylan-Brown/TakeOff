@@ -131,8 +131,6 @@ public class LogInActivity extends AppCompatActivity {
             if (database.validate(email, password)) {
                 loggedInUser = database.getUser(email);
                 System.out.println("Successful login");
-                // TODO: Handle case where login is successful
-                // TODO: Go to search page
                 Intent intent = new  Intent(this, SearchInfo.class);
                 //start Activity intent
                 startActivity(intent);

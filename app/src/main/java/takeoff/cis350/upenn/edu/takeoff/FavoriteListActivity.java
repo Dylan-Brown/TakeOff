@@ -2,6 +2,7 @@ package takeoff.cis350.upenn.edu.takeoff;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +28,15 @@ public class FavoriteListActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        flights=new Flight[1];
+        flights[1]=new Flight();
+        flights[0].arrivalCityCode="BOS";
+        flights[0].departureCityCode="PHL";
+        flights[0].departureDate="2016-03-14";
+        flights[0].arrivalDate="2016-03-19";
+        flights[0].airline="JETBLUE";
+        flights[0].totalCost=100.00;
+
         super.onCreate(savedInstanceState);
         listView=(ListView) findViewById(R.id.favorite_list_view);//this goes to the favorite_list
         adapter = new FlightAdapter(getApplicationContext(), R.layout.flight_item);
@@ -37,7 +47,9 @@ public class FavoriteListActivity extends ListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                // your code is here on item click
+                Intent i= new Intent(getApplicationContext(), MainActivity.class);
+                //i.putExtra("selval ", selval);
+                startActivity(i);
             }
         });
     }

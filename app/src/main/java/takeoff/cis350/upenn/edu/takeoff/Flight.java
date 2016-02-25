@@ -12,7 +12,7 @@ import java.util.*;
 public class Flight {
     String id;  //unique per flights
     String airline;      //##
-    float totalCost;     //##           //trips.tripOption[].saleTotal
+    double totalCost;     //##           //trips.tripOption[].saleTotal
 
     String departureCity;
     String departureCityCode;    //##
