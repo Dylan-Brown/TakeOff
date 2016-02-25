@@ -57,4 +57,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //start Activity intent
         startActivity(intent);
     }
+
+    public void favorite(View view){
+        // So Login is a default Activity. Dylan, you can make it facy IF you want
+        // I'd say leave it till the end :D
+        Intent intent = new  Intent (this, FavoriteListActivity.class);
+        //start Activity intent
+        startActivity(intent);
+    }
+
 }
