@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -256,18 +257,18 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     public OnDateSetListener getDateSetListener(boolean departure){
         OnDateSetListener listener = null;
         if(departure){
-            listener = new OnDateSetListener() {
+                listener = new OnDateSetListener() {
 
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    Calendar newDate = Calendar.getInstance();
-                    newDate.set(year, monthOfYear, dayOfMonth);
-                    departureDateText.setText(dateFormatter.format(newDate.getTime()));
-                    departureDateInput = dateFormatter.format(newDate.getTime());
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        Calendar newDate = Calendar.getInstance();
+                        newDate.set(year, monthOfYear, dayOfMonth);
+                        departureDateText.setText(dateFormatter.format(newDate.getTime()));
+                        departureDateInput = dateFormatter.format(newDate.getTime());
 
-                    System.out.println("DEPARTURE LISTENER");
-                    System.out.println(departureDateInput);
-                }
-            };
+                        System.out.println("DEPARTURE LISTENER");
+                        System.out.println(departureDateInput);
+                    }
+                };
         } /*else {
             listener = new OnDateSetListener() {
 
@@ -321,6 +322,8 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         System.out.println("REFUNDABLE: " + refundable);
         System.out.println("SPINNER CLASS: " + flightClass);
 
+        Intent intent = new Intent(this, Dashboard.class);
+        startActivity(intent);
 
         /*AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
