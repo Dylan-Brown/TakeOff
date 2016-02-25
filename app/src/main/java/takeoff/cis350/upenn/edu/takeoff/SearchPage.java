@@ -34,7 +34,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     private EditText departureDateText;
     private EditText arrivalDateText;
     private String departureDateInput;
-    private String arrivalDateInput;
+    //private String arrivalDateInput;
     private DatePickerDialog departureDatePickerDialog;
     private DatePickerDialog arrivalDatePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -55,6 +55,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("Here!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
 
@@ -67,7 +68,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         //Dates
         departureDateInput = "";
-        arrivalDateInput = "";
+        //arrivalDateInput = "";
         dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
         findDateViews();
         setDateField();

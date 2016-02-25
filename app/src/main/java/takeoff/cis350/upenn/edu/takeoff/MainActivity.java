@@ -42,9 +42,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void guest (View view) {
         // Goes to my Dashboard
-        Intent intent = new  Intent (this, SearchInfo.class);
+        Intent intent = new  Intent (this, SearchPage.class);
         //start Activity intent
         // TODO: Fix! This causes the app to crash when clicking button
+        System.out.println("Attempting to switch intent");
         startActivity(intent);
     }
 

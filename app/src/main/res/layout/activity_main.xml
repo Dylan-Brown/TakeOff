@@ -40,7 +40,7 @@
         android:onClick="guest"
         android:text="Continue as Guest" />
 
-    <Button
+    <!-- Button
         android:id="@+id/favoriteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/welcome"
         android:onClick="guest"
-        android:text="Favorites" />
+        android:text="Favorites" /> -->
 
 
 
