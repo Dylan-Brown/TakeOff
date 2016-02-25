@@ -38,14 +38,23 @@
         android:layout_above="@+id/signupButton"
         android:layout_alignEnd="@+id/welcome" />
 
-    <Button
+    <!-- Button
         android:id="@+id/favoriteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:onClick="favorite"
         android:text="Favorites"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/loginButton" />
+=======
+        android:layout_alignLeft="@+id/welcome"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/welcome"
+        android:onClick="guest"
+        android:text="Favorites" /> -->
+
+>>>>>>> parent of 4710b4c... Merge branch 'master' of http://github.com/cis-upenn/17-Flight-Search-Engine
 
 
     <TextView

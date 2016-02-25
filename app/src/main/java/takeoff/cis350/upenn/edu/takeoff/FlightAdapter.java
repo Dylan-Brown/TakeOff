@@ -14,22 +14,19 @@ import java.util.*;
  */
 public class FlightAdapter extends ArrayAdapter {
     List list = new ArrayList();
-    private TextView arrivalDate;
 
-    public FlightAdapter(Context context, int resource) {
+    public FlightAdapter(Context context, int resource){
         super(context, resource);
     }
-
-    static class DataHandler {
-        TextView departureCityCode;
-        TextView departureDate;
-        TextView arrivalCityCode;
-        TextView arrivalDate;
-        TextView cost;
-    }
+    static class DataHandler{
+    TextView departureCityCode;
+    TextView departureDate;
+    TextView arrivalCityCode;
+    TextView arrivalDate;
+}
 
     @Override
-    public void add(Object object) {
+    public void add(Object object){
         super.add(object);
         list.add(object);
     }
@@ -47,28 +44,27 @@ public class FlightAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row;
-        row = convertView;
+        row=convertView;
         DataHandler handler;
-        if (convertView == null) {
+        if (convertView==null){
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.flight_item, parent, false);
+            row = inflater.inflate(R.layout.flight_item,parent, false);
             handler = new DataHandler();
             handler.departureCityCode = (TextView) row.findViewById(R.id.departureTextView);
             handler.arrivalCityCode = (TextView) row.findViewById(R.id.arrivalTextView);
             handler.arrivalDate = (TextView) row.findViewById(R.id.arrivalDateTextView);
             handler.departureDate = (TextView) row.findViewById(R.id.departureDateTextView);
-            handler.cost = (TextView) row.findViewById(R.id.costTextView);
             row.setTag(handler);
-        } else {
-            handler = (DataHandler) row.getTag();
+        }
+        else{
+            handler= (DataHandler) row.getTag();
         }
         Flight flight;
         flight = (Flight) this.getItem(position);
         handler.departureCityCode.setText(flight.departureCityCode);
         handler.arrivalCityCode.setText(flight.arrivalCityCode);
-        handler.arrivalDate.setText(flight.arrivalDate);
-        handler.departureDate.setText(flight.departureDate);
-        handler.cost.setText(String.valueOf(flight.totalCost));
+        handler.arrivalDate.setText(flight.arrivalDate.toString());
+        handler.departureDate.setText(flight.departureDate.toString());
         return row;
     }
 }
