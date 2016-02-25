@@ -17,4 +17,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- Base application theme. -->
+    <style name="AppTheme.Hint" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+
 </resources>

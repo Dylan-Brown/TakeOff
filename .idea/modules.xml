@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Flight Engine.iml" filepath="$PROJECT_DIR$/Flight Engine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/17-Flight-Search-Engine.iml" filepath="$PROJECT_DIR$/17-Flight-Search-Engine.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

@@ -1,0 +1,239 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    >
+
+    <!-- Instructions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search_message"
+            android:textColor="@color/white"
+            android:alpha="1.0"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:fillViewport="false"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <!-- Departure Date and TimeTextBox -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:alignmentMode="alignBounds"
+                android:layout_weight=".5"
+                android:paddingBottom="5dp"
+                >
+                <!-- Departure Date TextBox -->
+                <EditText
+                    android:id="@+id/departure_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="1.0"
+                    android:hint="@string/departure_date"
+                    android:background="@drawable/option_box_style"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+                <EditText
+                    android:id="@+id/departure_early_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="1.0"
+                    android:hint="@string/departure_early_time"
+                    android:background="@drawable/option_box_style"
+                    />
+
+                <EditText
+                    android:id="@+id/departure_late_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="1.0"
+                    android:hint="@string/departure_late_time"
+                    android:background="@drawable/option_box_style"
+                    />
+
+
+                    >
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Country Auto Complete -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/country_message"
+                android:textColor="@color/white"
+                android:alpha="1.0"
+                android:textSize="18sp"
+                android:padding="5dp"
+                />
+
+            <MultiAutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/autocomplete_country"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/countries"
+                android:background="@drawable/option_box_style"
+
+                />
+
+            <!-- City input -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/city_message"
+                android:textColor="@color/white"
+                android:alpha="1.0"
+                android:textSize="18sp"
+                android:padding="5dp"
+                />
+
+            <EditText
+                android:id="@+id/city_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:alpha="1.0"
+                android:inputType="textMultiLine"
+                android:hint="@string/cities"
+                android:background="@drawable/option_box_style"
+                />
+
+            <!-- Budget input -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/budget_message"
+                android:textColor="@color/white"
+                android:alpha="1.0"
+                android:textSize="18sp"
+                android:padding="5dp"
+                />
+
+            <EditText
+                android:id="@+id/budget_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:alpha="1.0"
+                android:inputType="numberSigned"
+                android:hint="@string/budget"
+                android:background="@drawable/option_box_style"
+                />
+
+            <!-- Connecting Flight input -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/connecting_message"
+                android:textColor="@color/white"
+                android:alpha="1.0"
+                android:textSize="18sp"
+                android:padding="5dp"
+                />
+
+            <EditText
+                android:id="@+id/connecting_flight_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:alpha="1.0"
+                android:digits="0123456789."
+                android:inputType="number"
+                android:hint="@string/connecting_flight"
+                android:background="@drawable/option_box_style"
+                />
+
+            <!-- Ticket Options input -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/refundable_message"
+                android:textColor="@color/white"
+                android:alpha="1.0"
+                android:textSize="18sp"
+                android:padding="5dp"
+                />
+
+            <CheckBox android:id="@+id/checkbox_refundable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/refundable_checkbox"
+                android:buttonTint="@color/white"
+                android:textColor="@color/white"
+                android:onClick="onCheckboxClicked"
+                android:textSize="17sp"
+                android:padding="8dp"
+                />
+
+            <!-- Travel Class input -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/travel_class_message"
+                android:textColor="@color/white"
+                android:alpha="1.0"
+                android:textSize="18sp"
+                android:padding="5dp"
+                />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/class_spinner"
+                android:ellipsize="marquee"
+                android:textColor="@color/white"
+                android:background="@drawable/option_box_style"
+                />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Search Box at the bottom -->
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="end"
+        android:text="@string/search_button"
+        android:onClick="transitionToSearch" />
+</LinearLayout>
