@@ -33,17 +33,18 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"></activity>
-        <activity
-            android:name=".SearchPage"></activity>
-        <activity
-            android:name=".Dashboard"></activity>
-        <activity
-            android:name=".FlightResultActivity"></activity>
 
 
         <activity
             android:name=".FavoriteListActivity"
             android:label="Favorite " />
+
+
+
+
+        <activity
+            android:name=".FlightResultActivity"
+            android:label="Result " />
     </application>
 
 </manifest>
