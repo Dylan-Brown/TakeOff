@@ -133,7 +133,7 @@ public class LogInActivity extends AppCompatActivity {
                 System.out.println("Successful login");
                 // TODO: Handle case where login is successful
                 // TODO: Go to search page
-                Intent intent = new  Intent(this, SearchInfo.class);
+                Intent intent = new  Intent(this, SearchPage.class);
                 //start Activity intent
                 startActivity(intent);
             } else {

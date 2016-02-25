@@ -175,7 +175,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (password.equals(password2)) {
                     database.addUser(email, password);
                     loggedInUser = database.getUser(email);
-                    Intent intent = new  Intent(this, SearchInfo.class);
+                    Intent intent = new  Intent(this, SearchPage.class);
                     //start Activity intent
                     startActivity(intent);
                 } else {
