@@ -28,7 +28,7 @@ public class FavoriteListActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listView=(ListView) findViewById(R.id.list_view);//this goes to the favorite_list
+        listView=(ListView) findViewById(R.id.favorite_list_view);//this goes to the favorite_list
         adapter = new FlightAdapter(getApplicationContext(), R.layout.flight_item);
         for (Flight flight: flights){
             adapter.add(flight);
