@@ -124,7 +124,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         list.add("Premium Coach");
         list.add("Business");
         list.add("First");
-        
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -160,9 +160,10 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         if(v.getId() == departureDateText.getId()) {
             departureDatePickerDialog.show();
         }
+        /*
         else if(v.getId() == arrivalDateText.getId()) {
             arrivalDatePickerDialog.show();
-        }
+        }*/
         else {
         }
 
@@ -226,20 +227,21 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         departureDateText.requestFocus();
 
         //arrivalDateText = (EditText) findViewById(R.id.arrival_date);
-        arrivalDateText.setInputType(InputType.TYPE_NULL);
+        System.out.println("HERE");
+        //arrivalDateText.setInputType(InputType.TYPE_CLASS_NUMBER);
         System.out.println("FINDDATEVIEWS");
     }
 
     private void setDateField() {
         departureDateText.setOnClickListener(this);
-        arrivalDateText.setOnClickListener(this);
+        //rrivalDateText.setOnClickListener(this);
 
         Calendar newCalendar = Calendar.getInstance();
         departureDatePickerDialog = new DatePickerDialog(this, getDateSetListener(true),
                 newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-        arrivalDatePickerDialog = new DatePickerDialog(this, getDateSetListener(false),
-                newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        //arrivalDatePickerDialog = new DatePickerDialog(this, getDateSetListener(false),
+                //newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         System.out.println("SETDATEFIELD");
     }
 
@@ -251,7 +253,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
      * Description: Handles when the user clicks to enter dates and how to change the strings
      */
     public OnDateSetListener getDateSetListener(boolean departure){
-        OnDateSetListener listener;
+        OnDateSetListener listener = null;
         if(departure){
             listener = new OnDateSetListener() {
 
@@ -265,7 +267,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                     System.out.println(departureDateInput);
                 }
             };
-        } else {
+        } /*else {
             listener = new OnDateSetListener() {
 
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -277,7 +279,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                     System.out.println(arrivalDateInput);;
                 }
             };
-        }
+        }*/
         System.out.println("GETLISTENER");
         return listener;
     }
@@ -307,8 +309,8 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     public void transitionToSearch(View view) {
         System.out.println("DEPARTURE SEARCH");
         System.out.println(departureDateInput);
-        System.out.println("ARRIVAL SEARCH");
-        System.out.println(arrivalDateInput);
+        //System.out.println("ARRIVAL SEARCH");
+        //System.out.println(arrivalDateInput);
         System.out.println("COUNTRIES AUTO COMPLETE");
         System.out.println(countriesAutoComp.getText().toString());
         System.out.println("CITIES INPUT");
@@ -319,7 +321,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         System.out.println("SPINNER CLASS: " + flightClass);
 
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        /*AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
         if(departureDateInput.equals("") || arrivalDateInput.equals("")) {
             System.out.println("DATE INPUT");
@@ -353,7 +355,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             String msg = "Please enter a buget.";
             alertMessage(msg);
             return;
-        }
+        }*/
     }
 
     /**
