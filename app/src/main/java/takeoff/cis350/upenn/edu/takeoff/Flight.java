@@ -11,18 +11,18 @@ import java.util.*;
 
 public class Flight {
     String id;  //unique per flights
-    String airline;
-    float totalCost;    //trips.tripOption[].saleTotal
+    String airline;      //##
+    float totalCost;     //##           //trips.tripOption[].saleTotal
 
     String departureCity;
-    String departureCityCode;
+    String departureCityCode;    //##
     String departureCountry;
-    String departureDate;
+    String departureDate;    //##
 
     String arrivalCity;
-    String arrivalCityCode;
+    String arrivalCityCode;      //##
     String arrivalCountry;
-    String arrivalDate;
+    String arrivalDate;      //##
 
 //    int totalTravelTime;    //in minutes
 
