@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+
 /**
  * Created by tangson on 2/23/16.
  * https://www.youtube.com/watch?v=DzpwvZ4S27g
@@ -23,42 +24,10 @@ public class FavoriteListActivity extends ListActivity {
 
     FlightAdapter adapter;
     ListView listView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.e("HIPPIE!","HI,THERE IS A LIST VIEW");
 
-        flights=new Flight[4];
-        flights[0]=new Flight();
-        flights[0].arrivalCityCode="BOS";
-        flights[0].departureCityCode="PHL";
-        flights[0].departureDate="2016-03-14";
-        flights[0].arrivalDate="2016-03-19";
-        flights[0].airline="JETBLUE";
-        flights[0].totalCost=100.00;
-        flights[2]=new Flight();
-        flights[2].arrivalCityCode="BOS";
-        flights[2].departureCityCode="PHL";
-        flights[2].departureDate="2016-03-12";
-        flights[2].arrivalDate="2016-03-19";
-        flights[2].airline="Delta";
-        flights[2].totalCost=80.00;
-
-        flights[3]=new Flight();
-        flights[3].arrivalCityCode="BOS";
-        flights[3].departureCityCode="PHL";
-        flights[3].departureDate="2016-03-13";
-        flights[3].arrivalDate="2016-03-19";
-        flights[3].airline="Spirit";
-        flights[3].totalCost=12.00;
-
-        flights[1]=new Flight();
-        flights[1].arrivalCityCode="LAX";
-        flights[1].departureCityCode="BOS";
-        flights[1].departureDate="2016-04-12";
-        flights[1].arrivalDate="2016-04-19";
-        flights[1].airline="British Airways";
-        flights[1].totalCost=335.00;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorite_list);
