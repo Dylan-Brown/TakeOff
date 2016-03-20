@@ -17,20 +17,20 @@ import org.apache.http.entity.StringEntity;
 public class QPXAPIReader {
 
 
-    public JSONArray executeAPIRequest(String APIKey) {
-        String origin = "PHL";
-        String destination = "HND";
-        String date = "2016-04-19";
-        int adultCount = 1;
-        boolean refundability = false;
-        int numberOfSolutions = 2;
-        int maxStops = 4;// 0 for nonstop
-        String alliance = "";
-        int maxConnectionDuration = 4320;
-        String preferredCabin = "COACH";
-        int maxPrice = 99999;
-        String earliestTime = "";
-        String latestTime = "";
+    public JSONArray executeAPIRequest(SearchQuery sp, String APIKey) {
+        String origin = sp.origin;
+        String destination = sp.destination;
+        String date = sp.date;
+        int adultCount = sp.adultCount;
+        boolean refundability = sp.refundability;
+        int numberOfSolutions = sp.numberOfSolutions;
+        int maxStops = sp.maxStops;// 0 for nonstop
+        String alliance = sp.alliance;
+        int maxConnectionDuration = sp.maxConnectionDuration;
+        String preferredCabin = sp.preferredCabin;
+        int maxPrice =sp.maxPrice;
+        String earliestTime =sp.earliestTime;
+        String latestTime = sp.latestTime;
 
         String requestSlice = "{ \"request\":{\"slice\": "
                 + "[{\"origin\": \"" + origin + "\",\"destination\": \"" + destination +
@@ -113,7 +113,7 @@ public class QPXAPIReader {
     public List<Flight> getAPIResultsAsFlight() throws JSONException {
 
         List<Flight> flightResults = new ArrayList<Flight>();
-        JSONArray jsonArray = executeAPIRequest("AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ");
+        JSONArray jsonArray = executeAPIRequest(new SearchQuery(),"AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ");
         printAPIResults(jsonArray);
 
 
