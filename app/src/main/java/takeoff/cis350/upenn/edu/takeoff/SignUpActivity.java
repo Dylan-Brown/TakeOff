@@ -93,8 +93,8 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
+            Snackbar.make(mEmailView, R.string.permission_rationale,
+                    Snackbar.LENGTH_INDEFINITE).setAction(android.R.string.ok, new View.OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
                         public void onClick(View v) {
@@ -158,34 +158,28 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+            // There was an error; don't attempt login and focus the first form field with an error
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            if (database.isUser(email)) {
-                Context context = getApplicationContext();
-                CharSequence text = "That username is already in use.";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
+            // TODO: Show a progress spinner while attempting to sign up
+            UserDatabase database = UserDatabase.getInstance();
+            int errcode = database.addUser(email, password);
+            if (errcode == 0) {
+                // No error, user added; enter the search page.
+                Intent intent = new  Intent(this, SearchPage.class);
+                startActivity(intent);
+            } else if (errcode == 1) {
+                // Email already has an associated account
+                Toast toast = Toast.makeText(getApplicationContext(), "There is already "
+                        + "an account associated with this email address.", Toast.LENGTH_SHORT);
                 toast.show();
+                focusView.requestFocus();
             } else {
-                if (password.equals(password2)) {
-                    database.addUser(email, password);
-                    loggedInUser = database.getUser(email);
-                    Intent intent = new  Intent(this, SearchPage.class);
-                    //start Activity intent
-                    startActivity(intent);
-                } else {
-                    Context context = getApplicationContext();
-                    CharSequence text = "Passwords do not match.";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
+                // Some other error has occured
+                Toast toast = Toast.makeText(getApplicationContext(), "Sorry, we've experienced "
+                        + "an internal error. Please, try again later.", Toast.LENGTH_SHORT);
+                toast.show();
+                focusView.requestFocus();
             }
         }
     }

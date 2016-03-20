@@ -32,6 +32,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,23 +126,21 @@ public class LogInActivity extends AppCompatActivity {
         }
 
         if (cancel) {
-            // there was an error; don't attempt login and focus the first form field with an error
+            // There was an error; don't attempt login and focus the first form field with an error
             focusView.requestFocus();
         } else {
-            // perform the user login attempt.
-            if (database.validate(email, password)) {
-                loggedInUser = database.getUser(email);
+            // Perform the user login attempt.
+            if (database.attemptLogin(email, password)) {
+                loggedInUser = database.getUser();
                 System.out.println("Successful login");
-                // TODO: Handle case where login is successful
-                // TODO: Go to search page
+                // Enter the search page
                 Intent intent = new  Intent(this, SearchPage.class);
-                //start Activity intent
                 startActivity(intent);
+
             } else {
                 Context context = getApplicationContext();
                 CharSequence text = "Incorrect email or password.";
                 int duration = Toast.LENGTH_SHORT;
-
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }

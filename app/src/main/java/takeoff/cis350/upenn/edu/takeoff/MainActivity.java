@@ -6,6 +6,8 @@ package takeoff.cis350.upenn.edu.takeoff;
         import android.content.Intent;
         import android.widget.AdapterView;
 
+        import com.firebase.client.Firebase;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //Keep the default board size as 4
     int boardSize = 4;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Firebase.setAndroidContext(this);
     }
 
 
