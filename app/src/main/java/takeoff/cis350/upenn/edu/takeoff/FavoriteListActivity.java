@@ -49,7 +49,7 @@ public class FavoriteListActivity extends ListActivity {
                 i.putExtra("arrivalDate", flights[position].arrivalDate);
                 i.putExtra("departureCityCode", flights[position].departureCityCode);
                 i.putExtra("arrivalCityCode", flights[position].arrivalCityCode);
-                i.putExtra("cost", flights[position].totalCost);
+                i.putExtra("cost", flights[position].cost);
                 i.putExtra("airline", flights[position].airline);
 
 

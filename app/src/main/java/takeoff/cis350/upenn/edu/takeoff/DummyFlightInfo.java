@@ -19,19 +19,17 @@ public class DummyFlightInfo {
 
         for (int i = 0; i < 20; i ++) {
             Flight temp = new Flight();
-            temp.airline = "Airline";
+            temp.airline = "UA";
             basecost *= Math.random() * 2;
-            temp.totalCost = (float)basecost;
+            temp.cost = (float)basecost;
 
             temp.departureCityCode = "PHL";
-            temp.departureCity = "PHL";
             temp.departureDate = "01/01/2016";
             temp.arrivalDate = "01/01/2017";
             temp.arrivalCityCode = "NY";
-            temp.arrivalCity = "NY";
 
             flights[i] = "Airline : " + temp.airline + '\n';
-            flights[i] += "Total Cost : " + temp.totalCost + '\n';
+            flights[i] += "Cost : " + temp.cost + '\n';
             flights[i] += "Departure City : " + temp.departureCityCode + '\n';
             flights[i] += "Departure Date : " + temp.departureDate + '\n';
             flights[i] += "Arrival City : " + temp.arrivalCityCode + '\n';

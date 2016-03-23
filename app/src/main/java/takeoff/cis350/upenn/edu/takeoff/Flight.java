@@ -21,6 +21,8 @@ public class Flight {
     int numOfConnections;
     int duration;
 
+    String airline;
+
     int oneWayDuration=0;
     String departureCityCode;
     String departureDate;    //YYYY-MM-DD

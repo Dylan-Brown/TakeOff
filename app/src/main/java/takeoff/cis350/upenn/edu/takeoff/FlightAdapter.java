@@ -68,7 +68,7 @@ public class FlightAdapter extends ArrayAdapter {
         handler.arrivalCityCode.setText(flight.arrivalCityCode);
         handler.arrivalDate.setText(flight.arrivalDate);
         handler.departureDate.setText(flight.departureDate);
-        handler.cost.setText(String.valueOf(flight.totalCost));
+        handler.cost.setText(String.valueOf(flight.cost));
         return row;
     }
 }

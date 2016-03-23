@@ -64,7 +64,7 @@ public class QPXAPIParser {
                         flight.flightNumber = segment.getJSONObject("flight").getString("carrier")
                                 + segment.getJSONObject("flight").getString("number");
                         flight.cabinClass = segment.getString("cabin");
-
+                        flight.airline=segment.getJSONObject("flight").getString("carrier");
                         flight.departureCityCode = leg.getString("origin");
                         flight.departureTime = leg.getString("departureTime").split("T")[0];
                         flight.departureDate = leg.getString("departureTime").split("T")[1];

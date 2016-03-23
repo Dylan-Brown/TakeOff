@@ -118,7 +118,7 @@ public class Dashboard extends ListActivity {
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
-                        if (array[i].totalCost > array[k].totalCost) {
+                        if (array[i].cost > array[k].cost) {
                             Flight temp;
                             temp = array[i];
                             array[i] = array[k];
@@ -146,7 +146,7 @@ public class Dashboard extends ListActivity {
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
-                        if (array[i].departureCity.compareTo(array[k].departureCity) < 0) {
+                        if (array[i].departureCityCode.compareTo(array[k].departureCityCode) < 0) {
                             Flight temp;
                             temp = array[i];
                             array[i] = array[k];
@@ -174,7 +174,7 @@ public class Dashboard extends ListActivity {
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
-                        if (array[i].arrivalCity.compareTo(array[k].arrivalCity) < 0) {
+                        if (array[i].arrivalCityCode.compareTo(array[k].arrivalCityCode) < 0) {
                             Flight temp;
                             temp = array[i];
                             array[i] = array[k];
@@ -188,7 +188,7 @@ public class Dashboard extends ListActivity {
         for (int i = 0; i < array.length; i++) {
             Flight temp = array[i];
             flight[i] = "Airline : " + temp.airline + '\n';
-            flight[i] += "Total Cost : " + temp.totalCost + '\n';
+            flight[i] += "Total Cost : " + temp.cost + '\n';
             flight[i] += "Departure City : " + temp.departureCityCode + '\n';
             flight[i] += "Departure Date : " + temp.departureDate + '\n';
             flight[i] += "Arrival City : " + temp.arrivalCityCode + '\n';
