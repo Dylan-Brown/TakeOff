@@ -14,37 +14,37 @@ import java.util.*;
 * This is the Flight datatype. Flight segments are sub-flights (i.e. layovers). */
 
 public class Flight{
-
-    static int counter=0;
+    //Flight is one level recursive.
+    //The master Flight (i.e. the Ticket) is composed of individual flights (eg connections, roundtrips)
+    //If the flight is the master flight, then isEntry is set to true.
     boolean isEntry=false;
+    List<Flight> subFlights=new ArrayList<Flight>();
 
-    String id;  //unique per flight
-    boolean isRoundtrip;
+    String id="";  //unique per flight
+    boolean isRoundtrip=false;
 
-    double cost;     //in USD           //trips.tripOption[].saleTotal
-    int numOfConnections;
+    double cost=999999;     //in USD           //trips.tripOption[].saleTotal
+    int numOfConnections=5;
     int duration;
 
-    String airline;
+    String airline="";
 
-    int oneWayDuration=0;
-    String departureCityCode;
-    String departureDate;    //YYYY-MM-DD
-    String departureTime;   //HH-MM
-    String arrivalCityCode;
-    String arrivalDate;
-    String arrivalTime;
+    int oneWayDuration=4320;
+    String departureCityCode="";
+    String departureDate="";    //YYYY-MM-DD
+    String departureTime="";   //HH-MM
+    String arrivalCityCode="";
+    String arrivalDate="";
+    String arrivalTime="";
+    //Only if there is a return flight
+    int roundTripDuration=4320;
+    String retdepartureCityCode="";
+    String retdepartureTime="";
+    String retdepartureDate="";
+    String retarrivalCityCode="";
+    String retarrivalDate="";
+    String retarrivalTime="";
 
-    int roundTripDuration=0;
-    String retdepartureCityCode;
-    String retdepartureTime;
-    String retdepartureDate;
-    String retarrivalCityCode;
-    String retarrivalDate;
-    String retarrivalTime;
-
-
-    List<Flight> subFlights=new ArrayList<Flight>();
 
     //SINGLE FLIGHT/Leg specific values
     String flightNumber;   //eg UA93
