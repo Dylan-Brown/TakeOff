@@ -6,9 +6,12 @@ package takeoff.cis350.upenn.edu.takeoff;
 
 public class SearchQuery {
     int no_of_Slices=1; //number of total trips; one-way is 1 slice, roundtrip is 2 slices
+
     String origin="";
     String destination="";
     String date=""; //in the format of YYYY-MM-DD
+    boolean isRoundtrip;
+    String returnDate=""; //in the format of YYYY-MM-DD, only present if roundtrip
     int adultCount=1;	//number of adults (i.e. passengers)
 
     String preferredCabin=""; //COACH, PREMIUM_COACH, BUSINESS, FIRST
@@ -19,7 +22,7 @@ public class SearchQuery {
     String earliestTime=""; //in the format of HH:MM (24 hours)
     String latestTime=""; //in the format of HH:MM (24 hours)
     int maxConnectionDuration=4320; //maximum amount in minutes
-    String alliance=""; //STAR, ONEWORLD
+    String alliance=""; //NONE, STAR, ONEWORLD, XXX,XXX
 
     public SearchQuery() {
     };
