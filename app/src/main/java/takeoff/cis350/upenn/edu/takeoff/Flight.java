@@ -23,7 +23,7 @@ public class Flight{
     String id="";  //unique per flight
     boolean isRoundtrip=false;
 
-    double cost=999999;     //in USD           //trips.tripOption[].saleTotal
+    double cost=99999.99;     //in USD           //trips.tripOption[].saleTotal
     int numOfConnections=5;
     int duration;
 

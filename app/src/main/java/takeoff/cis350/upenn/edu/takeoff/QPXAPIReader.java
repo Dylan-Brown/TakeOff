@@ -18,7 +18,7 @@ public class QPXAPIReader {
         int adultCount = sq.adultCount;
         boolean refundability = sq.refundability;
         int numberOfSolutions = sq.numberOfSolutions;
-        int maxPrice = sq.maxPrice;
+        double maxPrice = sq.maxPrice;
 
         String origin = sq.origin;
         String destination = sq.destination;

@@ -15,7 +15,7 @@ public class SearchQuery {
     int adultCount=1;	//number of adults (i.e. passengers)
 
     String preferredCabin=""; //COACH, PREMIUM_COACH, BUSINESS, FIRST
-    int maxPrice=99999; //in USD
+    double maxPrice=99999; //in USD
     boolean refundability=false; //is refundable or not
     int numberOfSolutions=499; //maximum number of search results
     int maxStops=5; //number of connections, direct flights = 0

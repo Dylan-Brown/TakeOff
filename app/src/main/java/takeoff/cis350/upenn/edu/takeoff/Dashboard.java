@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 import android.view.Menu;
@@ -41,13 +42,18 @@ public class Dashboard extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("Dashboard");
+        Log.e("first", "Dashboard");
         try {
             flightResults = QPXAPIParser.getAPIResultsAsFlight();
-        } catch (JSONException e) {
+        } catch (Exception e) {
         }
+        Log.e("QPIXParser", "Dashboard");
         super.onCreate(savedInstanceState);
+        Log.e("savedInstanceState", "Dashboard");
         setContentView(R.layout.activity_dashboard);
         l = getListView();
+        Log.e("getListView", "Dashboard");
         setListAdapter(new ArrayAdapter(this,
                 android.R.layout.simple_list_item_single_choice, flight));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, flight);

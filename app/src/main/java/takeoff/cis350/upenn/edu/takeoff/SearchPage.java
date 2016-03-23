@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.Selection;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -357,17 +358,19 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setReturningDate(returningDateInput);
         spp.setCountries(countries);
         spp.setCities(cities);
-        spp.setBudget(budget);
+        spp.setBudget(budget.replace("$", ""));
         spp.setPassengerCount(passengerCount);
         spp.setMaxConnectionDuration(maxConnectionDurationinHours);
         spp.setCabin(cabin.toUpperCase());
         spp.setAlliance(alliance.toUpperCase());
         spp.setNonStop(nonstop);
         spp.setRefundable(refundable);
+        spp.setairportCodes(airportCodes);
         SearchQuery sq=spp.getQuery();
 
-        QPXAPIReader.executeAPIRequest(sq,"AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w");
-
+        try {QPXAPIReader.executeAPIRequest(sq,"AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w");}
+        catch (Exception e){
+        }
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
 

@@ -13,12 +13,16 @@ public class SearchParameterProcessor {
     SearchQuery sq = new SearchQuery();
 
     public void setDepartureDate(String departureDateInput) {
+        if (!departureDateInput.equals("")) {
         sq.date = parseDate(departureDateInput);
+        }
     }
 
     public void setReturningDate(String returningDateInput) {
-        sq.returnDate = parseDate(returningDateInput);
-        sq.isRoundtrip = returningDateInput.equals("");
+        sq.isRoundtrip = !returningDateInput.equals("");
+        if (!returningDateInput.equals("")) {
+            sq.returnDate = parseDate(returningDateInput);
+        }
     }
 
     public void setCountries(String countries) {
@@ -28,15 +32,21 @@ public class SearchParameterProcessor {
     }
 
     public void setBudget(String budget) {
-        sq.maxPrice = Integer.parseInt(budget);
+        if (!budget.equals("")) {
+            sq.maxPrice = Double.parseDouble(budget);
+        }
     }
 
     public void setPassengerCount(String passengerCount) {
-        sq.adultCount = Integer.parseInt(passengerCount);
+        if (!passengerCount.equals("")) {
+            sq.adultCount = Integer.parseInt(passengerCount);
+        }
     }
 
     public void setMaxConnectionDuration(String maxConnectionDurationinHours) {
-        sq.maxConnectionDuration = Integer.parseInt(maxConnectionDurationinHours);
+        if (!maxConnectionDurationinHours.equals("")) {
+            sq.maxConnectionDuration = 60 * Integer.parseInt(maxConnectionDurationinHours);
+        }
     }
 
     public void setCabin(String cabin) {
