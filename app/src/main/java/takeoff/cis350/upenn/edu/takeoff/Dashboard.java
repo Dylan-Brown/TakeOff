@@ -16,10 +16,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.*;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Dashboard extends ListActivity {
-
+    List<Flight> flightResults;
     DummyFlightInfo flights = new DummyFlightInfo();
     String[] flight = flights.flights;
 
@@ -31,18 +35,22 @@ public class Dashboard extends ListActivity {
         //Default Constructor
     }
 
-    public Dashboard (Flight f[]) {
+    public Dashboard(Flight f[]) {
         // here the array f is the list of flights
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
+            flightResults = QPXAPIParser.getAPIResultsAsFlight();
+        } catch (JSONException e) {
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         l = getListView();
         setListAdapter(new ArrayAdapter(this,
                 android.R.layout.simple_list_item_single_choice, flight));
-        ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, flight);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, flight);
         l.setAdapter(adapter);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setActionBar(myToolbar);
@@ -51,10 +59,10 @@ public class Dashboard extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         TextView temp = (TextView) v;
-        Toast.makeText(this,""+temp.getText() + " " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + temp.getText() + " " + position, Toast.LENGTH_SHORT).show();
 
         // here i want to go to another activity that displays the information of individual flights
-        Intent intent = new  Intent (this, FlightInfo.class);
+        Intent intent = new Intent(this, FlightInfo.class);
         System.out.println("Entering the new activity. Not sure how to pass information");
         startActivity(intent);
     }
@@ -195,7 +203,15 @@ public class Dashboard extends ListActivity {
             flight[i] += "Arrival Date : " + temp.arrivalDate + '\n';
             flightinfo[i] = temp;
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, flight);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, flight);
         l.setAdapter(adapter);
+    }
+
+
+    private Flight getFlightByID(String id) {
+        for (Flight f : flightResults) {
+            if (f.id==id){return f;}
+        }
+        return null;
     }
 }

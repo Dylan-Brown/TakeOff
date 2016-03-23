@@ -10,17 +10,68 @@ import java.util.Set;
  */
 public class SearchParameterProcessor {
 
-    List<SearchParameters> spList;
+    SearchQuery sq = new SearchQuery();
 
+    public void setDepartureDate(String departureDateInput) {
+        sq.date = parseDate(departureDateInput);
+    }
+
+    public void setReturningDate(String returningDateInput) {
+        sq.returnDate = parseDate(returningDateInput);
+        sq.isRoundtrip = returningDateInput.equals("");
+    }
+
+    public void setCountries(String countries) {
+    }
+
+    public void setCities(String cities) {
+    }
+
+    public void setBudget(String budget) {
+        sq.maxPrice = Integer.parseInt(budget);
+    }
+
+    public void setPassengerCount(String passengerCount) {
+        sq.adultCount = Integer.parseInt(passengerCount);
+    }
+
+    public void setMaxConnectionDuration(String maxConnectionDurationinHours) {
+        sq.maxConnectionDuration = Integer.parseInt(maxConnectionDurationinHours);
+    }
+
+    public void setCabin(String cabin) {
+        sq.preferredCabin = parseCabin(cabin);
+    }
+
+    public void setAlliance(String alliance) {
+        sq.alliance = alliance;
+    }
+
+    public void setairportCodes(String airportCodes) {
+        sq.destination = parseLocations(airportCodes).get(0);
+    }
+
+    public void setNonStop(boolean nonstop) {
+        if (nonstop) {
+            sq.maxStops = 0;
+        } else {
+            sq.maxStops = 5;
+        }
+    }
+
+    public void setRefundable(boolean refundable) {
+        sq.refundability = refundable;
+    }
+
+/*
     public SearchParameterProcessor(String departureDate, String returnDate, String countries,
                                     String cities, String airportCodes, String budget,
                                     String quantity, String waitTime, String flightClass,
-                                    String alliance, boolean nonstop, boolean refundable){
-        spList = new ArrayList<SearchParameters>();
-        int parsedQuantity = Integer.parseInt(quantity);
+                                    String alliance, boolean nonstop, boolean refundable) {
+
 
         int parsedBudget;
-        if(budget.equals("")) {
+        if (budget.equals("")) {
             parsedBudget = 99999;
         } else {
             parsedBudget = Integer.parseInt(budget);
@@ -28,7 +79,7 @@ public class SearchParameterProcessor {
 
         int maxStop;
         int connectionDuration;
-        if(nonstop) {
+        if (nonstop) {
             maxStop = 0;
             connectionDuration = 0;
         } else {
@@ -44,85 +95,77 @@ public class SearchParameterProcessor {
         boolean roundtrip = !returnDate.equals("");
         String parsedReturnDate = "";
         String parsedDepartureDate = parseDate(departureDate);
-        if(roundtrip){
+        if (roundtrip) {
             parsedReturnDate = parseDate(returnDate);
         }
 
-        Set<String> parsedCountries = parseLocations(countries);
-        Set<String> parsedCities = parseLocations(cities);
-        Set<String> parsedAirportCodes = parseLocations(airportCodes);
+        List<String> parsedCountries = parseLocations(countries);
+        List<String> parsedCities = parseLocations(cities);
+        List<String> parsedAirportCodes = parseLocations(airportCodes);
 
         String cabin = parseCabin(flightClass);
         String parsedAlliance = parseAlliance(alliance);
 
-        SearchParameters departure = new SearchParameters(parsedDepartureDate,parsedCountries,
-                parsedCities, parsedAirportCodes,parsedBudget, parsedQuantity, connectionDuration,
-                maxStop, cabin, parsedAlliance,nonstop, refundable, roundtrip);
-        spList.add(departure);
+        SearchParameters sp = new SearchParameters(parsedDepartureDate, parsedCountries,
+                parsedCities, parsedAirportCodes, parsedBudget, parsedQuantity, connectionDuration,
+                maxStop, cabin, parsedAlliance, nonstop, refundable, roundtrip);
 
-        if(roundtrip) {
-            SearchParameters returning = new SearchParameters(parsedReturnDate,parsedCountries,
-                    parsedCities, parsedAirportCodes,parsedBudget, parsedQuantity, connectionDuration,
-                    maxStop, cabin, parsedAlliance,nonstop, refundable, roundtrip);
-            spList.add(returning);
-        }
+
     }
+*/
 
     /**
-     *
      * @param date - the string represent of the desired date in the format MM-dd-yyyy
      * @return string - the string represent of the desired date in the format yyyy-MM-dd
      */
-    private String parseDate(String date){
+    private String parseDate(String date) {
         int[] dateArr = new int[3];
         String[] dateStrings = date.trim().split("-");
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             dateArr[i] = Integer.parseInt(dateStrings[i]);
         }
         return "" + dateArr[2] + "-" + dateArr[1] + "-" + dateArr[0];
     }
 
-    private Set<String> parseLocations(String s) {
-        Set<String> locations = new HashSet<>();
+    private List<String> parseLocations(String s) {
+        List<String> locations = new ArrayList<>();
         String[] set = s.split(",");
-        for(String x : set) {
+        for (String x : set) {
             locations.add(x);
         }
         return locations;
     }
 
     private String parseCabin(String input) {
-        if(input.equals("")){
+        if (input.equals("")) {
             return input;
-        } else if(input.equals("NONE")){
+        } else if (input.equals("NONE")) {
             return "";
-        } else if(input.equals("PREMIUM COACH")){
+        } else if (input.equals("PREMIUM COACH")) {
             return "PREMIUM_COACH";
-        } else if(input.equals("COACH") || input.equals("BUSINESS") || input.equals("FIRST")){
+        } else if (input.equals("COACH") || input.equals("BUSINESS") || input.equals("FIRST")) {
             return input;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Class of " + input + " is invalid");
         }
     }
 
     private String parseAlliance(String input) {
-        if(input.equals("")){
+        if (input.equals("")) {
             return input;
-        } else if(input.equals("NONE")){
+        } else if (input.equals("NONE")) {
             return "";
-        } else if(input.equals("STAR ALLIANCE")){
+        } else if (input.equals("STAR ALLIANCE")) {
             return "STAR";
-        } else if(input.equals("ONEWORLD") || input.equals("SKYTEAM")){
+        } else if (input.equals("ONEWORLD") || input.equals("SKYTEAM")) {
             return input;
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Alliance type " + input + " is invalid");
         }
     }
 
-    public List<SearchParameters> getSearchParams() {
-        return spList;
+    public SearchQuery getQuery() {
+        return sq;
     }
 }
 

@@ -25,6 +25,8 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import org.json.JSONException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +35,6 @@ import java.util.Locale;
 
 
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
-
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
@@ -53,7 +54,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     private int month;
     private int year;
 
-    private String flightClass;
+    private String cabin;
     private String alliance;
     private boolean refundable;
     private boolean nonstop; //T = 0, F = 5
@@ -126,7 +127,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     }
 
     private void setClassSpinner() {
-        flightClass = "";
+        cabin = "";
 
         Spinner spinner = (Spinner) findViewById(R.id.class_spinner);
         spinner.setOnItemSelectedListener(this);
@@ -343,16 +344,29 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     //this is called when "search" is pressed and will transition over to Search Results
     public void transitionToSearch(View view) {
+        List<Flight> flightResults;
         String countries = countriesAutoComp.getText().toString();
         String cities = citiesEditText.getText().toString();
         String airportCodes = airportEditText.getText().toString();
         String budget = budgetEditText.getText().toString();
-        String quantity = ticketEditText.getText().toString();
-        String waitTime = waitTimeEditText.getText().toString();
+        String passengerCount = ticketEditText.getText().toString();
+        String maxConnectionDurationinHours = waitTimeEditText.getText().toString();
 
-        SearchParameterProcessor spp = new SearchParameterProcessor(departureDateInput, returningDateInput,
-                countries, cities, airportCodes, budget, quantity, waitTime,
-                flightClass.toUpperCase(), alliance.toUpperCase(), nonstop, refundable);
+        SearchParameterProcessor spp = new SearchParameterProcessor();
+        spp.setDepartureDate(departureDateInput);
+        spp.setReturningDate(returningDateInput);
+        spp.setCountries(countries);
+        spp.setCities(cities);
+        spp.setBudget(budget);
+        spp.setPassengerCount(passengerCount);
+        spp.setMaxConnectionDuration(maxConnectionDurationinHours);
+        spp.setCabin(cabin.toUpperCase());
+        spp.setAlliance(alliance.toUpperCase());
+        spp.setNonStop(nonstop);
+        spp.setRefundable(refundable);
+        SearchQuery sq=spp.getQuery();
+
+        QPXAPIReader.executeAPIRequest(sq,"AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w");
 
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
@@ -473,12 +487,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println("ONITEMSELECTED");
         System.out.println("SPINNER");
         Spinner classSpinner = (Spinner) findViewById(R.id.class_spinner);
         classSpinner.setOnItemSelectedListener(this);
-        flightClass = parent.getItemAtPosition(position).toString();
-        System.out.println(flightClass);
+        cabin = parent.getItemAtPosition(position).toString();
+        System.out.println(cabin);
     }
 
 

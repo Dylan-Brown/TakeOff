@@ -1,5 +1,9 @@
 package takeoff.cis350.upenn.edu.takeoff;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.*;
 import java.util.*;
 
 /**
@@ -9,7 +13,7 @@ import java.util.*;
 /*
 * This is the Flight datatype. Flight segments are sub-flights (i.e. layovers). */
 
-public class Flight {
+public class Flight{
 
     static int counter=0;
     boolean isEntry=false;
@@ -47,4 +51,8 @@ public class Flight {
     String cabinClass;
     int mileage;
     int flightDuration;
+
+
+
 }
+
