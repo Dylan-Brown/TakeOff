@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/black"
     android:clickable="true"
     android:focusableInTouchMode="true"
     >
@@ -18,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/search_message"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:alpha="1.0"
             android:textSize="18sp"
             />
@@ -40,16 +39,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <!-- Departure Date and TimeTextBox -->
+            <!-- Departure Date TextBox -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:alignmentMode="alignBounds"
-                android:layout_weight=".5"
-                android:paddingBottom="5dp"
+                android:layout_weight="1"
                 >
-                <!-- Departure Date TextBox -->
                 <EditText
                     android:id="@+id/departure_date"
                     android:layout_width="match_parent"
@@ -61,36 +57,48 @@
                     android:layout_gravity="center_vertical"
                     />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <!-- Departure Date Clear Button -->
+                <Button
+                    android:id="@+id/clear_departure_date"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    >
-                <EditText
-                    android:id="@+id/departure_early_time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:alpha="1.0"
-                    android:hint="@string/departure_early_time"
-                    android:background="@drawable/option_box_style"
-                    />
-
-                <EditText
-                    android:id="@+id/departure_late_time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:alpha="1.0"
-                    android:hint="@string/departure_late_time"
-                    android:background="@drawable/option_box_style"
-                    />
-
-
-                    >
-                </LinearLayout>
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="end"
+                    android:text="@string/clear_departure_button"
+                    android:onClick="onClick"/>
+                >
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                >
+
+                <!-- Returning Date TextBox -->
+                <EditText
+                    android:id="@+id/returning_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="1.0"
+                    android:hint="@string/returning_date"
+                    android:background="@drawable/option_box_style"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <Button
+                    android:id="@+id/clear_return_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="end"
+                    android:text="@string/clear_return_button"
+                    android:onClick="onClick"/>
+                >
+            </LinearLayout>
+
 
             <!-- Country Auto Complete -->
 
@@ -98,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/country_message"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:alpha="1.0"
                 android:textSize="18sp"
                 android:padding="5dp"
@@ -118,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/city_message"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:alpha="1.0"
                 android:textSize="18sp"
                 android:padding="5dp"
@@ -135,95 +143,223 @@
                 android:background="@drawable/option_box_style"
                 />
 
+            <!-- Airport Code -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/airport_message"
+                android:textColor="@color/black"
+                android:alpha="1.0"
+                android:textSize="18sp"
+                android:padding="5dp"
+                />
+
+            <EditText
+                android:id="@+id/airport_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:alpha="1.0"
+                android:inputType="textMultiLine"
+                android:hint="@string/airport"
+                android:background="@drawable/option_box_style"
+                />
+
             <!-- Budget input -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/budget_message"
+                        android:textColor="@color/black"
+                        android:alpha="1.0"
+                        android:textSize="18sp"
+                        android:padding="5dp"
+                        />
+
+                    <EditText
+                        android:id="@+id/budget_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:alpha="1.0"
+                        android:inputType="numberSigned"
+                        android:hint="@string/budget"
+                        android:background="@drawable/option_box_style"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ticket_message"
+                        android:textColor="@color/black"
+                        android:alpha="1.0"
+                        android:textSize="18sp"
+                        android:padding="5dp"
+                        />
+
+                    <EditText
+                        android:id="@+id/num_ticket_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:alpha="1.0"
+                        android:inputType="numberSigned"
+                        android:hint="@string/ticket"
+                        android:background="@drawable/option_box_style"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Wait time input -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/budget_message"
-                android:textColor="@color/white"
+                android:text="@string/wait_time_message"
+                android:textColor="@color/black"
                 android:alpha="1.0"
                 android:textSize="18sp"
                 android:padding="5dp"
                 />
-
-            <EditText
-                android:id="@+id/budget_input"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_weight="1"
-                android:alpha="1.0"
-                android:inputType="numberSigned"
-                android:hint="@string/budget"
-                android:background="@drawable/option_box_style"
-                />
+                >
 
-            <!-- Connecting Flight input -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/connecting_message"
-                android:textColor="@color/white"
-                android:alpha="1.0"
-                android:textSize="18sp"
-                android:padding="5dp"
-                />
+                <CheckBox android:id="@+id/checkbox_nonstop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nonstop_checkbox"
+                    android:buttonTint="@color/white"
+                    android:textColor="@color/black"
+                    android:onClick="onCheckboxClicked"
+                    android:textSize="17sp"
+                    android:padding="8dp"
 
-            <EditText
-                android:id="@+id/connecting_flight_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:alpha="1.0"
-                android:digits="0123456789."
-                android:inputType="number"
-                android:hint="@string/connecting_flight"
-                android:background="@drawable/option_box_style"
-                />
+                    />
+
+                <EditText
+                    android:id="@+id/wait_time_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:alpha="1.0"
+                    android:digits="0123456789."
+                    android:inputType="number"
+                    android:hint="@string/wait_time"
+                    android:background="@drawable/option_box_style"
+                    />
+            </LinearLayout>
 
             <!-- Ticket Options input -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/refundable_message"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:alpha="1.0"
                 android:textSize="18sp"
                 android:padding="5dp"
                 />
 
+            <!-- Refundable Input -->
             <CheckBox android:id="@+id/checkbox_refundable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/refundable_checkbox"
                 android:buttonTint="@color/white"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:onClick="onCheckboxClicked"
                 android:textSize="17sp"
                 android:padding="8dp"
                 />
 
-            <!-- Travel Class input -->
-            <TextView
+            <!-- Spinners -->
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/travel_class_message"
-                android:textColor="@color/white"
-                android:alpha="1.0"
-                android:textSize="18sp"
-                android:padding="5dp"
-                />
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                >
 
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/class_spinner"
-                android:ellipsize="marquee"
-                android:textColor="@color/white"
-                android:background="@drawable/option_box_style"
-                />
+                <!-- Travel Class input -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/travel_class_message"
+                        android:textColor="@color/black"
+                        android:alpha="1.0"
+                        android:textSize="18sp"
+                        android:padding="5dp"
+                        />
 
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/class_spinner"
+                        android:ellipsize="marquee"
+                        android:textColor="@color/black"
+                        android:background="@drawable/option_box_style"
+                        />
+                </LinearLayout>
 
+                <!-- Alliance input -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/alliance_message"
+                        android:textColor="@color/black"
+                        android:alpha="1.0"
+                        android:textSize="18sp"
+                        android:padding="5dp"
+                        />
 
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/alliance_spinner"
+                        android:ellipsize="marquee"
+                        android:textColor="@color/black"
+                        android:background="@drawable/option_box_style"
+                        />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

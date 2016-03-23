@@ -1,51 +1,65 @@
 package takeoff.cis350.upenn.edu.takeoff;
+        import org.json.*;
 
-import org.json.*;
+        import java.io.*;
+        import java.util.ArrayList;
+        import java.util.List;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.impl.client.*;
-import org.apache.http.client.*;
-import org.apache.http.client.methods.*;
-import org.apache.http.entity.StringEntity;
+        import org.apache.http.impl.client.*;
+        import org.apache.http.client.*;
+        import org.apache.http.client.methods.*;
+        import org.apache.http.entity.*;
 
 /**
  * Created by tangson on 3/17/16.
  */
 public class QPXAPIReader {
+    public static JSONArray executeAPIRequest(SearchQuery sq, String APIKey) {
+        int adultCount = sq.adultCount;
+        boolean refundability = sq.refundability;
+        int numberOfSolutions = sq.numberOfSolutions;
+        int maxPrice = sq.maxPrice;
 
+        String origin = sq.origin;
+        String destination = sq.destination;
+        String date = sq.date;
+        int maxStops = sq.maxStops;// 0 for nonstop
+        String alliance = sq.alliance;
+        int maxConnectionDuration = sq.maxConnectionDuration;
+        String preferredCabin = sq.preferredCabin;
+        String earliestTime = sq.earliestTime;
+        String latestTime = sq.latestTime;
 
-    public JSONArray executeAPIRequest(SearchQuery sp, String APIKey) {
-        String origin = sp.origin;
-        String destination = sp.destination;
-        String date = sp.date;
-        int adultCount = sp.adultCount;
-        boolean refundability = sp.refundability;
-        int numberOfSolutions = sp.numberOfSolutions;
-        int maxStops = sp.maxStops;// 0 for nonstop
-        String alliance = sp.alliance;
-        int maxConnectionDuration = sp.maxConnectionDuration;
-        String preferredCabin = sp.preferredCabin;
-        int maxPrice =sp.maxPrice;
-        String earliestTime =sp.earliestTime;
-        String latestTime = sp.latestTime;
-
-        String requestSlice = "{ \"request\":{\"slice\": "
-                + "[{\"origin\": \"" + origin + "\",\"destination\": \"" + destination +
-                "\",\"date\": \"" + date + "\",\"maxStops\": " + maxStops +
-                ",\"preferredCabin\": \"" + preferredCabin +
-                "\",\"alliance\": \"" + alliance + "\",\"permittedDepartureTime\": {"
+        String requestSlice = "{ \"request\":{\"slice\": " + "[{\"origin\": \"" + origin + "\",\"destination\": \""
+                + destination + "\",\"date\": \"" + date + "\",\"maxStops\": " + maxStops + ",\"preferredCabin\": \""
+                + preferredCabin + "\",\"alliance\": \"" + alliance + "\",\"permittedDepartureTime\": {"
                 + "\"earliestTime\": \"" + earliestTime + "\",\"latestTime\": \"" + latestTime
-                + "\"},\"maxConnectionDuration\": \"" + maxConnectionDuration + "\" } ], ";
-        String requestPassenger = "\"passengers\": { \"adultCount\": " + adultCount
+                + "\"},\"maxConnectionDuration\": \"" + maxConnectionDuration + "\" } ";
+
+        if (sq.isRoundtrip) {
+            origin = sq.destination;
+            destination = sq.origin;
+            date = sq.returnDate ;
+            maxStops = sq.maxStops;// 0 for nonstop
+            alliance = sq.alliance;
+            maxConnectionDuration = sq.maxConnectionDuration;
+            preferredCabin = sq.preferredCabin;
+            earliestTime = sq.earliestTime;
+            latestTime = sq.latestTime;
+
+            String slice = " , {\"origin\": \"" + origin + "\",\"destination\": \""
+                    + destination + "\",\"date\": \"" + date + "\",\"maxStops\": " + maxStops + ",\"preferredCabin\": \""
+                    + preferredCabin + "\",\"alliance\": \"" + alliance + "\",\"permittedDepartureTime\": {"
+                    + "\"earliestTime\": \"" + earliestTime + "\",\"latestTime\": \"" + latestTime
+                    + "\"},\"maxConnectionDuration\": \"" + maxConnectionDuration + "\" } ";
+            requestSlice+=slice;
+        }
+        String requestPassenger = "],\"passengers\": { \"adultCount\": " + adultCount
                 + ", \"infantInLapCount\": 0, \"infantInSeatCount\": 0, \"childCount\": 0, \"seniorCount\": 0 }, ";
         String requestInfo = "\"solutions\":" + numberOfSolutions + ", " + "\"refundable\":" + refundability + ", "
                 + "\"maxPrice\": \"USD" + maxPrice + "\" }}";
         String jsonRequest = requestSlice + requestPassenger + requestInfo;
         System.out.println(jsonRequest);
-
 
         try {
             JSONObject json = new JSONObject(jsonRequest);
@@ -76,7 +90,7 @@ public class QPXAPIReader {
         return null;
     }
 
-    public void printAPIResults(JSONArray jsonArray) throws JSONException {
+    public static void printAPIResults(JSONArray jsonArray) throws JSONException {
         for (int index = 0; index < jsonArray.length(); index++) {
             JSONObject tripOption = jsonArray.getJSONObject(index);
 
@@ -92,13 +106,13 @@ public class QPXAPIReader {
             System.out.println("Departure: " + firstLeg.getString("origin"));
             System.out.println("Departure Time: " + firstLeg.getString("departureTime"));
             if (segmentLength > 1) {
-                for (int sliceIndex = 0; sliceIndex < segmentLength - 1; sliceIndex++) {
-                    JSONObject connectingArrival = segments.getJSONObject(sliceIndex).getJSONArray("leg")
+                for (int segIndex = 0; segIndex < segmentLength - 1; segIndex++) {
+                    JSONObject connectingArrival = segments.getJSONObject(segIndex).getJSONArray("leg")
                             .getJSONObject(0);
 
                     System.out.println("Connecting Arrival Time: " + connectingArrival.getString("arrivalTime"));
                     System.out.println("Connection: " + connectingArrival.getString("destination"));
-                    JSONObject connectingDeparture = segments.getJSONObject(sliceIndex + 1).getJSONArray("leg")
+                    JSONObject connectingDeparture = segments.getJSONObject(segIndex + 1).getJSONArray("leg")
                             .getJSONObject(0);
                     System.out.println("Connecting Departure Time: " + connectingDeparture.getString("departureTime"));
                 }
@@ -110,56 +124,6 @@ public class QPXAPIReader {
         System.out.println("Length is: " + jsonArray.length());
     }
 
-    public List<Flight> getAPIResultsAsFlight() throws JSONException {
-
-        List<Flight> flightResults = new ArrayList<Flight>();
-        JSONArray jsonArray = executeAPIRequest(new SearchQuery(),"AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ");
-        printAPIResults(jsonArray);
-
-
-        for (int index = 0; index < jsonArray.length(); index++) {
-            JSONObject tripOption = jsonArray.getJSONObject(index);//each Trip
-            JSONArray slices = tripOption.getJSONArray("slice");
-            int sliceLength = slices.length();
-            JSONArray segments = slices.getJSONObject(0).getJSONArray("segment");
-            int segmentLength = segments.length();
-            int numOfLegs = segments.getJSONObject(segmentLength - 1).getJSONArray("leg").length();
-            JSONObject firstLeg = segments.getJSONObject(0).getJSONArray("leg").getJSONObject(0);
-            JSONObject lastLeg = segments.getJSONObject(segmentLength - 1).getJSONArray("leg").getJSONObject(numOfLegs-1);
-
-            Flight flight = new Flight();
-            flight.isSegment = false;
-            flight.isRoundtrip = (sliceLength > 1);
-            String costWithoutUSD = tripOption.getString("saleTotal").replaceAll("[^0-9\\.]+", "");
-            flight.totalCost = Double.parseDouble(costWithoutUSD);
-            flight.segments = new Flight[segmentLength];
-            for (int x=0;x<segmentLength;x++) {
-                flight.segments[x] = new Flight();
-            }
-            flight.departureCityCode=firstLeg.getString("origin");
-            flight.departureTime=firstLeg.getString("departureTime");
-            flight.arrivalCityCode=lastLeg.getString("destination");
-            flight.arrivalTime=lastLeg.getString("arrivalTime");
-            flight.cabinClass=segments.getJSONObject(0).getString("cabin");
-            flight.id=tripOption.getString("id");
-            flight.totalTravelTime=tripOption.getInt("duration");
-    ///to do
-            if (segmentLength > 1) {
-                for (int sliceIndex = 0; sliceIndex < segmentLength - 1; sliceIndex++) {
-                    JSONObject connectingArrival = segments.getJSONObject(sliceIndex).getJSONArray("leg")
-                            .getJSONObject(0);
-
-                    System.out.println("Connecting Arrival Time: " + connectingArrival.getString("arrivalTime"));
-                    System.out.println("Connection: " + connectingArrival.getString("destination"));
-                    JSONObject connectingDeparture = segments.getJSONObject(sliceIndex + 1).getJSONArray("leg")
-                            .getJSONObject(0);
-                    System.out.println("Connecting Departure Time: " + connectingDeparture.getString("departureTime"));
-                }
-            }
-
-        }
-        return null;
-    }
 
 }
 

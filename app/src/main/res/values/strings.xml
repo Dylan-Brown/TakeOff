@@ -20,28 +20,36 @@
 
 
     <!-- SEARCH PAGE STRINGS START HERE-->
-        <string name="search_message">Please set your search parameters.\nDeparture Date, Arrival Date,
-    Minimum Budget, and at least 1 Country and 1 City is required</string>
+       <string name="search_message">Please set your search parameters.\nDeparture Date, Arrival Date,
+Minimum Budget, and at least 1 Country and 1 City is required</string>
     <string name="continent_message">Continent:</string>
     <string name="search_button">Search</string>
+    <string name="clear_departure_button">Clear Departure</string>
+    <string name="clear_return_button">Clear Return</string>
     <string name="country_message">Enter the countries you want with a comma separating each:</string>
     <string name="city_message">Enter the cities you want with a comma separating each:</string>
-    <string name="budget_message">Enter your maximum budget for the ticket:</string>
+    <string name="budget_message">Enter your maximum budget per ticket:</string>
     <string name="refundable_message">Check if you only want refundable tickets:</string>
     <string name="travel_class_message">Select your preferred travel class:</string>
-    <string name="connecting_message">Maximum number of connecting flights:</string>
+    <string name="alliance_message">Select your preferred alliance:</string>
+    <string name="wait_time_message">Maximum wait time in hours:</string>
+    <string name="ticket_message">Quantity:</string>
+    <string name="airport_message">Enter Airport Code with a comma separating each:</string>
 
 
     <!-- Text Hints -->
     <string name="departure_date">Departure Date</string>
-    <string name="arrival_date">Arrival Date</string>
+    <string name="returning_date">Return Date</string>
     <string name="cities">Cities</string>
     <string name="countries">Countries</string>
     <string name="budget">Maximum Budget</string>
+    <string name="ticket">Quantity</string>
     <string name="refundable_checkbox">Refundable Tickets Only</string>
-    <string name="connecting_flight">Maximum Connecting Flight</string>
+    <string name="nonstop_checkbox">Direct Flight Only</string>
+    <string name="wait_time">Maximum Wait Time</string>
     <string name="departure_early_time">Earliest Departure Time</string>
     <string name="departure_late_time">Latest Departure Time</string>
+    <string name="airport">Airport Code</string>
 
 
     <!-- Continent Boxes -->
@@ -63,7 +71,7 @@
         <item>First</item>
     </string-array>
     <string name="title_activity_flight_info">FlightInfo</string>
-
+    <string name="title_activity_flight_info_view">FlightInfoView</string>
 
     <!-- SEARCH PAGE STRINGS END HERE-->
 </resources>

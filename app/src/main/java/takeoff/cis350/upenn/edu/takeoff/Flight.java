@@ -10,33 +10,39 @@ import java.util.*;
 * This is the Flight datatype. Flight segments are sub-flights (i.e. layovers). */
 
 public class Flight {
-    String id;  //unique per flight
 
+    static int counter=0;
+    boolean isEntry=false;
+
+    String id;  //unique per flight
     boolean isRoundtrip;
 
-    String airline;      //##
-    double totalCost;     //##           //trips.tripOption[].saleTotal
+    double cost;     //in USD           //trips.tripOption[].saleTotal
+    int numOfConnections;
+    int duration;
 
-    String departureCity;
-    String departureCityCode;    //##
-    String departureCountry;
+    int oneWayDuration=0;
+    String departureCityCode;
     String departureDate;    //YYYY-MM-DD
     String departureTime;   //HH-MM
-
-    String arrivalCity;
-    String arrivalCityCode;      //##
-    String arrivalCountry;
-    String arrivalDate;      //##
+    String arrivalCityCode;
+    String arrivalDate;
     String arrivalTime;
 
-    int totalTravelTime;    //in minutes
+    int roundTripDuration=0;
+    String retdepartureCityCode;
+    String retdepartureTime;
+    String retdepartureDate;
+    String retarrivalCityCode;
+    String retarrivalDate;
+    String retarrivalTime;
 
-    boolean isSegment;
-    Flight[] segments;
 
+    List<Flight> subFlights=new ArrayList<Flight>();
+
+    //SINGLE FLIGHT/Leg specific values
     String flightNumber;   //eg UA93
-
     String cabinClass;
-
     int mileage;
+    int flightDuration;
 }

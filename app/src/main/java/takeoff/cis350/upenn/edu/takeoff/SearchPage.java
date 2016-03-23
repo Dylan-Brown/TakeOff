@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,6 +23,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,26 +35,28 @@ import java.util.Locale;
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private EditText departureDateText;
-    private EditText arrivalDateText;
+    private EditText returningDateText;
     private String departureDateInput;
-    //private String arrivalDateInput;
+    private String returningDateInput;
     private DatePickerDialog departureDatePickerDialog;
-    private DatePickerDialog arrivalDatePickerDialog;
+    private DatePickerDialog returningDatePickerDialog;
     private SimpleDateFormat dateFormatter;
 
     private MultiAutoCompleteTextView countriesAutoComp;
     private EditText citiesEditText;
     private EditText budgetEditText;
-    private EditText connectingEditText;
+    private EditText ticketEditText;
+    private EditText airportEditText;
+    private EditText waitTimeEditText;
 
     private int day;
     private int month;
     private int year;
 
-    //Represents which classes the user wants in the folloring order:
-    //Economy, Business, First Class
     private String flightClass;
+    private String alliance;
     private boolean refundable;
+    private boolean nonstop; //T = 0, F = 5
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +73,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         //Dates
         departureDateInput = "";
-        //arrivalDateInput = "";
+        returningDateInput = "";
         dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
         findDateViews();
         setDateField();
@@ -87,19 +91,26 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         citiesEditText = (EditText) findViewById(R.id.city_input);
         citiesEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
-        //Connecting Flights
-        connectingEditText= (EditText) findViewById(R.id.connecting_flight_input);
-        connectingEditText.setOnFocusChangeListener(getOnFocusChangeListener());
+        airportEditText = (EditText) findViewById(R.id.airport_input);
+        airportEditText.setOnFocusChangeListener(getOnFocusChangeListener());
+
+        waitTimeEditText = (EditText) findViewById(R.id.wait_time_input);
+        waitTimeEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
         //Budget
         budgetEditText = (EditText) findViewById(R.id.budget_input);
         budgetEditText.addTextChangedListener(textWatcher);
         budgetEditText.setOnFocusChangeListener(getOnFocusChangeListener());
+        ticketEditText = (EditText) findViewById(R.id.num_ticket_input);
+        ticketEditText.setText("1");
+        ticketEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
         //Classes Spinner
         setClassSpinner();
+        setAllianceSpinner();
 
         refundable = false;
+        nonstop = false;
     }
 
     public View.OnFocusChangeListener getOnFocusChangeListener(){
@@ -121,11 +132,28 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spinner.setOnItemSelectedListener(this);
 
         List<String> list = new ArrayList<String>();
-        list.add("Select Class");
+        list.add("None");
         list.add("Coach");
         list.add("Premium Coach");
         list.add("Business");
         list.add("First");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+    }
+
+    private void setAllianceSpinner() {
+        alliance = "";
+
+        Spinner spinner = (Spinner) findViewById(R.id.alliance_spinner);
+        spinner.setOnItemSelectedListener(this);
+
+        List<String> list = new ArrayList<String>();
+        list.add("None");
+        list.add("Oneworld");
+        list.add("Star Alliance");
+        list.add("SkyTeam");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -162,10 +190,16 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         if(v.getId() == departureDateText.getId()) {
             departureDatePickerDialog.show();
         }
-        /*
-        else if(v.getId() == arrivalDateText.getId()) {
-            arrivalDatePickerDialog.show();
-        }*/
+        else if(v.getId() == returningDateText.getId()) {
+            returningDatePickerDialog.show();
+        }
+        else if (v.getId() == R.id.clear_departure_date) {
+            System.out.println("CLEARING DEPARTURE");
+            departureDateText.setText("");
+        }
+        else if (v.getId() == R.id.clear_return_date) {
+            returningDateText.setText("");
+        }
         else {
         }
 
@@ -221,32 +255,30 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     /**
      * Description: This method is used to find the correct EditText views for the respective
-     * departure and arrival dates.
+     * departure and return dates.
      */
     public void findDateViews() {
         departureDateText = (EditText) findViewById(R.id.departure_date);
         departureDateText.setInputType(InputType.TYPE_NULL);
         departureDateText.requestFocus();
 
-        //arrivalDateText = (EditText) findViewById(R.id.arrival_date);
-        System.out.println("HERE");
-        //arrivalDateText.setInputType(InputType.TYPE_CLASS_NUMBER);
-        System.out.println("FINDDATEVIEWS");
+        returningDateText = (EditText) findViewById(R.id.returning_date);
+        returningDateText.setInputType(InputType.TYPE_NULL);
+
     }
 
     private void setDateField() {
         departureDateText.setOnClickListener(this);
-        //rrivalDateText.setOnClickListener(this);
+        returningDateText.setOnClickListener(this);
 
         Calendar newCalendar = Calendar.getInstance();
         departureDatePickerDialog = new DatePickerDialog(this, getDateSetListener(true),
                 newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-        //arrivalDatePickerDialog = new DatePickerDialog(this, getDateSetListener(false),
-                //newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        returningDatePickerDialog = new DatePickerDialog(this, getDateSetListener(false),
+                newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         System.out.println("SETDATEFIELD");
     }
-
 
     /**
      *
@@ -257,31 +289,31 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     public OnDateSetListener getDateSetListener(boolean departure){
         OnDateSetListener listener = null;
         if(departure){
-                listener = new OnDateSetListener() {
-
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        Calendar newDate = Calendar.getInstance();
-                        newDate.set(year, monthOfYear, dayOfMonth);
-                        departureDateText.setText(dateFormatter.format(newDate.getTime()));
-                        departureDateInput = dateFormatter.format(newDate.getTime());
-
-                        System.out.println("DEPARTURE LISTENER");
-                        System.out.println(departureDateInput);
-                    }
-                };
-        } /*else {
             listener = new OnDateSetListener() {
 
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                     Calendar newDate = Calendar.getInstance();
                     newDate.set(year, monthOfYear, dayOfMonth);
-                    arrivalDateText.setText(dateFormatter.format(newDate.getTime()));
-                    arrivalDateInput = dateFormatter.format(newDate.getTime());
-                    System.out.println("ARRIVAL LISTENER");
-                    System.out.println(arrivalDateInput);;
+                    departureDateText.setText(dateFormatter.format(newDate.getTime()));
+                    departureDateInput = dateFormatter.format(newDate.getTime());
+
+                    System.out.println("DEPARTURE LISTENER");
+                    System.out.println(departureDateInput);
                 }
             };
-        }*/
+        } else {
+            listener = new OnDateSetListener() {
+
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    Calendar newDate = Calendar.getInstance();
+                    newDate.set(year, monthOfYear, dayOfMonth);
+                    returningDateText.setText(dateFormatter.format(newDate.getTime()));
+                    returningDateInput = dateFormatter.format(newDate.getTime());
+                    System.out.println("returning LISTENER");
+                    System.out.println(returningDateInput);
+                }
+            };
+        }
         System.out.println("GETLISTENER");
         return listener;
     }
@@ -299,6 +331,8 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             case R.id.checkbox_refundable:
                 refundable = ((CheckBox)view).isChecked();
                 break;
+            case R.id.checkbox_nonstop:
+                nonstop = ((CheckBox)view).isChecked();
             default:
                 break;
         }
@@ -309,35 +343,39 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     //this is called when "search" is pressed and will transition over to Search Results
     public void transitionToSearch(View view) {
-        System.out.println("DEPARTURE SEARCH");
-        System.out.println(departureDateInput);
-        //System.out.println("ARRIVAL SEARCH");
-        //System.out.println(arrivalDateInput);
-        System.out.println("COUNTRIES AUTO COMPLETE");
-        System.out.println(countriesAutoComp.getText().toString());
-        System.out.println("CITIES INPUT");
-        System.out.println(citiesEditText.getText().toString());
-        System.out.println("BUDGET: " + budgetEditText.getText().toString());
-        System.out.println("CONNECTING FLIGHT: " + connectingEditText.getText().toString());
-        System.out.println("REFUNDABLE: " + refundable);
-        System.out.println("SPINNER CLASS: " + flightClass);
+        String countries = countriesAutoComp.getText().toString();
+        String cities = citiesEditText.getText().toString();
+        String airportCodes = airportEditText.getText().toString();
+        String budget = budgetEditText.getText().toString();
+        String quantity = ticketEditText.getText().toString();
+        String waitTime = waitTimeEditText.getText().toString();
+
+        SearchParameterProcessor spp = new SearchParameterProcessor(departureDateInput, returningDateInput,
+                countries, cities, airportCodes, budget, quantity, waitTime,
+                flightClass.toUpperCase(), alliance.toUpperCase(), nonstop, refundable);
 
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
 
-        /*AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        /*
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-        if(departureDateInput.equals("") || arrivalDateInput.equals("")) {
+        //no departure date
+        if(departureDateInput.equals("")) {
             System.out.println("DATE INPUT");
             String msg = "Please do not leave date fields empty.";
             alertMessage(msg);
             return;
         }
-        if(!validDates(departureDateInput, arrivalDateInput)){
-            String msg = "Please make sure depature date is the same day or before arrival date" +
-                    " and the dates have not passed.";
-            alertMessage(msg);
-            return;
+
+        //valid dates if 2
+        if(!returningDateText.getText().toString().equals("")) {
+            if (!validDates(departureDateInput, returningDateInput)) {
+                String msg = "Please make sure depature date is the same day or before return date" +
+                        " and the dates have not passed.";
+                alertMessage(msg);
+                return;
+            }
         }
         String[] arr = countriesAutoComp.getText().toString().trim().split(",");
         if(arr.length == 1 && arr[0] == "") {
@@ -350,27 +388,18 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             String msg = "Please enter at least one city.";
             alertMessage(msg);
             return;
-        }
-        String b = budgetEditText.getText().toString();
-        System.out.println("B: " + b.substring(1, b.length()));
-        double budget = Double.parseDouble(b.substring(1, b.length()));
-        System.out.println("B: " + budget);
-        if(budget <= 0) {
-            String msg = "Please enter a buget.";
-            alertMessage(msg);
-            return;
         }*/
     }
 
     /**
      *
      * @param departure - string representing departure date in the format MM-dd-yyyy
-     * @param arrival - string representing arrival date in the format MM-dd-yyyy
-     * @return boolean indicating whether the departure and arrival dates are valid inputs
+     * @param returning - string representing return date in the format MM-dd-yyyy
+     * @return boolean indicating whether the departure and return dates are valid inputs
      */
-    private boolean validDates(String departure, String arrival) {
+    private boolean validDates(String departure, String returning) {
         int[] departureArr = parseDate(departure);
-        int[] arrivalArr = parseDate(arrival);
+        int[] arrivalArr = parseDate(returning);
         //entered in years that have passed
         if(departureArr[2] < this.year || arrivalArr[2] < this.year) {
             return false;
@@ -449,7 +478,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         Spinner classSpinner = (Spinner) findViewById(R.id.class_spinner);
         classSpinner.setOnItemSelectedListener(this);
         flightClass = parent.getItemAtPosition(position).toString();
-
+        System.out.println(flightClass);
     }
 
 
