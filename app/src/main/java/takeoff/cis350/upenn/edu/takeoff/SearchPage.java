@@ -368,7 +368,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setNonStop(nonstop);
         spp.setRefundable(refundable);
         spp.setairportCodes(airportCodes);
-        SearchQuery sq=spp.getQuery();
+        SearchQuery sq=spp.getQuery();                                                                  // This SearchQuery needs to be passed to FireBase
 
         //try {QPXAPIReader.executeAPIRequest(sq,"AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w");}
         //atch (Exception e){
@@ -503,5 +503,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+    // Modified by Anaka
+    public void DashBoardHistory(View view) {
+        //start an intent
+        Intent intent = new Intent(this, DashBoardSearchHistory.class);                                 //Give me the last 20 searches from FireBase
+        startActivity(intent);
     }
 }

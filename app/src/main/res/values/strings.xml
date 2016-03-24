@@ -24,6 +24,7 @@
 Minimum Budget, and at least 1 Country and 1 City is required</string>
     <string name="continent_message">Continent:</string>
     <string name="search_button">Search</string>
+    <string name="history_button">History</string>
     <string name="clear_departure_button">Clear Departure</string>
     <string name="clear_return_button">Clear Return</string>
     <string name="country_message">Enter the countries you want with a comma separating each:</string>
@@ -72,6 +73,7 @@ Minimum Budget, and at least 1 Country and 1 City is required</string>
     </string-array>
     <string name="title_activity_flight_info">FlightInfo</string>
     <string name="title_activity_flight_info_view">FlightInfoView</string>
+    <string name="title_activity_dash_board_search_history">DashBoardSearchHistory</string>
 
     <!-- SEARCH PAGE STRINGS END HERE-->
 </resources>

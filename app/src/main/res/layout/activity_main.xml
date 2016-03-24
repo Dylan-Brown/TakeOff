@@ -34,7 +34,7 @@
         android:onClick="guest"
         android:text="Continue as Guest"
         android:layout_below="@+id/signupButton"
-        android:layout_alignEnd="@+id/welcome" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/favoriteButton"
