@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -166,7 +167,7 @@ public class SignUpActivity extends AppCompatActivity {
                             userMap.put("uid", (String) result.get("uid"));
                             userMap.put("username", email);
                             userMap.put("password", password);
-                            userMap.put("favoriteFlights", new HashMap<String, Object>());
+                            userMap.put("favoriteFlights", new ArrayList<>());
                             Map<String, Object> users = new HashMap<>();
                             users.put((String) result.get("uid"), userMap);
                             usersRef.updateChildren(users);

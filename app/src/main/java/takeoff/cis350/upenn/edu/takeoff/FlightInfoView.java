@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import java.lang.Math;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import android.util.Log;
 import android.view.View;
 import android.app.Activity;
 import android.content.Context;
@@ -47,32 +50,25 @@ public class FlightInfoView extends View {
 
         // TODO: Get the list of favortite flights from firebase, determine if the flight is among the favorites
 
-        final String uid = usersRef.getAuth().getUid();
-        usersRef.child(uid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
-                if (!userData.containsKey("favoriteFlights")) {
-                    HashMap<String, Object> favFlights = new HashMap<>();
-                    userData.put("favoriteFlights", favFlights);
-                    usersRef.child(uid).updateChildren(userData);
-                } else {
-                    Map<String, Object> userFavs = (Map<String, Object>)
-                            ((Map<String, Object>) snapshot.getValue()).get("favoriteFlights");
-                    for (Object o : userFavs.values()) {
-                        Flight f = (Flight) o;
-                        if (FavFlights.contains(f)) {
-                            isFavorite = true;
-                            break;
-                        }
+        if (usersRef.getAuth() != null) {
+            final String uid = usersRef.getAuth().getUid();
+            usersRef.child(uid).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
+                    if (!userData.containsKey("favoriteFlights")) {
+                        ArrayList<Object> favFlights = new ArrayList<>();
+                        userData.put("favoriteFlights", favFlights);
+                        usersRef.child(uid).updateChildren(userData);
                     }
                 }
-            }
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                // do nothing
-            }
-        });
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                    // do nothing
+                }
+            });
+        }
+
 
 
         //Decode the flight info provided.
@@ -160,7 +156,7 @@ public class FlightInfoView extends View {
                 System.out.print("Enter Here");
                 // add this flight to favorites or delete it from favorites
                 //delete from favorites
-                if (isFavorite) {                                                                           // if the current  flight is in FireBase
+                if (isFavorite) {
                     FavFlights.remove(FlightInfo);                                                          //  Remove the current flight from FireBase
 
                     // remove the flight  from the list of favs in FireBase
@@ -170,19 +166,15 @@ public class FlightInfoView extends View {
                         public void onDataChange(DataSnapshot snapshot) {
                             Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
                             if (!userData.containsKey("favoriteFlights")) {
-                                HashMap<String, Object> favFlights = new HashMap<>();
+                                ArrayList<Object> favFlights = new ArrayList<>();
                                 userData.put("favoriteFlights", favFlights);
                                 usersRef.child(uid).updateChildren(userData);
                             } else {
-                                Map<String, Object> userFavs = (Map<String, Object>)
-                                        ((Map<String, Object>) snapshot.getValue()).get("favoriteFlights");
-                                for (String s : userFavs.keySet()) {
-                                    if (((Flight)userFavs.get(s)).equals(FlightInfo)) {
-                                        userFavs.remove(s);
-                                        usersRef.child(uid).child("favoriteFlights").setValue(userFavs);
-                                        break;
-                                    }
-                                }
+                                ArrayList<Object> fav = (ArrayList<Object>) ((Map<String, Object>)
+                                        snapshot.getValue()).get("favoriteFlights");
+                                fav.remove(FlightInfo);
+                                userData.put("favoriteFlights", fav);
+                                usersRef.child(uid).updateChildren(userData);
                             }
                         }
                         @Override
@@ -197,6 +189,8 @@ public class FlightInfoView extends View {
                     FavFlights.add(FlightInfo);                                                             // Add the current flight to FireBase
                     System.out.println("Size of the favlist in View" + FavFlights.size());
 
+                    Log.e("FlightInfo", FlightInfo.toString());
+
                     // remove the flight  from the list of favs in FireBase
                     final String uid = usersRef.getAuth().getUid();
                     usersRef.child(uid).addValueEventListener(new ValueEventListener() {
@@ -204,17 +198,15 @@ public class FlightInfoView extends View {
                         public void onDataChange(DataSnapshot snapshot) {
                             Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
                             if (!userData.containsKey("favoriteFlights")) {
-                                HashMap<String, Object> favFlights = new HashMap<>();
-                                // TODO: Put unique id for flight or  something
-                                favFlights.put("", FlightInfo);
+                                ArrayList<Object> favFlights = new ArrayList<>();
+                                favFlights.add(FlightInfo);
                                 userData.put("favoriteFlights", favFlights);
                                 usersRef.child(uid).updateChildren(userData);
                             } else {
-                                Map<String, Object> userFavs = (Map<String, Object>)
-                                        ((Map<String, Object>) snapshot.getValue()).get("favoriteFlights");
-                                // TODO: Put unique id for flight or  something
-                                userFavs.put("", FlightInfo);
-                                usersRef.child(uid).child("favoriteFlights").setValue(userFavs);
+                                List<Object> favFlights = (List<Object>) ((Map<String, Object>)
+                                        snapshot.getValue()).get("favoriteFlights");
+                                userData.put("favoriteFlights", favFlights);
+                                usersRef.child(uid).updateChildren(userData);
                             }
                         }
                         @Override
