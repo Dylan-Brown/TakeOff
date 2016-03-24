@@ -33,5 +33,6 @@
     <item android:id="@+id/favorites_option"
         android:title="View Favorites"
         android:orderInCategory="60"
+        android:onClick="sortByFavoriteFlights"
         />
 </menu>

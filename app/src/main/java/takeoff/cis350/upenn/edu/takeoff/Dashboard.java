@@ -17,11 +17,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import org.json.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Dashboard extends ListActivity {
     List<Flight> flightResults;
@@ -31,6 +39,9 @@ public class Dashboard extends ListActivity {
     //This is the peice of information that I should be receiving while someone calls this activity.
     Flight[] flightinfo = flights.flightinfo;
     ListView l;
+
+    public final static String EXTRA_MESSAGE1 = "Flight";
+    public final static String EXTRA_MESSAGE2 = "FavFlight";
 
     public Dashboard() {
         //Default Constructor
@@ -43,11 +54,11 @@ public class Dashboard extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("Dashboard");
-        Log.e("first", "Dashboard");
+        /*Log.e("first", "Dashboard");
         try {
             flightResults = QPXAPIParser.getAPIResultsAsFlight();
         } catch (Exception e) {
-        }
+        }*/
         Log.e("QPIXParser", "Dashboard");
         super.onCreate(savedInstanceState);
         Log.e("savedInstanceState", "Dashboard");
@@ -65,11 +76,31 @@ public class Dashboard extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         TextView temp = (TextView) v;
-        Toast.makeText(this, "" + temp.getText() + " " + position, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this,""+temp.getText() + " " + position, Toast.LENGTH_SHORT).show();
 
         // here i want to go to another activity that displays the information of individual flights
-        Intent intent = new Intent(this, FlightInfo.class);
-        System.out.println("Entering the new activity. Not sure how to pass information");
+        /*here I should pass the information of the flight clicked and also the Favorites list so I
+        can have a copy of that.
+         */
+        Intent intent = new  Intent (this, FlightInfoActivity.class);
+        intent.putExtra(EXTRA_MESSAGE1, temp.getText());
+        /// We want to pass the information of the flight.
+        // We also want to pass a Set of favorited flights
+
+        /** All code below here are temporary. This needs to be accessible from Flight info page */
+        /*String flight_details = temp.getText().toString();
+        String[] fd = flight_details.split("\n");
+        String depart = fd[2].split(":")[1].trim();
+        String arrive = fd[4].split(":")[1].trim();
+        String f = fd[3].split(":")[1].trim();
+        String r = fd[5].split(":")[1].trim();
+        String url = "https://www.google.com/flights/#search;f="+depart+",ZFV;t="+arrive+";";//d=2016-04-08";*/
+        // I only want from, to, leaving, returning
+
+        //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        //startActivity(browserIntent);
+
+        System.out.println("Entering the flight activity. Not sure how to pass information");
         startActivity(intent);
     }
 
@@ -103,6 +134,10 @@ public class Dashboard extends ListActivity {
 
     public void sortByArrivalCity(MenuItem item) {
         bubbleSortBy(5);
+    }
+
+    public void sortByFavoriteFlights(MenuItem item) {
+        bubbleSortBy(6);
     }
 
     private void bubbleSortBy(int feature) {
@@ -182,6 +217,43 @@ public class Dashboard extends ListActivity {
                         }
                     }
                 }
+                break;
+
+            case 6:  //  view favorites
+
+                Log.e("Dashboard", "Going into  favorites list");
+
+                final Firebase usersRef =
+                        new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+                if (usersRef.getAuth() !=  null) {
+                    String uid = usersRef.getAuth().getUid();
+                    usersRef.child(uid).child("favoriteFlights").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            Map<String, Object> userFavs = (Map<String, Object>) snapshot.getValue();
+                            Log.e("Dashboard", "The read succeeded!!!");
+
+                            // TODO: userFavs is a map from strings to flights. Display this information
+                            // the objects must be cast to the  flight type
+
+                        }
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                            Log.e("Dashboard", "The read failed: " + firebaseError.getMessage());
+
+                            // TODO: Display some message if reading the favorite flights failed
+
+                        }
+                    });
+                } else {
+
+                    // TODO: What do  we do if a guest user tries to view favorite flights??
+
+                }
+
+
+
                 break;
 
             default: // arrive city

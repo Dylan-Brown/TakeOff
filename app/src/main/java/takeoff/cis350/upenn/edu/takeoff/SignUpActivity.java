@@ -1,39 +1,31 @@
 package takeoff.cis350.upenn.edu.takeoff;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -48,10 +40,6 @@ public class SignUpActivity extends AppCompatActivity {
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private EditText mPasswordConfirmView;
-    private View mProgressView;
-    private View mLoginFormView;
-    UserDatabase database = UserDatabase.getInstance();
-    private User loggedInUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +69,8 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        View mLoginFormView = findViewById(R.id.login_form);
+        View mProgressView = findViewById(R.id.login_progress);
     }
 
     private boolean mayRequestContacts() {
@@ -129,8 +117,8 @@ public class SignUpActivity extends AppCompatActivity {
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        final String email = mEmailView.getText().toString();
+        final String password = mPasswordView.getText().toString();
         String password2 = mPasswordConfirmView.getText().toString();
         System.out.println("Email entered: " + email);
         System.out.println("Password entered: " + password);
@@ -162,25 +150,43 @@ public class SignUpActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
             // TODO: Show a progress spinner while attempting to sign up
-            UserDatabase database = UserDatabase.getInstance();
-            int errcode = database.addUser(email, password);
-            if (errcode == 0) {
-                // No error, user added; enter the search page.
-                Intent intent = new  Intent(this, SearchPage.class);
-                startActivity(intent);
-            } else if (errcode == 1) {
-                // Email already has an associated account
-                Toast toast = Toast.makeText(getApplicationContext(), "There is already "
-                        + "an account associated with this email address.", Toast.LENGTH_SHORT);
-                toast.show();
-                focusView.requestFocus();
-            } else {
-                // Some other error has occured
-                Toast toast = Toast.makeText(getApplicationContext(), "Sorry, we've experienced "
-                        + "an internal error. Please, try again later.", Toast.LENGTH_SHORT);
-                toast.show();
-                focusView.requestFocus();
-            }
+
+            final Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+            final Intent intent = new  Intent(this, SearchPage.class);
+
+            usersRef.createUser(email, password,
+                    new Firebase.ValueResultHandler<Map<String, Object>>() {
+
+                        // On successful creation of a user, set that user to the current
+                        @Override
+                        public void onSuccess(Map<String, Object> result) {
+
+                            // set the userdata
+                            Map<String, Object> userMap = new HashMap<>();
+                            userMap.put("uid", (String) result.get("uid"));
+                            userMap.put("username", email);
+                            userMap.put("password", password);
+                            userMap.put("favoriteFlights", new HashMap<String, Object>());
+                            Map<String, Object> users = new HashMap<>();
+                            users.put((String) result.get("uid"), userMap);
+                            usersRef.updateChildren(users);
+
+                            // go to search page
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onError(FirebaseError firebaseError) {
+                            Log.e("SignUpActivity", "onError " + firebaseError.toString()
+                                    + ", no user account created");
+                            // TODO: Handle specific errors with toast
+                            // Email already has an associated account
+                            Toast toast = Toast.makeText(getApplicationContext(), "There is already "
+                                    + "an account associated with this email address.", Toast.LENGTH_SHORT);
+                            toast.show();
+
+                        }
+                    });
         }
     }
 

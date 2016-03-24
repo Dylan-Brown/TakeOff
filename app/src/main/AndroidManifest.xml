@@ -45,6 +45,18 @@
             android:name=".FlightInfo"
             android:label="@string/title_activity_flight_info"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".FlightInfoActivity"
+            android:label="@string/title_activity_flight_info"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FlightInfoView"
+            android:label="@string/title_activity_flight_info_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- activity
+            android:name=".ExternalFlightSearch"
+            android:label="@string/title_activity_external_flight_search"
+            android:theme="@style/AppTheme.NoActionBar"></ -->
 
     </application>
 

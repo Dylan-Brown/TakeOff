@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".SearchPage">
+    <item android:id="@+id/purchaseTicket"
+        android:title="Purchase Ticket"
+        android:orderInCategory="0"
+        android:onClick="PurchaseTicket"
+        />
+</menu>

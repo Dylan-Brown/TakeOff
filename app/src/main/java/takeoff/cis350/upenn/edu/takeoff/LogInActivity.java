@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,7 +33,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +52,6 @@ public class LogInActivity extends AppCompatActivity {
     // Keep track of the login task to ensure we can cancel it if requested.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private User loggedInUser;
-    UserDatabase database = UserDatabase.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,20 +131,33 @@ public class LogInActivity extends AppCompatActivity {
             focusView.requestFocus();
         } else {
             // Perform the user login attempt.
-            if (database.attemptLogin(email, password)) {
-                loggedInUser = database.getUser();
-                System.out.println("Successful login");
-                // Enter the search page
-                Intent intent = new  Intent(this, SearchPage.class);
-                startActivity(intent);
 
-            } else {
-                Context context = getApplicationContext();
-                CharSequence text = "Incorrect email or password.";
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
+            Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+            final Intent intent = new  Intent(this, SearchPage.class);
+
+            // Create a handler to handle the result of the authentication
+            Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
+
+                @Override // Authenticated successfully with payload authData
+                public void onAuthenticated(AuthData authData) {
+                    Log.e("LoginActivity", "attemptLogin onAuthenticated: Authenticated");
+                    // Enter the search page
+                    startActivity(intent);
+                }
+
+                @Override // Authenticated failed with error firebaseError
+                public void onAuthenticationError(FirebaseError firebaseError) {
+                    Log.e("LoginActivity", "attemptLogin onAuthenticationError: Error");
+                    Context context = getApplicationContext();
+                    CharSequence text = "Incorrect email or password.";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+            };
+
+            // Authenticate users with an email/password combination
+            usersRef.authWithPassword(email, password, authResultHandler);
         }
     }
 

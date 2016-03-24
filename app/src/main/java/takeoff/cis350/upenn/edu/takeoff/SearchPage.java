@@ -370,9 +370,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setairportCodes(airportCodes);
         SearchQuery sq=spp.getQuery();
 
-        try {QPXAPIReader.executeAPIRequest(sq,"AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w");}
-        catch (Exception e){
-        }
+        //try {QPXAPIReader.executeAPIRequest(sq,"AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w");}
+        //atch (Exception e){
+        //}
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
 

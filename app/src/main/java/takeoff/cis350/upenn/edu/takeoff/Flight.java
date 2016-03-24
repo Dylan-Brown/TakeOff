@@ -52,7 +52,14 @@ public class Flight implements Serializable {
     int mileage;
     int flightDuration;
 
-
+    @Override
+    public String toString() {
+        return "id: + " + id + ", departureCityCode = " + departureCityCode
+                + ", departureDate = " + departureDate + ", departureTime = " + departureTime
+                + ", arrivalCityCode = " + arrivalCityCode + ", arrivalDate = " + arrivalDate
+                + ", arrivalTime = " + arrivalTime + ", flightNumber = " + flightNumber
+                + ", cabinClass = " + cabinClass;
+    }
 
 }
 
