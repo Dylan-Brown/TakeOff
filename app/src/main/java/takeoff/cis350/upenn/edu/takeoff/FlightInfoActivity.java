@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -64,6 +65,32 @@ public class FlightInfoActivity extends AppCompatActivity {
         String url = "https://www.google.com/flights/#search;f="+depart+",ZFV;t="+arrive+";d=" +f;
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);
+    }
+
+    public void ShareTicket(MenuItem item) {
+        // get the email adress of the user.
+        // if guest, then print toast
+        //else
+        String email = "";                                                                              //email address of the user. If guest, then return null;
+
+        // setting email for testing purposes
+
+        email = "anakagold@gmail.com";
+
+        if (email != null) {
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("message/rfc822");
+            intent.putExtra(Intent.EXTRA_EMAIL, email);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "TakeOff Flight Details");
+            intent.putExtra(Intent.EXTRA_TEXT, FlightInfo);
+
+            try {
+                startActivity(Intent.createChooser(intent, "Send mail..."));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }

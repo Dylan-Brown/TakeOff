@@ -77,8 +77,7 @@ public class FlightInfoView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        System.out.println("Inside OnDraw");
+    protected void onDraw(Canvas canvas) {System.out.println("Inside OnDraw");
 
         // Draw the picture first
 
@@ -94,7 +93,9 @@ public class FlightInfoView extends View {
         // write the flight info
         Paint paint = new Paint();
         canvas.drawPaint(paint);
-        paint.setColor(Color.RED);
+        paint.setColor(Color.WHITE);
+        canvas.drawRect(0, 0, CanvasWidth, CanvasHeight, paint);
+        paint.setColor(Color.BLUE);
         paint.setTextSize(CanvasWidth / 15);
         String[] split = FlightInfo.split("\n");
         for (int i = 0; i < split.length;i++) {
@@ -109,31 +110,6 @@ public class FlightInfoView extends View {
             paint.setColor(Color.parseColor("YELLOW"));
         }
         canvas.drawCircle(x, y, radius, paint);
-
-        //Drawing the BUY TICKET button outline
-        paint.setColor(Color.parseColor("GREY"));
-        canvas.drawRect(x + 1 * CanvasWidth / 8, y - radius,
-                x + 1 * CanvasWidth / 4 + 1 * CanvasWidth / 8, y + radius, paint);
-
-        //Writing BUY TICKET
-        paint.setColor(Color.parseColor("RED"));
-        paint.setTextSize(CanvasWidth / 22);
-
-        canvas.drawText("BUY TICKET", x + 1 * CanvasWidth / 8 + 5, y + radius - 50, paint);
-
-        //Drawing the GO BACK button outline
-        paint.setColor(Color.parseColor("GREY"));
-        if (ticket) {
-            paint.setColor(Color.parseColor("RED"));
-        }
-        canvas.drawRect(1 * CanvasWidth / 8, y - radius,
-                1 * CanvasWidth / 4 + 1 * CanvasWidth / 8, y + radius, paint);
-
-        //Writing GO BACK
-        paint.setColor(Color.parseColor("RED"));
-        paint.setTextSize(CanvasWidth / 22);
-
-        canvas.drawText("GO BACK", 1 * CanvasWidth / 8 + 8, y + radius - 50, paint);
 
     }
 
