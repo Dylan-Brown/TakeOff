@@ -1,6 +1,10 @@
 package takeoff.cis350.upenn.edu.takeoff;
 
+import java.security.Timestamp;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -175,6 +179,11 @@ public class SearchParameterProcessor {
     }
 
     public SearchQuery getQuery() {
+        Calendar calendar = Calendar.getInstance();
+        //getTime() returns current time in milliseconds
+        Date now = calendar.getTime();
+        //Passed the milliseconds to constructor of Timestamp class
+        sq.timeOfSearch = new Time(now.getTime());
         return sq;
     }
 }

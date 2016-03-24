@@ -13,7 +13,7 @@ import java.util.*;
 /*
 * This is the Flight datatype. Flight segments are sub-flights (i.e. layovers). */
 
-public class Flight{
+public class Flight implements Serializable {
     //Flight is one level recursive.
     //The master Flight (i.e. the Ticket) is composed of individual flights (eg connections, roundtrips)
     //If the flight is the master flight, then isEntry is set to true.

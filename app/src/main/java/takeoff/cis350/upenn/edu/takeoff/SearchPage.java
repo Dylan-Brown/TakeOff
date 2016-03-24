@@ -345,6 +345,8 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     //this is called when "search" is pressed and will transition over to Search Results
     public void transitionToSearch(View view) {
+
+
         List<Flight> flightResults;
         String countries = countriesAutoComp.getText().toString();
         String cities = citiesEditText.getText().toString();

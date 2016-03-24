@@ -1,5 +1,8 @@
 package takeoff.cis350.upenn.edu.takeoff;
 
+import java.security.Timestamp;
+import java.sql.Time;
+
 /**
  * Created by tangson on 3/17/16.
  */
@@ -7,6 +10,7 @@ package takeoff.cis350.upenn.edu.takeoff;
 public class SearchQuery {
     int no_of_Slices=1; //number of total trips; one-way is 1 slice, roundtrip is 2 slices
 
+    Time timeOfSearch;
     String origin="";
     String destination="";
     String date=""; //in the format of YYYY-MM-DD
