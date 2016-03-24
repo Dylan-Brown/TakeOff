@@ -3,9 +3,6 @@ package takeoff.cis350.upenn.edu.takeoff;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toolbar;
@@ -17,90 +14,71 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import org.json.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Dashboard extends ListActivity {
-    List<Flight> flightResults;
-    DummyFlightInfo flights = new DummyFlightInfo();
-    String[] flight = flights.flights;
 
-    //This is the peice of information that I should be receiving while someone calls this activity.
-    Flight[] flightinfo = flights.flightinfo;
+    private final Firebase usersRef =
+            new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+    public final static String EXTRA_MESSAGE = "Flight";
+    ArrayList<Flight> flightResults;
     ListView l;
 
-    public final static String EXTRA_MESSAGE1 = "Flight";
-    public final static String EXTRA_MESSAGE2 = "FavFlight";
-
-    public Dashboard() {
-        //Default Constructor
-    }
-
-    public Dashboard(Flight f[]) {
-        // here the array f is the list of flights
-    }
-
+    @SuppressWarnings("unchecked")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Dashboard");
+        super.onCreate(savedInstanceState);
+        Log.e("QPIXParser", "Dashboard");
+        setContentView(R.layout.activity_dashboard);
+        l = getListView();
+
+        // get the flight information information
+        // TODO: Get real flight information; right now it is dummy information
+        DummyFlightInfo dummyFlights = new DummyFlightInfo();
+        flightResults = new ArrayList<>();
+        flightResults.addAll(Arrays.asList(dummyFlights.getFlights()));
+        // Make flight information human readable
+        String[] flights = new String[flightResults.size()];
+        int i = 0;
+        for (Flight f : flightResults) {
+            flights[i++] = f.humanReadable();
+        }
+
+        // not sure what this does, commenting out for now
         /*Log.e("first", "Dashboard");
         try {
             flightResults = QPXAPIParser.getAPIResultsAsFlight();
         } catch (Exception e) {
         }*/
-        Log.e("QPIXParser", "Dashboard");
-        super.onCreate(savedInstanceState);
-        Log.e("savedInstanceState", "Dashboard");
-        setContentView(R.layout.activity_dashboard);
-        l = getListView();
-        Log.e("getListView", "Dashboard");
+
+        // display a list of the information
         setListAdapter(new ArrayAdapter(this,
-                android.R.layout.simple_list_item_single_choice, flight));
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, flight);
+                android.R.layout.simple_list_item_single_choice, flights));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                flights);
         l.setAdapter(adapter);
+
+        // display the toolbar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setActionBar(myToolbar);
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        TextView temp = (TextView) v;
-        // Toast.makeText(this,""+temp.getText() + " " + position, Toast.LENGTH_SHORT).show();
 
-        // here i want to go to another activity that displays the information of individual flights
-        /*here I should pass the information of the flight clicked and also the Favorites list so I
-        can have a copy of that.
-         */
+        // Pass information to FlightInfoActivity
+        // TODO: Decide what other information we have to pass
         Intent intent = new  Intent (this, FlightInfoActivity.class);
-        intent.putExtra(EXTRA_MESSAGE1, temp.getText());
-        /// We want to pass the information of the flight.
-        // We also want to pass a Set of favorited flights
+        intent.putExtra(EXTRA_MESSAGE, ((TextView) v).getText());
 
-        /** All code below here are temporary. This needs to be accessible from Flight info page */
-        /*String flight_details = temp.getText().toString();
-        String[] fd = flight_details.split("\n");
-        String depart = fd[2].split(":")[1].trim();
-        String arrive = fd[4].split(":")[1].trim();
-        String f = fd[3].split(":")[1].trim();
-        String r = fd[5].split(":")[1].trim();
-        String url = "https://www.google.com/flights/#search;f="+depart+",ZFV;t="+arrive+";";//d=2016-04-08";*/
-        // I only want from, to, leaving, returning
-
-        //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        //startActivity(browserIntent);
-
-        System.out.println("Entering the flight activity. Not sure how to pass information");
+        // Start the FlightInfoActivity
         startActivity(intent);
     }
 
@@ -141,15 +119,17 @@ public class Dashboard extends ListActivity {
     }
 
     private void bubbleSortBy(int feature) {
-        Flight[] array = new Flight[flightinfo.length];
-        for (int i = 0; i < flightinfo.length; i++) {
-            array[i] = flightinfo[i];
+        Flight[] array = new Flight[flightResults.size()];
+        int t = 0;
+        for (Flight f : flightResults) {
+            array[t++] = f;
         }
-        int n = flight.length;
+        int n = array.length;
         int k;
 
         switch (feature) {
-            case 0: // airline'
+            case 0:
+                // airline'
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -163,7 +143,8 @@ public class Dashboard extends ListActivity {
                 }
                 break;
 
-            case 1: // cost
+            case 1:
+                // cost
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -177,7 +158,8 @@ public class Dashboard extends ListActivity {
                 }
                 break;
 
-            case 2: // depart date
+            case 2:
+                // depart date
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -191,7 +173,8 @@ public class Dashboard extends ListActivity {
                 }
                 break;
 
-            case 3: // depart city
+            case 3:
+                // depart city
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -205,7 +188,8 @@ public class Dashboard extends ListActivity {
                 }
                 break;
 
-            case 4: // arrive date
+            case 4:
+                // arrive date
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -219,44 +203,48 @@ public class Dashboard extends ListActivity {
                 }
                 break;
 
-            case 6:  //  view favorites
-
-                Log.e("Dashboard", "Going into  favorites list");
-
-                final Firebase usersRef =
-                        new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+            case 6:
+                // If there is a logged in user, display list of favorites
                 if (usersRef.getAuth() !=  null) {
                     String uid = usersRef.getAuth().getUid();
                     usersRef.child(uid).child("favoriteFlights").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            Map<String, Object> userFavs = (Map<String, Object>) snapshot.getValue();
-                            Log.e("Dashboard", "The read succeeded!!!");
-
-                            // TODO: userFavs is a map from strings to flights. Display this information
-                            // the objects must be cast to the  flight type
-
+                            // User has favorites; get this information and replace search results
+                            @SuppressWarnings("unchecked")
+                            ArrayList<Object> userFavs = (ArrayList<Object>) snapshot.getValue();
+                            flightResults.clear();
+                            for (Object o : userFavs) {
+                                Flight f = Flight.parseFlight((String) o);
+                                flightResults.add(f);
+                            }
+                            Object[] flightInfo = new Object[flightResults.size()];
+                            int i = 0;
+                            for (Flight f : flightResults) {
+                                flightInfo[i++] = f.humanReadable();
+                            }
+                            // TODO: flightInfo is the humanReadable list of favorites, display it.
                         }
-
                         @Override
                         public void onCancelled(FirebaseError firebaseError) {
+                            // Internally display error message, externally claim nothing found
                             Log.e("Dashboard", "The read failed: " + firebaseError.getMessage());
-
-                            // TODO: Display some message if reading the favorite flights failed
-
+                            Toast toast = Toast.makeText(getApplicationContext(),
+                                    "No favorites found.", Toast.LENGTH_SHORT);
+                            toast.show();
                         }
                     });
                 } else {
-
-                    // TODO: What do  we do if a guest user tries to view favorite flights??
-
+                    // No authenticated user (guestsession or some error) - no favorites data
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "No favorites found.", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
-
-
 
                 break;
 
-            default: // arrive city
+            default:
+                // arrive city
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -269,26 +257,21 @@ public class Dashboard extends ListActivity {
                     }
                 }
         }
-        flightinfo = array;
 
+        String[] flightInfo = new String[array.length];
         for (int i = 0; i < array.length; i++) {
-            Flight temp = array[i];
-            flight[i] = "Airline : " + temp.airline + '\n';
-            flight[i] += "Total Cost : " + temp.cost + '\n';
-            flight[i] += "Departure City : " + temp.departureCityCode + '\n';
-            flight[i] += "Departure Date : " + temp.departureDate + '\n';
-            flight[i] += "Arrival City : " + temp.arrivalCityCode + '\n';
-            flight[i] += "Arrival Date : " + temp.arrivalDate + '\n';
-            flightinfo[i] = temp;
+            flightInfo[i] = array[i].humanReadable();
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, flight);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                flightInfo);
         l.setAdapter(adapter);
     }
 
-
+    @SuppressWarnings("unused")
     private Flight getFlightByID(String id) {
         for (Flight f : flightResults) {
-            if (f.id==id){return f;}
+            if (f.id.equals(id)) { return f; }
         }
         return null;
     }

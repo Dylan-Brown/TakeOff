@@ -173,6 +173,7 @@ public class SignUpActivity extends AppCompatActivity {
                             usersRef.updateChildren(users);
 
                             // go to search page
+                            Log.e("LoginSuccess", "Attempting to go to search page");
                             startActivity(intent);
                         }
 

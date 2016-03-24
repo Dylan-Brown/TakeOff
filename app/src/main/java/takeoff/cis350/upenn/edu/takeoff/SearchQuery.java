@@ -30,4 +30,76 @@ public class SearchQuery {
 
     public SearchQuery() {
     };
+
+    // returns the query in a String with a : separating them
+    @Override
+    public String toString() {
+        String toReturn = "";
+        //not stroring the time now.
+        toReturn += "" + no_of_Slices + ":";
+        toReturn += origin + ":";
+        toReturn += destination + ":";
+        toReturn += date + ":";
+        if (isRoundtrip){
+            toReturn += "true" + ":";
+        }
+        else {
+            toReturn += "false" + ":";
+        }
+        toReturn += returnDate + ":";
+        toReturn += adultCount + ":";
+        toReturn += preferredCabin + ":";
+        toReturn += maxPrice + ":";
+        if (refundability){
+            toReturn += "true" + ":";
+        }
+        else {
+            toReturn += "false" + ":";
+        }
+        toReturn += numberOfSolutions + ":";
+        toReturn += maxStops + ":";
+        toReturn += earliestTime + ":";
+        toReturn += latestTime + ":";
+        toReturn += maxConnectionDuration + ":";
+        toReturn += alliance + ":";
+
+        return toReturn;
+    }
+
+    public static SearchQuery parseSearchQuery(String s) {
+
+        SearchQuery sq = new SearchQuery();
+
+        String[] temp = s.split(":");
+
+        sq.no_of_Slices = Integer.parseInt(temp[0].trim());
+        //time not in search query
+        sq.origin= temp[1];
+        sq.destination= temp[2].trim();
+        sq.date= temp[3].trim(); //in the format of YYYY-MM-DD
+        if (temp[4].equals("true")) {
+            sq.isRoundtrip = true;
+        }
+        else {
+            sq.isRoundtrip = false;
+        }
+        sq.returnDate = temp[5]; //in the format of YYYY-MM-DD, only present if roundtrip
+        sq.adultCount= Integer.parseInt(temp[6]);	//number of adults (i.e. passengers)
+        sq.preferredCabin = temp[7]; //COACH, PREMIUM_COACH, BUSINESS, FIRST
+        sq.maxPrice = Double.parseDouble(temp[8]); //in USD
+        if (temp[9].equals("true")) {
+            sq.refundability = true;
+        }
+        else {
+            sq.refundability = false;
+        }
+        sq.numberOfSolutions = Integer.parseInt(temp[10]); //maximum number of search results
+        sq.maxStops = Integer.parseInt(temp[11]); //number of connections, direct flights = 0
+        sq.earliestTime= temp[12]; //in the format of HH:MM (24 hours)
+        sq.latestTime = temp[13]; //in the format of HH:MM (24 hours)
+        sq.maxConnectionDuration = Integer.parseInt(temp[14]); //maximum amount in minutes
+        sq.alliance = temp[15]; //NONE, STAR, ONEWORLD, XXX,XXX
+
+        return null;
+    }
 }

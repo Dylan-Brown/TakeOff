@@ -36,17 +36,20 @@ public class FlightInfoView extends View {
     ArrayList<String> FavFlights;
     boolean ticket = false;
     public final static String EXTRA_MESSAGE2 = "FavFlight";
-    final Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+    final Firebase usersRef;
 
 
     public FlightInfoView(Context c) {
         super(c);
+        usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     }
 
-    public FlightInfoView(Context c, String FlightInfo, final ArrayList<String> FavFlights) {
+    public FlightInfoView(Context c, final String FlightInfo, final ArrayList<String> FavFlights) {
         super(c);
         this.FlightInfo = FlightInfo;
         this.FavFlights = FavFlights;
+        Firebase.setAndroidContext(c);
+        usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
 
         // TODO: Get the list of favortite flights from firebase, determine if the flight is among the favorites
 
@@ -60,6 +63,15 @@ public class FlightInfoView extends View {
                         ArrayList<Object> favFlights = new ArrayList<>();
                         userData.put("favoriteFlights", favFlights);
                         usersRef.child(uid).updateChildren(userData);
+                    } else {
+                        ArrayList<Object> favFlights = (ArrayList<Object>)
+                                userData.get("favoriteFlights");
+                        for (Object o : favFlights) {
+                            //  TODO: o  is a string, needs to be converted to flight
+                            if (Flight.parseFlight((String) o).equals(FlightInfo)) {
+                                isFavorite = true;
+                            }
+                        }
                     }
                 }
                 @Override
@@ -133,7 +145,7 @@ public class FlightInfoView extends View {
                 // add this flight to favorites or delete it from favorites
                 //delete from favorites
                 if (isFavorite) {
-                    FavFlights.remove(FlightInfo);                                                          //  Remove the current flight from FireBase
+                    FavFlights.remove(FlightInfo.toString());                                                          //  Remove the current flight from FireBase
 
                     // remove the flight  from the list of favs in FireBase
                     final String uid = usersRef.getAuth().getUid();
@@ -148,7 +160,7 @@ public class FlightInfoView extends View {
                             } else {
                                 ArrayList<Object> fav = (ArrayList<Object>) ((Map<String, Object>)
                                         snapshot.getValue()).get("favoriteFlights");
-                                fav.remove(FlightInfo);
+                                fav.remove(FlightInfo.toString());
                                 userData.put("favoriteFlights", fav);
                                 usersRef.child(uid).updateChildren(userData);
                             }
@@ -162,7 +174,7 @@ public class FlightInfoView extends View {
                 }
                 //add to favorites
                 else {
-                    FavFlights.add(FlightInfo);                                                             // Add the current flight to FireBase
+                    FavFlights.add(FlightInfo.toString());                                                             // Add the current flight to FireBase
                     System.out.println("Size of the favlist in View" + FavFlights.size());
 
                     Log.e("FlightInfo", FlightInfo.toString());
@@ -175,7 +187,7 @@ public class FlightInfoView extends View {
                             Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
                             if (!userData.containsKey("favoriteFlights")) {
                                 ArrayList<Object> favFlights = new ArrayList<>();
-                                favFlights.add(FlightInfo);
+                                favFlights.add(FlightInfo.toString());
                                 userData.put("favoriteFlights", favFlights);
                                 usersRef.child(uid).updateChildren(userData);
                             } else {
