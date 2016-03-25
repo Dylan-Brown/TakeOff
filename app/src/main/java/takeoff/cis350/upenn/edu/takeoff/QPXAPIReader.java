@@ -2,20 +2,9 @@ package takeoff.cis350.upenn.edu.takeoff;
 
 import org.json.*;
 
-import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.http.impl.client.*;
-import org.apache.http.client.*;
-import org.apache.http.client.methods.*;
-import org.apache.http.entity.*;
-
-import android.app.Activity;
 import android.util.Log;
 
 import com.android.volley.*;
-import com.android.volley.toolbox.*;
 
 import org.json.JSONObject;
 
@@ -83,87 +72,6 @@ public class QPXAPIReader {
         } catch (Exception e) {
         }
         return jsonRequest;
-    }
-
-    public static JSONArray executeAPIRequest(SearchQuery sq, String APIKey)
-            throws JSONException {
-        String jsonRequest = makeJSONObjectFromSearchQuery(sq);
-        try {
-            JSONObject json = new JSONObject(jsonRequest);
-            System.out.println(json.toString(4));
-            HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + APIKey);
-            StringEntity SEJson = new StringEntity(jsonRequest);
-            httpPost.setEntity(SEJson);
-            httpPost.setHeader("Content-type", "application/json");
-            HttpClient hc = HttpClientBuilder.create().build();
-            ResponseHandler<String> rh = new BasicResponseHandler();
-            String response = hc.execute(httpPost, rh);
-            JSONObject jsonResponse = new JSONObject(response);
-            JSONArray jsonArray = jsonResponse.getJSONObject("trips").getJSONArray("tripOption");
-            System.out.println(jsonArray.toString(2));
-            return jsonArray;
-        } catch (JSONException e) {
-            System.out.println("JSON unable to be read.");
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            System.out.println("RESPONSE/EXECUTE ERROR!");
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-
-    public static void executeAPIRequest(SearchQuery sq, String APIKey, Activity a)
-            throws JSONException {
-        JSONObject JORequest = new JSONObject(makeJSONObjectFromSearchQuery(sq));
-        RequestQueue queue = Volley.newRequestQueue(a);
-        String url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + APIKey;
-
-        //  RequestFuture<JSONObject> future = RequestFuture.newFuture();
-        //  JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url, JORequest, future, future);
-
-        Log.e("QPXAPIReader", "future future");
-
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, url, JORequest,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            Log.e("QPXAPIReader","onResponseTest");
-                            JSONArray ja = response.getJSONObject("trips").getJSONArray("tripOption");
-                            System.out.println(ja.toString(2));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            System.out.println("ERROR IN ON RESPONSE!");
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        }) {
-            // set headers
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                return headers;
-            }
-
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-        };
-
-        Log.e("QPXAPIReader","addjsObjRequest");
-        queue.add(jsObjRequest);
-        Log.e("QPXAPIReader", "addjsObjRequestread");
     }
 
     public static void printAPIResults(JSONArray jsonArray) throws JSONException {

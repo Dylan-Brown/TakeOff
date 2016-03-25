@@ -168,7 +168,7 @@ public class SearchParameterProcessor {
         if (input.equals("")) {
             return input;
         } else if (input.equals("NONE")) {
-            return "";
+            return " ";
         } else if (input.equals("STAR ALLIANCE")) {
             return "STAR";
         } else if (input.equals("ONEWORLD") || input.equals("SKYTEAM")) {
