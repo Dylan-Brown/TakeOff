@@ -22,6 +22,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Dashboard extends ListActivity {
 
@@ -126,6 +127,15 @@ public class Dashboard extends ListActivity {
 
     public void sortByFavoriteFlights(MenuItem item) {
         bubbleSortBy(6);
+    }
+
+    public void advancedFilter(MenuItem item) {
+        Log.e("AdvancedFilter", "Here");
+        // TODO: Put search results into firebase
+        Intent intent = new Intent(this, FilterSearch.class);
+        intent.putExtra("flightResults", flightResults);
+        startActivity(intent);
+       // TODO: Start new activity called FilterSearch
     }
 
     private void bubbleSortBy(int feature) {
