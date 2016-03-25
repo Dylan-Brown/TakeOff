@@ -34,8 +34,8 @@ public class QPXAPIParser {
 
 
             Flight fullFlight = new Flight();
-            if (numOfSlices>1){fullFlight.isRoundtrip=true;}
-            else {fullFlight.isRoundtrip=false;}
+            if (numOfSlices>1){fullFlight.isReturnTrip=true;}
+            else {fullFlight.isReturnTrip=false;}
             fullFlight.id = tripOption.getString("id");
             String costWithoutUSD = tripOption.getString("saleTotal").replaceAll("[^0-9\\.]+", "");
             fullFlight.cost = Double.parseDouble(costWithoutUSD);
@@ -53,7 +53,7 @@ public class QPXAPIParser {
                     for (int i = 0; i < numOfLegs; i++) {
                         Flight flight = new Flight();
                         if (i_sl == 1) {
-                            flight.isRoundtrip = true;
+                            flight.isReturnTrip = true;
                         }
                         JSONObject leg = legs.getJSONObject(i);
 
@@ -99,12 +99,12 @@ public class QPXAPIParser {
                 System.out.println(f.arrivalTime);
                 System.out.println(f.arrivalDate);
             }
-            fullFlight.isEntry = true;
+            fullFlight.isMasterTicket = true;
 
 
             int counter=0;
             for (int asdz=0;asdz< fl.size();asdz++){
-                if (fl.get(asdz).isRoundtrip){
+                if (fl.get(asdz).isReturnTrip){
                     System.out.println("BROKEN!");
                     counter=asdz;
                     break;
@@ -124,7 +124,7 @@ public class QPXAPIParser {
             fullFlight.oneWayDuration = lastF.flightDuration;
             fullFlight.departureCityCode = lastF.departureCityCode;
 
-            if (fullFlight.isRoundtrip) {
+            if (fullFlight.isReturnTrip) {
                 firstF=fl.get(counter);
                 firstF=fl.get(fl.size()-1);
 

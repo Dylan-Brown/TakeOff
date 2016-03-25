@@ -18,11 +18,11 @@ public class Flight implements Serializable {
     //Flight is one level recursive.
     //The master Flight (i.e. the Ticket) is composed of individual flights (eg connections, roundtrips)
     //If the flight is the master flight, then isEntry is set to true.
-    boolean isEntry=false;
+    boolean isMasterTicket=false;
     List<Flight> subFlights=new ArrayList<Flight>();
 
-    String id=" ";  //unique per flight
-    boolean isRoundtrip=false;
+    String id="";  //unique per flight
+    boolean isReturnTrip=false;
 
     double cost=99999.99;     //in USD           //trips.tripOption[].saleTotal
     int numOfConnections=5;
@@ -62,7 +62,7 @@ public class Flight implements Serializable {
         // -flightDuration
         StringBuilder sb = new StringBuilder();
         sb.append(id + "-");
-        sb.append(isRoundtrip + "-");
+        sb.append(isReturnTrip + "-");
         sb.append(((int) cost) + "-");
         sb.append(numOfConnections + "-");
         sb.append(airline + "-");
@@ -148,7 +148,7 @@ public class Flight implements Serializable {
 
         } else {
             f.id = info[0];
-            f.isRoundtrip = Boolean.parseBoolean(info[1]);
+            f.isReturnTrip = Boolean.parseBoolean(info[1]);
             f.cost = Double.parseDouble(info[2]);
             f.numOfConnections = Integer.parseInt(info[3]);
             f.airline = info[4];
