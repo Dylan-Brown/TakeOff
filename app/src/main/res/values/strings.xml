@@ -20,8 +20,8 @@
 
 
     <!-- SEARCH PAGE STRINGS START HERE-->
-       <string name="search_message">Please set your search parameters.\nDeparture Date, Arrival Date,
-Minimum Budget, and at least 1 Country and 1 City is required</string>
+       <string name="search_message">Please set your search parameters.\nDeparture Date and
+       at least one airport code is required</string>
     <string name="continent_message">Continent:</string>
     <string name="search_button">Search</string>
     <string name="history_button">History</string>
@@ -41,7 +41,7 @@ Minimum Budget, and at least 1 Country and 1 City is required</string>
     <!-- Text Hints -->
     <string name="title_activity_filter_search">FilterSearch</string>
     <string name="departure_date">Departure Date</string>
-    <string name="returning_date">Return Date</string>
+    <string name="returning_date">Return Date(optional)</string>
     <string name="cities">Cities</string>
     <string name="countries">Countries</string>
     <string name="budget">Maximum Budget</string>
