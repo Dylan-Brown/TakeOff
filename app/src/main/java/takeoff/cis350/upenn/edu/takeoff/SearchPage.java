@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -519,8 +520,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
 
     private class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
-
+        ProgressDialog pd;
         Context context;
+
 
         public JSONAsyncTask(Context context) {
             this.context = context.getApplicationContext();
@@ -529,7 +531,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
         }
 
         @Override
@@ -564,6 +565,10 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 e.printStackTrace();
             }
             return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... progress) {
         }
 
         @Override

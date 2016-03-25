@@ -90,15 +90,6 @@ public class QPXAPIParser {
                 } // segment
             } // slice
             List<Flight> fl = fullFlight.subFlights;
-            for (Flight f : fl) {
-                System.out.println("__________________");
-                System.out.println(f.departureCityCode);
-                System.out.println(f.departureTime);
-                System.out.println(f.departureDate);
-                System.out.println(f.arrivalCityCode);
-                System.out.println(f.arrivalTime);
-                System.out.println(f.arrivalDate);
-            }
             fullFlight.isMasterTicket = true;
 
 
@@ -113,8 +104,6 @@ public class QPXAPIParser {
             Flight firstF = fl.get(0);
             if (counter<=1){counter=1;}
             Flight lastF = fl.get(counter-1);
-            System.out.println("firstF.departureCityCode: " + firstF.departureCityCode);
-            System.out.println("");
             fullFlight.departureCityCode = firstF.departureCityCode;
             fullFlight.departureTime = firstF.departureTime;
             fullFlight.departureDate = firstF.departureDate;
