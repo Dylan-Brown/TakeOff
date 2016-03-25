@@ -21,7 +21,7 @@ public class SearchQuery {
     String preferredCabin=""; //COACH, PREMIUM_COACH, BUSINESS, FIRST
     double maxPrice=99999; //in USD
     boolean refundability=false; //is refundable or not
-    int numberOfSolutions=499; //maximum number of search results
+    int numberOfSolutions=20; //maximum number of search results
     int maxStops=5; //number of connections, direct flights = 0
     String earliestTime=""; //in the format of HH:MM (24 hours)
     String latestTime=""; //in the format of HH:MM (24 hours)
