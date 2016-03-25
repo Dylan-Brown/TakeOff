@@ -54,7 +54,7 @@ public class QPXAPIReader {
                 + "\"earliestTime\": \"" + earliestTime + "\",\"latestTime\": \"" + latestTime
                 + "\"},\"maxConnectionDuration\": \"" + maxConnectionDuration + "\" } ";
 
-        if (2 == 4) {
+        if (sq.isRoundtrip) {
             origin = sq.destination;
             destination = sq.origin;
             date = sq.returnDate;
