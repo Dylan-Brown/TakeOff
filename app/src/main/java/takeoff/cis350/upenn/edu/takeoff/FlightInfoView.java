@@ -77,7 +77,6 @@ public class FlightInfoView extends View {
                                 (ArrayList<Object>)userData.get("favoriteFlights");
                         for (Object o : favFlights) {
                             Flight f = Flight.parseFlight((String) o);
-                            Log.e("FlightsCompare", "Flight id is " + f.id + ", flight.id is " + flight.id);
                             if (f.id.equals(flight.id)) {
 
                                 isFavorite = true;
@@ -135,7 +134,6 @@ public class FlightInfoView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.e("FlightInfoView", "onTouchEvent called for event " + event.toString());
         int action = event.getActionMasked();
 
         // See if they are clicking the favorites button
@@ -149,7 +147,6 @@ public class FlightInfoView extends View {
             if (Math.abs(x - xPos) < (CanvasHeight / 30) && Math.abs((y + CanvasHeight / 28) -yPos)
                     < (CanvasHeight / 30)) {
                 // The favorites button is being clicked
-                Log.e("FlightInfoView", "onTouchEvent: FAVORITE Button is being clicked.");
 
                 // Make sure a user is logged in before taking action
                 if (usersRef.getAuth() != null) {
@@ -165,8 +162,6 @@ public class FlightInfoView extends View {
                                 if (!userData.containsKey("favoriteFlights")) {
                                     ArrayList<Object> favFlights = new ArrayList<>();
                                     userData.put("favoriteFlights", favFlights);
-                                    Log.e("FlightInfoView", "onTouchEvent: no favorites to " +
-                                            "remove from");
                                     // Add a favorites list to this user's information
                                     usersRef.child(uid).updateChildren(userData);
                                 } else {

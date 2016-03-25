@@ -27,7 +27,6 @@ public class Dashboard extends ListActivity {
 
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
-    public final static String EXTRA_MESSAGE = "Flight";
     public final static String FLIGHT_MESSAGE = "FlightActual";
     ArrayList<Flight> flightResults;
     ListView l;
@@ -36,7 +35,6 @@ public class Dashboard extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("QPIXParser", "Dashboard");
         setContentView(R.layout.activity_dashboard);
         l = getListView();
 

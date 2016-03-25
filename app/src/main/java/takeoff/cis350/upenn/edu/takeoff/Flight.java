@@ -128,7 +128,6 @@ public class Flight implements Serializable {
                 & (f1.departureDate.equals(f2.departureDate))
                 & (f1.arrivalCityCode.equals(f2.arrivalCityCode))
                 & (f1.arrivalDate.equals(f2.arrivalDate));
-        Log.e("minimalCompare", "returning " + compare);
         return compare;
     }
 
@@ -174,7 +173,6 @@ public class Flight implements Serializable {
             if (info.length >= 24)
                 f.arrivalDate = info[23];
         }
-        Log.e("Flight", "Parsing finished, returning: " + f.toString());
         return f;
     }
 
