@@ -32,14 +32,6 @@ public class QPXAPIReader {
         isSet = true;
     }
 
-    public static boolean getSet() {
-        if (isSet) {
-            isSet = false;
-            return true;
-        }
-        return isSet;
-    }
-
     public static String makeJSONObjectFromSearchQuery(SearchQuery sq) {
         int adultCount = sq.adultCount;
         boolean refundability = sq.refundability;

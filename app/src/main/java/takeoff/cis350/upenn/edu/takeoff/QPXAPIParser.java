@@ -1,5 +1,7 @@
 package takeoff.cis350.upenn.edu.takeoff;
 
+import android.util.Log;
+
 import org.json.*;
 
 import java.io.*;
@@ -16,10 +18,13 @@ import org.apache.http.entity.*;
  */
 public class QPXAPIParser {
 
+    static List<Flight> FlightCache;
+
     public static List<Flight> getAPIResultsAsFlight(JSONArray jsonArray) throws JSONException {
-
+        FlightCache=new ArrayList<Flight>();
         List<Flight> flightResults = new ArrayList<Flight>();
-
+        System.out.println("QPXAPIParser: attempt to getAPIResultsAsFlight");
+        Log.e("QPXAPIParser", " attempt to getAPIResultsAsFlight");
         // tripOptions
         for (int index = 0; index < jsonArray.length(); index++) {
             JSONObject tripOption = jsonArray.getJSONObject(index);// each Trip
@@ -80,6 +85,7 @@ public class QPXAPIParser {
                         System.out.println("Arrival Code: " + flight.arrivalCityCode);
                         System.out.println(flight.departureTime);
                         System.out.println(flight.departureDate);
+                        System.out.println("tripOptions: "+jsonArray.length());
                     } // leg
                 } // segment
             } // slice
@@ -95,16 +101,17 @@ public class QPXAPIParser {
             }
             fullFlight.isEntry = true;
 
+
             int counter=0;
-            for (Flight f: fl){
-                while (!f.isRoundtrip){
-                    counter++;
-                }
-                if (f.isRoundtrip){
+            for (int asdz=0;asdz< fl.size();asdz++){
+                if (fl.get(asdz).isRoundtrip){
+                    System.out.println("BROKEN!");
+                    counter=asdz;
                     break;
                 }
             }
             Flight firstF = fl.get(0);
+            if (counter<=1){counter=1;}
             Flight lastF = fl.get(counter-1);
             System.out.println("firstF.departureCityCode: " + firstF.departureCityCode);
             System.out.println("");
@@ -129,12 +136,16 @@ public class QPXAPIParser {
                 fullFlight.retarrivalDate = lastF.arrivalDate;
                 fullFlight.roundTripDuration = lastF.flightDuration;
                 fullFlight.retdepartureCityCode = lastF.departureCityCode;
-            } // slice
+            }
+            FlightCache.add(fullFlight);
             flightResults.add(fullFlight);
         } // tripOption
         return flightResults;
     }
 
+    public static List<Flight> getFlightResultsFromMostRecentSearch(){
+        return FlightCache;
+    };
     public static void printFlights(List<Flight> flightResults) {
         for (Flight flight : flightResults) {
             System.out.println("");
