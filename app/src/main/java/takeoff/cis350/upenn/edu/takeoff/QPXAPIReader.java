@@ -56,7 +56,7 @@ public class QPXAPIReader {
 
         if (sq.isRoundtrip) {
             origin = sq.destination;
-            destination = sq.origin;
+            destination = "PHL";
             date = sq.returnDate;
             maxStops = sq.maxStops;// 0 for nonstop
             alliance = sq.alliance;
