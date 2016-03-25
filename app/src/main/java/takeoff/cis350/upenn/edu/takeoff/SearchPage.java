@@ -27,6 +27,12 @@ import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -49,6 +55,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
@@ -59,6 +66,8 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     private DatePickerDialog departureDatePickerDialog;
     private DatePickerDialog returningDatePickerDialog;
     private SimpleDateFormat dateFormatter;
+    private final Firebase usersRef =
+            new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
 
     private MultiAutoCompleteTextView countriesAutoComp;
     private EditText citiesEditText;
@@ -375,16 +384,52 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setNonStop(nonstop);
         spp.setRefundable(refundable);
         spp.setairportCodes(airportCodes);
-        SearchQuery sq = spp.getQuery();                                                                  // This SearchQuery needs to be passed to FireBase
+        final SearchQuery sq = spp.getQuery();
         String request = QPXAPIReader.makeJSONObjectFromSearchQuery(sq);
+
+        // Store the SearchQuery in FireBase
+        if (usersRef.getAuth() !=  null) {
+            Log.e("SearchPage", "Authorized to store query");
+
+            final String uid = usersRef.getAuth().getUid();
+            usersRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    // User has favorites; get this information and replace search results
+                    Log.e("SearchPage", "onDataChange: storing query: " + sq.toString());
+                    Map<String, Object> userInfo = (Map<String, Object>) snapshot.getValue();
+                    if (!userInfo.containsKey("searchQueries")) {
+                        ArrayList<Object> queries = new ArrayList<>();
+                        userInfo.put("searchQueries", queries);
+                    }
+                    ArrayList<Object> prevQueries =
+                            (ArrayList<Object>) userInfo.get("searchQueries");
+                    prevQueries.add(sq.toString());
+                    userInfo.put("searchQueries", prevQueries);
+                    usersRef.child(uid).updateChildren(userInfo);
+                }
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                    // TODO: Internally display error message, externally claim nothing found
+                }
+            });
+        } else {
+            // No authenticated user (guestsession or some error) - no favorites data
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No favorites found.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+
        /* try {
             QPXAPIReader.executeAPIRequest(sq, "AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w", this);
         } catch (Exception e) {
         }
+        */
         Intent intent = new Intent(this, Dashboard.class);
-        startActivity(intent);*/
-        System.out.println("SearchPage: About to execute request...");
-        new JSONAsyncTask(this.getApplicationContext()).execute(request);
+        startActivity(intent);
+        //System.out.println("SearchPage: About to execute request...");
+        //new JSONAsyncTask(this.getApplicationContext()).execute(request);
         /*
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 

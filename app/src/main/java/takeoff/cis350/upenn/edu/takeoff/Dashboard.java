@@ -28,7 +28,7 @@ public class Dashboard extends ListActivity {
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     public final static String FLIGHT_MESSAGE = "FlightActual";
-    List<Flight> flightResults;
+    ArrayList<Flight> flightResults;
     ListView l;
 
     @SuppressWarnings("unchecked")
@@ -40,7 +40,7 @@ public class Dashboard extends ListActivity {
 
         // get the flight information information
         // TODO: Get real flight information; right now it is dummy information
-        flightResults = QPXAPIParser.getFlightResultsFromMostRecentSearch();
+        flightResults = new ArrayList<>(Arrays.asList(new DummyFlightInfo().getFlights()));
         // Make flight information human readable
         String[] flights = new String[flightResults.size()];
         int i = 0;
@@ -216,23 +216,30 @@ public class Dashboard extends ListActivity {
             case 6:
                 // If there is a logged in user, display list of favorites
                 if (usersRef.getAuth() !=  null) {
+                    Log.e("Dashboard", "Authorized");
+
                     String uid = usersRef.getAuth().getUid();
-                    usersRef.child(uid).child("favoriteFlights").addValueEventListener(new ValueEventListener() {
+                    usersRef.child(uid).child("favoriteFlights").addListenerForSingleValueEvent(
+                            new ValueEventListener() {
+
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
                             // User has favorites; get this information and replace search results
-                            @SuppressWarnings("unchecked")
+                            Log.e("Dashboard", "onDataChange");
+
                             ArrayList<Object> userFavs = (ArrayList<Object>) snapshot.getValue();
                             flightResults.clear();
                             for (Object o : userFavs) {
                                 Flight f = Flight.parseFlight((String) o);
                                 flightResults.add(f);
+                                Log.e("Dashboard", "onDataChange: Flight: " + f.toString());
                             }
-                            Object[] flightInfo = new Object[flightResults.size()];
+                            String[] flightInfo = new String[flightResults.size()];
                             int i = 0;
                             for (Flight f : flightResults) {
                                 flightInfo[i++] = f.humanReadable();
                             }
+                            setAdapter(flightInfo);
                             // TODO: flightInfo is the humanReadable list of favorites, display it.
                         }
                         @Override
@@ -272,9 +279,12 @@ public class Dashboard extends ListActivity {
         for (int i = 0; i < array.length; i++) {
             flightInfo[i] = array[i].humanReadable();
         }
+        setAdapter(flightInfo);
+    }
 
+    private void setAdapter(String[] info) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
-                flightInfo);
+                info);
         l.setAdapter(adapter);
     }
 

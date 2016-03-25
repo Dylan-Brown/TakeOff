@@ -32,11 +32,17 @@ import java.util.List;
 import java.util.Map;
 
 public class DashBoardSearchHistory extends ListActivity {
+    private final Firebase usersRef =
+            new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     List<Flight> flightResults;
     DummySearchQueryHistory history = new DummySearchQueryHistory();
     String[] stringhistory = history.stringHistory2;
 
     ListView l;
+
+    public DashBoardSearchHistory() {
+
+    }
 
     public final static String EXTRA_MESSAGE1 = "Flight";
     public final static String EXTRA_MESSAGE2 = "FavFlight";
@@ -49,9 +55,55 @@ public class DashBoardSearchHistory extends ListActivity {
         setContentView(R.layout.activity_dashboard);
         l = getListView();
         Log.e("getListView", "Dashboard");
+
+        // Retrieve the search queries from the database
+        if (usersRef.getAuth() !=  null) {
+            Log.e("SearchPage", "Authorized to store query");
+
+            final String uid = usersRef.getAuth().getUid();
+            usersRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    Log.e("DashBoardSearchHistory", "onDataChange: retrieving queries ");
+                    Map<String, Object> userInfo = (Map<String, Object>) snapshot.getValue();
+                    if (!userInfo.containsKey("searchQueries")) {
+                        ArrayList<Object> queries = new ArrayList<>();
+                        userInfo.put("searchQueries", queries);
+                    } else {
+                        ArrayList<Object> queries = (ArrayList<Object>) userInfo.get("searchQueries");
+                        String[] queryStrings = new String[queries.size()];
+                        int i = 0;
+                        for (Object q : queries) {
+                            Log.e("SearchQueries", "query: " + q.toString());
+                            SearchQuery sq = SearchQuery.parseSearchQuery(q.toString());
+                            Log.e("SearchQueries", "query is " + sq);
+                            queryStrings[i++] = sq.humanReadable();
+                        }
+                        stringhistory = queryStrings;
+                        setAdapter(queryStrings);
+                    }
+
+                }
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                    // TODO: Internally display error message, externally claim nothing found
+                }
+            });
+        } else {
+            // No authenticated user (guestsession or some error) - no favorites data
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No favorites found.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+
         setListAdapter(new ArrayAdapter(this,
                 android.R.layout.simple_list_item_single_choice, stringhistory));
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, stringhistory);
+        setAdapter(stringhistory);
+    }
+
+    private void setAdapter(String[] info) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, info);
         l.setAdapter(adapter);
     }
 

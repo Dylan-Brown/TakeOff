@@ -24,7 +24,7 @@ public class DummyFlightInfo {
             basecost *= Math.random() * 2;
             temp.cost = (float)basecost;
             temp.id = "id" + i;
-            temp.isRoundtrip = false;
+            temp.isReturnTrip = false;
             temp.cost = basecost *= Math.random();
             temp.numOfConnections = 5;
             temp.duration = 2;
