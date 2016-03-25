@@ -39,6 +39,7 @@ Minimum Budget, and at least 1 Country and 1 City is required</string>
 
 
     <!-- Text Hints -->
+    <string name="title_activity_filter_search">FilterSearch</string>
     <string name="departure_date">Departure Date</string>
     <string name="returning_date">Return Date</string>
     <string name="cities">Cities</string>
