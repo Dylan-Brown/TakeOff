@@ -2,20 +2,9 @@ package takeoff.cis350.upenn.edu.takeoff;
 
 import org.json.*;
 
-import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.http.impl.client.*;
-import org.apache.http.client.*;
-import org.apache.http.client.methods.*;
-import org.apache.http.entity.*;
-
-import android.app.Activity;
 import android.util.Log;
 
 import com.android.volley.*;
-import com.android.volley.toolbox.*;
 
 import org.json.JSONObject;
 

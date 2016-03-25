@@ -7,12 +7,6 @@ import org.json.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.http.impl.client.*;
-import org.apache.http.client.*;
-import org.apache.http.client.methods.*;
-import org.apache.http.entity.*;
-
 /**
  * Created by tangson on 3/23/16.
  */

@@ -379,12 +379,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setairportCodes(airportCodes);
         SearchQuery sq = spp.getQuery();                                                                  // This SearchQuery needs to be passed to FireBase
         String request = QPXAPIReader.makeJSONObjectFromSearchQuery(sq);
-       /* try {
-            QPXAPIReader.executeAPIRequest(sq, "AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w", this);
-        } catch (Exception e) {
-        }
-        Intent intent = new Intent(this, Dashboard.class);
-        startActivity(intent);*/
+      
         System.out.println("SearchPage: About to execute request...");
         new JSONAsyncTask(this.getApplicationContext()).execute(request);
         /*
