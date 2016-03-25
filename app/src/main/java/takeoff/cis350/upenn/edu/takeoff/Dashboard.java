@@ -132,10 +132,20 @@ public class Dashboard extends ListActivity {
     public void advancedFilter(MenuItem item) {
         Log.e("AdvancedFilter", "Here");
         // TODO: Put search results into firebase
+        SearchQuery sq = new SearchQuery();
+
+
+        // Makiing Dummy Search Query
+        sq.no_of_Slices=1; //number of total trips; one-way is 1 slice, roundtrip is 2 slices
+        sq.origin="PHL";
+        sq.destination="NYC";
+        sq.date="2017/01/01"; //in the format of YYYY-MM-DD
+
         Intent intent = new Intent(this, FilterSearch.class);
-        intent.putExtra("flightResults", flightResults);
+        intent.putExtra("searchQuery", sq.toString());
         startActivity(intent);
-       // TODO: Start new activity called FilterSearch
+
+        // TODO: Start new activity called FilterSearch
     }
 
     private void bubbleSortBy(int feature) {

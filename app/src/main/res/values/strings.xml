@@ -52,6 +52,7 @@ Minimum Budget, and at least 1 Country and 1 City is required</string>
     <string name="departure_early_time">Earliest Departure Time</string>
     <string name="departure_late_time">Latest Departure Time</string>
     <string name="airport">Airport Code</string>
+    <string name = "filter_message">Please Enter the information to filter your Search Query</string>
 
 
     <!-- Continent Boxes -->
