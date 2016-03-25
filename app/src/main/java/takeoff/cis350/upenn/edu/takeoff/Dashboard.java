@@ -28,6 +28,7 @@ public class Dashboard extends ListActivity {
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     public final static String EXTRA_MESSAGE = "Flight";
+    public final static String FLIGHT_MESSAGE = "FlightActual";
     ArrayList<Flight> flightResults;
     ListView l;
 
@@ -42,8 +43,8 @@ public class Dashboard extends ListActivity {
         // get the flight information information
         // TODO: Get real flight information; right now it is dummy information
         DummyFlightInfo dummyFlights = new DummyFlightInfo();
-        flightResults = new ArrayList<>();
-        flightResults.addAll(Arrays.asList(dummyFlights.getFlights()));
+        flightResults = new ArrayList<>(Arrays.asList(dummyFlights.getFlights()));
+
         // Make flight information human readable
         String[] flights = new String[flightResults.size()];
         int i = 0;
@@ -72,11 +73,24 @@ public class Dashboard extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-
-        // Pass information to FlightInfoActivity
-        // TODO: Decide what other information we have to pass
         Intent intent = new  Intent (this, FlightInfoActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, ((TextView) v).getText());
+
+        // Parse the TextView to a new Flight for comparsion
+        Flight flight = Flight.fromHumanReadable(((TextView) v).getText().toString());
+
+        // Determine which Flight in flightResults this refers to
+        boolean found = false;
+        for (Flight f : flightResults) {
+            if (Flight.minimalCompare(f, flight)) {
+                // This is the flight; pass it and it's fields
+                intent.putExtra(FLIGHT_MESSAGE, f);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            intent.putExtra(FLIGHT_MESSAGE, flight);
+        }
 
         // Start the FlightInfoActivity
         startActivity(intent);

@@ -20,23 +20,16 @@ import java.util.Set;
 public class FlightInfoActivity extends AppCompatActivity {
     FlightInfoView v;
     public int boardSize = 4;
-    String FlightInfo = "";
+    Flight Flight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // If minimum Flight info passed, pass it, otherwise pass entire Flight String
         Bundle extras = getIntent().getExtras();
-
-        FlightInfo = getIntent().getExtras().getString("Flight");
-        ArrayList<String> FavFlights;
-        if (getIntent().getStringArrayListExtra("FavFlight") != null) {
-            FavFlights = getIntent().getStringArrayListExtra("FavFlight");
-        } else {
-            FavFlights = new ArrayList<>();
-        }
-
-
-        v = new FlightInfoView (this, FlightInfo, FavFlights);
+        Flight = (Flight) extras.get("FlightActual");
+        v = new FlightInfoView (this, Flight.toString());
         setContentView(v);
     }
 
@@ -50,7 +43,7 @@ public class FlightInfoActivity extends AppCompatActivity {
     }
 
     public void PurchaseTicket(MenuItem item) {
-        String flight_details = FlightInfo;
+        String flight_details = Flight.humanReadable();
         String[] fd = flight_details.split("\n");
         String depart = fd[2].split(":")[1].trim();
         String arrive = fd[4].split(":")[1].trim();
@@ -83,7 +76,7 @@ public class FlightInfoActivity extends AppCompatActivity {
             intent.setType("message/rfc822");
             intent.putExtra(Intent.EXTRA_EMAIL, email);
             intent.putExtra(Intent.EXTRA_SUBJECT, "TakeOff Flight Details");
-            intent.putExtra(Intent.EXTRA_TEXT, FlightInfo);
+            intent.putExtra(Intent.EXTRA_TEXT, Flight.humanReadable());
 
             try {
                 startActivity(Intent.createChooser(intent, "Send mail..."));

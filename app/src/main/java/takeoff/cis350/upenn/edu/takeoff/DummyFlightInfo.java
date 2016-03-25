@@ -23,7 +23,7 @@ public class DummyFlightInfo {
             temp.airline = "UA";
             basecost *= Math.random() * 2;
             temp.cost = (float)basecost;
-            temp.id = "id";
+            temp.id = "id" + i;
             temp.isRoundtrip = false;
             temp.cost = basecost *= Math.random();
             temp.numOfConnections = 5;
@@ -32,10 +32,10 @@ public class DummyFlightInfo {
             temp.oneWayDuration=4320;
             temp.departureCityCode = "PHL";
             temp.departureDate = "01/01/2016";
-            temp.departureTime="04-20";   //HH-MM
+            temp.departureTime="04.20";   //HH-MM
             temp.arrivalCityCode = "NY";
             temp.arrivalDate = "01/01/2017";
-            temp.arrivalTime="14-20";
+            temp.arrivalTime="14/20";
             temp.roundTripDuration=4320;
             temp.retdepartureCityCode="N/A";
             temp.retdepartureTime="N/A";

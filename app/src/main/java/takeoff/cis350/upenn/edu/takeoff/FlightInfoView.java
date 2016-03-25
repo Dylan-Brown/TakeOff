@@ -32,10 +32,8 @@ public class FlightInfoView extends View {
     int CanvasHeight = 0;
     int x, y;
     boolean isFavorite = false;
-    String FlightInfo = "Anaka";
-    ArrayList<String> FavFlights;
     boolean ticket = false;
-    public final static String EXTRA_MESSAGE2 = "FavFlight";
+    Flight flight;
     final Firebase usersRef;
 
 
@@ -44,57 +42,65 @@ public class FlightInfoView extends View {
         usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     }
 
-    public FlightInfoView(Context c, final String FlightInfo, final ArrayList<String> FavFlights) {
+    // ADDRESS: FavFlights and usage
+    public FlightInfoView(Context c, final String FlightInfo) {
         super(c);
-        this.FlightInfo = FlightInfo;
-        this.FavFlights = FavFlights;
-        Firebase.setAndroidContext(c);
         usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
 
-        // TODO: Get the list of favortite flights from firebase, determine if the flight is among the favorites
+        // save the Flight information
+        this.flight = Flight.parseFlight(FlightInfo);
+        Log.e("FlightInfoView", "Displaying new flight: " + flight.toString());
 
+        // Set up FireBase
+        Firebase.setAndroidContext(c);
+
+        // If there is a user, make sure they have a list of favorited flights, and check if this
+        // flight in particular is among them
         if (usersRef.getAuth() != null) {
             final String uid = usersRef.getAuth().getUid();
             usersRef.child(uid).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
+
                     if (!userData.containsKey("favoriteFlights")) {
+
                         ArrayList<Object> favFlights = new ArrayList<>();
                         userData.put("favoriteFlights", favFlights);
                         usersRef.child(uid).updateChildren(userData);
+
                     } else {
-                        ArrayList<Object> favFlights = (ArrayList<Object>)
-                                userData.get("favoriteFlights");
+
+                        // TODO: Make sure this part works
+
+                        ArrayList<Object> favFlights =
+                                (ArrayList<Object>)userData.get("favoriteFlights");
                         for (Object o : favFlights) {
-                            //  TODO: o  is a string, needs to be converted to flight
-                            if (Flight.parseFlight((String) o).equals(FlightInfo)) {
+                            Flight f = Flight.parseFlight((String) o);
+                            Log.e("FlightsCompare", "Flight id is " + f.id + ", flight.id is " + flight.id);
+                            if (f.id.equals(flight.id)) {
+
                                 isFavorite = true;
                             }
                         }
+
                     }
                 }
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
-                    // do nothing
+                    Log.e("FlightInfoView",  "getAuth onCancelled for error: "
+                            + firebaseError.getMessage());
                 }
             });
         }
 
-
-
-        //Decode the flight info provided.
-        //And then print it on the screen.
-        //Draw the butt
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {System.out.println("Inside OnDraw");
 
-        // Draw the picture first
-
-
-        // Draw the button first
+        // Draw the button
         CanvasWidth = canvas.getWidth();
         CanvasHeight = canvas.getHeight();
         super.onDraw(canvas);
@@ -102,6 +108,7 @@ public class FlightInfoView extends View {
         y = CanvasHeight - CanvasHeight / 10;
         int radius;
         radius = CanvasHeight / 30;
+
         // write the flight info
         Paint paint = new Paint();
         canvas.drawPaint(paint);
@@ -109,7 +116,7 @@ public class FlightInfoView extends View {
         canvas.drawRect(0, 0, CanvasWidth, CanvasHeight, paint);
         paint.setColor(Color.BLUE);
         paint.setTextSize(CanvasWidth / 15);
-        String[] split = FlightInfo.split("\n");
+        String[] split = flight.humanReadable().split("\n");
         for (int i = 0; i < split.length;i++) {
             canvas.drawText(split[i], CanvasWidth / 10,
                     CanvasHeight / 10 + i * (CanvasHeight / 10 ), paint);
@@ -125,106 +132,127 @@ public class FlightInfoView extends View {
 
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        System.out.println("Enter onTouch");
+        Log.e("FlightInfoView", "onTouchEvent called for event " + event.toString());
         int action = event.getActionMasked();
 
         // See if they are clicking the favorites button
         if (action == MotionEvent.ACTION_DOWN) {
-            /*if this location is within the scope of our favorites button,
-             * we act accordingly*/
+            // Check if clicked within the right coordinates
             int xPos = (int)event.getRawX();
             int yPos = (int)event.getRawY();
             int radius = CanvasHeight / 30;
 
-            //if the favorites button is clicked, then this happens
-            if (Math.abs(x - xPos) < (CanvasHeight / 30) &&
-                    Math.abs((y + CanvasHeight / 28) -yPos) < (CanvasHeight / 30)) {
-                System.out.print("Enter Here");
-                // add this flight to favorites or delete it from favorites
-                //delete from favorites
-                if (isFavorite) {
-                    FavFlights.remove(FlightInfo.toString());                                                          //  Remove the current flight from FireBase
+            // Check if a button is being clicked
+            if (Math.abs(x - xPos) < (CanvasHeight / 30) && Math.abs((y + CanvasHeight / 28) -yPos)
+                    < (CanvasHeight / 30)) {
+                // The favorites button is being clicked
+                Log.e("FlightInfoView", "onTouchEvent: FAVORITE Button is being clicked.");
 
-                    // remove the flight  from the list of favs in FireBase
+                // Make sure a user is logged in before taking action
+                if (usersRef.getAuth() != null) {
                     final String uid = usersRef.getAuth().getUid();
-                    usersRef.child(uid).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
-                            if (!userData.containsKey("favoriteFlights")) {
-                                ArrayList<Object> favFlights = new ArrayList<>();
-                                userData.put("favoriteFlights", favFlights);
-                                usersRef.child(uid).updateChildren(userData);
-                            } else {
-                                ArrayList<Object> fav = (ArrayList<Object>) ((Map<String, Object>)
-                                        snapshot.getValue()).get("favoriteFlights");
-                                fav.remove(FlightInfo.toString());
-                                userData.put("favoriteFlights", fav);
-                                usersRef.child(uid).updateChildren(userData);
+
+                    if (isFavorite) {
+                        // Remove the flight from the list of favs in FireBase
+                        usersRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
+                                //  Make sure user has a list of favorite flights
+                                if (!userData.containsKey("favoriteFlights")) {
+                                    ArrayList<Object> favFlights = new ArrayList<>();
+                                    userData.put("favoriteFlights", favFlights);
+                                    Log.e("FlightInfoView", "onTouchEvent: no favorites to " +
+                                            "remove from");
+                                    // Add a favorites list to this user's information
+                                    usersRef.child(uid).updateChildren(userData);
+                                } else {
+                                    ArrayList<Object> fav = (ArrayList<Object>) ((Map<String, Object>)
+                                            snapshot.getValue()).get("favoriteFlights");
+                                    // Remove the flight from the list
+                                    Log.e("FlightInfoView", "onTouchEvent: removing favorite");
+                                    fav.remove(flight.toString());
+                                    userData.put("favoriteFlights", fav);
+                                    // Update the internal FireBase datastructure
+                                    usersRef.child(uid).updateChildren(userData);
+                                }
                             }
-                        }
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {
-                            // do nothing
-                        }
-                    });
+
+                            @Override
+                            public void onCancelled(FirebaseError firebaseError) {
+                                // do nothing
+                            }
+                        });
+
+                    } else {
+                        // Add the to the user's list of favorites
+                        usersRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
+                                if (!userData.containsKey("favoriteFlights")) {
+                                    Log.e("FlightInfoView", "onTouchEvent: adding new favorite");
+                                    ArrayList<Object> favFlights = new ArrayList<>();
+                                    favFlights.add(flight.toString());
+                                    userData.put("favoriteFlights", favFlights);
+                                    usersRef.child(uid).updateChildren(userData);
+                                } else {
+                                    List<Object> favFlights = (List<Object>) ((Map<String, Object>)
+                                            snapshot.getValue()).get("favoriteFlights");
+                                    // Add the flight to the list
+                                    Log.e("FlightInfoView", "onTouchEvent: adding new favorite");
+                                    favFlights.add(flight.toString());
+                                    userData.put("favoriteFlights", favFlights);
+                                    usersRef.child(uid).updateChildren(userData);
+                                }
+                            }
+                            @Override
+                            public void onCancelled(FirebaseError firebaseError) {
+                                // Do nothing
+                            }
+                        });
+
+                    }
+
+                    // Change the favorite status
+                    isFavorite = !isFavorite;
+
+                } else {
+                    Log.e("FlightInfoView", "onTouchEvent: No user logged in, taking no action.");
+                    // No user logged in, do not take any action
+                    // TODO: Add a Toast object to pop up, informing the user to make an account
+                    // if they want to use favorites features
 
                 }
-                //add to favorites
-                else {
-                    FavFlights.add(FlightInfo.toString());                                                             // Add the current flight to FireBase
-                    System.out.println("Size of the favlist in View" + FavFlights.size());
 
-                    Log.e("FlightInfo", FlightInfo.toString());
-
-                    // remove the flight  from the list of favs in FireBase
-                    final String uid = usersRef.getAuth().getUid();
-                    usersRef.child(uid).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
-                            if (!userData.containsKey("favoriteFlights")) {
-                                ArrayList<Object> favFlights = new ArrayList<>();
-                                favFlights.add(FlightInfo.toString());
-                                userData.put("favoriteFlights", favFlights);
-                                usersRef.child(uid).updateChildren(userData);
-                            } else {
-                                List<Object> favFlights = (List<Object>) ((Map<String, Object>)
-                                        snapshot.getValue()).get("favoriteFlights");
-                                userData.put("favoriteFlights", favFlights);
-                                usersRef.child(uid).updateChildren(userData);
-                            }
-                        }
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {
-                            // do nothing
-                        }
-                    });
-
-                }
-                isFavorite = !isFavorite;
-            }
-
-
-            //if the BUY TICKET button is clicked then this happens
-            else if  (xPos > x + 1 * CanvasWidth / 8 && xPos < x + 1 * CanvasWidth / 4 + 1 * CanvasWidth / 8
+            } else if  (xPos > x + CanvasWidth / 8 && xPos < x + CanvasWidth / 4 + CanvasWidth / 8
                     && yPos  > y - radius && yPos < y + radius) {
-            }
+                Log.e("FlightInfoView", "onTouchEvent: BUY TICKET Button is being clicked.");
+                // The BUY TICKET button has been clicked
 
-            //if the GO BACK button is clicked then this happens
-            else if  (xPos > 1 * CanvasWidth / 8 && xPos < 1 * CanvasWidth / 4 + 1 * CanvasWidth / 8
+                // TODO: Handle the BUY TICKET action
+
+            } else if (xPos > CanvasWidth / 8 && xPos < CanvasWidth / 4 + CanvasWidth / 8
                     && yPos  > y - radius && yPos < y + radius) {
+                Log.e("FlightInfoView", "onTouchEvent: GO BACK Button is being clicked.");
+                // The GO BACK button has been clicked
+
                 //we want to send the favorites information back to our Dashboard page
                 ticket = true;
                 //Intent intent = new Intent(this, ExternalFlightSearch.class);
                 //intent.putExtra(EXTRA_MESSAGE2, FavFlights);
                 //Intent browserIntent = new Intent(Intent.ACTION_VIEW, Url.parse("http://www.google.com"));
                 //startActivity(browserIntent);
+                // TODO: Handle the GO BACK action
+
+            } else {
+                ticket = false;
             }
-            else ticket = false;
         }
+
         invalidate();
         return true;
     }

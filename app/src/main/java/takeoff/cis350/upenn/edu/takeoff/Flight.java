@@ -21,30 +21,30 @@ public class Flight implements Serializable {
     boolean isEntry=false;
     List<Flight> subFlights=new ArrayList<Flight>();
 
-    String id="";  //unique per flight
+    String id=" ";  //unique per flight
     boolean isRoundtrip=false;
 
     double cost=99999.99;     //in USD           //trips.tripOption[].saleTotal
     int numOfConnections=5;
     int duration;
 
-    String airline="";
+    String airline=" ";
 
     int oneWayDuration=4320;
-    String departureCityCode="";
-    String departureDate="";    //YYYY-MM-DD
-    String departureTime="";   //HH-MM
-    String arrivalCityCode="";
-    String arrivalDate="";
-    String arrivalTime="";
+    String departureCityCode=" ";
+    String departureDate=" ";    //YYYY-MM-DD
+    String departureTime=" ";   //HH-MM
+    String arrivalCityCode=" ";
+    String arrivalDate=" ";
+    String arrivalTime=" ";
     //Only if there is a return flight
     int roundTripDuration=4320;
-    String retdepartureCityCode="";
-    String retdepartureTime="";
-    String retdepartureDate="";
-    String retarrivalCityCode="";
-    String retarrivalDate="";
-    String retarrivalTime="";
+    String retdepartureCityCode=" ";
+    String retdepartureTime=" ";
+    String retdepartureDate=" ";
+    String retarrivalCityCode=" ";
+    String retarrivalDate=" ";
+    String retarrivalTime=" ";
 
 
     //SINGLE FLIGHT/Leg specific values
@@ -95,16 +95,57 @@ public class Flight implements Serializable {
         sb.append("Airline: " + this.airline + "\n");
         sb.append("Cost: " + this.cost + "\n");
         sb.append("Departure City: " + this.departureCityCode + "\n");
+        sb.append("Departure Date: " + this.departureDate + "\n");
         sb.append("Arrival City: " + this.arrivalCityCode + "\n");
         sb.append("Arrival Date: " + this.arrivalDate + "\n");
         return sb.toString();
     }
 
+    // Return a string array representing the information from the human-readable format
+    public static Flight fromHumanReadable(String hr) {
+        // FORMAT: airline, cost, departure city, departure date, arrival city, arrival date
+        Flight f = new Flight();
+        String[] info = hr.split("\n");
+        for (int i = 0; i < info.length; i++) {
+            info[i] = info[i].split(": ")[1];
+        }
+        f.airline = info[0];
+        f.cost = Double.parseDouble(info[1]);
+        f.departureCityCode = info[2];
+        f.departureDate = info[3];
+        f.arrivalCityCode = info[4];
+        f.arrivalDate = info[5];
+        return f;
+    }
+
+
+    // Return true if Flight F1 and Flight F2 have the same minimal fields, false otherwise
+    public static boolean minimalCompare(Flight f1, Flight f2) {
+        // COMPARE: airline, cost, departure city, departure date, arrival city, arrival date
+        boolean compare = (f1.airline.equals(f2.airline))
+                & ((int) f1.cost == (int) f2.cost)
+                & (f1.departureCityCode.equals(f2.departureCityCode))
+                & (f1.departureDate.equals(f2.departureDate))
+                & (f1.arrivalCityCode.equals(f2.arrivalCityCode))
+                & (f1.arrivalDate.equals(f2.arrivalDate));
+        Log.e("minimalCompare", "returning " + compare);
+        return compare;
+    }
+
+
     public static Flight parseFlight(String s) {
-        Log.e("Flight", "Parsing flight string:" + s);
-        String[] info = s.split("-");
+        String[] info = s.contains(":") ?
+                Flight.fromHumanReadable(s).toString().split("-") : s.split("-");
+
         Flight f = new Flight();
         if (info.length < 23) {
+            // FORMAT: airline, cost, departure city, departure date, arrival city, arrival date
+            f.airline = info[0];
+            f.cost = Double.parseDouble(info[1]);
+            f.departureCityCode = info[2];
+            f.departureDate = info[3];
+            f.arrivalCityCode = info[4];
+            f.arrivalDate = info[5];
 
         } else {
             f.id = info[0];
@@ -130,8 +171,10 @@ public class Flight implements Serializable {
             f.cabinClass = info[20];
             f.mileage = Integer.parseInt(info[21]);
             f.flightDuration = Integer.parseInt(info[22]);
-            f.arrivalDate = info[23];
+            if (info.length >= 24)
+                f.arrivalDate = info[23];
         }
+        Log.e("Flight", "Parsing finished, returning: " + f.toString());
         return f;
     }
 
