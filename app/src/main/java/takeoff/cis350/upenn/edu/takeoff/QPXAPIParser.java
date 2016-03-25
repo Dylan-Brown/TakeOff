@@ -16,12 +16,10 @@ import org.apache.http.entity.*;
  */
 public class QPXAPIParser {
 
-    public static List<Flight> getAPIResultsAsFlight() throws JSONException {
+    public static List<Flight> getAPIResultsAsFlight(JSONArray jsonArray) throws JSONException {
 
         List<Flight> flightResults = new ArrayList<Flight>();
 
-        JSONArray jsonArray = QPXAPIReader.executeAPIRequest(new SearchQuery(),
-                "AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos");
         // tripOptions
         for (int index = 0; index < jsonArray.length(); index++) {
             JSONObject tripOption = jsonArray.getJSONObject(index);// each Trip

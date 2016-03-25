@@ -138,7 +138,7 @@ public class SearchParameterProcessor {
         for (int i = 0; i < 3; i++) {
             dateArr[i] = Integer.parseInt(dateStrings[i]);
         }
-        return "" + dateArr[2] + "-" + dateArr[1] + "-" + dateArr[0];
+        return "" + dateArr[2] + "-" + dateArr[0] + "-" + dateArr[1];
     }
 
     private List<String> parseLocations(String s) {
