@@ -28,7 +28,7 @@ public class Dashboard extends ListActivity {
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     public final static String FLIGHT_MESSAGE = "FlightActual";
-    ArrayList<Flight> flightResults;
+    List<Flight> flightResults;
     ListView l;
 
     @SuppressWarnings("unchecked")
@@ -40,9 +40,7 @@ public class Dashboard extends ListActivity {
 
         // get the flight information information
         // TODO: Get real flight information; right now it is dummy information
-        DummyFlightInfo dummyFlights = new DummyFlightInfo();
-        flightResults = new ArrayList<>(Arrays.asList(dummyFlights.getFlights()));
-
+        flightResults = QPXAPIParser.getFlightResultsFromMostRecentSearch();
         // Make flight information human readable
         String[] flights = new String[flightResults.size()];
         int i = 0;
