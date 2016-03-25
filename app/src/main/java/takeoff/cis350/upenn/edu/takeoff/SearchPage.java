@@ -387,6 +387,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         final SearchQuery sq = spp.getQuery();
         String request = QPXAPIReader.makeJSONObjectFromSearchQuery(sq);
 
+
         // Store the SearchQuery in FireBase
         if (usersRef.getAuth() !=  null) {
             Log.e("SearchPage", "Authorized to store query");
@@ -421,15 +422,10 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         }
 
 
-       /* try {
-            QPXAPIReader.executeAPIRequest(sq, "AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w", this);
-        } catch (Exception e) {
-        }
-        */
-        Intent intent = new Intent(this, Dashboard.class);
-        startActivity(intent);
+
+
         //System.out.println("SearchPage: About to execute request...");
-        //new JSONAsyncTask(this.getApplicationContext()).execute(request);
+        new JSONAsyncTask(this.getApplicationContext()).execute(request);
         /*
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
@@ -582,7 +578,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             try {
                 JSONObject json = new JSONObject(params[0]);
                 System.out.println(json.toString(4));
-                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ");
+                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA");
                 StringEntity SEJson = new StringEntity(json.toString());
                 httpPost.setEntity(SEJson);
                 httpPost.setHeader("Content-type", "application/json");
@@ -619,6 +615,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 System.out.println("ASyncTask: IT WORKS!");
                 System.out.println(result.toString(2));
             } catch (JSONException e) {
+                System.out.println("ASyncTask: FAILED!");
             }
             Intent intent = new Intent(context, Dashboard.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

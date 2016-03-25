@@ -13,20 +13,20 @@ public class SearchQuery {
     Time timeOfSearch;
     String origin=" ";
     String destination=" ";
-    String date=" "; //in the format of YYYY-MM-DD
+    String date=""; //in the format of YYYY-MM-DD
     boolean isRoundtrip;
-    String returnDate=" "; //in the format of YYYY-MM-DD, only present if roundtrip
+    String returnDate=""; //in the format of YYYY-MM-DD, only present if roundtrip
     int adultCount=1;	//number of adults (i.e. passengers)
 
-    String preferredCabin=" "; //COACH, PREMIUM_COACH, BUSINESS, FIRST
+    String preferredCabin=""; //COACH, PREMIUM_COACH, BUSINESS, FIRST
     double maxPrice=99999; //in USD
     boolean refundability=false; //is refundable or not
     int numberOfSolutions=20; //maximum number of search results
     int maxStops=5; //number of connections, direct flights = 0
-    String earliestTime=" "; //in the format of HH:MM (24 hours)
-    String latestTime=" "; //in the format of HH:MM (24 hours)
+    String earliestTime=""; //in the format of HH:MM (24 hours)
+    String latestTime=""; //in the format of HH:MM (24 hours)
     int maxConnectionDuration=4320; //maximum amount in minutes
-    String alliance=" "; //NONE, STAR, ONEWORLD, XXX,XXX
+    String alliance=""; //NONE, STAR, ONEWORLD, XXX,XXX
 
     public SearchQuery() {
     };
