@@ -53,6 +53,7 @@ import java.util.Locale;
 
 
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
+    private String APIKey="AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
@@ -538,7 +539,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             try {
                 JSONObject json = new JSONObject(params[0]);
                 System.out.println(json.toString(4));
-                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ");
+                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key="+APIKey);
                 StringEntity SEJson = new StringEntity(json.toString());
                 httpPost.setEntity(SEJson);
                 httpPost.setHeader("Content-type", "application/json");
