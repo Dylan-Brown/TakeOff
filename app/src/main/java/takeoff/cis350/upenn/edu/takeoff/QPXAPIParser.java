@@ -7,6 +7,7 @@ import org.json.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by tangson on 3/23/16.
  */
@@ -15,109 +16,94 @@ public class QPXAPIParser {
     static List<Flight> FlightCache;
 
     public static List<Flight> getAPIResultsAsFlight(JSONArray jsonArray) throws JSONException {
-        FlightCache=new ArrayList<Flight>();
+        FlightCache = new ArrayList<Flight>();
         List<Flight> flightResults = new ArrayList<Flight>();
         System.out.println("QPXAPIParser: attempt to getAPIResultsAsFlight");
         Log.e("QPXAPIParser", " attempt to getAPIResultsAsFlight");
-        // tripOptions
+
+        // tripOptions, a list of flights
         for (int index = 0; index < jsonArray.length(); index++) {
             JSONObject tripOption = jsonArray.getJSONObject(index);// each Trip
-
             JSONArray slices = tripOption.getJSONArray("slice");
             int numOfSlices = slices.length();
 
-
             Flight fullFlight = new Flight();
-            if (numOfSlices>1){fullFlight.isReturnTrip=true;}
-            else {fullFlight.isReturnTrip=false;}
+            fullFlight.numOfConnections = 0;
+            if (numOfSlices > 1) {
+                fullFlight.isReturnTrip = true;
+            } else {
+                fullFlight.isReturnTrip = false;
+            }
             fullFlight.id = tripOption.getString("id");
             String costWithoutUSD = tripOption.getString("saleTotal").replaceAll("[^0-9\\.]+", "");
             fullFlight.cost = Double.parseDouble(costWithoutUSD);
 
-            // slice
+            // slice, divided into one way or two way.
             for (int i_sl = 0; i_sl < numOfSlices; i_sl++) {
                 JSONArray segments = slices.getJSONObject(i_sl).getJSONArray("segment");
                 int numOfSegments = segments.length();
-                // segments
+                // segments, i.e. number of flight connections
                 for (int i_s = 0; i_s < numOfSegments; i_s++) {
                     JSONObject segment = segments.getJSONObject(i_s);
                     JSONArray legs = segments.getJSONObject(i_s).getJSONArray("leg");
                     int numOfLegs = legs.length();
-                    // legs
+                    // legs, i.e. number of flights
                     for (int i = 0; i < numOfLegs; i++) {
-                        Flight flight = new Flight();
-                        if (i_sl == 1) {
-                            flight.isReturnTrip = true;
-                        }
                         JSONObject leg = legs.getJSONObject(i);
-
-                        fullFlight.numOfConnections = numOfSegments - 1;
-
-                        if (i_sl == 0) {
-                            flight.oneWayDuration = slices.getJSONObject(i_sl).getInt("duration");
-                        } else {
-                            flight.roundTripDuration = slices.getJSONObject(i_sl).getInt("duration");
+                        subFlight sf = new subFlight();
+                        if (i_sl == 1) {
+                            fullFlight.isReturnTrip = true;
+                            sf.isReturnTrip = true;
                         }
-                        flight.flightNumber = segment.getJSONObject("flight").getString("carrier")
+
+                        fullFlight.numOfConnections += numOfLegs;
+                        sf.flightNumber = segment.getJSONObject("flight").getString("carrier")
                                 + segment.getJSONObject("flight").getString("number");
-                        flight.cabinClass = segment.getString("cabin");
-                        flight.airline=segment.getJSONObject("flight").getString("carrier");
-                        flight.departureCityCode = leg.getString("origin");
-                        flight.departureTime = leg.getString("departureTime").split("T")[0];
-                        flight.departureDate = leg.getString("departureTime").split("T")[1];
-                        flight.arrivalCityCode = leg.getString("destination");
-                        flight.arrivalTime = leg.getString("arrivalTime").split("T")[1];
-                        flight.arrivalDate = leg.getString("arrivalTime").split("T")[0];
-                        flight.id = tripOption.getString("id");
-                        flight.flightDuration = leg.getInt("duration");
-                        flight.mileage = leg.getInt("mileage");
+                        sf.cabinClass = segment.getString("cabin");
+                        sf.airline = segment.getJSONObject("flight").getString("carrier");
+                        sf.departureCityCode = leg.getString("origin");
+                        sf.departureTime = leg.getString("departureTime").split("T")[0];
+                        sf.departureDate = leg.getString("departureTime").split("T")[1];
+                        sf.arrivalCityCode = leg.getString("destination");
+                        sf.arrivalTime = leg.getString("arrivalTime").split("T")[1];
+                        sf.arrivalDate = leg.getString("arrivalTime").split("T")[0];
+                        sf.id = tripOption.getString("id");
+                        sf.flightDuration = leg.getInt("duration");
+                        sf.mileage = leg.getInt("mileage");
 
-                        fullFlight.subFlights.add(flight);
-
-                        System.out.println("Flight: " + fullFlight.subFlights.size() + " .");
-                        System.out.println("Departure Code: " + flight.departureCityCode);
-                        System.out.println("Arrival Code: " + flight.arrivalCityCode);
-                        System.out.println(flight.departureTime);
-                        System.out.println(flight.departureDate);
-                        System.out.println("tripOptions: "+jsonArray.length());
+                        fullFlight.subFlights.add(sf);
                     } // leg
                 } // segment
             } // slice
-            List<Flight> fl = fullFlight.subFlights;
-            fullFlight.isMasterTicket = true;
-
-
-            int counter=0;
-            for (int asdz=0;asdz< fl.size();asdz++){
-                if (fl.get(asdz).isReturnTrip){
-                    System.out.println("BROKEN!");
-                    counter=asdz;
+            List<subFlight> sfList = fullFlight.subFlights;
+            Flight firstF = fullFlight.subFlights.get(0);
+            int roundTripCounter = 0;
+            for (int i = 0; i < sfList.size(); i++) {
+                if (sfList.get(i).isReturnTrip == false) {
+                    roundTripCounter++;
+                } else {
                     break;
                 }
             }
-            Flight firstF = fl.get(0);
-            if (counter<=1){counter=1;}
-            Flight lastF = fl.get(counter-1);
+            Flight lastF = sfList.get(roundTripCounter - 1);
             fullFlight.departureCityCode = firstF.departureCityCode;
             fullFlight.departureTime = firstF.departureTime;
             fullFlight.departureDate = firstF.departureDate;
             fullFlight.arrivalCityCode = lastF.arrivalCityCode;
             fullFlight.arrivalTime = lastF.arrivalTime;
             fullFlight.arrivalDate = lastF.arrivalDate;
-            fullFlight.oneWayDuration = lastF.flightDuration;
             fullFlight.departureCityCode = lastF.departureCityCode;
-
+            fullFlight.totalroundTripDuration = slices.getJSONObject(0).getInt("duration");
             if (fullFlight.isReturnTrip) {
-                firstF=fl.get(counter);
-                firstF=fl.get(fl.size()-1);
-
+                firstF = sfList.get(roundTripCounter);
+                lastF = sfList.get(sfList.size() - 1);
+                fullFlight.totalroundTripDuration = slices.getJSONObject(1).getInt("duration");
                 fullFlight.retdepartureCityCode = firstF.departureCityCode;
                 fullFlight.retdepartureTime = firstF.departureTime;
                 fullFlight.retdepartureDate = firstF.departureDate;
                 fullFlight.retarrivalCityCode = lastF.arrivalCityCode;
                 fullFlight.retarrivalTime = lastF.arrivalTime;
                 fullFlight.retarrivalDate = lastF.arrivalDate;
-                fullFlight.roundTripDuration = lastF.flightDuration;
                 fullFlight.retdepartureCityCode = lastF.departureCityCode;
             }
             FlightCache.add(fullFlight);
@@ -126,9 +112,11 @@ public class QPXAPIParser {
         return flightResults;
     }
 
-    public static List<Flight> getFlightResultsFromMostRecentSearch(){
+    public static List<Flight> getFlightResultsFromMostRecentSearch() {
         return FlightCache;
-    };
+    }
+
+
     public static void printFlights(List<Flight> flightResults) {
         for (Flight flight : flightResults) {
             System.out.println("");
@@ -139,17 +127,17 @@ public class QPXAPIParser {
             System.out.println("Arrival Time: " + flight.arrivalTime);
             System.out.println("ArrivalDate: " + flight.arrivalDate);
 
+            if (flight.isReturnTrip) {
+                System.out.println("Ret Departure: " + flight.retdepartureCityCode);
+                System.out.println("Ret Departure Time: " + flight.retdepartureTime);
+                System.out.println("Ret Departure Date: " + flight.retdepartureDate);
+                System.out.println("Ret Arrival: " + flight.retarrivalCityCode);
+                System.out.println("Ret Arrival Time: " + flight.retarrivalTime);
+                System.out.println("Ret ArrivalDate: " + flight.retarrivalDate);
 
-            System.out.println("Ret Departure: " + flight.retdepartureCityCode);
-            System.out.println("Ret Departure Time: " + flight.retdepartureTime);
-            System.out.println("Ret Departure Date: " + flight.retdepartureDate);
-            System.out.println("Ret Arrival: " + flight.retarrivalCityCode);
-            System.out.println("Ret Arrival Time: " + flight.retarrivalTime);
-            System.out.println("Ret ArrivalDate: " + flight.retarrivalDate);
-
-            System.out.println("Num Connections: " + flight.numOfConnections);
-            System.out.println("Flight number: " + flight.subFlights.get(0).flightNumber);
-            System.out.println("Flight time: " + flight.oneWayDuration + " minutes");
+                System.out.println("Num Connections: " + flight.numOfConnections);
+                System.out.println("Flight number: " + flight.subFlights.get(0).flightNumber);
+            }
         }
     }
 }

@@ -18,19 +18,16 @@ public class Flight implements Serializable {
     //Flight is one level recursive.
     //The master Flight (i.e. the Ticket) is composed of individual flights (eg connections, roundtrips)
     //If the flight is the master flight, then isEntry is set to true.
-    boolean isMasterTicket=false;
-    List<Flight> subFlights=new ArrayList<Flight>();
+    List<subFlight> subFlights=new ArrayList<subFlight>();
 
     String id="";  //unique per flight
     boolean isReturnTrip=false;
 
     double cost=99999.99;     //in USD           //trips.tripOption[].saleTotal
-    int numOfConnections=5;
+    int numOfConnections=0;
     int duration;
 
-    String airline=" ";
-
-    int oneWayDuration=4320;
+    int totaloneWayDuration=4320;
     String departureCityCode=" ";
     String departureDate=" ";    //YYYY-MM-DD
     String departureTime=" ";   //HH-MM
@@ -38,7 +35,7 @@ public class Flight implements Serializable {
     String arrivalDate=" ";
     String arrivalTime=" ";
     //Only if there is a return flight
-    int roundTripDuration=4320;
+    int totalroundTripDuration=4320;
     String retdepartureCityCode=" ";
     String retdepartureTime=" ";
     String retdepartureDate=" ";
@@ -46,12 +43,6 @@ public class Flight implements Serializable {
     String retarrivalDate=" ";
     String retarrivalTime=" ";
 
-
-    //SINGLE FLIGHT/Leg specific values
-    String flightNumber;   //eg UA93
-    String cabinClass;
-    int mileage;
-    int flightDuration;
 
     @Override
     public String toString() {
@@ -65,25 +56,25 @@ public class Flight implements Serializable {
         sb.append(isReturnTrip + "-");
         sb.append(((int) cost) + "-");
         sb.append(numOfConnections + "-");
-        sb.append(airline + "-");
-        sb.append(oneWayDuration + "-");
+      //  sb.append(airline + "-");
+       // sb.append(oneWayDuration + "-");
         sb.append(departureCityCode + "-");
         sb.append(departureDate + "-");
         sb.append(departureTime + "-");
         sb.append(arrivalCityCode + "-");
         sb.append(arrivalDate + "-");
         sb.append(arrivalTime + "-");
-        sb.append(roundTripDuration + "-");
+      //  sb.append(roundTripDuration + "-");
         sb.append(retdepartureCityCode + "-");
         sb.append(retdepartureTime + "-");
         sb.append(retdepartureDate + "-");
         sb.append(retarrivalCityCode + "-");
         sb.append(retarrivalDate + "-");
         sb.append(retarrivalTime + "-");
-        sb.append(flightNumber + "-");
+        /*sb.append(flightNumber + "-");
         sb.append(cabinClass + "-");
         sb.append(mileage + "-");
-        sb.append(flightDuration);
+        sb.append(flightDuration);*/
         return sb.toString();
     }
 
@@ -92,7 +83,7 @@ public class Flight implements Serializable {
     public String humanReadable() {
         // FORMAT: airline, cost, departure city, departure date, arrival city, arrival date
         StringBuilder sb = new StringBuilder();
-        sb.append("Airline: " + this.airline + "\n");
+        //sb.append("Airline: " + this.airline + "\n");
         sb.append("Cost: " + this.cost + "\n");
         sb.append("Departure City: " + this.departureCityCode + "\n");
         sb.append("Departure Date: " + this.departureDate + "\n");
@@ -109,12 +100,13 @@ public class Flight implements Serializable {
         for (int i = 0; i < info.length; i++) {
             info[i] = info[i].split(": ")[1];
         }
-        f.airline = info[0];
+     //   f.airline = info[0];
         f.cost = Double.parseDouble(info[1]);
         f.departureCityCode = info[2];
         f.departureDate = info[3];
         f.arrivalCityCode = info[4];
         f.arrivalDate = info[5];
+
         return f;
     }
 
@@ -122,12 +114,7 @@ public class Flight implements Serializable {
     // Return true if Flight F1 and Flight F2 have the same minimal fields, false otherwise
     public static boolean minimalCompare(Flight f1, Flight f2) {
         // COMPARE: airline, cost, departure city, departure date, arrival city, arrival date
-        boolean compare = (f1.airline.equals(f2.airline))
-                & ((int) f1.cost == (int) f2.cost)
-                & (f1.departureCityCode.equals(f2.departureCityCode))
-                & (f1.departureDate.equals(f2.departureDate))
-                & (f1.arrivalCityCode.equals(f2.arrivalCityCode))
-                & (f1.arrivalDate.equals(f2.arrivalDate));
+        boolean compare = f1.id.equals(f2.id);
         return compare;
     }
 
@@ -139,7 +126,7 @@ public class Flight implements Serializable {
         Flight f = new Flight();
         if (info.length < 23) {
             // FORMAT: airline, cost, departure city, departure date, arrival city, arrival date
-            f.airline = info[0];
+      //      f.airline = info[0];
             f.cost = Double.parseDouble(info[1]);
             f.departureCityCode = info[2];
             f.departureDate = info[3];
@@ -151,25 +138,25 @@ public class Flight implements Serializable {
             f.isReturnTrip = Boolean.parseBoolean(info[1]);
             f.cost = Double.parseDouble(info[2]);
             f.numOfConnections = Integer.parseInt(info[3]);
-            f.airline = info[4];
-            f.oneWayDuration = Integer.parseInt(info[5]); // 5
+        //    f.airline = info[4];
+      //      f.oneWayDuration = Integer.parseInt(info[5]); // 5
             f.departureCityCode = info[6];
             f.departureDate = info[7];
             f.departureTime = info[8];
             f.arrivalCityCode = info[9];
             f.arrivalDate = info[10];  //10
             f.arrivalTime = info[11];
-            f.roundTripDuration = Integer.parseInt(info[12]);
+          //  f.roundTripDuration = Integer.parseInt(info[12]);
             f.retdepartureCityCode = info[13];
             f.retdepartureTime = info[14];
             f.retdepartureDate = info[15];
             f.retarrivalCityCode = info[16];
             f.retarrivalDate = info[17];
             f.retarrivalTime = info[18];
-            f.flightNumber = info[19];
+           /* f.flightNumber = info[19];
             f.cabinClass = info[20];
             f.mileage = Integer.parseInt(info[21]);
-            f.flightDuration = Integer.parseInt(info[22]);
+            f.flightDuration = Integer.parseInt(info[22]);*/
             if (info.length >= 24)
                 f.arrivalDate = info[23];
         }
@@ -178,3 +165,21 @@ public class Flight implements Serializable {
 
 }
 
+class subFlight extends Flight{
+
+    //SINGLE FLIGHT/Leg specific values
+    String flightNumber;   //eg UA93
+    String cabinClass;
+    int mileage;
+    int flightDuration;
+    String airline=" ";
+
+    int duration=4320;
+    String departureCityCode=" ";
+    String departureDate=" ";    //YYYY-MM-DD
+    String departureTime=" ";   //HH-MM
+    String arrivalCityCode=" ";
+    String arrivalDate=" ";
+    String arrivalTime=" ";
+
+}

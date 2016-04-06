@@ -159,7 +159,7 @@ public class Dashboard extends ListActivity {
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
-                        if (array[i].airline.compareTo(array[k].airline) < 0) {
+                        if (array[i].subFlights.get(0).airline.compareTo(array[k].subFlights.get(0).airline) < 0) {
                             Flight temp;
                             temp = array[i];
                             array[i] = array[k];
