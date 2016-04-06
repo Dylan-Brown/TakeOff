@@ -103,31 +103,31 @@ public class Dashboard extends ListActivity {
     }
 
     public void sortByAirline(MenuItem item) {
-        bubbleSortBy(0);
+        bubbleSortBy("airline");
     }
 
     public void sortByCost(MenuItem item) {
-        bubbleSortBy(1);
+        bubbleSortBy("cost");
     }
 
     public void sortByDepartureDate(MenuItem item) {
-        bubbleSortBy(2);
+        bubbleSortBy("dep_date");
     }
 
     public void sortByDepartureCity(MenuItem item) {
-        bubbleSortBy(3);
+        bubbleSortBy("dep_city");
     }
 
     public void sortByArrivalDate(MenuItem item) {
-        bubbleSortBy(4);
+        bubbleSortBy("arr_date");
     }
 
     public void sortByArrivalCity(MenuItem item) {
-        bubbleSortBy(5);
+        bubbleSortBy("arr_city");
     }
 
     public void sortByFavoriteFlights(MenuItem item) {
-        bubbleSortBy(6);
+        bubbleSortBy("fav_flights");
     }
 
     public void advancedFilter(MenuItem item) {
@@ -140,7 +140,7 @@ public class Dashboard extends ListActivity {
         sq.no_of_Slices=1; //number of total trips; one-way is 1 slice, roundtrip is 2 slices
         sq.origin="PHL";
         sq.destination="NYC";
-        sq.date="2017/01/01"; //in the format of YYYY-MM-DD
+        sq.date="2017-01-01"; //in the format of YYYY-MM-DD
 
         Intent intent = new Intent(this, FilterSearch.class);
         intent.putExtra("searchQuery", sq.toString());
@@ -149,18 +149,13 @@ public class Dashboard extends ListActivity {
         // TODO: Start new activity called FilterSearch
     }
 
-    private void bubbleSortBy(int feature) {
+    private void bubbleSortBy(String feature) {
         Flight[] array = new Flight[flightResults.size()];
-        int t = 0;
-        for (Flight f : flightResults) {
-            array[t++] = f;
-        }
+        flightResults.toArray(array);
         int n = array.length;
         int k;
-
         switch (feature) {
-            case 0:
-                // airline'
+            case "airline":
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -173,9 +168,7 @@ public class Dashboard extends ListActivity {
                     }
                 }
                 break;
-
-            case 1:
-                // cost
+            case "cost":
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -188,9 +181,7 @@ public class Dashboard extends ListActivity {
                     }
                 }
                 break;
-
-            case 2:
-                // depart date
+            case "dep_date":
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -203,8 +194,7 @@ public class Dashboard extends ListActivity {
                     }
                 }
                 break;
-
-            case 3:
+            case "dep_city":
                 // depart city
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
@@ -218,9 +208,7 @@ public class Dashboard extends ListActivity {
                     }
                 }
                 break;
-
-            case 4:
-                // arrive date
+            case "arr_date":
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
@@ -233,8 +221,19 @@ public class Dashboard extends ListActivity {
                     }
                 }
                 break;
-
-            case 6:
+            case "arr_city":
+                for (int m = n; m >= 0; m--) {
+                    for (int i = 0; i < n - 1; i++) {
+                        k = i + 1;
+                        if (array[i].arrivalCityCode.compareTo(array[k].arrivalCityCode) < 0) {
+                            Flight temp;
+                            temp = array[i];
+                            array[i] = array[k];
+                            array[k] = temp;
+                        }
+                    }
+                }
+            case "fav_flights":
                 // If there is a logged in user, display list of favorites
                 if (usersRef.getAuth() !=  null) {
                     Log.e("Dashboard", "Authorized");
@@ -282,18 +281,6 @@ public class Dashboard extends ListActivity {
                 break;
 
             default:
-                // arrive city
-                for (int m = n; m >= 0; m--) {
-                    for (int i = 0; i < n - 1; i++) {
-                        k = i + 1;
-                        if (array[i].arrivalCityCode.compareTo(array[k].arrivalCityCode) < 0) {
-                            Flight temp;
-                            temp = array[i];
-                            array[i] = array[k];
-                            array[k] = temp;
-                        }
-                    }
-                }
         }
 
         String[] flightInfo = new String[array.length];
