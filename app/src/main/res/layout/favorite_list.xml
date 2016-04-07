@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context="takeoff.cis350.upenn.edu.takeoff.FavoriteActivity">
+    tools:context=".ui.favorites.FavoriteActivity">
 
     <ListView android:id="@android:id/list"
         android:layout_width="fill_parent"
