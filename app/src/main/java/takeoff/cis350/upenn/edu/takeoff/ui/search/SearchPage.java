@@ -106,7 +106,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         //Making the autocomplete Text
         countriesAutoComp = (MultiAutoCompleteTextView) findViewById(R.id.autocomplete_country);
-        String[] countryArray = getResources().getStringArray(R.array.countries_array);
+        String[] countryArray = getResources().getStringArray(R.array.countries);
         countriesAutoComp.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         countriesAutoComp.setOnFocusChangeListener(getOnFocusChangeListener());
         ArrayAdapter<String> adapter =

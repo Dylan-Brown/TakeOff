@@ -24,6 +24,10 @@ public class User {
         this.uid = uid;
     }
 
+    public String getUID() {
+        return this.uid;
+    }
+
     public boolean addFavorite(Flight flight){
         //return favoriteFlights.add(flight);
         return false;
