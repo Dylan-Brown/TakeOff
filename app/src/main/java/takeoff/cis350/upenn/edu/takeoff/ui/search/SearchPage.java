@@ -86,8 +86,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     private boolean nonstop; //T = 0, F = 5
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Here!");
+    protected void onCreate(Bundle savedInstanceState) { System.out.println("Here!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
 
@@ -96,9 +95,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         day = newCalendar.get(Calendar.DAY_OF_MONTH);
         month = newCalendar.get(Calendar.MONTH) + 1;
         year = newCalendar.get(Calendar.YEAR);
-        System.out.println("day: " + day + " month: " + month + " year: " + year);
+        //System.out.println("day: " + day + " month: " + month + " year: " + year);
 
-        //Dates
+        //Setting Dates views
         departureDateInput = "";
         returningDateInput = "";
         dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
@@ -114,7 +113,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countryArray);
         countriesAutoComp.setAdapter(adapter);
 
-        //Cities
+        //Cities, airport code, wait time edittext setters
         citiesEditText = (EditText) findViewById(R.id.city_input);
         citiesEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
@@ -136,10 +135,16 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         setClassSpinner();
         setAllianceSpinner();
 
+        //Extra option checkboxes
         refundable = false;
         nonstop = false;
     }
 
+    /**
+     * This method returns a lister that will hide the onScreen keyboard
+     * when the specific views do not have the focus anymore
+     * @return an OnFocusChangeListener
+     */
     public View.OnFocusChangeListener getOnFocusChangeListener() {
         View.OnFocusChangeListener listener = new View.OnFocusChangeListener() {
             @Override
@@ -150,6 +155,15 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             }
         };
         return listener;
+    }
+
+    /**
+     * @param view Description: When the focus is not in this designated view,
+     *             the onScreen Keyboard disappears
+     */
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private void setClassSpinner() {
@@ -170,6 +184,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spinner.setAdapter(adapter);
     }
 
+    /**
+     * This method sets the options and variables for the Alliance spinner
+     */
     private void setAllianceSpinner() {
         alliance = "";
 
@@ -211,6 +228,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     }
 
+    /**
+     * @param v
+     *
+     * Given a specific view, this method is activated when the view is clicked
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == departureDateText.getId()) {
@@ -228,7 +250,8 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     }
 
     /**
-     * Description: A TextWatcher to handle parsing changes in the TextFields
+     * Description: A TextWatcher to handle parsing changes in the
+     * budget textfield
      */
     private final TextWatcher textWatcher = new TextWatcher() {
 
@@ -267,17 +290,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     };
 
     /**
-     * @param view Description: When the focus is not in this designated view, the onScreen Keyboard disappears
-     *             Called by the Countries, Cities, and Budget EditText View
-     */
-    public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-
-    /**
-     * Description: This method is used to find the correct EditText views for the respective
+     * This method is used to find the correct EditText views for the respective
      * departure and return dates.
      */
     public void findDateViews() {
@@ -290,6 +303,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     }
 
+    /**
+     * This method sets the dialouge associated with the date fields
+     */
     private void setDateField() {
         departureDateText.setOnClickListener(this);
         returningDateText.setOnClickListener(this);
@@ -363,7 +379,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     //this is called when "search" is pressed and will transition over to Search Results
     public void transitionToSearch(View view) {
 
-
+        //Get the inputs
         String countries = countriesAutoComp.getText().toString();
         String cities = citiesEditText.getText().toString();
         String airportCodes = airportEditText.getText().toString();
@@ -371,6 +387,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         String passengerCount = ticketEditText.getText().toString();
         String maxConnectionDurationinHours = waitTimeEditText.getText().toString();
 
+        //Setting the correct fields in the object in prep for search
         SearchParameterProcessor spp = new SearchParameterProcessor();
         spp.setDepartureDate(departureDateInput);
         spp.setReturningDate(returningDateInput);

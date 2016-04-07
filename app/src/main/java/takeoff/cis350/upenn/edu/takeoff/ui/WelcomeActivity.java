@@ -20,7 +20,7 @@ package takeoff.cis350.upenn.edu.takeoff.ui;
         import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
         import takeoff.cis350.upenn.edu.takeoff.ui.authentication.SignUpActivity;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class WelcomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //Keep the default board size as 4
     int boardSize = 4;
     //Extra Message
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-                Log.e("MainActivity", "The read failed: " + firebaseError.getMessage());
+                Log.e("WelcomeActivity", "The read failed: " + firebaseError.getMessage());
             }
         });
     }
