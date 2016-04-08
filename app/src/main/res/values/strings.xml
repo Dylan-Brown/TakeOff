@@ -73,9 +73,17 @@
         <item>Business</item>
         <item>First</item>
     </string-array>
+    <!-- SEARCH PAGE STRINGS END HERE -->
+
+
     <string name="title_activity_flight_info">FlightInfo</string>
     <string name="title_activity_flight_info_view">FlightInfoView</string>
     <string name="title_activity_dash_board_search_history">DashBoardSearchHistory</string>
+    <string name="title_activity_tabbing">TabbingActivity</string>
 
-    <!-- SEARCH PAGE STRINGS END HERE-->
+
+
+    <!-- DASHBOARD STRINGS START HERE -->
+    <string name= "dashboard_search_button">Search</string>
+    <!-- DASHBOARD STRINGS END HERE -->
 </resources>

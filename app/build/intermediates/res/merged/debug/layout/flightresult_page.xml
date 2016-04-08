@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView android:id="@+id/rdepartureCityCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="DEP"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/resultflightPrice"
+        android:layout_centerHorizontal="true" />
+
+    <TextView android:id="@+id/departureDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="2016-03-04"
+        android:layout_below="@+id/rdepartureCityCode"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView android:id="@+id/arrivalCityCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ARR"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/rdepartureCityCode" />
+
+    <TextView android:id="@+id/arrivalDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="2016-03-15"
+        android:layout_below="@+id/arrivalCityCode"
+        android:layout_alignStart="@+id/departureDate"
+        />
+
+    <ImageButton android:id="@+id/favoriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/star_on"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <TextView
+        android:id="@+id/resultflightPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="$129"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="JetBlue"
+        android:id="@+id/airline"
+        android:layout_marginBottom="75dp"
+        android:layout_above="@+id/favoriteButton"
+        android:layout_centerHorizontal="true" />
+
+    <TextView         android:id="@+id/connectingCityCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="CON"
+        android:layout_below="@+id/departureDate"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView         android:id="@+id/connectingDeparture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="2016-03-06"
+        android:layout_below="@+id/connectingCityCode"
+        android:layout_alignStart="@+id/departureDate" />
+
+
+    <TextView
+        android:id="@+id/connectingArrival"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="2016-03-07"
+        android:layout_below="@+id/connectingDeparture"
+        android:layout_alignStart="@+id/connectingDeparture" />
+
+
+</RelativeLayout>

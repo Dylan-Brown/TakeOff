@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#000000"
+    >
+
+    <TextView        android:id="@+id/departureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="PHL"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/favoriteButton"
+        android:layout_marginRight="30dp" />
+
+    <TextView    android:id="@+id/arrivalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="BOS"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/departureTextView" />
+
+    <ImageButton    android:id="@+id/favoriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/star_on"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="20dp" />
+
+    <TextView        android:id="@+id/departureDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="3-1-2016"
+        android:layout_below="@+id/departureTextView"
+        android:layout_toEndOf="@+id/favoriteButton" />
+
+    <TextView         android:id="@+id/arrivalDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="3-8-2016"
+        android:layout_below="@+id/arrivalTextView"
+        android:layout_alignStart="@+id/arrivalTextView" />
+
+    <TextView         android:id="@+id/costTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="$500"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/arrivalDateTextView" />
+</RelativeLayout>

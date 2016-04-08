@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -156,7 +157,7 @@ public class SignUpActivity extends AppCompatActivity {
             // TODO: Show a progress spinner while attempting to sign up
 
             final Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
-            final Intent intent = new  Intent(this, SearchPage.class);
+            final Intent intent = new  Intent(this, TabbingActivity.class);
 
             usersRef.createUser(email, password,
                     new Firebase.ValueResultHandler<Map<String, Object>>() {
