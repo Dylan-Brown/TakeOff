@@ -14,16 +14,15 @@ public class Flight implements Serializable {
     //Flight is one level recursive.
     //The master Flight (i.e. the Ticket) is composed of individual flights (eg connections, roundtrips)
     //If the flight is the master flight, then isEntry is set to true.
-    List<SubFlight> subFlights=new ArrayList<SubFlight>();
+    ArrayList<SubFlight> subFlights=new ArrayList<SubFlight>();
 
     String id="";  //unique per flight
     boolean isReturnTrip=false;
 
     double cost=99999.99;     //in USD           //trips.tripOption[].saleTotal
-    int numOfConnections=0;
-    int duration;
 
-    int totaloneWayDuration=4320;
+    int duration=0;
+    int numOfConnections=0;
     String departureCityCode=" ";
     String departureDate=" ";    //YYYY-MM-DD
     String departureTime=" ";   //HH-MM
@@ -31,7 +30,8 @@ public class Flight implements Serializable {
     String arrivalDate=" ";
     String arrivalTime=" ";
     //Only if there is a return flight
-    int totalroundTripDuration=4320;
+    int retduration=0;
+    int retnumOfConnections=0;
     String retdepartureCityCode=" ";
     String retdepartureTime=" ";
     String retdepartureDate=" ";
@@ -39,7 +39,7 @@ public class Flight implements Serializable {
     String retarrivalDate=" ";
     String retarrivalTime=" ";
 
-    public List<SubFlight> getSubFlights() {
+    public ArrayList<SubFlight> getSubFlights() {
         return this.subFlights;
     }
 
