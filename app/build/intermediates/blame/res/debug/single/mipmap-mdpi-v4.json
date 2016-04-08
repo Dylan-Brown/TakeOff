@@ -1,11 +1,15 @@
 [
     {
+        "merged": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.8.am\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
         "source": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.8.am\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
-        "source": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.1.pm\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.1.pm\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
         "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pullagain\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",

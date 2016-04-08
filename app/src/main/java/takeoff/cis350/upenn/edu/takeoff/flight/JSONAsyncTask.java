@@ -42,7 +42,7 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
             System.out.println("IN DOINBACKGROUND");
             JSONObject json = new JSONObject(params[0]);
             System.out.println(json.toString(4));
-            HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA");
+            HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ");
             StringEntity SEJson = new StringEntity(json.toString());
             httpPost.setEntity(SEJson);
             httpPost.setHeader("Content-type", "application/json");

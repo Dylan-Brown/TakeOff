@@ -162,12 +162,11 @@ public class TabbingActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         System.out.println("ON RESUME");
-        if(fromSearch) {
             System.out.println("GETTING DASHY DASH");
             Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
             if (dash != null) {
                 dash.loadDashboard();
-            }
+
         }
     }
 }

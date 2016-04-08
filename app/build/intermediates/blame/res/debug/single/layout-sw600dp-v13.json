@@ -4,11 +4,15 @@
         "source": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
     },
     {
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pullagain\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pullagain\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
+    },
+    {
         "merged": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.8.am\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
         "source": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.8.am\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
     },
     {
-        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pullagain\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
-        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pullagain\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.1.pm\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.1.pm\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
     }
 ]
