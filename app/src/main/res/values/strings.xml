@@ -86,4 +86,10 @@
     <!-- DASHBOARD STRINGS START HERE -->
     <string name= "dashboard_search_button">Search</string>
     <!-- DASHBOARD STRINGS END HERE -->
+
+    <!-- PROFILE STRINGS START HERE -->
+    <string name="profile_group_button">My Groups</string>
+    <string name="profile_make_group_button">New Group</string>
+    <!-- PROFILE STRINGS END HERE -->
+
 </resources>

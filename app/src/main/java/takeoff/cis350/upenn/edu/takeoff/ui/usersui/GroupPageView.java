@@ -3,14 +3,15 @@ package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ListView;
 
 /**
  * Created by dylan on 4/7/16.
  */
-public class GroupPageView extends View {
+public class GroupPageView extends ListView {
 
-    public GroupPageView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public GroupPageView(Context context) {
+        super(context);
     }
 
     /**

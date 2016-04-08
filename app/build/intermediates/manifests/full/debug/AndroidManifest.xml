@@ -75,6 +75,12 @@
         </activity>
         <activity android:name="takeoff.cis350.upenn.edu.takeoff.ui.search.SearchHistoryWrapper" >
         </activity>
+        <activity
+            android:name="takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPageActivity"
+            android:label="GroupPage" />
+        <activity
+            android:name="takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPage"
+            android:label="GroupPageActual" />
 
         <meta-data
             android:name="com.google.android.gms.version"

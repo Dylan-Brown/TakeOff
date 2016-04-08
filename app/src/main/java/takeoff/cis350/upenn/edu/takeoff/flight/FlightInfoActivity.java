@@ -26,6 +26,7 @@ public class FlightInfoActivity extends AppCompatActivity {
         Flight = (Flight) extras.get("FlightActual");
         System.out.println("CREATING VIEW");
         v = new FlightInfoView (this, Flight.humanReadable());
+        //v.setId("flight_info_view");
         System.out.println("ENTERING THE VIEW OF FLIGHT");
         setContentView(v);
     }
@@ -42,16 +43,14 @@ public class FlightInfoActivity extends AppCompatActivity {
     public void PurchaseTicket(MenuItem item) {
         String flight_details = Flight.humanReadable();
         String[] fd = flight_details.split("\n");
-        String depart = fd[2].split(":")[1].trim();
-        String arrive = fd[4].split(":")[1].trim();
-        String f = fd[3].split(":")[1].trim();
-        String r = fd[5].split(":")[1].trim();
-        String date = fd[3].split(":")[1].trim();
+        String depart = fd[1].split(":")[1].trim();
+        String arrive = fd[3].split(":")[1].trim();
+        String date = fd[2].split(":")[1].trim();
         //we want to flip the date;
         String[] ddate = date.split("/");
 
-        f = ddate[2].trim() + "-" + ddate[1].trim() + "-" + ddate[0].trim();
-
+        String f = ddate[2].trim() + "-" + ddate[1].trim() + "-" + ddate[0].trim();
+        System.out.println(depart + " " + arrive + " " + f);
         String url = "https://www.google.com/flights/#search;f="+depart+",ZFV;t="+arrive+";d=" +f;
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);

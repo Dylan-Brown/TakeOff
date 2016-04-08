@@ -17,6 +17,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
@@ -40,18 +41,36 @@ public class FavoritesFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_favorites, container, false);
         return rootView;
     }
 
     private void setVariables() {
         Dashboard dash = (Dashboard) getActivity().getSupportFragmentManager().findFragmentByTag("dashboard");
         l = getListView();
+        if(l == null) {
+            return;
+        }
         flightResults = dash.getFlightResults();
+
+        String[] flights;
+        if (flightResults != null) {
+            flights = new String[flightResults.size()];
+        } else {
+            flights = new String[10];
+            Arrays.fill(flights, "");
+        }
+        setListAdapter(new ArrayAdapter(getActivity(),
+                android.R.layout.simple_list_item_single_choice, flights));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
+                flights);
+        l.setAdapter(adapter);
     }
 
 
     private void loadFavorites() {
+
+
         if (usersRef.getAuth() !=  null) {
             Log.e("Dashboard", "Authorized");
 
@@ -62,8 +81,12 @@ public class FavoritesFragment extends ListFragment {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
                             // User has favorites; get this information and replace search results
-                            Log.e("Dashboard", "onDataChange");
+                            Log.e("Favorites Fragment", "onDataChange");
+                            if(flightResults == null) {
+                                flightResults = new ArrayList<Flight>();
+                            }
 
+                            /*
                             ArrayList<Object> userFavs = (ArrayList<Object>) snapshot.getValue();
                             flightResults.clear();
                             for (Object o : userFavs) {
@@ -76,9 +99,10 @@ public class FavoritesFragment extends ListFragment {
                             for (Flight f : flightResults) {
                                 flightInfo[i++] = f.humanReadable();
                             }
-                            setAdapter(flightInfo);
+                            setAdapter(flightInfo);*/
                             // TODO: flightInfo is the humanReadable list of favorites, display it.
                         }
+
                         @Override
                         public void onCancelled(FirebaseError firebaseError) {
                             // Internally display error message, externally claim nothing found
@@ -88,6 +112,8 @@ public class FavoritesFragment extends ListFragment {
                             toast.show();
                         }
                     });
+
+            //setAdapter(flightInfo);
         } else {
             // No authenticated user (guestsession or some error) - no favorites data
             Toast toast = Toast.makeText(getActivity(),

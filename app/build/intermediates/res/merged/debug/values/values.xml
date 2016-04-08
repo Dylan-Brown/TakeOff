@@ -8641,6 +8641,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="profile_group_button">My Groups</string>
+    <string name="profile_make_group_button">New Group</string>
     <string name="prompt_email">email</string>
     <string name="prompt_password">password</string>
     <string name="prompt_password_2">confirm password</string>

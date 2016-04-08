@@ -66,7 +66,7 @@ public class QPXAPIParser {
                         sf.airline = segment.getJSONObject("flight").getString("carrier") + "";
                         sf.departureCityCode = leg.getString("origin") + "";
                         sf.departureTime = leg.getString("departureTime").split("T")[0] + "";
-                        sf.departureDate = leg.getString("departureTime").split("T")[1] + "";
+                        sf.departureDate = leg.getString("departureDate").split("T")[1] + "";
                         sf.arrivalCityCode = leg.getString("destination") + "";
                         sf.arrivalTime = leg.getString("arrivalTime").split("T")[1] + "";
                         sf.arrivalDate = leg.getString("arrivalTime").split("T")[0] + "";
