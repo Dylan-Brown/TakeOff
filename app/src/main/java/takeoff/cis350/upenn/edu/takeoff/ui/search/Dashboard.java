@@ -48,11 +48,19 @@ public class Dashboard extends ListActivity {
         flightResults = QPXAPIParser.getFlightResultsFromMostRecentSearch();
         //flightResults =new ArrayList<>(Arrays.asList(new DummyFlightInfo().getFlights()));
         // Make flight information human readable
-        String[] flights = new String[flightResults.size()];
-        int i = 0;
-        for (Flight f : flightResults) {
-            flights[i++] = f.humanReadable();
+
+        String[] flights;
+        if (flightResults != null) {
+            flights = new String[flightResults.size()];
+            int i = 0;
+            for (Flight f : flightResults) {
+                flights[i++] = f.humanReadable();
+            }
+        } else {
+            flights = new String[0];
         }
+
+
 
         // not sure what this does, commenting out for now
         /*Log.e("first", "Dashboard");
@@ -73,7 +81,6 @@ public class Dashboard extends ListActivity {
         setActionBar(myToolbar);
     }
 
-    @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new  Intent (this, FlightInfoActivity.class);
 
@@ -98,7 +105,6 @@ public class Dashboard extends ListActivity {
         startActivity(intent);
     }
 
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
