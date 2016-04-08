@@ -50,6 +50,9 @@ public class Dashboard extends ListFragment {
         loadDashboard();
     }
 
+    /**
+     * Initializes all the variables and decides what to display
+     */
     public void loadDashboard() {
         System.out.println("IN DASHBOARD LOADING");
         l = getListView();
@@ -63,7 +66,7 @@ public class Dashboard extends ListFragment {
             // Make flight information human readable
             if (flightResults.size() == 0) {
                 //if there are no results, then just say so
-                setBackgroundText("No Results");
+                setToastText("No Results");
             }
             else {
 
@@ -84,7 +87,7 @@ public class Dashboard extends ListFragment {
         } else {
             //Print grey font, saying no results
             System.out.println("FLIGHTRESULTS NULL");
-            setBackgroundText("No Searches Yet");
+            setToastText("No Searches Yet");
         }
 
         // display the toolbar
@@ -100,14 +103,10 @@ public class Dashboard extends ListFragment {
     }
 
     //This message prints the background text according to either 1. no searches yet or 2. no results
-    private void setBackgroundText(String message) {
-        System.out.println("SETTING BACKGROUND IN DASHBOARD");
-        RelativeLayout relativeLayout = (RelativeLayout) getView().findViewById(R.id.dashboard_relative);
-        TextView noResultsText = new TextView(getActivity());
-        noResultsText.setText(message);
-        int grey = ContextCompat.getColor(getActivity(), R.color.grey400);
-        noResultsText.setTextColor(grey);
-        noResultsText.setGravity(Gravity.CENTER);
+    private void setToastText(String message) {
+        Toast toast = Toast.makeText(getActivity(),
+                message, Toast.LENGTH_LONG);
+        toast.show();
     }
 
     @Override
@@ -141,35 +140,35 @@ public class Dashboard extends ListFragment {
         inflater.inflate(R.menu.menu_dashboard, menu);
     }
 
-    public void sortByAirline(MenuItem item) {
+    public void sortByAirline() {
         bubbleSortBy("airline");
     }
 
-    public void sortByCost(MenuItem item) {
+    public void sortByCost() {
         bubbleSortBy("cost");
     }
 
-    public void sortByDepartureDate(MenuItem item) {
+    public void sortByDepartureDate() {
         bubbleSortBy("dep_date");
     }
 
-    public void sortByDepartureCity(MenuItem item) {
+    public void sortByDepartureCity() {
         bubbleSortBy("dep_city");
     }
 
-    public void sortByArrivalDate(MenuItem item) {
+    public void sortByArrivalDate() {
         bubbleSortBy("arr_date");
     }
 
-    public void sortByArrivalCity(MenuItem item) {
+    public void sortByArrivalCity() {
         bubbleSortBy("arr_city");
     }
 
-    public void sortByFavoriteFlights(MenuItem item) {
+    public void sortByFavoriteFlights() {
         bubbleSortBy("fav_flights");
     }
 
-    public void advancedFilter(MenuItem item) {
+    public void advancedFilter() {
         Log.e("AdvancedFilter", "Here");
         // TODO: Put search results into firebase
         SearchQuery sq = new SearchQuery();

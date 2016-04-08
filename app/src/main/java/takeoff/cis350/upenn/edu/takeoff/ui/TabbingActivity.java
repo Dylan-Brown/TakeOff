@@ -48,9 +48,6 @@ public class TabbingActivity extends AppCompatActivity {
         searchHistoryTab.setIndicator("Search History");
 
         //Setting the correct activity each
-        //dashboardTab.setContent(new Intent(this, Dashboard.class));
-        //favoritesTab.setContent()
-        //searchHistoryTab.setContent(new Intent(this, DashBoardSearchHistory.class));
         System.out.println("BEFORE ADDING TABS");
         tabhost.addTab(dashboardTab, Dashboard.class, null);
         System.out.println("DASHBOARD TAB AFTER");
@@ -82,32 +79,61 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     public void sortByAirline(MenuItem item) {
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.sortByAirline();
+        }
+
     }
 
     public void sortByCost(MenuItem item) {
-
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.sortByCost();
+        }
     }
 
     public void sortByDepartureDate(MenuItem item) {
-
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.sortByDepartureDate();
+        }
     }
 
     public void sortByDepartureCity(MenuItem item) {
-
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.sortByDepartureCity();
+        }
     }
 
     public void sortByArrivalDate(MenuItem item) {
-
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.sortByArrivalDate();
+        }
     }
 
     public void sortByArrivalCity(MenuItem item) {
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.sortByArrivalCity();
+        }
     }
 
     public void sortByFavoriteFlights(MenuItem item) {
-
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.sortByFavoriteFlights();
+        }
     }
 
-    public void advancedFilter(MenuItem item) { }
+    public void advancedFilter(MenuItem item) {
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.advancedFilter();
+        }
+    }
     public void goToSearchPage(View v) {
         Intent intent = new Intent(this, SearchPage.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -121,14 +147,10 @@ public class TabbingActivity extends AppCompatActivity {
             System.out.println("ON ACTIVITYRESULT");
             fromSearch = true;
             if(tabhost != null) {
-                //tabhost.getTabWidget().getChildAt(2).performClick();
-                FragmentManager fm = getFragmentManager();
-                //Fragment f = fm.findFragmentByTag("dashboard");
                 System.out.println("ON ACTIVITYRESULT again");
                 Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
                 dash.loadDashboard();
             }
-            //tabhost.setCurrentTab(2);
             System.out.println("ON ACTIVITYRESULT end");
         }
     }
@@ -137,8 +159,6 @@ public class TabbingActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         System.out.println("ON RESUME");
-        FragmentManager fm = getFragmentManager();
-        //Fragment f = fm.findFragmentByTag("dashboard");
         System.out.println("GETTING DASHY DASH");
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {

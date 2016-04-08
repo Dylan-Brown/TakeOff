@@ -5,8 +5,11 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e199381-32fb-457a-8c3c-42faf0a332f6" name="Default" comment="" />
+    <list default="true" id="959751a0-3c52-412d-a285-f428b6c5d4b7" name="Default" comment="" />
     <ignored path="17-Flight-Search-Engine.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,115 +36,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Flight.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/flight/Flight.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="27" selection-start-line="0" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlightInfoActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/flight/FlightInfoActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Dashboard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/Dashboard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.36111">
-              <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="170" column="34" selection-start-line="170" selection-start-column="34" selection-end-line="170" selection-end-column="34" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5326#5327#0" expanded="true" />
-                <element signature="e#5365#5366#0" expanded="true" />
-                <element signature="e#5410#5411#0" expanded="true" />
-                <element signature="e#5446#5447#0" expanded="true" />
-                <element signature="e#5500#5501#0" expanded="true" />
-                <element signature="e#5540#5541#0" expanded="true" />
-                <element signature="e#5594#5595#0" expanded="true" />
-                <element signature="e#5634#5635#0" expanded="true" />
-                <element signature="e#5686#5687#0" expanded="true" />
-                <element signature="e#5726#5727#0" expanded="true" />
-                <element signature="e#5778#5779#0" expanded="true" />
-                <element signature="e#5818#5819#0" expanded="true" />
-                <element signature="e#5874#5875#0" expanded="true" />
-                <element signature="e#5917#5918#0" expanded="true" />
-                <element signature="e#13270#13297#0" expanded="true" />
+                <element signature="e#5060#5061#0" expanded="true" />
+                <element signature="e#5099#5100#0" expanded="true" />
+                <element signature="e#5131#5132#0" expanded="true" />
+                <element signature="e#5167#5168#0" expanded="true" />
+                <element signature="e#5208#5209#0" expanded="true" />
+                <element signature="e#5248#5249#0" expanded="true" />
+                <element signature="e#5289#5290#0" expanded="true" />
+                <element signature="e#5329#5330#0" expanded="true" />
+                <element signature="e#5368#5369#0" expanded="true" />
+                <element signature="e#5408#5409#0" expanded="true" />
+                <element signature="e#5447#5448#0" expanded="true" />
+                <element signature="e#5487#5488#0" expanded="true" />
+                <element signature="e#5530#5531#0" expanded="true" />
+                <element signature="e#5573#5574#0" expanded="true" />
+                <element signature="e#12913#12940#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchPage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/SearchPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="573" column="0" selection-start-line="573" selection-start-column="0" selection-end-line="573" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchHistoryWrapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/SearchHistoryWrapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TabbingActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TabbingActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/TabbingActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_search_history_wrapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_history_wrapper.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.49304175">
+              <caret line="155" column="5" selection-start-line="155" selection-start-column="5" selection-end-line="155" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35387674">
-              <caret line="28" column="60" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
-              <folding>
-                <element signature="e#654#672#0" expanded="true" />
-                <element signature="e#840#858#0" expanded="true" />
-                <element signature="e#1244#1275#0" expanded="true" />
-                <element signature="e#1384#1416#0" expanded="true" />
-                <element signature="e#1826#1862#0" expanded="true" />
-                <element signature="e#2020#2056#0" expanded="true" />
-                <element signature="e#2214#2252#0" expanded="true" />
-                <element signature="e#2841#2873#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -1832,7 +1758,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="D:\Judy\AndroidStudioWorkspace\Project\pulling\17-Flight-Search-Engine" value="4380302700040" />
+        <entry key="D:\Judy\AndroidStudioWorkspace\Project\pulling\17-Flight-Search-Engine" value="4380342817603" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -3158,10 +3084,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/Dashboard.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/SearchPage.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/SearchHistoryWrapper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/TabbingActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -3169,9 +3092,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-96" />
-    <option name="y" value="5" />
-    <option name="width" value="1429" />
+    <option name="x" value="819" />
+    <option name="y" value="24" />
+    <option name="width" value="1140" />
     <option name="height" value="990" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -3198,6 +3121,8 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -3215,28 +3140,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="17-Flight-Search-Engine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -3289,32 +3192,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="17-Flight-Search-Engine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="takeoff" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="usersui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -3344,57 +3221,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="17-Flight-Search-Engine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="takeoff" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="17-Flight-Search-Engine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Judy\AndroidStudioWorkspace\Project\pulling\17-Flight-Search-Engine\app\src\main\res\layout" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="takeoff.cis350.upenn.edu.takeoff.ui.search" />
-    </key>
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.101:5555" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
   </component>
   <component name="RunManager" selected="Android Application.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -3416,26 +3253,6 @@
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3476,11 +3293,6 @@
         <option name="Make" enabled="false" />
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -3558,15 +3370,15 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6e199381-32fb-457a-8c3c-42faf0a332f6" name="Default" comment="" />
-      <created>1460113302671</created>
+      <changelist id="959751a0-3c52-412d-a285-f428b6c5d4b7" name="Default" comment="" />
+      <created>1460118644192</created>
       <option name="number" value="Default" />
-      <updated>1460113302671</updated>
+      <updated>1460118644192</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-96" y="5" width="1429" height="990" extended-state="0" />
+    <frame x="819" y="24" width="1140" height="990" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -3577,28 +3389,27 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4008843" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -3609,100 +3420,35 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/flight/FlightInfoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/flight/Flight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="27" selection-start-line="0" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/Dashboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.36111">
-          <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5326#5327#0" expanded="true" />
-            <element signature="e#5365#5366#0" expanded="true" />
-            <element signature="e#5410#5411#0" expanded="true" />
-            <element signature="e#5446#5447#0" expanded="true" />
-            <element signature="e#5500#5501#0" expanded="true" />
-            <element signature="e#5540#5541#0" expanded="true" />
-            <element signature="e#5594#5595#0" expanded="true" />
-            <element signature="e#5634#5635#0" expanded="true" />
-            <element signature="e#5686#5687#0" expanded="true" />
-            <element signature="e#5726#5727#0" expanded="true" />
-            <element signature="e#5778#5779#0" expanded="true" />
-            <element signature="e#5818#5819#0" expanded="true" />
-            <element signature="e#5874#5875#0" expanded="true" />
-            <element signature="e#5917#5918#0" expanded="true" />
-            <element signature="e#13270#13297#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/SearchPage.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="573" column="0" selection-start-line="573" selection-start-column="0" selection-end-line="573" selection-end-column="0" />
+          <caret line="170" column="34" selection-start-line="170" selection-start-column="34" selection-end-line="170" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#5060#5061#0" expanded="true" />
+            <element signature="e#5099#5100#0" expanded="true" />
+            <element signature="e#5131#5132#0" expanded="true" />
+            <element signature="e#5167#5168#0" expanded="true" />
+            <element signature="e#5208#5209#0" expanded="true" />
+            <element signature="e#5248#5249#0" expanded="true" />
+            <element signature="e#5289#5290#0" expanded="true" />
+            <element signature="e#5329#5330#0" expanded="true" />
+            <element signature="e#5368#5369#0" expanded="true" />
+            <element signature="e#5408#5409#0" expanded="true" />
+            <element signature="e#5447#5448#0" expanded="true" />
+            <element signature="e#5487#5488#0" expanded="true" />
+            <element signature="e#5530#5531#0" expanded="true" />
+            <element signature="e#5573#5574#0" expanded="true" />
+            <element signature="e#12913#12940#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/SearchHistoryWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/TabbingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_history_wrapper.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.49304175">
+          <caret line="155" column="5" selection-start-line="155" selection-start-column="5" selection-end-line="155" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35387674">
-          <caret line="28" column="60" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
-          <folding>
-            <element signature="e#654#672#0" expanded="true" />
-            <element signature="e#840#858#0" expanded="true" />
-            <element signature="e#1244#1275#0" expanded="true" />
-            <element signature="e#1384#1416#0" expanded="true" />
-            <element signature="e#1826#1862#0" expanded="true" />
-            <element signature="e#2020#2056#0" expanded="true" />
-            <element signature="e#2214#2252#0" expanded="true" />
-            <element signature="e#2841#2873#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
