@@ -57,6 +57,7 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
 
+
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
     private EditText departureDateText;
     private EditText returningDateText;
@@ -105,7 +106,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         //Making the autocomplete Text
         countriesAutoComp = (MultiAutoCompleteTextView) findViewById(R.id.autocomplete_country);
-        String[] countryArray = getResources().getStringArray(R.array.countries);
+        String[] countryArray = getResources().getStringArray(R.array.countries_array);
         countriesAutoComp.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         countriesAutoComp.setOnFocusChangeListener(getOnFocusChangeListener());
         ArrayAdapter<String> adapter =
@@ -432,9 +433,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             });
         } else {
             // No authenticated user (guestsession or some error) - no favorites data
-         /*   Toast toast = Toast.makeText(getApplicationContext(),
-                    "No favorites found.", Toast.LENGTH_SHORT);
-            toast.show();*/
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No favorites found. Search", Toast.LENGTH_SHORT);
+            toast.show();
         }
 
 
@@ -442,6 +443,13 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         //System.out.println("SearchPage: About to execute request...");
         new JSONAsyncTask(this.getApplicationContext()).execute(request);
+
+        Intent intent = new Intent(this, Dashboard.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.startActivity(intent);
+
+        //finish();
+
         /*
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
@@ -554,6 +562,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        System.out.println("SPINNER");
         Spinner classSpinner = (Spinner) findViewById(R.id.class_spinner);
         classSpinner.setOnItemSelectedListener(this);
         cabin = parent.getItemAtPosition(position).toString();
@@ -575,9 +584,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
 
     private class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
-        String[] APIKeys={"AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA","AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ","AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos","AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w"};
-        String APIKey=APIKeys[1];
-        //CHANGE THE NUMBER OF APIKEYS IF IT BEGINS CRASHING!!
+
         Context context;
 
         public JSONAsyncTask(Context context) {
@@ -593,9 +600,10 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         @Override
         protected JSONArray doInBackground(String... params) {
             try {
+                System.out.println("IN DOINBACKGROUND");
                 JSONObject json = new JSONObject(params[0]);
                 System.out.println(json.toString(4));
-                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key="+APIKey);
+                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA");
                 StringEntity SEJson = new StringEntity(json.toString());
                 httpPost.setEntity(SEJson);
                 httpPost.setHeader("Content-type", "application/json");
@@ -627,15 +635,14 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         @Override
         protected void onPostExecute(JSONArray result) {
             try {
-
+                System.out.println("IN POST EXECUTE");
                 QPXAPIParser.getAPIResultsAsFlight(result);
                 System.out.println("ASyncTask: IT WORKS!");
+                if(result != null) System.out.println(result.toString(2));
             } catch (JSONException e) {
                 System.out.println("ASyncTask: FAILED!");
             }
-            Intent intent = new Intent(context, Dashboard.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
+
         }
     }
 }
