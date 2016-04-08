@@ -341,4 +341,7 @@ public class Dashboard extends ListFragment {
         return null;
     }
 
+    public List<Flight> getFlightResults() {
+        return this.flightResults;
+    }
 }
