@@ -1,6 +1,10 @@
 [
     {
-        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
-        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/mipmap-hdpi-v4/ic_launcher.png",
+        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     }
 ]

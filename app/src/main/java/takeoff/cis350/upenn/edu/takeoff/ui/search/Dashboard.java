@@ -124,6 +124,7 @@ public class Dashboard extends ListFragment {
         }
 
         // Start the FlightInfoActivity
+        System.out.println("ENTER THE NEW INDIVIDUAL FLIGHT PAGE");
         startActivity(intent);
     }
 

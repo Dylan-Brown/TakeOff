@@ -56,6 +56,7 @@ import java.util.Map;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
 
 
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
@@ -444,7 +445,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         //System.out.println("SearchPage: About to execute request...");
         new JSONAsyncTask(this.getApplicationContext()).execute(request);
 
-        Intent intent = new Intent(this, Dashboard.class);
+        Intent intent = new Intent(this, TabbingActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startActivity(intent);
 

@@ -35,13 +35,13 @@ public class FlightInfoView extends View {
     }
 
     // ADDRESS: FavFlights and usage
-    public FlightInfoView(Context c, final String FlightInfo) {
+    public FlightInfoView(Context c, String FlightInfo) {
         super(c);
         usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
 
         // save the Flight information
-        this.flight = Flight.parseFlight(FlightInfo);
-        Log.e("FlightInfoView", "Displaying new flight: " + flight.toString());
+        this.flight = Flight.fromHumanReadable(FlightInfo);
+        Log.e("FlightInfoView", "Displaying new flight: " + flight.humanReadable());
 
         // Set up FireBase
         Firebase.setAndroidContext(c);
