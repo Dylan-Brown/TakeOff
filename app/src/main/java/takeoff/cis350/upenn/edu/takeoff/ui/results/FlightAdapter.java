@@ -82,13 +82,15 @@ public class FlightAdapter extends ArrayAdapter {
         handler.cost.setText(String.valueOf(flight.getCost()));
         handler.departureTime.setText(flight.getDepartureTime());
         handler.arrivalTime.setText(flight.getArrivalTime());
-        if (flight.getNumOfConnections() == 2) {
-            handler.connections.setText("1 Connection\n" +connectionCities);
-        } else if (flight.getNumOfConnections() == 1) {
+        if (flight.getNumOfConnections() == 1) {
+            handler.connections.setText("1 Conxn\n" +connectionCities);
+        } else if (flight.getNumOfConnections() == 0) {
             handler.connections.setText("Direct");
-        } else if (flight.getNumOfConnections() > 2) {
+        } else if (flight.getNumOfConnections() > 1) {
 
-            handler.connections.setText(flight.getNumOfConnections() + "Connections\n" + connectionCities);
+            handler.connections.setText(flight.getNumOfConnections() + "Conxns\n" + connectionCities);
+        }
+        else {      handler.connections.setText("BOOP\n");
         }
         return row;
     }
