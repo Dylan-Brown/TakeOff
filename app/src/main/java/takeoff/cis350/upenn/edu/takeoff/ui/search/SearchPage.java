@@ -25,7 +25,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -56,6 +55,7 @@ import java.util.Map;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightListActivity;
 
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
     private EditText departureDateText;
@@ -576,7 +576,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     private class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
         String[] APIKeys={"AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA","AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ","AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos","AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w"};
-        String APIKey=APIKeys[1];
+        String APIKey=APIKeys[2];
         //CHANGE THE NUMBER OF APIKEYS IF IT BEGINS CRASHING!!
         Context context;
 
@@ -633,7 +633,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             } catch (JSONException e) {
                 System.out.println("ASyncTask: FAILED!");
             }
+
             Intent intent = new Intent(context, Dashboard.class);
+ //           Intent intent = new Intent(context, FlightListActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }

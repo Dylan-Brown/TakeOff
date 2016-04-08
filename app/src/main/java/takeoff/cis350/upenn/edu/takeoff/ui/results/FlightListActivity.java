@@ -35,7 +35,6 @@ public class FlightListActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorite_list);
         listView = (ListView) findViewById(android.R.id.list);//this goes to the favorite_list
@@ -72,10 +71,21 @@ public class FlightListActivity extends ListActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int index = info.position;
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
         }
+        Flight f=QPXAPIParser.FlightCache.get(index);
+        boolean returnTrip=f.isReturnTrip();
+        boolean directFlight=f.isDirectFlight();
+       Intent myIntent=new Intent();
+        // myIntent= new Intent(getBaseContext(),CLASSTHATITSGOINGTO);
+        myIntent.putExtra("flightIndex", index);
+        startActivity(myIntent);
+
+
         return super.onOptionsItemSelected(item);
     }
 

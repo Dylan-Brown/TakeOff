@@ -15,7 +15,7 @@ import takeoff.cis350.upenn.edu.takeoff.flight.SubFlight;
  */
 public class QPXAPIParser {
 
-    static List<Flight> FlightCache;
+    public static List<Flight> FlightCache;
 
     public static List<Flight> getAPIResultsAsFlight(JSONArray jsonArray) throws JSONException {
         FlightCache = new ArrayList<Flight>();

@@ -62,10 +62,13 @@ public class FlightAdapter extends ArrayAdapter {
             handler = new DataHandler();
             handler.departureCityCode = (TextView) row.findViewById(R.id.departureTextView);
             handler.arrivalCityCode = (TextView) row.findViewById(R.id.arrivalTextView);
+
             handler.arrivalDate = (TextView) row.findViewById(R.id.arrivalDateTextView);
             handler.departureDate = (TextView) row.findViewById(R.id.departureDateTextView);
-            handler.arrivalTime = (TextView) row.findViewById(R.id.arrivalDateTextView);
-            handler.departureTime = (TextView) row.findViewById(R.id.departureDateTextView);
+
+            handler.arrivalTime = (TextView) row.findViewById(R.id.arrivalTimeTextView);
+            handler.departureTime = (TextView) row.findViewById(R.id.departureTimeTextView);
+
             handler.cost = (TextView) row.findViewById(R.id.costTextView);
             handler.connections = (TextView) row.findViewById(R.id.conxnTextView);
             row.setTag(handler);
@@ -77,11 +80,15 @@ public class FlightAdapter extends ArrayAdapter {
         String connectionCities = getConCities(flight);
         handler.departureCityCode.setText(flight.getDepartureCityCode());
         handler.arrivalCityCode.setText(flight.getArrivalCityCode());
+
         handler.arrivalDate.setText(flight.getArrivalDate());
         handler.departureDate.setText(flight.getDepartureDate());
+
         handler.cost.setText(String.valueOf(flight.getCost()));
+
         handler.departureTime.setText(flight.getDepartureTime());
         handler.arrivalTime.setText(flight.getArrivalTime());
+
         if (flight.getNumOfConnections() == 1) {
             handler.connections.setText("1 Conxn\n" +connectionCities);
         } else if (flight.getNumOfConnections() == 0) {

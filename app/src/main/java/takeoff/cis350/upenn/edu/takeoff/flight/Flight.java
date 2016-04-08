@@ -50,6 +50,9 @@ public class Flight implements Serializable {
     public boolean isReturnTrip() {
         return this.isReturnTrip;
     }
+    public boolean isDirectFlight() {
+        return this.isDirectFlight;
+    }
 
     public String getId() {
         return this.id;
