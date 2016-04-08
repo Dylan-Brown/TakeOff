@@ -57,7 +57,6 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
 
-
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
     private EditText departureDateText;
     private EditText returningDateText;
@@ -433,9 +432,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             });
         } else {
             // No authenticated user (guestsession or some error) - no favorites data
-            Toast toast = Toast.makeText(getApplicationContext(),
+         /*   Toast toast = Toast.makeText(getApplicationContext(),
                     "No favorites found.", Toast.LENGTH_SHORT);
-            toast.show();
+            toast.show();*/
         }
 
 
@@ -555,7 +554,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println("SPINNER");
         Spinner classSpinner = (Spinner) findViewById(R.id.class_spinner);
         classSpinner.setOnItemSelectedListener(this);
         cabin = parent.getItemAtPosition(position).toString();
@@ -577,6 +575,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
 
     private class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
+        String APIKey="AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ";
 
         Context context;
 
@@ -595,7 +594,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             try {
                 JSONObject json = new JSONObject(params[0]);
                 System.out.println(json.toString(4));
-                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA");
+                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key="+APIKey);
                 StringEntity SEJson = new StringEntity(json.toString());
                 httpPost.setEntity(SEJson);
                 httpPost.setHeader("Content-type", "application/json");
@@ -630,7 +629,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
                 QPXAPIParser.getAPIResultsAsFlight(result);
                 System.out.println("ASyncTask: IT WORKS!");
-                System.out.println(result.toString(2));
             } catch (JSONException e) {
                 System.out.println("ASyncTask: FAILED!");
             }
