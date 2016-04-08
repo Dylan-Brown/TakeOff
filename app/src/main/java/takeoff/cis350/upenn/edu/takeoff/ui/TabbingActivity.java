@@ -1,7 +1,9 @@
 package takeoff.cis350.upenn.edu.takeoff.ui;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -16,6 +18,8 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
 public class TabbingActivity extends AppCompatActivity {
     private FragmentTabHost tabhost;
+    private static final int SEARCH_PAGE_REQUEST = 100;
+    private boolean fromSearch = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +111,38 @@ public class TabbingActivity extends AppCompatActivity {
     public void goToSearchPage(View v) {
         Intent intent = new Intent(this, SearchPage.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        System.out.println("REQUEST CODE = " + SEARCH_PAGE_REQUEST);
+        startActivityForResult(intent, SEARCH_PAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if(requestCode == 100) {
+            System.out.println("ON ACTIVITYRESULT");
+            fromSearch = true;
+            if(tabhost != null) {
+                //tabhost.getTabWidget().getChildAt(2).performClick();
+                FragmentManager fm = getFragmentManager();
+                //Fragment f = fm.findFragmentByTag("dashboard");
+                System.out.println("ON ACTIVITYRESULT again");
+                Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+                dash.loadDashboard();
+            }
+            //tabhost.setCurrentTab(2);
+            System.out.println("ON ACTIVITYRESULT end");
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("ON RESUME");
+        FragmentManager fm = getFragmentManager();
+        //Fragment f = fm.findFragmentByTag("dashboard");
+        System.out.println("GETTING DASHY DASH");
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        if(dash != null) {
+            dash.loadDashboard();
+        }
     }
 }

@@ -56,7 +56,6 @@ import java.util.Map;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
-import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
 
 
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
@@ -445,11 +444,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         //System.out.println("SearchPage: About to execute request...");
         new JSONAsyncTask(this.getApplicationContext()).execute(request);
 
-        Intent intent = new Intent(this, TabbingActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.startActivity(intent);
+        //Intent intent = new Intent(this, Dashboard.class);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //this.startActivity(intent);
 
-        //finish();
+
 
         /*
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -579,7 +578,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     // Modified by Anaka
     public void DashBoardHistory(View view) {
         //start an intent
-        Intent intent = new Intent(this, DashBoardSearchHistory.class);                                 //Give me the last 20 searches from FireBase
+        Intent intent = new Intent(this, SearchHistoryWrapper.class);                                 //Give me the last 20 searches from FireBase
         startActivity(intent);
     }
 
@@ -639,11 +638,18 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 System.out.println("IN POST EXECUTE");
                 QPXAPIParser.getAPIResultsAsFlight(result);
                 System.out.println("ASyncTask: IT WORKS!");
-                if(result != null) System.out.println(result.toString(2));
+
+                if(result != null) {
+                    System.out.println(result.toString(2));
+                    System.out.println("SOMETHINGSOMETHING");
+                }
+
+                System.out.println("SOMETHING");
             } catch (JSONException e) {
                 System.out.println("ASyncTask: FAILED!");
             }
-
+            System.out.println("ENDING SEARCH PAGE");
+            finish();
         }
     }
 }

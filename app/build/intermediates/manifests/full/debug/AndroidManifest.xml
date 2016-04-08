@@ -34,10 +34,6 @@
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.authentication.LogInActivity"
             android:label="@string/title_activity_log_in" />
         <activity
-            android:name="takeoff.cis350.upenn.edu.takeoff.SearchInfo"
-            android:label="@string/title_activity_search_info"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.authentication.SignUpActivity"
             android:label="@string/title_activity_sign_up" />
         <activity android:name="takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage" />
@@ -53,10 +49,6 @@
         <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.flight.FlightInfoActivity"
             android:label="@string/title_activity_flight_info"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="takeoff.cis350.upenn.edu.takeoff.flight.FlightInfoView"
-            android:label="@string/title_activity_flight_info_view"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.favorites.FilterSearch"
@@ -80,6 +72,8 @@
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity"
             android:label="@string/title_activity_tabbing"
             android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name="takeoff.cis350.upenn.edu.takeoff.ui.search.SearchHistoryWrapper" >
         </activity>
 
         <meta-data

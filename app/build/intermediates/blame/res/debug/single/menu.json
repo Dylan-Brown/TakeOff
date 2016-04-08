@@ -1,34 +1,18 @@
 [
     {
-        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_dashboard.xml",
-        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\menu\\menu_dashboard.xml"
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_dashboard.xml",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\menu\\menu_dashboard.xml"
     },
     {
-        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/menu/menu_main.xml",
-        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_main.xml"
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\menu\\menu_main.xml"
     },
     {
-        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/menu/menu_flightinfo.xml",
-        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_flightinfo.xml"
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_flightinfo.xml",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\menu\\menu_flightinfo.xml"
     },
     {
-        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/menu/menu_dashboard.xml",
-        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_dashboard.xml"
-    },
-    {
-        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/menu/menu_search_page.xml",
-        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_search_page.xml"
-    },
-    {
-        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
-        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\menu\\menu_main.xml"
-    },
-    {
-        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_flightinfo.xml",
-        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\menu\\menu_flightinfo.xml"
-    },
-    {
-        "merged": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_search_page.xml",
-        "source": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\menu\\menu_search_page.xml"
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_search_page.xml",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pulling\\17-Flight-Search-Engine\\app\\src\\main\\res\\menu\\menu_search_page.xml"
     }
 ]

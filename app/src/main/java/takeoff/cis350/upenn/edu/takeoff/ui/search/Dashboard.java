@@ -45,14 +45,20 @@ public class Dashboard extends ListFragment {
     @SuppressWarnings("unchecked")
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
+        System.out.println("IN DASHBOARD");
         super.onActivityCreated(savedInstanceState);
+        loadDashboard();
+    }
+
+    public void loadDashboard() {
+        System.out.println("IN DASHBOARD LOADING");
         l = getListView();
 
         // get the flight information information if there is any
         flightResults = QPXAPIParser.getFlightResultsFromMostRecentSearch();
 
         if (flightResults != null) {
-
+            System.out.println("FLIGHTRESULTS NOT NULL");
             //flightResults =new ArrayList<>(Arrays.asList(new DummyFlightInfo().getFlights()));
             // Make flight information human readable
             if (flightResults.size() == 0) {
@@ -77,6 +83,7 @@ public class Dashboard extends ListFragment {
             }
         } else {
             //Print grey font, saying no results
+            System.out.println("FLIGHTRESULTS NULL");
             setBackgroundText("No Searches Yet");
         }
 
@@ -94,6 +101,7 @@ public class Dashboard extends ListFragment {
 
     //This message prints the background text according to either 1. no searches yet or 2. no results
     private void setBackgroundText(String message) {
+        System.out.println("SETTING BACKGROUND IN DASHBOARD");
         RelativeLayout relativeLayout = (RelativeLayout) getView().findViewById(R.id.dashboard_relative);
         TextView noResultsText = new TextView(getActivity());
         noResultsText.setText(message);
@@ -124,7 +132,6 @@ public class Dashboard extends ListFragment {
         }
 
         // Start the FlightInfoActivity
-        System.out.println("ENTER THE NEW INDIVIDUAL FLIGHT PAGE");
         startActivity(intent);
     }
 
