@@ -24,6 +24,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
 /**
@@ -117,7 +118,7 @@ public class LogInActivity extends AppCompatActivity {
             // Perform the user login attempt.
 
             Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
-            final Intent intent = new  Intent(this, SearchPage.class);
+            final Intent intent = new  Intent(this, TabbingActivity.class);
 
             // Create a handler to handle the result of the authentication
             Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {

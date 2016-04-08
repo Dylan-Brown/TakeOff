@@ -71,7 +71,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
 
     public void guest (View view) {
         // Goes to my Dashboard
-        Intent intent = new  Intent (this, SearchPage.class);
+        Intent intent = new  Intent (this, TabbingActivity.class);
         //start Activity intent
         startActivity(intent);
     }

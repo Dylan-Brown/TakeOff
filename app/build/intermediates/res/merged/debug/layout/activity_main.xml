@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:label="Dots and Boxes"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".ui.WelcomeActivity">
+    <!--android:background="@drawable/flight_takeoff"-->
+
+
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="login"
+        android:text="Log In"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/signupButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="sign"
+        android:text="Sign Up"
+        android:layout_below="@+id/loginButton"
+        android:layout_alignStart="@+id/loginButton" />
+
+    <Button
+        android:id="@+id/guestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="guest"
+        android:text="Continue as Guest"
+        android:layout_below="@+id/signupButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/favoriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="favorite"
+        android:text="Favorites"
+        android:layout_below="@+id/guestButton"
+        android:layout_alignEnd="@+id/signupButton" />
+
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="93dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:text="TakeOff!"
+        android:textSize="35sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:textColor="#000000"
+        android:layout_above="@+id/signupButton"
+        android:layout_alignLeft="@+id/signupButton"
+        android:layout_alignStart="@+id/signupButton"
+        android:layout_marginBottom="24dp" />
+
+</RelativeLayout>

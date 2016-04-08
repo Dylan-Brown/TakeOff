@@ -144,11 +144,11 @@ public class Flight implements Serializable {
             info[i] = info[i].split(": ")[1];
         }
      //   f.airline = info[0];
-        f.cost = Double.parseDouble(info[1]);
-        f.departureCityCode = info[2];
-        f.departureDate = info[3];
-        f.arrivalCityCode = info[4];
-        f.arrivalDate = info[5];
+        f.cost = Double.parseDouble(info[0]);
+        f.departureCityCode = info[1];
+        f.departureDate = info[2];
+        f.arrivalCityCode = info[3];
+        f.arrivalDate = info[4];
 
         return f;
     }

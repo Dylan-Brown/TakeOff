@@ -1,15 +1,13 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
-import android.app.ListActivity;
-import android.content.Intent;
+import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -24,7 +22,7 @@ import java.util.Map;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 
-public class DashBoardSearchHistory extends ListActivity {
+public class DashBoardSearchHistory extends ListFragment {
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     List<Flight> flightResults;
@@ -41,11 +39,10 @@ public class DashBoardSearchHistory extends ListActivity {
     public final static String EXTRA_MESSAGE2 = "FavFlight";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         System.out.println("ENTER SEARCH HISTORY PAGE");
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        super.onActivityCreated(savedInstanceState);
         l = getListView();
         Log.e("getListView", "Dashboard");
 
@@ -84,22 +81,28 @@ public class DashBoardSearchHistory extends ListActivity {
             });
         } else {
             // No authenticated user (guestsession or some error) - no favorites data
-            Toast toast = Toast.makeText(getApplicationContext(),
+            Toast toast = Toast.makeText(getActivity(),
                     "No favorites found.", Toast.LENGTH_SHORT);
             toast.show();
         }
 
 
-        setListAdapter(new ArrayAdapter(this,
+        setListAdapter(new ArrayAdapter(getActivity(),
                 android.R.layout.simple_list_item_single_choice, stringhistory));
         setAdapter(stringhistory);
     }
 
-    private void setAdapter(String[] info) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, info);
-        l.setAdapter(adapter);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_dashboard_history, container, false);
+        return rootView;
     }
 
+    private void setAdapter(String[] info) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, info);
+        l.setAdapter(adapter);
+    }
+/*
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 
@@ -111,13 +114,6 @@ public class DashBoardSearchHistory extends ListActivity {
         Intent intent = new  Intent (this, Dashboard.class);
 
         startActivity(intent);
-    }
+    }*/
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu items for use in the action bar
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_dashboard, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 }

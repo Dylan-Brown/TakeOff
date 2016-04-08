@@ -19,11 +19,14 @@ public class FlightInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        System.out.println("ENTERED THE VIEW OF FLIGHT");
         // If minimum Flight info passed, pass it, otherwise pass entire Flight String
         Bundle extras = getIntent().getExtras();
+        System.out.println("GETTING THE FLIGHT DETAILS");
         Flight = (Flight) extras.get("FlightActual");
-        v = new FlightInfoView (this, Flight.toString());
+        System.out.println("CREATING VIEW");
+        v = new FlightInfoView (this, Flight.humanReadable());
+        System.out.println("ENTERING THE VIEW OF FLIGHT");
         setContentView(v);
     }
 

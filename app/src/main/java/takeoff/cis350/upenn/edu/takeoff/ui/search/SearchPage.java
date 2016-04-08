@@ -31,20 +31,6 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,6 +42,9 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightListActivity;
+
+import takeoff.cis350.upenn.edu.takeoff.flight.JSONAsyncTask;
+
 
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
     private EditText departureDateText;
@@ -105,7 +94,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         //Making the autocomplete Text
         countriesAutoComp = (MultiAutoCompleteTextView) findViewById(R.id.autocomplete_country);
-        String[] countryArray = getResources().getStringArray(R.array.countries);
+        String[] countryArray = getResources().getStringArray(R.array.countries_array);
         countriesAutoComp.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         countriesAutoComp.setOnFocusChangeListener(getOnFocusChangeListener());
         ArrayAdapter<String> adapter =
@@ -432,9 +421,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             });
         } else {
             // No authenticated user (guestsession or some error) - no favorites data
-         /*   Toast toast = Toast.makeText(getApplicationContext(),
-                    "No favorites found.", Toast.LENGTH_SHORT);
-            toast.show();*/
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "No favorites found. Search", Toast.LENGTH_SHORT);
+            toast.show();
         }
 
 
@@ -442,6 +431,14 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         //System.out.println("SearchPage: About to execute request...");
         new JSONAsyncTask(this.getApplicationContext()).execute(request);
+        finish();
+
+        //Intent intent = new Intent(this, Dashboard.class);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //this.startActivity(intent);
+
+
+
         /*
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
@@ -554,6 +551,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        System.out.println("SPINNER");
         Spinner classSpinner = (Spinner) findViewById(R.id.class_spinner);
         classSpinner.setOnItemSelectedListener(this);
         cabin = parent.getItemAtPosition(position).toString();
@@ -569,9 +567,10 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     // Modified by Anaka
     public void DashBoardHistory(View view) {
         //start an intent
-        Intent intent = new Intent(this, DashBoardSearchHistory.class);                                 //Give me the last 20 searches from FireBase
+        Intent intent = new Intent(this, SearchHistoryWrapper.class);                                 //Give me the last 20 searches from FireBase
         startActivity(intent);
     }
+<<<<<<< HEAD
 
 
     private class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
@@ -640,4 +639,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             context.startActivity(intent);
         }
     }
+=======
+>>>>>>> origin/master
 }

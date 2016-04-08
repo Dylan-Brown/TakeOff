@@ -1,11 +1,11 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
-import android.app.ListActivity;
+import android.support.v4.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -28,7 +30,7 @@ import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.FlightInfoActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 
-public class Dashboard extends ListActivity {
+public class Dashboard extends ListFragment {
 
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
@@ -38,44 +40,74 @@ public class Dashboard extends ListActivity {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+    public void onActivityCreated (Bundle savedInstanceState) {
+        System.out.println("IN DASHBOARD");
+        super.onActivityCreated(savedInstanceState);
+        loadDashboard();
+    }
+
+    /**
+     * Initializes all the variables and decides what to display
+     */
+    public void loadDashboard() {
+        System.out.println("IN DASHBOARD LOADING");
         l = getListView();
 
-        // get the flight information information
-        // TODO: Get real flight information; right now it is dummy information
+        // get the flight information information if there is any
         flightResults = QPXAPIParser.getFlightResultsFromMostRecentSearch();
-        //flightResults =new ArrayList<>(Arrays.asList(new DummyFlightInfo().getFlights()));
-        // Make flight information human readable
-        String[] flights = new String[flightResults.size()];
-        int i = 0;
-        for (Flight f : flightResults) {
-            flights[i++] = f.humanReadable();
+
+        if (flightResults != null) {
+            System.out.println("FLIGHTRESULTS NOT NULL");
+            //flightResults =new ArrayList<>(Arrays.asList(new DummyFlightInfo().getFlights()));
+            // Make flight information human readable
+            if (flightResults.size() == 0) {
+                //if there are no results, then just say so
+                setToastText("No Results");
+            }
+            else {
+
+                String[] flights = new String[flightResults.size()];
+                int i = 0;
+                for (Flight f : flightResults) {
+                    flights[i++] = f.humanReadable();
+                }
+
+                // display a list of the information
+                setListAdapter(new ArrayAdapter(getActivity(),
+                        android.R.layout.simple_list_item_single_choice, flights));
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
+                        flights);
+
+                l.setAdapter(adapter);
+            }
+        } else {
+            //Print grey font, saying no results
+            System.out.println("FLIGHTRESULTS NULL");
+            setToastText("No Searches Yet");
         }
 
-        // not sure what this does, commenting out for now
-        /*Log.e("first", "Dashboard");
-        try {
-            flightResults = QPXAPIParser.getAPIResultsAsFlight();
-        } catch (Exception e) {
-        }*/
-
-        // display a list of the information
-        setListAdapter(new ArrayAdapter(this,
-                android.R.layout.simple_list_item_single_choice, flights));
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
-                flights);
-        l.setAdapter(adapter);
-
         // display the toolbar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setActionBar(myToolbar);
+        Toolbar myToolbar = (Toolbar) getView().findViewById(R.id.my_toolbar);
+        getActivity().setActionBar(myToolbar);
+        setHasOptionsMenu(true);
     }
 
     @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        Intent intent = new  Intent (this, FlightInfoActivity.class);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        return rootView;
+    }
+
+    //This message prints the background text according to either 1. no searches yet or 2. no results
+    private void setToastText(String message) {
+        Toast toast = Toast.makeText(getActivity(),
+                message, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        Intent intent = new  Intent(getActivity(), FlightInfoActivity.class);
 
         // Parse the TextView to a new Flight for comparsion
         Flight flight = Flight.fromHumanReadable(((TextView) v).getText().toString());
@@ -99,42 +131,40 @@ public class Dashboard extends ListActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Inflate the menu items for use in the action bar
-        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_dashboard, menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
-    public void sortByAirline(MenuItem item) {
+    public void sortByAirline() {
         bubbleSortBy("airline");
     }
 
-    public void sortByCost(MenuItem item) {
+    public void sortByCost() {
         bubbleSortBy("cost");
     }
 
-    public void sortByDepartureDate(MenuItem item) {
+    public void sortByDepartureDate() {
         bubbleSortBy("dep_date");
     }
 
-    public void sortByDepartureCity(MenuItem item) {
+    public void sortByDepartureCity() {
         bubbleSortBy("dep_city");
     }
 
-    public void sortByArrivalDate(MenuItem item) {
+    public void sortByArrivalDate() {
         bubbleSortBy("arr_date");
     }
 
-    public void sortByArrivalCity(MenuItem item) {
+    public void sortByArrivalCity() {
         bubbleSortBy("arr_city");
     }
 
-    public void sortByFavoriteFlights(MenuItem item) {
+    public void sortByFavoriteFlights() {
         bubbleSortBy("fav_flights");
     }
 
-    public void advancedFilter(MenuItem item) {
+    public void advancedFilter() {
         Log.e("AdvancedFilter", "Here");
         // TODO: Put search results into firebase
         SearchQuery sq = new SearchQuery();
@@ -146,14 +176,16 @@ public class Dashboard extends ListActivity {
         sq.destination="NYC";
         sq.date="2017-01-01"; //in the format of YYYY-MM-DD
 
-        Intent intent = new Intent(this, FilterSearch.class);
+        Intent intent = new Intent(getActivity(), FilterSearch.class);
         intent.putExtra("searchQuery", sq.toString());
         startActivity(intent);
-
         // TODO: Start new activity called FilterSearch
     }
 
-    private void bubbleSortBy(String feature) {
+    public void bubbleSortBy(String feature) {
+        if(flightResults == null) {
+            return;
+        }
         Flight[] array = new Flight[flightResults.size()];
         flightResults.toArray(array);
         int n = array.length;
@@ -246,38 +278,38 @@ public class Dashboard extends ListActivity {
                     usersRef.child(uid).child("favoriteFlights").addListenerForSingleValueEvent(
                             new ValueEventListener() {
 
-                        @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            // User has favorites; get this information and replace search results
-                            Log.e("Dashboard", "onDataChange");
+                                @Override
+                                public void onDataChange(DataSnapshot snapshot) {
+                                    // User has favorites; get this information and replace search results
+                                    Log.e("Dashboard", "onDataChange");
 
-                            ArrayList<Object> userFavs = (ArrayList<Object>) snapshot.getValue();
-                            flightResults.clear();
-                            for (Object o : userFavs) {
-                                Flight f = Flight.parseFlight((String) o);
-                                flightResults.add(f);
-                                Log.e("Dashboard", "onDataChange: Flight: " + f.toString());
-                            }
-                            String[] flightInfo = new String[flightResults.size()];
-                            int i = 0;
-                            for (Flight f : flightResults) {
-                                flightInfo[i++] = f.humanReadable();
-                            }
-                            setAdapter(flightInfo);
-                            // TODO: flightInfo is the humanReadable list of favorites, display it.
-                        }
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {
-                            // Internally display error message, externally claim nothing found
-                            Log.e("Dashboard", "The read failed: " + firebaseError.getMessage());
-                            Toast toast = Toast.makeText(getApplicationContext(),
-                                    "No favorites found.", Toast.LENGTH_SHORT);
-                            toast.show();
-                        }
-                    });
+                                    ArrayList<Object> userFavs = (ArrayList<Object>) snapshot.getValue();
+                                    flightResults.clear();
+                                    for (Object o : userFavs) {
+                                        Flight f = Flight.parseFlight((String) o);
+                                        flightResults.add(f);
+                                        Log.e("Dashboard", "onDataChange: Flight: " + f.toString());
+                                    }
+                                    String[] flightInfo = new String[flightResults.size()];
+                                    int i = 0;
+                                    for (Flight f : flightResults) {
+                                        flightInfo[i++] = f.humanReadable();
+                                    }
+                                    setAdapter(flightInfo);
+                                    // TODO: flightInfo is the humanReadable list of favorites, display it.
+                                }
+                                @Override
+                                public void onCancelled(FirebaseError firebaseError) {
+                                    // Internally display error message, externally claim nothing found
+                                    Log.e("Dashboard", "The read failed: " + firebaseError.getMessage());
+                                    Toast toast = Toast.makeText(getActivity(),
+                                            "No favorites found.", Toast.LENGTH_SHORT);
+                                    toast.show();
+                                }
+                            });
                 } else {
                     // No authenticated user (guestsession or some error) - no favorites data
-                    Toast toast = Toast.makeText(getApplicationContext(),
+                    Toast toast = Toast.makeText(getActivity(),
                             "No favorites found.", Toast.LENGTH_SHORT);
                     toast.show();
                 }
@@ -295,7 +327,7 @@ public class Dashboard extends ListActivity {
     }
 
     private void setAdapter(String[] info) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
                 info);
         l.setAdapter(adapter);
     }
@@ -307,4 +339,5 @@ public class Dashboard extends ListActivity {
         }
         return null;
     }
+
 }
