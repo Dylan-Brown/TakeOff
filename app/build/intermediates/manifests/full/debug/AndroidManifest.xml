@@ -40,7 +40,7 @@
         <!-- <activity android:name=".ui.search.Dashboard" /> -->
         <activity android:name="takeoff.cis350.upenn.edu.takeoff.flight.FlightResultActivity" />
         <activity
-            android:name="takeoff.cis350.upenn.edu.takeoff.ui.favorites.FavoriteListActivity"
+            android:name="takeoff.cis350.upenn.edu.takeoff.ui.results.FlightListActivity"
             android:label="Favorite " />
         <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.favorites.FlightInfo"

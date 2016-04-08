@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/values-w820dp-v13/values-w820dp-v13.xml",
+        "outputFile": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pullagain\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,37 +11,61 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values-w820dp/dimens.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 291,
-                        "endColumn": 57,
-                        "endOffset": 344
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.8.am\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 57,
-                    "endOffset": 108
-                },
-                "from": {
-                    "file": "/Users/anakagold/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.8.am\\17-Flight-Search-Engine\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "file": "D:\\Judy\\AndroidStudioWorkspace\\Project\\pullagain\\17-Flight-Search-Engine\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
                         "startOffset": 295,
                         "endColumn": 57,
                         "endOffset": 348
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.8.am\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\4.8.16.8.am\\17-Flight-Search-Engine\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 295,
+                        "endColumn": 57,
+                        "endOffset": 348
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "D:\\Users\\anakagold\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 291,
+                        "endColumn": 57,
+                        "endOffset": 344
                     }
                 }
             }

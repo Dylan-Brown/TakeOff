@@ -25,6 +25,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -41,7 +42,6 @@ import java.util.Map;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
-import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightListActivity;
 
 import takeoff.cis350.upenn.edu.takeoff.flight.JSONAsyncTask;
 
@@ -570,75 +570,4 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         Intent intent = new Intent(this, SearchHistoryWrapper.class);                                 //Give me the last 20 searches from FireBase
         startActivity(intent);
     }
-<<<<<<< HEAD
-
-
-    private class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
-        String[] APIKeys={"AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA","AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ","AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos","AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w"};
-        String APIKey=APIKeys[2];
-        //CHANGE THE NUMBER OF APIKEYS IF IT BEGINS CRASHING!!
-        Context context;
-
-        public JSONAsyncTask(Context context) {
-            this.context = context.getApplicationContext();
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-        }
-
-        @Override
-        protected JSONArray doInBackground(String... params) {
-            try {
-                JSONObject json = new JSONObject(params[0]);
-                System.out.println(json.toString(4));
-                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key="+APIKey);
-                StringEntity SEJson = new StringEntity(json.toString());
-                httpPost.setEntity(SEJson);
-                httpPost.setHeader("Content-type", "application/json");
-                HttpClient hc = HttpClientBuilder.create().build();
-                ResponseHandler<String> rh = new BasicResponseHandler();
-                HttpResponse response = hc.execute(httpPost);
-                // StatusLine stat = response.getStatusLine();
-                int status = response.getStatusLine().getStatusCode();
-                System.out.println("ATTEMPT??");
-
-                if (status == 200) {
-                    HttpEntity entity = response.getEntity();
-                    JSONObject jsonResponse = new JSONObject(EntityUtils.toString(entity));
-                    JSONArray jsonArray = jsonResponse.getJSONObject("trips").getJSONArray("tripOption");
-
-                    return jsonArray;
-                }
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(JSONArray result) {
-            try {
-
-                QPXAPIParser.getAPIResultsAsFlight(result);
-                System.out.println("ASyncTask: IT WORKS!");
-            } catch (JSONException e) {
-                System.out.println("ASyncTask: FAILED!");
-            }
-
-            Intent intent = new Intent(context, Dashboard.class);
- //           Intent intent = new Intent(context, FlightListActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        }
-    }
-=======
->>>>>>> origin/master
 }

@@ -89,6 +89,7 @@ public class Dashboard extends ListFragment {
         // display the toolbar
         Toolbar myToolbar = (Toolbar) getView().findViewById(R.id.my_toolbar);
         getActivity().setActionBar(myToolbar);
+        getActivity().getActionBar().setTitle("");
         setHasOptionsMenu(true);
     }
 

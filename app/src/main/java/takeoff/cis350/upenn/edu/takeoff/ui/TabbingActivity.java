@@ -12,9 +12,12 @@ import android.view.View;
 import android.widget.TabHost.TabSpec;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.ui.*;
+import takeoff.cis350.upenn.edu.takeoff.ui.favorites.FavoritesFragment;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.DashBoardSearchHistory;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
+import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
 
 public class TabbingActivity extends AppCompatActivity {
     private FragmentTabHost tabhost;
@@ -52,7 +55,8 @@ public class TabbingActivity extends AppCompatActivity {
         //Setting the correct activity each
         tabhost.addTab(dashboardTab, Dashboard.class, null);
         tabhost.addTab(searchHistoryTab, DashBoardSearchHistory.class, null);
-        //tabhost.addTab(favoritesTab);
+        tabhost.addTab(favoritesTab, FavoritesFragment.class, null);
+        tabhost.addTab(profileTab, ProfileFragment.class, null);
     }
 
     @Override
@@ -158,10 +162,12 @@ public class TabbingActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         System.out.println("ON RESUME");
-        System.out.println("GETTING DASHY DASH");
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
-        if(dash != null) {
-            dash.loadDashboard();
+        if(fromSearch) {
+            System.out.println("GETTING DASHY DASH");
+            Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+            if (dash != null) {
+                dash.loadDashboard();
+            }
         }
     }
 }
