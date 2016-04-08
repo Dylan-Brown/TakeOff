@@ -10,6 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.search.Dashboard"
-    tools:showIn="@layout/activity_dashboard">
+    tools:showIn="@layout/fragment_dashboard">
 
 </RelativeLayout>

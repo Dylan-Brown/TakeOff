@@ -3,13 +3,9 @@ package takeoff.cis350.upenn.edu.takeoff.ui.search;
 import android.support.v4.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -98,7 +94,7 @@ public class Dashboard extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_dashboard, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_dashboard, container, false);
         return rootView;
     }
 
@@ -343,6 +339,5 @@ public class Dashboard extends ListFragment {
         }
         return null;
     }
-
 
 }

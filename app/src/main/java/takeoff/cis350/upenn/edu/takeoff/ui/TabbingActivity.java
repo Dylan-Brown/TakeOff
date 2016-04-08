@@ -41,18 +41,17 @@ public class TabbingActivity extends AppCompatActivity {
         TabSpec dashboardTab = tabhost.newTabSpec("dashboard");
         TabSpec favoritesTab = tabhost.newTabSpec("favorites");
         TabSpec searchHistoryTab = tabhost.newTabSpec("searchHistory");
+        TabSpec profileTab = tabhost.newTabSpec("profile");
 
         //Setting the names shown for each tag
         dashboardTab.setIndicator("DashBoard");
         favoritesTab.setIndicator("Favorites");
         searchHistoryTab.setIndicator("Search History");
+        profileTab.setIndicator("Profile");
 
         //Setting the correct activity each
-        System.out.println("BEFORE ADDING TABS");
         tabhost.addTab(dashboardTab, Dashboard.class, null);
-        System.out.println("DASHBOARD TAB AFTER");
         tabhost.addTab(searchHistoryTab, DashBoardSearchHistory.class, null);
-        System.out.println("SEARCHISTORYTAB AFTER");
         //tabhost.addTab(favoritesTab);
     }
 

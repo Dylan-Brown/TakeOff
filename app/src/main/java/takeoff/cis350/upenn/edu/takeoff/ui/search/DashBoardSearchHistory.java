@@ -1,18 +1,13 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
-import android.app.ListActivity;
 import android.support.v4.app.ListFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -99,7 +94,7 @@ public class DashBoardSearchHistory extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_dashboard_history, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_dashboard_history, container, false);
         return rootView;
     }
 
