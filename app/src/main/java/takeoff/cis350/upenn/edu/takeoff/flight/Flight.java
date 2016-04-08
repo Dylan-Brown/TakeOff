@@ -2,7 +2,7 @@ package takeoff.cis350.upenn.edu.takeoff.flight;
 
 import java.io.*;
 import java.util.*;
-
+import takeoff.cis350.upenn.edu.takeoff.ui.results.*;
 /**
  * Created by tangson on 2/19/16.
  */
@@ -18,7 +18,7 @@ public class Flight implements Serializable {
 
     String id="";  //unique per flight
     boolean isReturnTrip=false;
-
+    boolean isDirectFlight=false;
     double cost=99999.99;     //in USD           //trips.tripOption[].saleTotal
 
     int duration=0;

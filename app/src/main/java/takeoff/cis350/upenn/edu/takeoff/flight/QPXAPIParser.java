@@ -53,7 +53,6 @@ public class QPXAPIParser {
                     // legs, i.e. number of flights
                     for (int i = 0; i < numOfLegs; i++) {
                         JSONObject leg = legs.getJSONObject(i);
-                        fullFlight.numOfConnections += numOfLegs;
                         SubFlight sf;
                         sf = new SubFlight();
                         if (i_sl == 1) {
@@ -90,7 +89,7 @@ public class QPXAPIParser {
             }
 
             SubFlight lastF = sfList.get(roundTripCounter - 1);
-            fullFlight.numOfConnections = roundTripCounter;
+            fullFlight.numOfConnections = roundTripCounter-1;
             fullFlight.departureCityCode = firstF.departureCityCode + "";
             fullFlight.departureTime = firstF.departureTime + "";
             fullFlight.departureDate = firstF.departureDate + "";
@@ -99,7 +98,7 @@ public class QPXAPIParser {
             fullFlight.arrivalDate = lastF.arrivalDate + "";
             fullFlight.duration = slices.getJSONObject(0).getInt("duration");
             if (fullFlight.isReturnTrip) {
-                fullFlight.retnumOfConnections = sfList.size() - roundTripCounter;
+                fullFlight.retnumOfConnections = sfList.size() - roundTripCounter-1;
                 firstF = sfList.get(roundTripCounter);
                 lastF = sfList.get(sfList.size() - 1);
                 fullFlight.retduration = slices.getJSONObject(1).getInt("duration");
@@ -110,6 +109,9 @@ public class QPXAPIParser {
                 fullFlight.retarrivalTime = lastF.arrivalTime + "";
                 fullFlight.retarrivalDate = lastF.arrivalDate + "";
                 fullFlight.retdepartureCityCode = lastF.departureCityCode + "";
+            }
+            if ((fullFlight.isReturnTrip && sfList.size() == 2) || sfList.size() == 1) {
+                fullFlight.isDirectFlight = true;
             }
             FlightCache.add(fullFlight);
             flightResults.add(fullFlight);
@@ -140,12 +142,13 @@ public class QPXAPIParser {
 
             for (SubFlight sf : flight.subFlights) {
                 counter++;
-                System.out.println("con "+counter+" Departure: " + sf.departureCityCode);
-                System.out.println("con "+counter+" Arrival: " + sf.arrivalCityCode);
-                System.out.println("con "+counter+" FlightNumber: " + sf.flightNumber);
-                System.out.println("con "+counter+" Airline: " + sf.airline);
-                System.out.println("con "+counter+" CabinClass: " + sf.cabinClass);
-            } if (flight.isReturnTrip) {
+                System.out.println("con " + counter + " Departure: " + sf.departureCityCode);
+                System.out.println("con " + counter + " Arrival: " + sf.arrivalCityCode);
+                System.out.println("con " + counter + " FlightNumber: " + sf.flightNumber);
+                System.out.println("con " + counter + " Airline: " + sf.airline);
+                System.out.println("con " + counter + " CabinClass: " + sf.cabinClass);
+            }
+            if (flight.isReturnTrip) {
 
                 System.out.println(" Ret Departure: " + flight.retdepartureCityCode);
                 System.out.println(" Ret Departure Time: " + flight.retdepartureTime);
@@ -157,11 +160,11 @@ public class QPXAPIParser {
                 counter = 0;
                 for (SubFlight sf : flight.subFlights) {
                     counter++;
-                    System.out.println("con "+counter+" Departure: " + sf.departureCityCode);
-                    System.out.println("con "+counter+" Arrival: " + sf.arrivalCityCode);
-                    System.out.println("con "+counter+" FlightNumber: " + sf.flightNumber);
-                    System.out.println("con "+counter+" Airline: " + sf.airline);
-                    System.out.println("con "+counter+" CabinClass: " + sf.cabinClass);
+                    System.out.println("con " + counter + " Departure: " + sf.departureCityCode);
+                    System.out.println("con " + counter + " Arrival: " + sf.arrivalCityCode);
+                    System.out.println("con " + counter + " FlightNumber: " + sf.flightNumber);
+                    System.out.println("con " + counter + " Airline: " + sf.airline);
+                    System.out.println("con " + counter + " CabinClass: " + sf.cabinClass);
                 }
             }
         }

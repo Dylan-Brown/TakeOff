@@ -38,7 +38,7 @@
         <activity android:name=".ui.search.Dashboard" />
         <activity android:name=".flight.FlightResultActivity" />
         <activity
-            android:name=".ui.favorites.FavoriteListActivity"
+            android:name=".ui.results.FlightListActivity"
             android:label="Favorite " />
         <activity
             android:name=".ui.favorites.FlightInfo"
