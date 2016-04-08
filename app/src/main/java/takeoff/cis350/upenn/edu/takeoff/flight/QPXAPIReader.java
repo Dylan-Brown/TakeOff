@@ -105,7 +105,6 @@ public class QPXAPIReader {
             }
             System.out.println("Arrival: " + lastLeg.getString("destination"));
             System.out.println("Arrival Time: " + lastLeg.getString("arrivalTime"));
-
         }
         System.out.println("Length is: " + jsonArray.length());
     }

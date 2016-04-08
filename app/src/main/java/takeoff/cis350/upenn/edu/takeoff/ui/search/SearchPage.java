@@ -575,8 +575,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
 
     private class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
-        String APIKey="AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ";
-
+        String[] APIKeys={"AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA","AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ","AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos","AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w"};
+        String APIKey=APIKeys[1];
+        //CHANGE THE NUMBER OF APIKEYS IF IT BEGINS CRASHING!!
         Context context;
 
         public JSONAsyncTask(Context context) {
