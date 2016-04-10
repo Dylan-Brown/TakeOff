@@ -7,12 +7,22 @@ import android.widget.FrameLayout;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 
+/**
+ * Class to wrap the SearchHistory activity
+ */
 public class SearchHistoryWrapper extends AppCompatActivity {
 
+    /**
+     *
+     */
     public SearchHistoryWrapper() {
 
     }
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

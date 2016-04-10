@@ -12,7 +12,7 @@ import android.widget.TextView;
 import takeoff.cis350.upenn.edu.takeoff.R;
 
 /**
- * Created by dylan on 4/7/16.
+ * Class representing the Activity to display a group's shared flights
  */
 public class GroupPageActivity extends ListActivity {
 
@@ -27,7 +27,6 @@ public class GroupPageActivity extends ListActivity {
     }
 
     protected void loadGroupPage() {
-        System.out.println("IN DASHBOARD LOADING");
         groupView = new GroupPageView(getApplicationContext());
         String[] groups = new String[10];
         for (int i = 0;  i < groups.length; i++) {
@@ -38,8 +37,6 @@ public class GroupPageActivity extends ListActivity {
         setListAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, groups));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
                 groups);
-
-
 
         groupView.setAdapter(adapter);
 
@@ -57,13 +54,12 @@ public class GroupPageActivity extends ListActivity {
         Intent intent = new  Intent(this, GroupPage.class);
         Log.e("GroupPage", "Here!!!");
 
-        // Parse the TextView to a group name
+        // parse the TextView to a group name
         // TODO: Actually make this work
         String groupInfo = ((TextView) v).getText().toString();
         Log.e("GroupPage", "groupInfo: " + groupInfo);
 
         // add  the relevant extras
-        //
 
         // Start the FlightInfoActivity
         intent.putExtra(GROUP_MESSAGE, groupInfo);

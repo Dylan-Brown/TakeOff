@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 
+/**
+ * The Fragment in the TabbingActivity to display User's profile information
+ */
 public class ProfileFragment extends Fragment {
 
     @Override

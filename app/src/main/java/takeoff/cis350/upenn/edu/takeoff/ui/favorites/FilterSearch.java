@@ -11,9 +11,10 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchQuery;
 
 /**
- * Created by dylan on 3/25/16.
+ * Class to handle the "Advanced Filter" feature of the dashboard
  */
 public class FilterSearch extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+
     SearchQuery sq;
 
     @Override
@@ -22,27 +23,46 @@ public class FilterSearch extends Activity implements View.OnClickListener, Adap
         setContentView(R.layout.activity_filter);
 
         Bundle extras = getIntent().getExtras();
-        //String temp = (String) extras.get("searchQuery");
-        //sq = SearchQuery.parseSearchQuery(temp);                                                      //this line is throwing error. i am trying to get the Search Query from DashBoard
+        // TODO: Finish implementing this method
     }
 
+    /**
+     *
+     * @param view
+     */
     @Override
     public void onClick(View view) {
-
+        // TODO: Implement
     }
 
+    /**
+     *
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+        // TODO: Implement
     }
 
+    /**
+     *
+     * @param adapterView
+     */
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        // TODO: Implement
     }
 
+    /**
+     *
+     * @param view
+     */
     public void transitionToSearch (View view) {
-        //for now, just go to DashBoard
+        // go to Search
+        // TODO: Update this to go to search
         Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }

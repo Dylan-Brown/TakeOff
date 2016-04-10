@@ -17,13 +17,20 @@ import takeoff.cis350.upenn.edu.takeoff.flight.SubFlight;
  * Created by tangson on 2/23/16.
  */
 public class FlightAdapter extends ArrayAdapter {
+
     List list = new ArrayList();
     private TextView arrivalDate;
 
+    /**
+     * Default constructor for the class
+     */
     public FlightAdapter(Context context, int resource) {
         super(context, resource);
     }
 
+    /**
+     *
+     */
     static class DataHandler {
         TextView departureCityCode;
         TextView departureDate;
@@ -35,22 +42,42 @@ public class FlightAdapter extends ArrayAdapter {
         TextView connections;
     }
 
+    /**
+     *
+     * @param object
+     */
     @Override
     public void add(Object object) {
         super.add(object);
         list.add(object);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getCount() {
         return this.list.size();
     }
 
+    /**
+     *
+     * @param position
+     * @return
+     */
     @Override
     public Object getItem(int position) {
         return this.list.get(position);
     }
 
+    /**
+     *
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row;
@@ -102,6 +129,11 @@ public class FlightAdapter extends ArrayAdapter {
         return row;
     }
 
+    /**
+     *
+     * @param flight
+     * @return
+     */
     private String getConCities(Flight flight) {
         List destinations = new ArrayList<String>();
         String destinationString = "";

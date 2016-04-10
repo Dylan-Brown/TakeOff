@@ -1,28 +1,32 @@
-//DUMMY FLIGHT INFO
 package takeoff.cis350.upenn.edu.takeoff.flight;
-
-import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 
 /**
  * Created by anakagold on 2/25/16.
  *
- * This class essentially makes 20 dummy flight results information
+ * This class makes 20 dummy flight results for testing purposes
  */
 public class DummyFlightInfo {
 
-    String [] flightinfo = new String[20];
+    String[] flightInfo = new String[20];
     Flight[] flights = new Flight[20];
 
-    // DYLAN: Updated to conform to flight string parameters, less confusing
+    /**
+     * The constructor for  the DummyFlightInfo class. This populates the protected fields with
+     * dummy flight information.
+     */
     public DummyFlightInfo() {
-        int basecost = 1000;
+
+        int baseCost = 1000;
         for (int i = 0; i < 20; i ++) {
+            // randomize the cost for later testing sorting
+            baseCost *= Math.random() * 2;
+
+            // add all the relevant dummy information to the new Flight object
             Flight temp = new Flight();
-            basecost *= Math.random() * 2;
-            temp.cost = (float)basecost;
+            temp.cost = (float) baseCost;
             temp.id = "id" + i;
             temp.isReturnTrip = false;
-            temp.cost = basecost *= Math.random();
+            temp.cost = baseCost *= Math.random();
             temp.numOfConnections = 5;
             temp.duration = 2;
             temp.departureCityCode = "PHL";
@@ -37,16 +41,26 @@ public class DummyFlightInfo {
             temp.retarrivalCityCode="N/A";
             temp.retarrivalDate="N/A";
             temp.retarrivalTime="N/A";
+
+            // store the dummy Flight and its String representation
             flights[i] = temp;
-            flightinfo[i] = temp.toString();
+            flightInfo[i] = temp.toString();
         }
     }
 
+    /**
+     * Gets the array of Flight objects containing dummy information
+     * @return the flights array
+     */
     public Flight[] getFlights() {
         return this.flights;
     }
 
+    /**
+     * Gets the array of String objects that represent the individual dummy flights' information
+     * @return the flightInfo array
+     */
     public String[] getFlightInfo() {
-        return this.flightinfo;
+        return this.flightInfo;
     }
 }

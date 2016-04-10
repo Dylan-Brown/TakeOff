@@ -30,13 +30,16 @@ import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.FlightInfoActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 
+/**
+ *
+ */
 public class Dashboard extends ListFragment {
 
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     public final static String FLIGHT_MESSAGE = "FlightActual";
     List<Flight> flightResults;
-    ListView l;
+    ListView listView;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -51,7 +54,7 @@ public class Dashboard extends ListFragment {
      */
     public void loadDashboard() {
         System.out.println("IN DASHBOARD LOADING");
-        l = getListView();
+        listView = getListView();
 
         // get the flight information information if there is any
         flightResults = QPXAPIParser.getFlightResultsFromMostRecentSearch();
@@ -75,14 +78,13 @@ public class Dashboard extends ListFragment {
                 // display a list of the information
                 setListAdapter(new ArrayAdapter(getActivity(),
                         android.R.layout.simple_list_item_single_choice, flights));
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
-                        flights);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+                        android.R.layout.simple_list_item_1, flights);
 
-                l.setAdapter(adapter);
+                listView.setAdapter(adapter);
             }
         } else {
-            //Print grey font, saying no results
-            System.out.println("FLIGHTRESULTS NULL");
+            // no results
             setToastText("No Searches Yet");
         }
 
@@ -99,25 +101,29 @@ public class Dashboard extends ListFragment {
         return rootView;
     }
 
-    //This message prints the background text according to either 1. no searches yet or 2. no results
+    /**
+     * Display a Toast message containing the relevant text
+     * @param message the text to display
+     */
     private void setToastText(String message) {
         Toast toast = Toast.makeText(getActivity(),
                 message, Toast.LENGTH_LONG);
         toast.show();
     }
 
+    /**
+     * Handle the event in which a list item has been clicked
+     */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new  Intent(getActivity(), FlightInfoActivity.class);
-
-        // Parse the TextView to a new Flight for comparsion
+        // parse the TextView to a new Flight for comparsion
         Flight flight = Flight.fromHumanReadable(((TextView) v).getText().toString());
 
-        // Determine which Flight in flightResults this refers to
+        // determine which Flight in flightResults this refers to
         boolean found = false;
         for (Flight f : flightResults) {
             if (Flight.minimalCompare(f, flight)) {
-                // This is the flight; pass it and it's fields
                 intent.putExtra(FLIGHT_MESSAGE, f);
                 found = true;
                 break;
@@ -126,8 +132,7 @@ public class Dashboard extends ListFragment {
         if (!found) {
             intent.putExtra(FLIGHT_MESSAGE, flight);
         }
-
-        // Start the FlightInfoActivity
+        // start the FlightInfoActivity
         startActivity(intent);
     }
 
@@ -141,41 +146,63 @@ public class Dashboard extends ListFragment {
         bubbleSortBy("airline");
     }
 
+    /**
+     * Sort the displayed Flights by their cost
+     */
     public void sortByCost() {
         bubbleSortBy("cost");
     }
 
+    /**
+     * Sort the displayed Flights by their departure date
+     */
     public void sortByDepartureDate() {
         bubbleSortBy("dep_date");
     }
 
+    /**
+     * Sort the displayed Flights by their departure city
+     */
     public void sortByDepartureCity() {
         bubbleSortBy("dep_city");
     }
 
+    /**
+     * Sort the displayed Flights by their arrival date
+     */
     public void sortByArrivalDate() {
         bubbleSortBy("arr_date");
     }
 
+    /**
+     * Sort the displayed Flights by their arrival city
+     */
     public void sortByArrivalCity() {
         bubbleSortBy("arr_city");
     }
 
+    /**
+     * Display the favorite Flights of the User on the dashboard
+     */
     public void sortByFavoriteFlights() {
+        // TODO: Remove this option from the menu xml file and here
         bubbleSortBy("fav_flights");
     }
 
+    /**
+     * Go to the AdvancedFilter activity after the user has selected that menu option
+     */
     public void advancedFilter() {
         Log.e("AdvancedFilter", "Here");
         // TODO: Put search results into firebase
         SearchQuery sq = new SearchQuery();
 
-
-        // Makiing Dummy Search Query
-        sq.no_of_Slices=1; //number of total trips; one-way is 1 slice, roundtrip is 2 slices
-        sq.origin="PHL";
-        sq.destination="NYC";
-        sq.date="2017-01-01"; //in the format of YYYY-MM-DD
+        // make a dummy SearchQuery
+        // one slice is direct, 2 slices implies a round trip
+        sq.no_of_Slices = 1;
+        sq.origin = "PHL";
+        sq.destination = "NYC";
+        sq.date = "2017-01-01";
 
         Intent intent = new Intent(getActivity(), FilterSearch.class);
         intent.putExtra("searchQuery", sq.toString());
@@ -183,14 +210,26 @@ public class Dashboard extends ListFragment {
         // TODO: Start new activity called FilterSearch
     }
 
+    /**
+     * Sorts the list of flights to be displayed on the dashboard.
+     * @param feature the feature by which we sort the results
+     */
     public void bubbleSortBy(String feature) {
+        // TODO: Change the sorting algorithm. While bubbleSort is efficient enough for our
+        // TODO: purposes, I'd like to not go halfway on this
+
+        // check for null input
         if(flightResults == null) {
             return;
         }
+
+        // create the auxiliary array to assist sort
         Flight[] array = new Flight[flightResults.size()];
         flightResults.toArray(array);
         int n = array.length;
         int k;
+
+        // sort based on the given feature
         switch (feature) {
             case "airline":
                 for (int m = n; m >= 0; m--) {
@@ -209,7 +248,7 @@ public class Dashboard extends ListFragment {
                 for (int m = n; m >= 0; m--) {
                     for (int i = 0; i < n - 1; i++) {
                         k = i + 1;
-                        if (array[i].getCost() > array[k].getCost()) {
+                        if (array[i].getCost() < array[k].getCost()) {
                             Flight temp;
                             temp = array[i];
                             array[i] = array[k];
@@ -271,7 +310,7 @@ public class Dashboard extends ListFragment {
                     }
                 }
             case "fav_flights":
-                // If there is a logged in user, display list of favorites
+                // if there is a logged in user, display list of favorites
                 if (usersRef.getAuth() !=  null) {
                     Log.e("Dashboard", "Authorized");
 
@@ -281,15 +320,14 @@ public class Dashboard extends ListFragment {
 
                                 @Override
                                 public void onDataChange(DataSnapshot snapshot) {
-                                    // User has favorites; get this information and replace search results
-                                    Log.e("Dashboard", "onDataChange");
+                                    // user has favorites; get this information and replace search results
 
                                     ArrayList<Object> userFavs = (ArrayList<Object>) snapshot.getValue();
                                     flightResults.clear();
                                     for (Object o : userFavs) {
                                         Flight f = Flight.parseFlight((String) o);
                                         flightResults.add(f);
-                                        Log.e("Dashboard", "onDataChange: Flight: " + f.toString());
+                                        Log.i("Dashboard", "onDataChange: Flight: " + f.toString());
                                     }
                                     String[] flightInfo = new String[flightResults.size()];
                                     int i = 0;
@@ -301,7 +339,7 @@ public class Dashboard extends ListFragment {
                                 }
                                 @Override
                                 public void onCancelled(FirebaseError firebaseError) {
-                                    // Internally display error message, externally claim nothing found
+                                    // internally display error message, externally claim nothing found
                                     Log.e("Dashboard", "The read failed: " + firebaseError.getMessage());
                                     Toast toast = Toast.makeText(getActivity(),
                                             "No favorites found.", Toast.LENGTH_SHORT);
@@ -309,7 +347,7 @@ public class Dashboard extends ListFragment {
                                 }
                             });
                 } else {
-                    // No authenticated user (guestsession or some error) - no favorites data
+                    // no authenticated user (guestsession or some error) - no favorites data
                     Toast toast = Toast.makeText(getActivity(),
                             "No favorites found.", Toast.LENGTH_SHORT);
                     toast.show();
@@ -320,6 +358,7 @@ public class Dashboard extends ListFragment {
             default:
         }
 
+        // finally, display the sorted list
         String[] flightInfo = new String[array.length];
         for (int i = 0; i < array.length; i++) {
             flightInfo[i] = array[i].humanReadable();
@@ -327,12 +366,21 @@ public class Dashboard extends ListFragment {
         setAdapter(flightInfo);
     }
 
+    /**
+     *
+     * @param info
+     */
     private void setAdapter(String[] info) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
                 info);
-        l.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 
+    /**
+     * Gets the Flight in the Flight results List corresponding to the given ID
+     * @param id the unique id of the flight
+     * @return the Flight if it is found, null otherwise
+     */
     @SuppressWarnings("unused")
     private Flight getFlightByID(String id) {
         for (Flight f : flightResults) {
@@ -341,6 +389,10 @@ public class Dashboard extends ListFragment {
         return null;
     }
 
+    /**
+     * Gets the List of Flight results from the search
+     * @return the List of Flights
+     */
     public List<Flight> getFlightResults() {
         return this.flightResults;
     }

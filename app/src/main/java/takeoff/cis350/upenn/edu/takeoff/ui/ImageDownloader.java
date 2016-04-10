@@ -29,7 +29,7 @@ import java.net.URLEncoder;
 
 
 /**
- * Created by Sandy on 3/24/2016.
+ *
  */
 public class ImageDownloader extends AsyncTask<String, Void, String> {
     View v;

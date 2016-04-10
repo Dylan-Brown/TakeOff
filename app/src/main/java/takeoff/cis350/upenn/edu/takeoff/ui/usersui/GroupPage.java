@@ -18,7 +18,7 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.user.Group;
 
 /**
- * Created by dylan on 4/8/16.
+ * Class representing the Activity relevant to displaying a group's information
  */
 public class GroupPage extends Activity {
 
@@ -40,6 +40,7 @@ public class GroupPage extends Activity {
         displayInfo.setText("this is where the group info would go");
         setContentView(displayInfo);
 
+        // TODO: Implement this class
     }
 
 

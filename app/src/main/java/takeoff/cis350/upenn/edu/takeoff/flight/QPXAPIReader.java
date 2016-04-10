@@ -1,11 +1,8 @@
 package takeoff.cis350.upenn.edu.takeoff.flight;
 
 import org.json.*;
-
 import android.util.Log;
-
 import com.android.volley.*;
-
 import org.json.JSONObject;
 
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchQuery;
@@ -14,15 +11,25 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchQuery;
  * Created by tangson on 3/17/16.
  */
 public class QPXAPIReader {
+
     static RequestQueue queue;
     static JSONArray JSONResponse;
     static boolean isSet = true;
 
+    /**
+     *
+     * @param ja
+     */
     public static void changeResponse(JSONArray ja) {
         JSONResponse = ja;
         isSet = true;
     }
 
+    /**
+     *
+     * @param sq
+     * @return
+     */
     public static String makeJSONObjectFromSearchQuery(SearchQuery sq) {
         int adultCount = sq.adultCount;
         boolean refundability = sq.refundability;
@@ -70,12 +77,18 @@ public class QPXAPIReader {
         String jsonRequest = requestSlice + requestPassenger + requestInfo;
         Log.e("JSONREQUEST", jsonRequest);
         try {
-            System.out.println(new JSONArray(jsonRequest).toString(2));
+            Log.i("QPXAPIReader", "makeJSONObjectFromSearchQuery: " + new JSONArray(jsonRequest).toString(2));
         } catch (Exception e) {
+            // TODO: Handle
         }
         return jsonRequest;
     }
 
+    /**
+     *
+     * @param jsonArray
+     * @throws JSONException
+     */
     public static void printAPIResults(JSONArray jsonArray) throws JSONException {
         for (int index = 0; index < jsonArray.length(); index++) {
             JSONObject tripOption = jsonArray.getJSONObject(index);
@@ -86,27 +99,26 @@ public class QPXAPIReader {
             JSONObject firstLeg = segments.getJSONObject(0).getJSONArray("leg").getJSONObject(0);
             JSONObject lastLeg = segments.getJSONObject(segmentLength - 1).getJSONArray("leg").getJSONObject(0);
 
-            System.out.println("");
-            System.out.println("Sale Total " + tripOption.getString("saleTotal"));
-            System.out.println("Number of connections: " + segmentLength);
-            System.out.println("Departure: " + firstLeg.getString("origin"));
-            System.out.println("Departure Time: " + firstLeg.getString("departureTime"));
+            Log.i("QPXAPIReader", "printAPIResults: Sale Total " + tripOption.getString("saleTotal"));
+            Log.i("QPXAPIReader", "printAPIResults: Number of connections: " + segmentLength);
+            Log.i("QPXAPIReader", "printAPIResults: Departure: " + firstLeg.getString("origin"));
+            Log.i("QPXAPIReader", "printAPIResults: Departure Time: " + firstLeg.getString("departureTime"));
             if (segmentLength > 1) {
                 for (int segIndex = 0; segIndex < segmentLength - 1; segIndex++) {
                     JSONObject connectingArrival = segments.getJSONObject(segIndex).getJSONArray("leg")
                             .getJSONObject(0);
 
-                    System.out.println("Connecting Arrival Time: " + connectingArrival.getString("arrivalTime"));
-                    System.out.println("Connection: " + connectingArrival.getString("destination"));
+                    Log.i("QPXAPIReader", "printAPIResults: Connecting Arrival Time: " + connectingArrival.getString("arrivalTime"));
+                    Log.i("QPXAPIReader", "printAPIResults: Connection: " + connectingArrival.getString("destination"));
                     JSONObject connectingDeparture = segments.getJSONObject(segIndex + 1).getJSONArray("leg")
                             .getJSONObject(0);
-                    System.out.println("Connecting Departure Time: " + connectingDeparture.getString("departureTime"));
+                    Log.i("QPXAPIReader", "printAPIResults: Connecting Departure Time: " + connectingDeparture.getString("departureTime"));
                 }
             }
-            System.out.println("Arrival: " + lastLeg.getString("destination"));
-            System.out.println("Arrival Time: " + lastLeg.getString("arrivalTime"));
+            Log.i("QPXAPIReader", "printAPIResults: Arrival: " + lastLeg.getString("destination"));
+            Log.i("QPXAPIReader", "printAPIResults: Arrival Time: " + lastLeg.getString("arrivalTime"));
         }
-        System.out.println("Length is: " + jsonArray.length());
+        Log.i("QPXAPIReader", "printAPIResults: Length is: " + jsonArray.length());
     }
 
 

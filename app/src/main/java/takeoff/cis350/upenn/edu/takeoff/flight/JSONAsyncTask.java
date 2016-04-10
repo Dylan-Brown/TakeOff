@@ -2,6 +2,7 @@ package takeoff.cis350.upenn.edu.takeoff.flight;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 
 import org.apache.http.HttpEntity;
@@ -26,20 +27,31 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
 
     Context context;
 
+    /**
+     * Constructor for the class
+     * @param context
+     */
     public JSONAsyncTask(Context context) {
         this.context = context.getApplicationContext();
     }
 
+    /**
+     *
+     */
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
 
     }
 
+    /**
+     *
+     * @param params
+     * @return
+     */
     @Override
     protected JSONArray doInBackground(String... params) {
         try {
-            System.out.println("IN DOINBACKGROUND");
             JSONObject json = new JSONObject(params[0]);
             System.out.println(json.toString(4));
             HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ");
@@ -51,16 +63,13 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
             HttpResponse response = hc.execute(httpPost);
             // StatusLine stat = response.getStatusLine();
             int status = response.getStatusLine().getStatusCode();
-            System.out.println("ATTEMPT??");
 
             if (status == 200) {
                 HttpEntity entity = response.getEntity();
                 JSONObject jsonResponse = new JSONObject(EntityUtils.toString(entity));
                 JSONArray jsonArray = jsonResponse.getJSONObject("trips").getJSONArray("tripOption");
-
                 return jsonArray;
             }
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -71,22 +80,21 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
         return null;
     }
 
+    /**
+     *
+     * @param result
+     */
     @Override
     protected void onPostExecute(JSONArray result) {
         try {
-            System.out.println("IN POST EXECUTE");
             QPXAPIParser.getAPIResultsAsFlight(result);
-            System.out.println("ASyncTask: IT WORKS!");
-
             if(result != null) {
                 System.out.println(result.toString(2));
-                System.out.println("SOMETHINGSOMETHING");
             }
-
-            System.out.println("SOMETHING");
         } catch (JSONException e) {
-            System.out.println("ASyncTask: FAILED!");
+            Log.e("ASyncTask", "onPostExecute: the task failed with a JSONException");
+
         }
-        System.out.println("ENDING SEARCH PAGE");
+        Log.i("ASyncTask", "onPostExecute: ending search page");
     }
 }

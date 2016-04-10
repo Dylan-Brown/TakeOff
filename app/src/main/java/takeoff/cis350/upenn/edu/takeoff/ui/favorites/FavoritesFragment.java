@@ -1,7 +1,6 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.favorites;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,12 +23,20 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 
+/**
+ * The class representing the Favorites fragment of TabbedActivity
+ */
 public class FavoritesFragment extends ListFragment {
 
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     List<Flight> flightResults;
-    ListView l;
+    ListView listView;
+
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,18 +44,26 @@ public class FavoritesFragment extends ListFragment {
         loadFavorites();
     }
 
-
-
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_favorites, container, false);
         return rootView;
     }
 
+    /**
+     *
+     */
     private void setVariables() {
         Dashboard dash = (Dashboard) getActivity().getSupportFragmentManager().findFragmentByTag("dashboard");
-        l = getListView();
-        if(l == null) {
+        listView = getListView();
+        if(listView == null) {
             return;
         }
         flightResults = dash.getFlightResults();
@@ -64,7 +79,7 @@ public class FavoritesFragment extends ListFragment {
                 android.R.layout.simple_list_item_single_choice, flights));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
                 flights);
-        l.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 
 
@@ -85,22 +100,6 @@ public class FavoritesFragment extends ListFragment {
                             if(flightResults == null) {
                                 flightResults = new ArrayList<Flight>();
                             }
-
-                            /*
-                            ArrayList<Object> userFavs = (ArrayList<Object>) snapshot.getValue();
-                            flightResults.clear();
-                            for (Object o : userFavs) {
-                                Flight f = Flight.parseFlight((String) o);
-                                flightResults.add(f);
-                                Log.e("Dashboard", "onDataChange: Flight: " + f.toString());
-                            }
-                            String[] flightInfo = new String[flightResults.size()];
-                            int i = 0;
-                            for (Flight f : flightResults) {
-                                flightInfo[i++] = f.humanReadable();
-                            }
-                            setAdapter(flightInfo);*/
-                            // TODO: flightInfo is the humanReadable list of favorites, display it.
                         }
 
                         @Override
@@ -113,18 +112,20 @@ public class FavoritesFragment extends ListFragment {
                         }
                     });
 
-            //setAdapter(flightInfo);
         } else {
-            // No authenticated user (guestsession or some error) - no favorites data
-            Toast toast = Toast.makeText(getActivity(),
-                    "No favorites found.", Toast.LENGTH_SHORT);
+            // No authenticated user (guest session or some error) - no favorites data
+            Toast toast = Toast.makeText(getActivity(), "No favorites found.", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
 
+    /**
+     *
+     * @param info
+     */
     private void setAdapter(String[] info) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
                 info);
-        l.setAdapter(adapter);
+        listView.setAdapter(adapter);
     }
 }

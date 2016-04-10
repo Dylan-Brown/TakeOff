@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 
 /**
- * Created by dylan on 4/7/16.
+ * Class representing the View to display a group's shared flights
  */
 public class GroupPageView extends ListView {
 
@@ -15,8 +15,7 @@ public class GroupPageView extends ListView {
     }
 
     /**
-     * IDEA FOR PAGE LAYOUT
-     *
+     * TODO: Display the following inforation
      * Group names need to be displayed
      * Group members on left, title: user's group, group flights on bottom
      * Have to have some kind of method to accept a group invitation

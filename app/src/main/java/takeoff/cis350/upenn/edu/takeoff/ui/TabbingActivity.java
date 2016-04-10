@@ -37,13 +37,21 @@ import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPageActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
 import takeoff.cis350.upenn.edu.takeoff.user.Group;
 
+/**
+ *
+ */
 public class TabbingActivity extends AppCompatActivity {
-    private FragmentTabHost tabhost;
+
     private static final int SEARCH_PAGE_REQUEST = 100;
     private static final int GROUP_PAGE_REQUEST = 120;
     private static final String GROUP_MESSAGE = "GROUP_MESSAGE";
+    private FragmentTabHost tabhost;
     private boolean fromSearch = false;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +65,9 @@ public class TabbingActivity extends AppCompatActivity {
         System.out.println("ACTIVITY ONCREATE END");
     }
 
+    /**
+     *
+     */
     private void createTabHost() {
         tabhost = (FragmentTabHost) (FragmentTabHost) findViewById(android.R.id.tabhost);
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
@@ -80,6 +91,11 @@ public class TabbingActivity extends AppCompatActivity {
         tabhost.addTab(profileTab, ProfileFragment.class, null);
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -95,6 +111,11 @@ public class TabbingActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -102,6 +123,10 @@ public class TabbingActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     *
+     * @param item
+     */
     public void sortByAirline(MenuItem item) {
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {
@@ -110,6 +135,10 @@ public class TabbingActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param item
+     */
     public void sortByCost(MenuItem item) {
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {
@@ -117,6 +146,10 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param item
+     */
     public void sortByDepartureDate(MenuItem item) {
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {
@@ -124,6 +157,10 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param item
+     */
     public void sortByDepartureCity(MenuItem item) {
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {
@@ -131,6 +168,10 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param item
+     */
     public void sortByArrivalDate(MenuItem item) {
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {
@@ -138,6 +179,10 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param item
+     */
     public void sortByArrivalCity(MenuItem item) {
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {
@@ -145,6 +190,10 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param item
+     */
     public void sortByFavoriteFlights(MenuItem item) {
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {
@@ -152,12 +201,21 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param item
+     */
     public void advancedFilter(MenuItem item) {
         Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
         if(dash != null) {
             dash.advancedFilter();
         }
     }
+
+    /**
+     *
+     * @param v
+     */
     public void goToSearchPage(View v) {
         Intent intent = new Intent(this, SearchPage.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -165,6 +223,12 @@ public class TabbingActivity extends AppCompatActivity {
         startActivityForResult(intent, SEARCH_PAGE_REQUEST);
     }
 
+    /**
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param intent
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if(requestCode == 100) {
@@ -179,6 +243,9 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -193,7 +260,9 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
 
-    // called when clicking on the MyGroups button in the Profile tab
+    /**
+     * called when clicking on the MyGroups button in the Profile tab
+     */
     public void goToMyGroups(View v) {
 
         Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
@@ -212,7 +281,9 @@ public class TabbingActivity extends AppCompatActivity {
 
     }
 
-    // called when clicking  on the New Group button in the Profile tab
+    /**
+     * called when clicking  on the New Group button in the Profile tab
+     */
     public void goToMakeGroup(View v) {
         // Create a pop-up dialog asking for the name of the new group
 
@@ -247,7 +318,10 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
-    // Only called from New Group button dialog, goes to the page of the new group
+    /**
+     * Only called from New Group button dialog, goes to the page of the new group
+     * @param newGroupName
+     */
     protected void goToNewGroupPage(final String newGroupName) {
         final Intent intent = new Intent(this, GroupPage.class);
         Log.e("JustMadeANewGroupAndGo", "Here!!!");

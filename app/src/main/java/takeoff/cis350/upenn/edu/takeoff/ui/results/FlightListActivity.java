@@ -13,25 +13,24 @@ import java.util.List;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
-import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightAdapter;
 import takeoff.cis350.upenn.edu.takeoff.flight.FlightResultActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
 
-
 /**
  * Created by tangson on 2/23/16.
- * https://www.youtube.com/watch?v=DzpwvZ4S27g
  */
-//THIS IS IT!!!
-
 public class FlightListActivity extends ListActivity {
-    List<Flight> fL = QPXAPIParser.getFlightResultsFromMostRecentSearch();
-    Flight[] flights = fL.toArray(new Flight[fL.size()]);
-    ;///flight list will be bundled in. Get the flights from the favorite_list.
 
+    List<Flight> flightList = QPXAPIParser.getFlightResultsFromMostRecentSearch();
+    Flight[] flights = flightList.toArray(new Flight[flightList.size()]);
     FlightAdapter adapter;
     ListView listView;
+    // TODO: flight list will be bundled in. Get the flights from the favorite_list.
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,12 +62,22 @@ public class FlightListActivity extends ListActivity {
         });
     }
 
+    /**
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -78,13 +87,12 @@ public class FlightListActivity extends ListActivity {
             return true;
         }
         Flight f=QPXAPIParser.FlightCache.get(index);
-        boolean returnTrip=f.isReturnTrip();
-        boolean directFlight=f.isDirectFlight();
-       Intent myIntent=new Intent();
+        boolean returnTrip = f.isReturnTrip();
+        boolean directFlight = f.isDirectFlight();
+       Intent myIntent = new Intent();
         // myIntent= new Intent(getBaseContext(),CLASSTHATITSGOINGTO);
         myIntent.putExtra("flightIndex", index);
         startActivity(myIntent);
-
 
         return super.onOptionsItemSelected(item);
     }

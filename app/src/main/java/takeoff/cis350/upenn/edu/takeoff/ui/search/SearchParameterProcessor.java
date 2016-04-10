@@ -13,12 +13,20 @@ public class SearchParameterProcessor {
 
     SearchQuery sq = new SearchQuery();
 
+    /**
+     *
+     * @param departureDateInput
+     */
     public void setDepartureDate(String departureDateInput) {
         if (!departureDateInput.equals("")) {
-        sq.date = parseDate(departureDateInput);
+            sq.date = parseDate(departureDateInput);
         }
     }
 
+    /**
+     *
+     * @param returningDateInput
+     */
     public void setReturningDate(String returningDateInput) {
         sq.isRoundtrip = !returningDateInput.equals("");
         if (!returningDateInput.equals("")) {
@@ -26,42 +34,80 @@ public class SearchParameterProcessor {
         }
     }
 
+    /**
+     *
+     * @param countries
+     */
     public void setCountries(String countries) {
+        // TODO: implement
     }
 
+    /**
+     *
+     * @param cities
+     */
     public void setCities(String cities) {
+        // TODO: implement
     }
 
+    /**
+     *
+     * @param budget
+     */
     public void setBudget(String budget) {
         if (!budget.equals("")) {
             sq.maxPrice = Double.parseDouble(budget);
         }
     }
 
+    /**
+     *
+     * @param passengerCount
+     */
     public void setPassengerCount(String passengerCount) {
         if (!passengerCount.equals("")) {
             sq.adultCount = Integer.parseInt(passengerCount);
         }
     }
 
+    /**
+     *
+     * @param maxConnectionDurationinHours
+     */
     public void setMaxConnectionDuration(String maxConnectionDurationinHours) {
         if (!maxConnectionDurationinHours.equals("")) {
             sq.maxConnectionDuration = 60 * Integer.parseInt(maxConnectionDurationinHours);
         }
     }
 
+    /**
+     *
+     * @param cabin
+     */
     public void setCabin(String cabin) {
         sq.preferredCabin = parseCabin(cabin);
     }
 
+    /**
+     *
+     * @param alliance
+     */
     public void setAlliance(String alliance) {
         sq.alliance = alliance;
     }
 
-    public void setairportCodes(String airportCodes) {
+    /**
+     *
+     * @param airportCodes
+     */
+    public void setAirportCodes(String airportCodes) {
         sq.destination = parseLocations(airportCodes).get(0);
     }
 
+    /**
+     *
+     * @param nonstop
+     */
     public void setNonStop(boolean nonstop) {
         if (nonstop) {
             sq.maxStops = 0;
@@ -70,11 +116,15 @@ public class SearchParameterProcessor {
         }
     }
 
+    /**
+     *
+     * @param refundable
+     */
     public void setRefundable(boolean refundable) {
         sq.refundability = refundable;
     }
 
-/*
+    /*
     public SearchParameterProcessor(String departureDate, String returnDate, String countries,
                                     String cities, String airportCodes, String budget,
                                     String quantity, String waitTime, String flightClass,
@@ -123,9 +173,10 @@ public class SearchParameterProcessor {
 
 
     }
-*/
+    */
 
     /**
+     *
      * @param date - the string represent of the desired date in the format MM-dd-yyyy
      * @return string - the string represent of the desired date in the format yyyy-MM-dd
      */
@@ -138,6 +189,11 @@ public class SearchParameterProcessor {
         return "" + dateArr[2] + "-" + dateArr[0] + "-" + dateArr[1];
     }
 
+    /**
+     *
+     * @param s
+     * @return
+     */
     private List<String> parseLocations(String s) {
         List<String> locations = new ArrayList<>();
         String[] set = s.split(",");
@@ -147,6 +203,11 @@ public class SearchParameterProcessor {
         return locations;
     }
 
+    /**
+     *
+     * @param input
+     * @return
+     */
     private String parseCabin(String input) {
         if (input.equals("")) {
             return input;
@@ -161,6 +222,11 @@ public class SearchParameterProcessor {
         }
     }
 
+    /**
+     *
+     * @param input
+     * @return
+     */
     private String parseAlliance(String input) {
         if (input.equals("")) {
             return input;
@@ -175,11 +241,15 @@ public class SearchParameterProcessor {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public SearchQuery getQuery() {
         Calendar calendar = Calendar.getInstance();
-        //getTime() returns current time in milliseconds
+        // getTime() returns current time in milliseconds
         Date now = calendar.getTime();
-        //Passed the milliseconds to constructor of Timestamp class
+        // passed the milliseconds to constructor of Timestamp class
         sq.timeOfSearch = new Time(now.getTime());
         return sq;
     }

@@ -30,7 +30,6 @@ import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -39,9 +38,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class SignUpActivity extends AppCompatActivity {
 
+    private final Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
     private static final int REQUEST_READ_CONTACTS = 0;
-
-    // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private EditText mPasswordConfirmView;
@@ -49,10 +47,10 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
 
+        // set up the login form
+        setContentView(R.layout.activity_sign_up);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordConfirmView = (EditText) findViewById(R.id.password_retype);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -61,11 +59,11 @@ public class SignUpActivity extends AppCompatActivity {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
                     attemptSignUp();
                     return true;
+                } else {
+                    return false;
                 }
-                return false;
             }
         });
-
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_up_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -73,11 +71,11 @@ public class SignUpActivity extends AppCompatActivity {
                 attemptSignUp();
             }
         });
-
-        View mLoginFormView = findViewById(R.id.login_form);
-        View mProgressView = findViewById(R.id.login_progress);
     }
 
+    /**
+     * Returns true if this user may request contact
+     */
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
@@ -114,14 +112,15 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
-    // Attempts to sign up the  user
+    /**
+     * Attempts to sign up the  user
+     */
     private void attemptSignUp() {
-
-        // Reset errors.
+        // reset errors
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
-        // Store values at the time of the login attempt.
+        // store values at the time of the login attempt
         final String email = mEmailView.getText().toString();
         final String password = mPasswordView.getText().toString();
         String password2 = mPasswordConfirmView.getText().toString();
@@ -132,14 +131,14 @@ public class SignUpActivity extends AppCompatActivity {
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
+        // check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && password.length() < 4) {
             mPasswordView.setError("Password must be at least 4 characters");
             focusView = mPasswordView;
             cancel = true;
         }
 
-        // Check for a valid email address.
+        // check for a valid email address.
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
@@ -151,22 +150,17 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first form field with an error
+            // there was an error; don't attempt login and focus the first form field with an error
             focusView.requestFocus();
         } else {
-            // TODO: Show a progress spinner while attempting to sign up
-
-            final Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+            // continue  with the signup request
             final Intent intent = new  Intent(this, TabbingActivity.class);
-
             usersRef.createUser(email, password,
                     new Firebase.ValueResultHandler<Map<String, Object>>() {
 
-                        // On successful creation of a user, set that user to the current
                         @Override
                         public void onSuccess(Map<String, Object> result) {
-
-                            // set the userdata
+                            // the creation of a user was successful
                             Map<String, Object> userMap = new HashMap<>();
                             userMap.put("uid", (String) result.get("uid"));
                             userMap.put("username", email);
@@ -175,19 +169,19 @@ public class SignUpActivity extends AppCompatActivity {
                             Map<String, Object> users = new HashMap<>();
                             users.put((String) result.get("uid"), userMap);
                             usersRef.updateChildren(users);
-
                             // go to search page
                             startActivity(intent);
                         }
 
                         @Override
                         public void onError(FirebaseError firebaseError) {
-                            Log.e("SignUpActivity", "onError " + firebaseError.toString()
-                                    + ", no user account created");
-                            // TODO: Handle specific errors with toast
-                            // Email already has an associated account
-                            Toast toast = Toast.makeText(getApplicationContext(), "There is already "
-                                    + "an account associated with this email address.", Toast.LENGTH_SHORT);
+                            // the creation of a user was not successful
+                            Log.e("SignUpActivity", "attemptSignUp: onError "
+                                    + firebaseError.toString() + ", no user account created");
+                            // TODO: Make error message more specific
+                            Toast toast = Toast.makeText(getApplicationContext(),
+                                    "There is already an account associated with this email "
+                                            + "address.", Toast.LENGTH_SHORT);
                             toast.show();
 
                         }

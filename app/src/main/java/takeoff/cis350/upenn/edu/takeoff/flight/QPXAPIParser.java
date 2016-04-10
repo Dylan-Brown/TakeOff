@@ -7,9 +7,6 @@ import org.json.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
-import takeoff.cis350.upenn.edu.takeoff.flight.SubFlight;
-
 /**
  * Created by tangson on 3/23/16.
  */
@@ -17,6 +14,12 @@ public class QPXAPIParser {
 
     public static List<Flight> FlightCache;
 
+    /**
+     *
+     * @param jsonArray
+     * @return
+     * @throws JSONException
+     */
     public static List<Flight> getAPIResultsAsFlight(JSONArray jsonArray) throws JSONException {
         FlightCache = new ArrayList<Flight>();
         List<Flight> flightResults = new ArrayList<Flight>();
@@ -120,51 +123,58 @@ public class QPXAPIParser {
         return flightResults;
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<Flight> getFlightResultsFromMostRecentSearch() {
         return FlightCache;
     }
 
-
+    /**
+     *
+     * @param flightResults
+     */
     public static void printFlights(List<Flight> flightResults) {
         int Counter = 0;
         for (Flight flight : flightResults) {
             Counter++;
-            System.out.println("Flight " + Counter);
-            System.out.println("Departure: " + flight.departureCityCode);
-            System.out.println("Departure Time: " + flight.departureTime);
-            System.out.println("Departure Date: " + flight.departureDate);
-            System.out.println("Arrival: " + flight.arrivalCityCode);
-            System.out.println("Arrival Time: " + flight.arrivalTime);
-            System.out.println("ArrivalDate: " + flight.arrivalDate);
-            System.out.println("Num Connections: " + flight.retnumOfConnections);
+            Log.i("QPXAPIPParser", "printFlights: Flight " + Counter);
+            Log.i("QPXAPIPParser", "printFlights: Departure: " + flight.departureCityCode);
+            Log.i("QPXAPIPParser", "printFlights: Departure Time: " + flight.departureTime);
+            Log.i("QPXAPIPParser", "printFlights: Departure Date: " + flight.departureDate);
+            Log.i("QPXAPIPParser", "printFlights: Arrival: " + flight.arrivalCityCode);
+            Log.i("QPXAPIPParser", "printFlights: Arrival Time: " + flight.arrivalTime);
+            Log.i("QPXAPIPParser", "printFlights: ArrivalDate: " + flight.arrivalDate);
+            Log.i("QPXAPIPParser", "printFlights: Num Connections: " + flight.retnumOfConnections);
 
             int counter = 0;
 
             for (SubFlight sf : flight.subFlights) {
                 counter++;
-                System.out.println("con " + counter + " Departure: " + sf.departureCityCode);
-                System.out.println("con " + counter + " Arrival: " + sf.arrivalCityCode);
-                System.out.println("con " + counter + " FlightNumber: " + sf.flightNumber);
-                System.out.println("con " + counter + " Airline: " + sf.airline);
-                System.out.println("con " + counter + " CabinClass: " + sf.cabinClass);
+                Log.i("QPXAPIPParser", "printFlights: con " + counter + " Departure: " + sf.departureCityCode);
+                Log.i("QPXAPIPParser", "printFlights: con " + counter + " Arrival: " + sf.arrivalCityCode);
+                Log.i("QPXAPIPParser", "printFlights: con " + counter + " FlightNumber: " + sf.flightNumber);
+                Log.i("QPXAPIPParser", "printFlights: con " + counter + " Airline: " + sf.airline);
+                Log.i("QPXAPIPParser", "printFlights: con " + counter + " CabinClass: " + sf.cabinClass);
             }
             if (flight.isReturnTrip) {
 
-                System.out.println(" Ret Departure: " + flight.retdepartureCityCode);
-                System.out.println(" Ret Departure Time: " + flight.retdepartureTime);
-                System.out.println(" Ret Departure Date: " + flight.retdepartureDate);
-                System.out.println(" Ret Arrival: " + flight.retarrivalCityCode);
-                System.out.println(" Ret Arrival Time: " + flight.retarrivalTime);
-                System.out.println(" Ret ArrivalDate: " + flight.retarrivalDate);
-                System.out.println("Ret Num Connections: " + flight.retnumOfConnections);
+                Log.i("QPXAPIPParser", "printFlights: Ret Departure: " + flight.retdepartureCityCode);
+                Log.i("QPXAPIPParser", "printFlights: Ret Departure Time: " + flight.retdepartureTime);
+                Log.i("QPXAPIPParser", "printFlights: Ret Departure Date: " + flight.retdepartureDate);
+                Log.i("QPXAPIPParser", "printFlights: Ret Arrival: " + flight.retarrivalCityCode);
+                Log.i("QPXAPIPParser", "printFlights: Ret Arrival Time: " + flight.retarrivalTime);
+                Log.i("QPXAPIPParser", "printFlights: Ret ArrivalDate: " + flight.retarrivalDate);
+                Log.i("QPXAPIPParser", "printFlights: Ret Num Connections: " + flight.retnumOfConnections);
                 counter = 0;
                 for (SubFlight sf : flight.subFlights) {
                     counter++;
-                    System.out.println("con " + counter + " Departure: " + sf.departureCityCode);
-                    System.out.println("con " + counter + " Arrival: " + sf.arrivalCityCode);
-                    System.out.println("con " + counter + " FlightNumber: " + sf.flightNumber);
-                    System.out.println("con " + counter + " Airline: " + sf.airline);
-                    System.out.println("con " + counter + " CabinClass: " + sf.cabinClass);
+                    Log.i("QPXAPIPParser", "printFlights: con " + counter + " Departure: " + sf.departureCityCode);
+                    Log.i("QPXAPIPParser", "printFlights: con " + counter + " Arrival: " + sf.arrivalCityCode);
+                    Log.i("QPXAPIPParser", "printFlights: con " + counter + " FlightNumber: " + sf.flightNumber);
+                    Log.i("QPXAPIPParser", "printFlights: con " + counter + " Airline: " + sf.airline);
+                    Log.i("QPXAPIPParser", "printFlights: con " + counter + " CabinClass: " + sf.cabinClass);
                 }
             }
         }

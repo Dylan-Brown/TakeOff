@@ -33,8 +33,6 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 public class LogInActivity extends AppCompatActivity {
 
     private static final int REQUEST_READ_CONTACTS = 0;
-
-    // Keep track of the login task to ensure we can cancel it if requested.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
 
@@ -43,9 +41,8 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        // Set up the login form.
+        // set up the login form
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -53,8 +50,9 @@ public class LogInActivity extends AppCompatActivity {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
                     attemptLogin();
                     return true;
+                } else {
+                    return false;
                 }
-                return false;
             }
         });
 
@@ -67,7 +65,9 @@ public class LogInActivity extends AppCompatActivity {
         });
     }
 
-    // Callback received when a permissions request has been completed.
+    /**
+     * Callback received when a permissions request has been completed.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -78,13 +78,15 @@ public class LogInActivity extends AppCompatActivity {
         }
     }
 
-    // Attempts to sign in or register the account specified by the login form, handles errors
+    /**
+     * Attempts to sign in or register the account specified by the login form, handles errors
+     */
     private void attemptLogin() {
-        // Reset errors.
+        // reset errors
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
-        // Store values at the time of the login attempt.
+        // store values at the time of the login attempt
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
         System.out.println("Email entered: " + email);
@@ -93,14 +95,14 @@ public class LogInActivity extends AppCompatActivity {
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
+        // check for a valid password, if the user entered one
         if (!TextUtils.isEmpty(password) && !(password.length() > 4)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
 
-        // Check for a valid email address.
+        // check for a valid email address
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
@@ -112,26 +114,28 @@ public class LogInActivity extends AppCompatActivity {
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first form field with an error
+            // there was an error; don't attempt login and focus the first form field with an error
             focusView.requestFocus();
         } else {
-            // Perform the user login attempt.
+            // perform the user login attempt.
 
             Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
             final Intent intent = new  Intent(this, TabbingActivity.class);
 
-            // Create a handler to handle the result of the authentication
+            // create a handler to handle the result of the authentication
             Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
 
-                @Override // Authenticated successfully with payload authData
+                @Override
                 public void onAuthenticated(AuthData authData) {
+                    // authenticated successfully with payload authData
                     Log.e("LoginActivity", "attemptLogin onAuthenticated: Authenticated");
-                    // Enter the search page
+                    // enter the search page
                     startActivity(intent);
                 }
 
-                @Override // Authenticated failed with error firebaseError
+                @Override
                 public void onAuthenticationError(FirebaseError firebaseError) {
+                    // authenticated failed with error firebaseError
                     Log.e("LoginActivity", "attemptLogin onAuthenticationError: Error");
                     Context context = getApplicationContext();
                     CharSequence text = "Incorrect email or password.";
@@ -141,7 +145,7 @@ public class LogInActivity extends AppCompatActivity {
                 }
             };
 
-            // Authenticate users with an email/password combination
+            // authenticate users with an email/password combination
             usersRef.authWithPassword(email, password, authResultHandler);
         }
     }
