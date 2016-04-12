@@ -3,161 +3,105 @@ package takeoff.cis350.upenn.edu.takeoff.flight;
 import java.io.*;
 import java.util.*;
 
-/**
- * Created by tangson on 2/19/16.
- *
- * Class representing the Flight datatype; Flight segments are refered to as sub-flights, ie.
- * layovers.
- */
-public class Flight implements Serializable {
+import takeoff.cis350.upenn.edu.takeoff.ui.results.*;
 
-    // the list of flight segments; can be one or more subFlights
+/**
+ * This is the Flight datatype. Flight segments are sub-flights (i.e. layovers, connecting flights),
+ * which are an extension of Flight.
+ */
+
+public class Flight implements Serializable {
+    //Flight is one level recursive.
+    //The master Flight (i.e. the Ticket) is composed of individual flights (eg connections, roundtrips)
+    //If the flight is the master flight, then isEntry is set to true.
     ArrayList<SubFlight> subFlights = new ArrayList<SubFlight>();
 
-    String id = "";
+    String id = "";  //unique per flight
     boolean isReturnTrip = false;
     boolean isDirectFlight = false;
+    double cost = 99999.99;     //in USD
 
-    // cost is represented in US dolalrs
-    double cost=99999.99;
-    int duration=0;
-    int numOfConnections=0;
-    String departureCityCode=" ";
+    int duration = 0;    //duration of the Flight in minutes
+    int numOfConnections = 0;   //number of one-way connections
+    String departureCityCode = "";  //XYZ
+    String departureDate = "";    //YYYY-MM-DD
+    String departureTime = "";   //HH-MM
+    String arrivalCityCode = ""; //XYZ
+    String arrivalDate = "";    //YYYY-MM-DD
+    String arrivalTime = "";    //HH-MM
 
-    // Dates are formatted YYYY-MM-DD, and the time is formatted  HH-MM
-    String departureDate=" ";
-    String departureTime=" ";
-    String arrivalCityCode=" ";
-    String arrivalDate=" ";
-    String arrivalTime=" ";
+    //These variables are for the return flight.
+    int retduration = 0;    //duration of the Flight in minutes
+    int retnumOfConnections = 0;   //number of one-way connections
+    String retdepartureCityCode = "";  //XYZ
+    String retdepartureDate = "";   //YYYY-MM-DD
+    String retdepartureTime = "";    //HH-MM
+    String retarrivalCityCode = "";  //XYZ
+    String retarrivalDate = "";   //YYYY-MM-DD
+    String retarrivalTime = "";    //HH-MM
 
-    // These variables are important if this is a return flight
-    int retduration=0;
-    int retnumOfConnections=0;
-    String retdepartureCityCode=" ";
-    String retdepartureTime=" ";
-    String retdepartureDate=" ";
-    String retarrivalCityCode=" ";
-    String retarrivalDate=" ";
-    String retarrivalTime=" ";
-
-    /**
-     * The default, empty constructor for the class.
-     */
-    public Flight() {
-    }
-
-    /**
-     * Gets the list of SubFlights for this flight, or all subFlights from the departure city to the
-     * arrival city
-     * @return the list of subflights
-     */
     public ArrayList<SubFlight> getSubFlights() {
         return this.subFlights;
     }
 
-    /**
-     * Gets the number of connecting flights
-     * @return the number of connecting flights
-     */
     public int getNumOfConnections() {
         return this.numOfConnections;
     }
 
-    /**
-     * Returns a boolean representing if this flight is a return trip
-     * @return true if the flight is a return trip, and false otherwise
-     */
     public boolean isReturnTrip() {
         return this.isReturnTrip;
     }
 
-    /**
-     * Returns a boolean representing if this flight is directly from the departure city to the
-     * arrival city
-     * @return true if this is a direct flight, false otherwise
-     */
     public boolean isDirectFlight() {
         return this.isDirectFlight;
     }
 
-    /**
-     * Returns this flight's unique id
-     * @return this flight's unique id
-     */
     public String getId() {
         return this.id;
     }
 
-    /**
-     * Returns the city code of the city from which this Flight departs
-     * @return  the departure city code
-     */
     public String getDepartureCityCode() {
         return this.departureCityCode;
     }
 
-    /**
-     * Returns the departure date of this Flight in a string format
-     * @return the string representing the departure date
-     */
     public String getDepartureDate() {
         return this.departureDate;
     }
 
-    /**
-     * Returns the departure time of this Flight in a string format
-     * @return the string representing the departure time
-     */
     public String getDepartureTime() {
         return this.departureTime;
     }
 
-    /**
-     * Returns the city code of the city at which this Flight arrives
-     * @return  the arrival city code
-     */
     public String getArrivalCityCode() {
         return this.arrivalCityCode;
     }
 
-    /**
-     * Returns the arrival date of this Flight in a string format
-     * @return the string representing the arrival date
-     */
     public String getArrivalDate() {
         return this.arrivalDate;
     }
 
-    /**
-     * Returns the arrival time of this Flight in a string format
-     * @return the string representing the arrival time
-     */
     public String getArrivalTime() {
         return this.arrivalTime;
     }
 
-    /**
-     * Gets the cost associated with this Flight. The cost is the sum of the costs of all
-     * subFlights.
-     * @return the total cost associated with this Flight, in US dollars
-     */
     public double getCost() {
         return this.cost;
     }
 
-    /**
-     * Converts this flight into a String representation that can later be parsed back into a Flight
-     * @return
-     */
+
     @Override
     public String toString() {
+        // FORMAT: id-isRoundtrip-(int)cost-numOfConnections-airline-oneWayDuration
+        // -departureCityCode-departureDate-departureTime-arrivalCityCode-arrivalDate-arrivalTime
+        // -roundTripDuration-retdepartureCityCode-retdepartureTime-retdepartureDate
+        // -retarrivalCityCode-retarrivalDate-retarrivalTime-flightNumber-cabinClass-mileage
+        // -flightDuration
         StringBuilder sb = new StringBuilder();
         sb.append(id + "-");
         sb.append(isReturnTrip + "-");
         sb.append(((int) cost) + "-");
         sb.append(numOfConnections + "-");
-        // sb.append(airline + "-");
+        //  sb.append(airline + "-");
         // sb.append(oneWayDuration + "-");
         sb.append(departureCityCode + "-");
         sb.append(departureDate + "-");
@@ -165,26 +109,24 @@ public class Flight implements Serializable {
         sb.append(arrivalCityCode + "-");
         sb.append(arrivalDate + "-");
         sb.append(arrivalTime + "-");
-        // sb.append(roundTripDuration + "-");
+        //  sb.append(roundTripDuration + "-");
         sb.append(retdepartureCityCode + "-");
         sb.append(retdepartureTime + "-");
         sb.append(retdepartureDate + "-");
         sb.append(retarrivalCityCode + "-");
         sb.append(retarrivalDate + "-");
         sb.append(retarrivalTime + "-");
-        // sb.append(flightNumber + "-");
-        // sb.append(cabinClass + "-");
-        // sb.append(mileage + "-");
-        // sb.append(flightDuration);
+        /*sb.append(flightNumber + "-");
+        sb.append(cabinClass + "-");
+        sb.append(mileage + "-");
+        sb.append(flightDuration);*/
         return sb.toString();
     }
 
-    /**
-     * Takes the Flight's information and returns the relevant information in a human readable
-     * format to display.
-     * @return a human readable string containing an overview of this Flights information
-     */
+
+    // Return a string representing the human-readable data about a flight for dashboard
     public String humanReadable() {
+        // FORMAT: airline, cost, departure city, departure date, arrival city, arrival date
         StringBuilder sb = new StringBuilder();
         //sb.append("Airline: " + this.airline + "\n");
         sb.append("Cost: " + this.cost + "\n");
@@ -195,48 +137,41 @@ public class Flight implements Serializable {
         return sb.toString();
     }
 
-    /**
-     * Return a Flight representing the information from the human readable format
-     * @param hr the human readable String to be parsed
-     * @return the new Flight object; note that this does not contain all the information as the
-     *         original Flight item before it was parsed into a human readable format
-     */
+    // Return a string array representing the information from the human-readable format
     public static Flight fromHumanReadable(String hr) {
+        // FORMAT: airline, cost, departure city, departure date, arrival city, arrival date
         Flight f = new Flight();
         String[] info = hr.split("\n");
         for (int i = 0; i < info.length; i++) {
             info[i] = info[i].split(": ")[1];
         }
-        // f.airline = info[0];
+        //   f.airline = info[0];
         f.cost = Double.parseDouble(info[0]);
         f.departureCityCode = info[1];
         f.departureDate = info[2];
         f.arrivalCityCode = info[3];
         f.arrivalDate = info[4];
+
         return f;
     }
 
-    /**
-     * Compares the id's of two flights. Since we have the  hueristic that each flight has a unique
-     * id, then we can avoid comparing all of the fields of two flights to compare them.
-     * @param f1 the first flight for comparison
-     * @param f2 the second flight for comparison
-     * @return true if the two flights ids are the same
-     */
+
+    // Return true if Flight F1 and Flight F2 have the same minimal fields, false otherwise
     public static boolean minimalCompare(Flight f1, Flight f2) {
-        return f1.id.equals(f2.id);
+        // COMPARE: airline, cost, departure city, departure date, arrival city, arrival date
+        boolean compare = f1.id.equals(f2.id);
+        return compare;
     }
 
 
     public static Flight parseFlight(String s) {
-        // split the string based on whether or not it is in a human readable format
         String[] info = s.contains(":") ?
                 Flight.fromHumanReadable(s).toString().split("-") : s.split("-");
-        Flight f = new Flight();
 
+        Flight f = new Flight();
         if (info.length < 23) {
-            // the string is in the human readable format
-            // f.airline = info[0];
+            // FORMAT: airline, cost, departure city, departure date, arrival city, arrival date
+            //      f.airline = info[0];
             f.cost = Double.parseDouble(info[1]);
             f.departureCityCode = info[2];
             f.departureDate = info[3];
@@ -244,33 +179,31 @@ public class Flight implements Serializable {
             f.arrivalDate = info[5];
 
         } else {
-            // the full information relevant to this flight is available
             f.id = info[0];
             f.isReturnTrip = Boolean.parseBoolean(info[1]);
             f.cost = Double.parseDouble(info[2]);
             f.numOfConnections = Integer.parseInt(info[3]);
-            // f.airline = info[4];
-            // f.oneWayDuration = Integer.parseInt(info[5]);
+            //    f.airline = info[4];
+            //      f.oneWayDuration = Integer.parseInt(info[5]); // 5
             f.departureCityCode = info[6];
             f.departureDate = info[7];
             f.departureTime = info[8];
             f.arrivalCityCode = info[9];
             f.arrivalDate = info[10];  //10
             f.arrivalTime = info[11];
-            // f.roundTripDuration = Integer.parseInt(info[12]);
+            //  f.roundTripDuration = Integer.parseInt(info[12]);
             f.retdepartureCityCode = info[13];
             f.retdepartureTime = info[14];
             f.retdepartureDate = info[15];
             f.retarrivalCityCode = info[16];
             f.retarrivalDate = info[17];
             f.retarrivalTime = info[18];
-            // f.flightNumber = info[19];
-            // f.cabinClass = info[20];
-            // f.mileage = Integer.parseInt(info[21]);
-            // f.flightDuration = Integer.parseInt(info[22]);
-            if (info.length >= 24) {
+           /* f.flightNumber = info[19];
+            f.cabinClass = info[20];
+            f.mileage = Integer.parseInt(info[21]);
+            f.flightDuration = Integer.parseInt(info[22]);*/
+            if (info.length >= 24)
                 f.arrivalDate = info[23];
-            }
         }
         return f;
     }
