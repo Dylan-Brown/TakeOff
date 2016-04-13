@@ -66,7 +66,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Helper to create all the tabs and assign their contents
      */
     private void createTabHost() {
         tabhost = (FragmentTabHost) (FragmentTabHost) findViewById(android.R.id.tabhost);
@@ -124,7 +124,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Call the dashboard's sort method to sort by airline
      * @param item
      */
     public void sortByAirline(MenuItem item) {
@@ -136,7 +136,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Call the dashboard's sort method to sort by cost
      * @param item
      */
     public void sortByCost(MenuItem item) {
@@ -158,7 +158,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Call the dashboard's sort method to sort by departure city
      * @param item
      */
     public void sortByDepartureCity(MenuItem item) {
@@ -169,7 +169,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Call the dashboard's sort method to sort by arrival date
      * @param item
      */
     public void sortByArrivalDate(MenuItem item) {
@@ -180,7 +180,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Call the dashboard's sort method to sort by arrival city
      * @param item
      */
     public void sortByArrivalCity(MenuItem item) {
@@ -191,7 +191,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Call the dashboard's sort method to sort by favorite flight
      * @param item
      */
     public void sortByFavoriteFlights(MenuItem item) {
@@ -202,7 +202,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Call the dashboard's sort method to sort by advance filter
      * @param item
      */
     public void advancedFilter(MenuItem item) {
@@ -213,7 +213,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * go to the search page
      * @param v
      */
     public void goToSearchPage(View v) {
@@ -232,6 +232,7 @@ public class TabbingActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if(requestCode == 100) {
+            //if the activity is restarted from search, display search results
             System.out.println("ON ACTIVITYRESULT");
             fromSearch = true;
             if(tabhost != null) {
@@ -244,7 +245,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Display search results
      */
     @Override
     protected void onResume() {

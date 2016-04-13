@@ -58,7 +58,7 @@ public class FavoritesFragment extends ListFragment {
     }
 
     /**
-     *
+     *Sets the global vairables
      */
     private void setVariables() {
         Dashboard dash = (Dashboard) getActivity().getSupportFragmentManager().findFragmentByTag("dashboard");
@@ -82,7 +82,9 @@ public class FavoritesFragment extends ListFragment {
         listView.setAdapter(adapter);
     }
 
-
+    /**
+     * Gets the favorites from
+     */
     private void loadFavorites() {
 
 

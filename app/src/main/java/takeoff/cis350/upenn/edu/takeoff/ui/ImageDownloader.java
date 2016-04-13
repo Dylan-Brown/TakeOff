@@ -29,7 +29,7 @@ import java.net.URLEncoder;
 
 
 /**
- *
+ * The AsyncTask used to download the image as the flight page background
  */
 public class ImageDownloader extends AsyncTask<String, Void, String> {
     View v;

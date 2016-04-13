@@ -60,6 +60,10 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.JSONAsyncTask;
 
 
+/**
+ * This class is the page the user sees when they enter their requirements for the flight search
+ */
+
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
     private EditText departureDateText;
     private EditText returningDateText;
@@ -160,7 +164,8 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     }
 
     /**
-     * @param view Description: When the focus is not in this designated view,
+     * @param view
+     * Description: When the focus is not in this designated view,
      *             the onScreen Keyboard disappears
      */
     public void hideKeyboard(View view) {
@@ -168,6 +173,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    /**
+     * Sets the options for the spinner for flight class options
+     */
     private void setClassSpinner() {
         cabin = "";
 
@@ -402,7 +410,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setAlliance(alliance.toUpperCase());
         spp.setNonStop(nonstop);
         spp.setRefundable(refundable);
-        spp.setairportCodes(airportCodes);
+        //spp.setairportCodes(airportCodes);
         final SearchQuery sq = spp.getQuery();
         String request = QPXAPIReader.makeJSONObjectFromSearchQuery(sq);
 
