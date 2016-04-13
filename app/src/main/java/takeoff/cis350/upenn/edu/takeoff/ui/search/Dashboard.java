@@ -34,6 +34,7 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
  * This class is the list fragment for the dashboard, to display the search results
  */
 public class Dashboard extends ListFragment {
+    public static List<Flight> FlightCache=new ArrayList<Flight>();
 
     private final Firebase usersRef =
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
