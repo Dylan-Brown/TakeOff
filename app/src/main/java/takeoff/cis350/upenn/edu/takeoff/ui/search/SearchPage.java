@@ -46,6 +46,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -76,7 +77,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
 
     private MultiAutoCompleteTextView countriesAutoComp;
-    private EditText citiesEditText;
+    private MultiAutoCompleteTextView citiesEditText;
     private EditText budgetEditText;
     private EditText ticketEditText;
     private EditText airportEditText;
@@ -90,6 +91,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     private String alliance;
     private boolean refundable;
     private boolean nonstop; //T = 0, F = 5
+    private List<String> allCities = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { System.out.println("Here!");
@@ -118,9 +120,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, countryArray);
         countriesAutoComp.setAdapter(adapter);
+        countriesAutoComp.addTextChangedListener(countryTextWatcher);
 
         //Cities, airport code, wait time edittext setters
-        citiesEditText = (EditText) findViewById(R.id.city_input);
+        citiesEditText = (MultiAutoCompleteTextView) findViewById(R.id.city_input);
+        citiesEditText.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         citiesEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
         airportEditText = (EditText) findViewById(R.id.airport_input);
@@ -258,6 +262,61 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         }
 
     }
+
+    /**
+     * Description: A TextWatcher to handle parsing changes in the city textfield
+     */
+    private final TextWatcher countryTextWatcher = new TextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+        @Override
+        public void afterTextChanged(Editable s) {
+            // Get the countries
+            if (s.toString().contains(",")) {
+
+                // get the list of countries as listed by the user
+                allCities.clear();
+                String userInput = s.toString();
+                String[] countries = userInput.split(", ");
+
+                for (int i = 0; i < countries.length; i++) {
+                    try {
+                        // get the array of cities for this specific country
+                        String fieldName = countries[i].replace(",", "").trim().replace(" ", "_");
+                        Field field = R.array.class.getField(fieldName);
+                        int resId = field.getInt(null);
+                        Log.e("FEILD:", resId + "-" + field.toGenericString());
+                        String[] cities = getResources().getStringArray(resId);
+
+                        // add each city to the list of all cities to autocomplete
+                        for (int j = 0; j < cities.length; j++) {
+                            allCities.add(cities[j]);
+                        }
+
+                    } catch (NoSuchFieldException e) {
+                        Log.e("afterTextChanged", e.getMessage());
+                    } catch (IllegalAccessException e) {
+                        Log.e("afterTextChanged", e.getMessage());
+                    }
+
+
+                }
+
+                // update the array adapter for the city
+                ArrayAdapter<String> adapterCity =
+                        new ArrayAdapter<String>(getBaseContext(),
+                                android.R.layout.simple_list_item_1, allCities);
+                citiesEditText.setAdapter(adapterCity);
+                citiesEditText.setOnFocusChangeListener(getOnFocusChangeListener());
+
+            }
+
+        }
+    };
 
     /**
      * Description: A TextWatcher to handle parsing changes in the
