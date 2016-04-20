@@ -286,7 +286,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 for (int i = 0; i < countries.length; i++) {
                     try {
                         // get the array of cities for this specific country
-                        String fieldName = countries[i].replace(",", "").trim().replace(" ", "_");
+                        String fieldName = countries[i].replace(",", "").trim().replace(" ", "_").toLowerCase();
                         Field field = R.array.class.getField(fieldName);
                         int resId = field.getInt(null);
                         Log.e("FEILD:", resId + "-" + field.toGenericString());
@@ -302,8 +302,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                     } catch (IllegalAccessException e) {
                         Log.e("afterTextChanged", e.getMessage());
                     }
-
-
                 }
 
                 // update the array adapter for the city
@@ -461,7 +459,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setDepartureDate(departureDateInput);
         spp.setReturningDate(returningDateInput);
         spp.setCountries(countries);
-        spp.setCities(cities);
+        spp.setCities(getCityCodes(cities, countries));
         spp.setBudget(budget.replace("$", ""));
         spp.setPassengerCount(passengerCount);
         spp.setMaxConnectionDuration(maxConnectionDurationinHours);
@@ -553,6 +551,61 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             return;
         }*/
     }
+
+
+    public String getCityCodes(String cities, String countries) {
+        String cityCodes = "";
+        ArrayList<String> airportCodes = new ArrayList<>();
+        try {
+
+            // split the countries into  an  array
+            ArrayList<String> cns = new ArrayList<>();
+            String[] c = countries.split(",");
+            for (int i = 0; i < c.length; i++) {
+                cns.add(c[i].trim().replace(" ", "_"));
+            }
+
+            // get the arrays of the relevant countries
+            ArrayList<String[]> countriesArrays = new ArrayList<>();
+            String[] allCities = cities.trim().split(",");
+            for (String cn : cns) {
+
+                // get the field of cities in the country
+                Field field = R.array.class.getField(cn);
+                int resId = field.getInt(null);
+                String[] countrysCities = getResources().getStringArray(resId);
+                countriesArrays.add(countrysCities);
+
+                for (int i = 0; i < allCities.length; i++) {
+                    allCities[i] = allCities[i].trim();
+                    for (int j = 0; j < countrysCities.length; j++) {
+                        if (countrysCities[j].contains(allCities[i].trim())) {
+                            // found a matching city; add the iata
+                            int ind = countrysCities[j].indexOf("=") + 1;
+                            String iata = countrysCities[j].substring(ind, countrysCities[j].length());
+                            airportCodes.add(iata);
+                        }
+                    }
+
+                }
+            }
+
+        } catch (Exception e) {
+            Log.e("getCityCodes", e.getMessage());
+        }
+
+        // generate the cities string
+        for (String iata : airportCodes) {
+            cityCodes += iata + " ";
+        }
+        cityCodes =  cityCodes.trim();
+
+        // log and return the results
+        Log.e("getCityCodes", "Final result: " + cityCodes);
+        return cityCodes;
+    }
+
+
 
     /**
      * @param departure - string representing departure date in the format MM-dd-yyyy

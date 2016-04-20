@@ -1,10 +1,15 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
+import android.util.Log;
+
+import java.lang.reflect.Field;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import takeoff.cis350.upenn.edu.takeoff.R;
 
 /**
  * Created by judyweng on 3/23/2016.
@@ -12,6 +17,8 @@ import java.util.List;
 public class SearchParameterProcessor {
 
     SearchQuery sq = new SearchQuery();
+    ArrayList<String> airportCodes = new ArrayList<>();
+    ArrayList<String> countries = new ArrayList<>();
 
     /**
      *
@@ -39,7 +46,12 @@ public class SearchParameterProcessor {
      * @param countries
      */
     public void setCountries(String countries) {
-        // TODO: implement
+        Log.e("SPP", "COUNTRIES BEING SEARCHED: " + countries);
+        String[] c = countries.split(",");
+        for (int i = 0; i < c.length; i++) {
+            this.countries.add(c[i].trim().replace(" ", "_"));
+
+        }
     }
 
     /**
@@ -47,7 +59,8 @@ public class SearchParameterProcessor {
      * @param cities
      */
     public void setCities(String cities) {
-        // TODO: implement
+        // TODO: "cities" is a string of iata airport codes separated by spaces. Handle this.
+
     }
 
     /**
