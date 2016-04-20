@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string-array name="countries">
-		<item></item>
 		<item>Papua New Guinea</item>
 		<item>Cambodia</item>
 		<item>Bosnia Herzegovina</item>
@@ -17,7 +16,6 @@
 		<item>Panama</item>
 		<item>Guadeloupe</item>
 		<item>Philippines D</item>
-		<item>ST. LUCIA</item>
 		<item>Laos</item>
 		<item>Sweeden</item>
 		<item>Argentina</item>
@@ -27,6 +25,7 @@
 		<item>Belize</item>
 		<item>Zambia</item>
 		<item>St Kitts and Nevis</item>
+		<item>Svalbard and Jan Mayen Island</item>
 		<item>Bahrain</item>
 		<item>Congo</item>
 		<item>Namibia</item>
@@ -65,6 +64,7 @@
 		<item>Cuba</item>
 		<item>Czech Republic</item>
 		<item>Mauritania</item>
+		<item>Saint Lucia</item>
 		<item>Mayotte</item>
 		<item>Israel</item>
 		<item>San Marino</item>
@@ -101,23 +101,21 @@
 		<item>Afghanistan</item>
 		<item>Singapore</item>
 		<item>French Guiana</item>
-		<item>St. Lucia</item>
 		<item>Christmas Island</item>
 		<item>American Samoa</item>
 		<item>Russia</item>
 		<item>Netherlands</item>
+		<item>Cote dIvoire</item>
 		<item>China</item>
 		<item>Soloman Islands</item>
 		<item>Martinique</item>
 		<item>Kyrgyzstan</item>
 		<item>Reunion</item>
-		<item>Cote D'Ivoire</item>
 		<item>Bhutan</item>
 		<item>Romania</item>
 		<item>Togo</item>
 		<item>Somolia</item>
 		<item>Philippines</item>
-		<item>Cote d'Ivoire</item>
 		<item>Uzbekistan</item>
 		<item>British Virgin Islands</item>
 		<item>Zimbabwe</item>
@@ -127,7 +125,6 @@
 		<item>Benin</item>
 		<item>Angola</item>
 		<item>Sudan</item>
-		<item>Svalbard &amp; Jan Mayen Island</item>
 		<item>Portugal</item>
 		<item>New Caledonia</item>
 		<item>Indonedia</item>
@@ -211,10 +208,10 @@
 		<item>Norfolk Island</item>
 		<item>Albania</item>
 		<item>New Zealand</item>
-		<item>St. Kitts and Nevis</item>
 		<item>Senegal</item>
 		<item>Macedonia</item>
 		<item>Ethiopia</item>
+		<item>US Virgin Islands</item>
 		<item>Egypt</item>
 		<item>Sierra Leone</item>
 		<item>Bolivia</item>
@@ -227,12 +224,10 @@
 		<item>Ireland</item>
 		<item>Qatar</item>
 		<item>Serbia and Montenegro</item>
-		<item>U.S. Virgin Islands</item>
 		<item>Slovakia</item>
 		<item>France</item>
 		<item>Lithuania</item>
 		<item>Bosnia and Herzegovina</item>
-		<item>Antigua &amp; Barbuda</item>
 		<item>Niger</item>
 		<item>Rwanda</item>
 		<item>Philipines</item>
@@ -251,8 +246,7 @@
 		<item>Occupied Palestinian Territory</item>
 		<item>Greenland</item>
 	</string-array>
-		<item>Geraldton, Australia</item>
-	</string-array>
+	<string-array name="papua_new_guinea">
 		<item>Daru</item>
 		<item>Garasa</item>
 		<item>Tufi</item>
@@ -320,6 +314,7 @@
 		<item>Satwag</item>
 		<item>Hoskins</item>
 	</string-array>
+	<string-array name="cambodia">
 		<item>Ratanakiri</item>
 		<item>Phnom Penh</item>
 		<item>Cayman Brac Is</item>
@@ -327,8 +322,10 @@
 		<item>Siem Reap</item>
 		<item>Battambang</item>
 	</string-array>
+	<string-array name="bosnia_herzegovina">
 		<item>Banja Luka</item>
 	</string-array>
+	<string-array name="kazakhstan">
 		<item>Uralsk</item>
 		<item>Pavlodar</item>
 		<item>Shimkent</item>
@@ -338,12 +335,15 @@
 		<item>Almaty</item>
 		<item>Aktyubinsk</item>
 	</string-array>
+	<string-array name="paraguay">
 		<item>Ciudad del Este</item>
 		<item>Asuncion</item>
 	</string-array>
+	<string-array name="syria">
 		<item>Latakia</item>
 		<item>Deirezzor</item>
 	</string-array>
+	<string-array name="bahamas">
 		<item>Nassau</item>
 		<item>Bimini</item>
 		<item>Crooked Island</item>
@@ -364,11 +364,12 @@
 		<item>Freeport</item>
 		<item>Inagua</item>
 		<item>North Eleuthera</item>
-		<item>Arthur's Town</item>
 		<item>Spring Point</item>
 		<item>Treasure Cay</item>
 		<item>Eleuthera Island</item>
+		<item>Arthurs Town</item>
 	</string-array>
+	<string-array name="solomon_islands">
 		<item>Kirakira</item>
 		<item>Bellona</item>
 		<item>Honiara</item>
@@ -389,8 +390,10 @@
 		<item>Batuna</item>
 		<item>Suavanao</item>
 	</string-array>
+	<string-array name="montserrat">
 		<item>Montserrat</item>
 	</string-array>
+	<string-array name="marshall_islands">
 		<item>Airok</item>
 		<item>Woja</item>
 		<item>Kwajalein</item>
@@ -418,15 +421,18 @@
 		<item>Mili Island</item>
 		<item>Namorik Island</item>
 	</string-array>
+	<string-array name="mali">
 		<item>Yelimane</item>
 		<item>Mopti</item>
 		<item>Goundam</item>
 		<item>Tombouctou</item>
 		<item>Bamako</item>
 	</string-array>
+	<string-array name="us_minor_outlying_islands">
 		<item>Johnston Island</item>
 		<item>Midway Island</item>
 	</string-array>
+	<string-array name="panama">
 		<item>La Palma</item>
 		<item>Panama City</item>
 		<item>Changuinda</item>
@@ -441,12 +447,13 @@
 		<item>Colon</item>
 		<item>Chitre</item>
 	</string-array>
+	<string-array name="guadeloupe">
 		<item>Pointe-a-Pitre</item>
 	</string-array>
+	<string-array name="philippines_d">
 		<item>Cebu</item>
 	</string-array>
-		<item>Saint Lucia</item>
-	</string-array>
+	<string-array name="laos">
 		<item>Vientiane</item>
 		<item>Luang Namtha</item>
 		<item>Luang Prabang</item>
@@ -457,11 +464,12 @@
 		<item>Sayaboury</item>
 		<item>Oudomxay</item>
 	</string-array>
+	<string-array name="sweeden">
 		<item>Orebro</item>
 	</string-array>
+	<string-array name="argentina">
 		<item>La Rioja</item>
 		<item>San Martin De Los Andes</item>
-		<item>Pres. Roque Saenz Pena, CH</item>
 		<item>Reconquista, SF</item>
 		<item>Jujuy</item>
 		<item>Malargue, MD</item>
@@ -484,6 +492,7 @@
 		<item>Mendoza, MD</item>
 		<item>Bahia Blanca</item>
 		<item>Rio Grande, TF</item>
+		<item>Pres Roque Saenz Pena, CH</item>
 		<item>San Luis, SL</item>
 		<item>Formosa</item>
 		<item>Parana, ER</item>
@@ -511,19 +520,24 @@
 		<item>El Bolsan</item>
 		<item>Neuquen, NE</item>
 	</string-array>
+	<string-array name="falkland_islands">
 		<item>Mount Pleasant</item>
 		<item>Port Stanley</item>
 	</string-array>
+	<string-array name="seychelles">
 		<item>Mahe Island</item>
 	</string-array>
+	<string-array name="turks_and_caicos">
 		<item>Middle Caicos</item>
 	</string-array>
+	<string-array name="belize">
 		<item>Punta Gorda</item>
 		<item>Placencia</item>
 		<item>Dangriga</item>
 		<item>Corozal</item>
 		<item>Belize City</item>
 	</string-array>
+	<string-array name="zambia">
 		<item>Kasama</item>
 		<item>Mangu</item>
 		<item>Ndola</item>
@@ -533,10 +547,17 @@
 		<item>Livingstone</item>
 		<item>Lusaka</item>
 	</string-array>
+	<string-array name="st_kitts_and_nevis">
+		<item>Nevis</item>
 		<item>St Kitts</item>
 	</string-array>
+	<string-array name="svalbard_and_jan_mayen_island">
+		<item>Longyearbyen</item>
+	</string-array>
+	<string-array name="bahrain">
 		<item>Bahrain</item>
 	</string-array>
+	<string-array name="congo">
 		<item>Natadi</item>
 		<item>Moanda</item>
 		<item>Brazzaville</item>
@@ -548,6 +569,7 @@
 		<item>Boma</item>
 		<item>Mbuji Mayi</item>
 	</string-array>
+	<string-array name="namibia">
 		<item>Mpacha</item>
 		<item>Mokuti Lodge</item>
 		<item>Ondangwa</item>
@@ -557,6 +579,7 @@
 		<item>Luderitz</item>
 		<item>Oranjemund</item>
 	</string-array>
+	<string-array name="finland">
 		<item>Mikkeli</item>
 		<item>Savonlinna</item>
 		<item>Oulu</item>
@@ -578,30 +601,37 @@
 		<item>Joensuu</item>
 		<item>Lappeenranta</item>
 	</string-array>
+	<string-array name="faroe_islands">
 		<item>Faroe Islands</item>
 	</string-array>
+	<string-array name="comoros">
 		<item>Moroni</item>
 	</string-array>
-		<item>St. Eustatius</item>
+	<string-array name="netherlands_antilles">
 		<item>Saint Maarten</item>
+		<item>St Eustatius</item>
 		<item>Bonaire</item>
 		<item>Curacao</item>
 	</string-array>
+	<string-array name="georgia">
 		<item>Batumi</item>
 		<item>Kutaisi</item>
 		<item>Tbilisi</item>
 	</string-array>
+	<string-array name="yemen">
 		<item>Al Ghaydah</item>
 		<item>Aden</item>
 		<item>Riyan Mukalla</item>
 		<item>Hodeidah</item>
-		<item>Sana'a</item>
 		<item>Seiyun</item>
 		<item>Taiz</item>
 		<item>Ataq</item>
+		<item>Sanaa</item>
 	</string-array>
+	<string-array name="bc">
 		<item>Vancouver</item>
 	</string-array>
+	<string-array name="puerto_rico">
 		<item>Aguadilla</item>
 		<item>San Juan</item>
 		<item>Mayaguez</item>
@@ -609,8 +639,10 @@
 		<item>Vieques</item>
 		<item>Fajard</item>
 	</string-array>
+	<string-array name="eritrea">
 		<item>Asmara</item>
 	</string-array>
+	<string-array name="madagascar">
 		<item>Fianarantsoa</item>
 		<item>Morambe</item>
 		<item>Maintirano</item>
@@ -652,11 +684,14 @@
 		<item>Mananara</item>
 		<item>Mananjary</item>
 	</string-array>
+	<string-array name="aruba">
 		<item>Aruba</item>
 	</string-array>
+	<string-array name="western_samoa">
 		<item>Maota Savaii Is</item>
 		<item>Apia</item>
 	</string-array>
+	<string-array name="libya">
 		<item>Benghazi</item>
 		<item>Tobruk</item>
 		<item>Kufrah</item>
@@ -667,6 +702,7 @@
 		<item>Brack</item>
 		<item>Ghadames</item>
 	</string-array>
+	<string-array name="sweden">
 		<item>Jonkoping</item>
 		<item>Sveg</item>
 		<item>Ornskoldsvik</item>
@@ -703,13 +739,16 @@
 		<item>Vaxjo</item>
 		<item>Umea</item>
 	</string-array>
+	<string-array name="malawi">
 		<item>Club Makokola</item>
 		<item>Lilongwe</item>
 		<item>Mzuzu</item>
 		<item>Blantyre</item>
 	</string-array>
+	<string-array name="turkey_esenboga">
 		<item>Ankara</item>
 	</string-array>
+	<string-array name="poland">
 		<item>Kolobrzeg</item>
 		<item>Szczecin</item>
 		<item>Zielana</item>
@@ -722,13 +761,16 @@
 		<item>Poznan</item>
 		<item>Katowice</item>
 	</string-array>
+	<string-array name="jordan">
 		<item>Aqaba</item>
 		<item>Amman</item>
 	</string-array>
+	<string-array name="bulgaria">
 		<item>Varna</item>
 		<item>Bourgas</item>
 		<item>Sofia</item>
 	</string-array>
+	<string-array name="tunisia">
 		<item>Tunis</item>
 		<item>Tabarka</item>
 		<item>Djerba</item>
@@ -736,27 +778,34 @@
 		<item>Monastir</item>
 		<item>Tozeur</item>
 	</string-array>
+	<string-array name="vanuata">
 		<item>Dillons Bay</item>
 		<item>Emae</item>
 	</string-array>
+	<string-array name="ethopia">
 		<item>Asosa</item>
 		<item>Iddidole</item>
 		<item>Addis Ababa</item>
 		<item>Gode</item>
 	</string-array>
+	<string-array name="spain_and_the_canary_islands">
 		<item>Tenerife</item>
 	</string-array>
+	<string-array name="wallis_and_futuna_islands">
 		<item>Futuna Island</item>
 		<item>Wallis Island</item>
 	</string-array>
+	<string-array name="united_arab_emirates">
 		<item>Al-Fujairah</item>
 		<item>Ras Al Khaimah</item>
 		<item>Al Ain</item>
 		<item>Dubai</item>
 		<item>Abu Dhabi</item>
 	</string-array>
+	<string-array name="tuvalu">
 		<item>Funafuti Atol</item>
 	</string-array>
+	<string-array name="kenya">
 		<item>Eldoret</item>
 		<item>Nairobi</item>
 		<item>Nanyuki</item>
@@ -768,6 +817,7 @@
 		<item>Kiwayu</item>
 		<item>Mombasa</item>
 	</string-array>
+	<string-array name="french_polynesia">
 		<item>Tikehau Atoll</item>
 		<item>Papeete</item>
 		<item>Huahine</item>
@@ -783,16 +833,21 @@
 		<item>Rorutu</item>
 		<item>Manihi</item>
 	</string-array>
+	<string-array name="brunei">
 		<item>Bandar Seri Begawan</item>
 	</string-array>
+	<string-array name="lebanon">
 		<item>Beirut</item>
 	</string-array>
+	<string-array name="djibouti">
 		<item>Djibouti</item>
 	</string-array>
+	<string-array name="azerbaijan">
 		<item>Nakhichevan</item>
 		<item>Baku</item>
 		<item>Gyandzha</item>
 	</string-array>
+	<string-array name="cuba">
 		<item>Baracoa</item>
 		<item>Cayo Largo Del Sur</item>
 		<item>Nueva Gerona</item>
@@ -806,10 +861,12 @@
 		<item>Havana</item>
 		<item>Moa</item>
 	</string-array>
+	<string-array name="czech_republic">
 		<item>Ostrava</item>
 		<item>Brno</item>
 		<item>Prague</item>
 	</string-array>
+	<string-array name="mauritania">
 		<item>Nouakchott</item>
 		<item>Tioljikja</item>
 		<item>Nouadhiba</item>
@@ -817,14 +874,21 @@
 		<item>Aioun El Atrouss</item>
 		<item>Nema</item>
 	</string-array>
+	<string-array name="saint_lucia">
+		<item>Sait Lucia</item>
+	</string-array>
+	<string-array name="mayotte">
 		<item>Dzaoudzi</item>
 	</string-array>
+	<string-array name="israel">
 		<item>Ovda</item>
 		<item>Tel Aviv</item>
 		<item>Haifa</item>
 	</string-array>
+	<string-array name="san_marino">
 		<item>San Marino</item>
 	</string-array>
+	<string-array name="australia">
 		<item>Kowanyama, QL</item>
 		<item>Victoria River Downs, NT</item>
 		<item>Laverton, WA</item>
@@ -865,6 +929,7 @@
 		<item>Brewarrina</item>
 		<item>Mount Gambier, SA</item>
 		<item>Mildura, VI</item>
+		<item>Geraldton, WA</item>
 		<item>Rockhampton, QL</item>
 		<item>Darnley Island, QL</item>
 		<item>Mabuiag Island, QL</item>
@@ -996,9 +1061,11 @@
 		<item>Port Headland, WA</item>
 		<item>Birdsville</item>
 	</string-array>
+	<string-array name="tajikistan">
 		<item>Khudzhand</item>
 		<item>Dushanbe</item>
 	</string-array>
+	<string-array name="myanmar">
 		<item>Tachilek</item>
 		<item>Sittwe</item>
 		<item>Nyaung</item>
@@ -1013,23 +1080,28 @@
 		<item>Thandwe</item>
 		<item>Kawthaung</item>
 	</string-array>
+	<string-array name="cameroon">
 		<item>Yaounde</item>
 		<item>Ngaoundere</item>
 		<item>Dovala</item>
 		<item>Garoua</item>
 		<item>Marova</item>
 	</string-array>
+	<string-array name="gibraltar">
 		<item>Gibraltar</item>
 	</string-array>
+	<string-array name="cyprus">
 		<item>Ercan</item>
 		<item>Paphos</item>
 		<item>Larnaca</item>
 		<item>Nicosia</item>
 	</string-array>
+	<string-array name="northern_mariana_islands">
 		<item>Saipan</item>
 		<item>Rota</item>
 		<item>Tinian</item>
 	</string-array>
+	<string-array name="malaysia">
 		<item>Johor</item>
 		<item>Ipoh</item>
 		<item>Long Banga</item>
@@ -1061,6 +1133,7 @@
 		<item>Tomanggong</item>
 		<item>Bintulu</item>
 	</string-array>
+	<string-array name="iceland">
 		<item>Egilsstadir</item>
 		<item>Hornafjordur</item>
 		<item>Rosh Pina</item>
@@ -1072,11 +1145,14 @@
 		<item>Vestmannaeyjar</item>
 		<item>Isafjordur</item>
 	</string-array>
+	<string-array name="oman">
 		<item>Muscat</item>
 	</string-array>
+	<string-array name="armenia">
 		<item>Yerevan</item>
 		<item>Gyourmri</item>
 	</string-array>
+	<string-array name="gabon">
 		<item>Port Gentil</item>
 		<item>Moanda</item>
 		<item>Mouila</item>
@@ -1089,10 +1165,13 @@
 		<item>Libreville</item>
 		<item>Tchibanga</item>
 	</string-array>
+	<string-array name="trinidad">
 		<item>Port of Spain</item>
 	</string-array>
+	<string-array name="luxembourg">
 		<item>Luxembourg</item>
 	</string-array>
+	<string-array name="brazil">
 		<item>Belem</item>
 		<item>Blo Horizonte</item>
 		<item>Campina Grande</item>
@@ -1185,12 +1264,14 @@
 		<item>Maringa, PR</item>
 		<item>Sorocaba</item>
 	</string-array>
+	<string-array name="turks_and_caicos_islands">
 		<item>Grand Turk Island</item>
 		<item>Providenciales</item>
 		<item>North Caicos</item>
 		<item>Salt Cay</item>
 		<item>South Caicos</item>
 	</string-array>
+	<string-array name="algeria">
 		<item>Timimoun</item>
 		<item>Tindouf</item>
 		<item>Tbessa</item>
@@ -1214,13 +1295,18 @@
 		<item>Tamanrasset</item>
 		<item>El Oved</item>
 	</string-array>
+	<string-array name="slovenia">
 		<item>Maribor</item>
 		<item>Ljubliana</item>
 	</string-array>
+	<string-array name="cocos">
 		<item>Cocos Islands</item>
 	</string-array>
+	<string-array name="antigua_and_barbuda">
+		<item>VC Bird International</item>
 		<item>Antigua</item>
 	</string-array>
+	<string-array name="colombia">
 		<item>Condoto</item>
 		<item>Barran Cabermeja</item>
 		<item>Cartagena</item>
@@ -1254,6 +1340,7 @@
 		<item>Bucaramanga</item>
 		<item>Valledupar</item>
 	</string-array>
+	<string-array name="ecuador">
 		<item>Galapagos</item>
 		<item>Machala</item>
 		<item>Guayaquil</item>
@@ -1267,6 +1354,7 @@
 		<item>Esmeraldas</item>
 		<item>Tulcan</item>
 	</string-array>
+	<string-array name="vanuatu">
 		<item>Tongoa</item>
 		<item>Aniwa</item>
 		<item>Olpoi</item>
@@ -1292,6 +1380,7 @@
 		<item>Lamap</item>
 		<item>Aneityum</item>
 	</string-array>
+	<string-array name="spain_and_canary_islands">
 		<item>Sevilla</item>
 		<item>Valladolid</item>
 		<item>Zaragoza</item>
@@ -1304,8 +1393,10 @@
 		<item>Ceuta</item>
 		<item>Tenerife</item>
 	</string-array>
+	<string-array name="papau_new_guinea">
 		<item>Kundiawa</item>
 	</string-array>
+	<string-array name="italy">
 		<item>Parma</item>
 		<item>Turin</item>
 		<item>Pisa</item>
@@ -1342,6 +1433,7 @@
 		<item>Bolzano</item>
 		<item>Verona</item>
 	</string-array>
+	<string-array name="honduras">
 		<item>Guanaja</item>
 		<item>Puerto Lempira</item>
 		<item>San Pedro Sula</item>
@@ -1353,25 +1445,32 @@
 		<item>Trujillo</item>
 		<item>Brus Laguna</item>
 	</string-array>
+	<string-array name="nauru">
 		<item>Nauru Island</item>
 	</string-array>
+	<string-array name="haiti">
 		<item>Port Au Prince</item>
 		<item>Cap Haitien</item>
 	</string-array>
+	<string-array name="burundi">
 		<item>Bujumbura</item>
 	</string-array>
+	<string-array name="afghanistan">
 		<item>Kabul</item>
 	</string-array>
+	<string-array name="singapore">
 		<item>Singapore</item>
 	</string-array>
+	<string-array name="french_guiana">
 		<item>Cayenne</item>
 	</string-array>
-		<item>St. Lucia</item>
-	</string-array>
+	<string-array name="christmas_island">
 		<item>Christmas Island</item>
 	</string-array>
+	<string-array name="american_samoa">
 		<item>Pago Pago</item>
 	</string-array>
+	<string-array name="russia">
 		<item>Saratov</item>
 		<item>Gelendzik</item>
 		<item>Vladivostok</item>
@@ -1390,10 +1489,10 @@
 		<item>Tiksi</item>
 		<item>Chevepovets</item>
 		<item>Ust-Ilimsk</item>
+		<item>St Petersburg</item>
 		<item>Yuzhno-Sakhalinsk</item>
 		<item>Barnaul</item>
 		<item>Neryjungri</item>
-		<item>St. Petersburg</item>
 		<item>Saint Petersburg</item>
 		<item>Vorkuta</item>
 		<item>Novokuznetsk</item>
@@ -1426,7 +1525,6 @@
 		<item>Vladikavkaz</item>
 		<item>Nojabrxsk</item>
 		<item>Tomsk</item>
-		<item>Noril'sk</item>
 		<item>Rostov</item>
 		<item>Bugulma</item>
 		<item>Magnitogorsk</item>
@@ -1444,6 +1542,7 @@
 		<item>Makhachkala</item>
 		<item>Usinsk</item>
 		<item>Mirnyj</item>
+		<item>Norilsk</item>
 		<item>Sochi</item>
 		<item>Bulgulma</item>
 		<item>Igarka</item>
@@ -1457,12 +1556,18 @@
 		<item>Volgograd</item>
 		<item>Nizhnevartovsk</item>
 	</string-array>
+	<string-array name="netherlands">
 		<item>Rotterdam</item>
 		<item>Eindhoven</item>
 		<item>Amsterdam</item>
 		<item>Groningen</item>
 		<item>Maastricht</item>
 	</string-array>
+	<string-array name="cote_divoire">
+		<item>Gagnoa</item>
+		<item>Abidjan</item>
+	</string-array>
+	<string-array name="china">
 		<item>Baoshan</item>
 		<item>Jinzhou</item>
 		<item>Beihai</item>
@@ -1553,10 +1658,10 @@
 		<item>Taiyuan</item>
 		<item>Wuhan</item>
 		<item>Chongqing</item>
+		<item>Yanan</item>
 		<item>Juzha</item>
 		<item>Chaoyang</item>
 		<item>Xuzhou</item>
-		<item>Yan'an</item>
 		<item>Luzhou</item>
 		<item>Simao</item>
 		<item>Wuyishan</item>
@@ -1570,19 +1675,23 @@
 		<item>Bangda</item>
 		<item>Yantai</item>
 	</string-array>
+	<string-array name="soloman_islands">
 		<item>Afutara</item>
 	</string-array>
+	<string-array name="martinique">
 		<item>Fort De France</item>
 	</string-array>
+	<string-array name="kyrgyzstan">
 		<item>Bishkek</item>
 	</string-array>
+	<string-array name="reunion">
 		<item>St Denis de la Reunion</item>
-		<item>St. Pierre de la Reunion</item>
+		<item>St Pierre de la Reunion</item>
 	</string-array>
-		<item>Gagnoa</item>
-	</string-array>
+	<string-array name="bhutan">
 		<item>Paro</item>
 	</string-array>
+	<string-array name="romania">
 		<item>Oradea</item>
 		<item>Baia Mare</item>
 		<item>Timosoara</item>
@@ -1594,10 +1703,13 @@
 		<item>Iasi</item>
 		<item>Cluj</item>
 	</string-array>
+	<string-array name="togo">
 		<item>Lome</item>
 	</string-array>
+	<string-array name="somolia">
 		<item>Hargeisa</item>
 	</string-array>
+	<string-array name="philippines">
 		<item>Tacloban</item>
 		<item>Dumaguete</item>
 		<item>Butuan</item>
@@ -1618,8 +1730,7 @@
 		<item>Laoag</item>
 		<item>Bacolod</item>
 	</string-array>
-		<item>Abidjan</item>
-	</string-array>
+	<string-array name="uzbekistan">
 		<item>Andizhan</item>
 		<item>Nukus</item>
 		<item>Fergana</item>
@@ -1629,18 +1740,22 @@
 		<item>Urgench</item>
 		<item>Namangan</item>
 	</string-array>
+	<string-array name="british_virgin_islands">
 		<item>Tortola</item>
 		<item>Beef Island</item>
 		<item>Virgin Gorda</item>
 	</string-array>
+	<string-array name="zimbabwe">
 		<item>Harare</item>
 		<item>Bulawayo</item>
 		<item>Hwange Nat Park</item>
 		<item>Victoria Falls</item>
 		<item>Kariba</item>
 	</string-array>
+	<string-array name="republic_of_moldova">
 		<item>Chisinau</item>
 	</string-array>
+	<string-array name="indonesia">
 		<item>Teminabuan</item>
 		<item>Tanjung Selor</item>
 		<item>Yogyakarta</item>
@@ -1738,12 +1853,16 @@
 		<item>Jambi</item>
 		<item>Palu</item>
 	</string-array>
+	<string-array name="dominica">
 		<item>Dominica</item>
 	</string-array>
+	<string-array name="benin">
 		<item>Cotarou</item>
 	</string-array>
+	<string-array name="angola">
 		<item>Luanda</item>
 	</string-array>
+	<string-array name="sudan">
 		<item>Dongola</item>
 		<item>El Obeid</item>
 		<item>Geneina</item>
@@ -1755,8 +1874,7 @@
 		<item>Malakai</item>
 		<item>Merave</item>
 	</string-array>
-		<item>Longyearbyen</item>
-	</string-array>
+	<string-array name="portugal">
 		<item>Pico Island</item>
 		<item>Ponta Delgada</item>
 		<item>Lisbon</item>
@@ -1771,6 +1889,7 @@
 		<item>Faro</item>
 		<item>Corvo Island</item>
 	</string-array>
+	<string-array name="new_caledonia">
 		<item>Touho</item>
 		<item>Mare</item>
 		<item>Belep Island</item>
@@ -1780,12 +1899,16 @@
 		<item>Lifa</item>
 		<item>Ouvea</item>
 	</string-array>
+	<string-array name="indonedia">
 		<item>Okaba</item>
 	</string-array>
+	<string-array name="grenada">
 		<item>Grenada</item>
 	</string-array>
+	<string-array name="north_korea">
 		<item>Pyongyang</item>
 	</string-array>
+	<string-array name="greece">
 		<item>Thessaloniki</item>
 		<item>Mytilene</item>
 		<item>Athens</item>
@@ -1807,14 +1930,18 @@
 		<item>Kavala</item>
 		<item>Lefkas</item>
 	</string-array>
+	<string-array name="cayman_islands">
 		<item>Grand Cayman</item>
 	</string-array>
+	<string-array name="latvia">
 		<item>Riga</item>
 		<item>Tripoli</item>
 	</string-array>
+	<string-array name="mongolia">
 		<item>Ulaanbaatar</item>
 		<item>Uliastai</item>
 	</string-array>
+	<string-array name="iran">
 		<item>Chah-Bahar</item>
 		<item>Rasht</item>
 		<item>Bandar Abbas</item>
@@ -1835,6 +1962,7 @@
 		<item>Isfahan</item>
 		<item>Tehran</item>
 	</string-array>
+	<string-array name="morocco">
 		<item>Tangier</item>
 		<item>Oujda</item>
 		<item>Laayoune</item>
@@ -1848,11 +1976,14 @@
 		<item>Dakhla</item>
 		<item>Ouarzazate</item>
 	</string-array>
+	<string-array name="guatemala">
 		<item>Guatemala City</item>
 		<item>Flores</item>
 	</string-array>
+	<string-array name="guyana">
 		<item>Georgetown</item>
 	</string-array>
+	<string-array name="chile">
 		<item>Chillan</item>
 		<item>Punta Arenas</item>
 		<item>Concepcion</item>
@@ -1869,6 +2000,7 @@
 		<item>Puerto Montt</item>
 		<item>Arica</item>
 	</string-array>
+	<string-array name="nepal">
 		<item>Bhadrapur</item>
 		<item>Bharatpur</item>
 		<item>Biratragar</item>
@@ -1880,6 +2012,7 @@
 		<item>Jomsom</item>
 		<item>Manang</item>
 	</string-array>
+	<string-array name="tanzania">
 		<item>Arusha</item>
 		<item>Mafia</item>
 		<item>Mwanza</item>
@@ -1894,6 +2027,7 @@
 		<item>Zanzibar</item>
 		<item>Mtwara</item>
 	</string-array>
+	<string-array name="ukraine">
 		<item>Poltava</item>
 		<item>Kharkov</item>
 		<item>Krivoy Rog</item>
@@ -1907,10 +2041,13 @@
 		<item>Odessa</item>
 		<item>Uzhgorod</item>
 	</string-array>
+	<string-array name="ghana">
 		<item>Accra</item>
 	</string-array>
+	<string-array name="anguilla">
 		<item>Anguilla</item>
 	</string-array>
+	<string-array name="india">
 		<item>Jamnagar</item>
 		<item>Gwalior</item>
 		<item>Kozhikode</item>
@@ -1970,341 +2107,344 @@
 		<item>Aurangabad</item>
 		<item>Silchar</item>
 	</string-array>
-		<item>Jasper </item>
-		<item>North Spirit Lake </item>
-		<item>Wemindji </item>
-		<item>Sioux Lookout </item>
-		<item>Chemainus </item>
-		<item>New Carlisle </item>
-		<item>Fort Smith </item>
-		<item>Muskrat Dam </item>
-		<item>Natashquan </item>
-		<item>Qualicum </item>
-		<item>Windsor </item>
-		<item>Chatham </item>
-		<item>Red Sucker Lake </item>
-		<item>Grimsby </item>
-		<item>Sachs Harbour </item>
-		<item>Quam </item>
-		<item>Courtenay </item>
-		<item>Cobourg </item>
-		<item>Glencoe </item>
-		<item>Mont Joli </item>
-		<item>Joliette </item>
-		<item>Thunder Bay </item>
-		<item>Fort Simpson </item>
-		<item>Gods Narrows </item>
-		<item>Rae Lakes </item>
-		<item>Sanikiluaq </item>
-		<item>Nemiscau </item>
-		<item>York Landing </item>
-		<item>Saint John </item>
-		<item>Kangiqsualujjuaq </item>
-		<item>Sarnia </item>
-		<item>Saint Leonard </item>
-		<item>North Bay </item>
-		<item>Uranium City </item>
-		<item>Campbell River </item>
-		<item>Quebec Quebec Station Rail service </item>
-		<item>Big Trout </item>
-		<item>Flin Flon </item>
-		<item>Ste Therese Point </item>
-		<item>Moosonee </item>
-		<item>Fox Harbour </item>
-		<item>Quesnel </item>
-		<item>Oshawa </item>
-		<item>Fond du Lac </item>
-		<item>Island Lake </item>
-		<item>Langford </item>
-		<item>Parksville </item>
-		<item>St Anthony </item>
-		<item>Grise Fiord </item>
-		<item>Shawinigan </item>
-		<item>Igloolik </item>
-		<item>New Richmond </item>
-		<item>Bella Bella </item>
-		<item>White River </item>
-		<item>Gjoa Haven </item>
-		<item>Kugluktuk  </item>
-		<item>Dawson Creek </item>
-		<item>Bella Coola </item>
-		<item>Kingston </item>
-		<item>Nanaimo </item>
-		<item>Umiujag </item>
-		<item>Fort Good Hope </item>
-		<item>Inukjuak </item>
-		<item>Kangirsuk </item>
-		<item>Port Hardy </item>
-		<item>Prince Albert </item>
-		<item>Goose Bay </item>
-		<item>Iles De La Madeleine </item>
-		<item>Old Crow </item>
-		<item>Fort Frances </item>
-		<item>Penticton </item>
-		<item>Chapleau </item>
-		<item>Tasiujuaq </item>
-		<item>Smithers </item>
-		<item>Gods River </item>
-		<item>Edmonton </item>
-		<item>Sackville </item>
-		<item>Wha Ti </item>
-		<item>Sydney </item>
-		<item>Campbellton </item>
-		<item>Pembroke </item>
-		<item>Kapuskasing </item>
-		<item>Port Meiner </item>
-		<item>Brockville </item>
-		<item>Nain </item>
-		<item>Leaf Rapids </item>
-		<item>Cross Lake </item>
-		<item>La Tabatiere </item>
-		<item>Sault Ste-Marie </item>
-		<item>Fort Albany </item>
-		<item>Kuujjuaq </item>
-		<item>Salluit </item>
-		<item>East Main </item>
-		<item>Saint Johns </item>
-		<item>Strathroy </item>
-		<item>Capreol </item>
-		<item>Kelowna </item>
-		<item>Colville Lake </item>
-		<item>Ilford </item>
-		<item>Jonquiere </item>
-		<item>Arviat </item>
-		<item>Duncan </item>
-		<item>Fort Mcmurray </item>
-		<item>Berens River </item>
-		<item>Hamilton </item>
-		<item>Pangnirtung </item>
-		<item>Quebec Charny Rail service </item>
-		<item>Swan River </item>
-		<item>Niagara Falls </item>
-		<item>Rouyn </item>
-		<item>Kangiqsujuaq </item>
-		<item>Roberval </item>
-		<item>Klemtu </item>
-		<item>Lethbridge </item>
-		<item>Montreal </item>
-		<item>Gethsemani </item>
-		<item>Quebec Airport </item>
-		<item>Shamattawa </item>
-		<item>Watford </item>
-		<item>Whale Cove </item>
-		<item>Kugaaruk </item>
-		<item>Georgetown </item>
-		<item>Weymont </item>
-		<item>Belleville </item>
-		<item>Castlegar </item>
-		<item>Webequie </item>
-		<item>Cartwright </item>
-		<item>Stephenville </item>
-		<item>Norman Wells </item>
-		<item>Pikangikum </item>
-		<item>Woodstock </item>
-		<item>Pond Inlet </item>
-		<item>Clyde River </item>
-		<item>Points North Landing </item>
-		<item>Prince Rupert </item>
-		<item>Inuvik </item>
-		<item>Sept-Iles </item>
-		<item>Snare Lake </item>
-		<item>Cat Lake </item>
-		<item>Victoria </item>
-		<item>Timmins </item>
-		<item>High Level </item>
-		<item>Ivujivik </item>
-		<item>London </item>
-		<item>Senneterre </item>
-		<item>Fredericton </item>
-		<item>Alexandria </item>
-		<item>Hopedale </item>
-		<item>Kitchener </item>
-		<item>Baie Comeau </item>
-		<item>Comox </item>
-		<item>Stony Rapids </item>
-		<item>Riviere-a-Pierre </item>
-		<item>Cambridge Bay </item>
-		<item>Chesterfield Inlet </item>
-		<item>Saskatoon </item>
-		<item>Kaschechewan </item>
-		<item>Yellowknife </item>
-		<item>Abbotsford </item>
-		<item>Snowdrift </item>
-		<item>Cape Dorset </item>
-		<item>Davis Inlet </item>
-		<item>Ogoki </item>
-		<item>Bathhurst </item>
-		<item>Brampton </item>
-		<item>Lac Edouard </item>
-		<item>Prescott </item>
-		<item>Pointe-aux-Trembles </item>
-		<item>Sachigo Lake </item>
-		<item>Paulatuk </item>
-		<item>Tadoule Lake </item>
-		<item>Brandon </item>
-		<item>Deline </item>
-		<item>Repulse Bay </item>
-		<item>Williams Harbour </item>
-		<item>Rankin Inlet </item>
-		<item>Lac La Martre </item>
-		<item>Powell River </item>
-		<item>Kegaska </item>
-		<item>Ladysmith </item>
-		<item>Nanisivik </item>
-		<item>Round Lake </item>
-		<item>Mary's Harbour </item>
-		<item>Gillam </item>
-		<item>Quaqtaq </item>
-		<item>Aldershot </item>
-		<item>Bearskin Lake </item>
-		<item>Melville </item>
-		<item>Coppermine </item>
-		<item>Churchill Falls </item>
-		<item>Dauphin </item>
-		<item>Alma </item>
-		<item>Kamloops </item>
-		<item>Quebec Levis Rail service </item>
-		<item>Halifax </item>
-		<item>Esquimalt </item>
-		<item>Gillies Bay </item>
-		<item>Aupaluk </item>
-		<item>Pakuashipi </item>
-		<item>Tuktoyaktuk </item>
-		<item>Wyoming </item>
-		<item>Thompson </item>
-		<item>Waskaganish </item>
-		<item>Akulivik </item>
-		<item>Rainbow Lake </item>
-		<item>Casselman </item>
-		<item>Pickle Lake </item>
-		<item>Dryden </item>
-		<item>Fort St John </item>
-		<item>St Marys </item>
-		<item>Iqaluit </item>
-		<item>Kenora </item>
-		<item>Hudson Bay </item>
-		<item>La Ronge </item>
-		<item>Fort Chipewyan </item>
-		<item>Williams Lake </item>
-		<item>Grande Prairie </item>
-		<item>Val-d'Or </item>
-		<item>Summer Beaver </item>
-		<item>Moncton </item>
-		<item>Tete-a-La Baleine </item>
-		<item>Red Lake </item>
-		<item>Black Tickle </item>
-		<item>Povungnituk </item>
-		<item>Kasabonika </item>
-		<item>Cornwall </item>
-		<item>Lloydminister </item>
-		<item>Chandler </item>
-		<item>Chevery </item>
-		<item>Attawapiskat </item>
-		<item>Peace River </item>
-		<item>Truro </item>
-		<item>Havre St Pierre </item>
-		<item>Toronto </item>
-		<item>Lac Brochet </item>
-		<item>Noranda </item>
-		<item>Dawson City </item>
-		<item>Deer Lake </item>
-		<item>Whitehorse </item>
-		<item>Oxford House </item>
-		<item>Arctic Bay </item>
-		<item>Keewaywin </item>
-		<item>Opapamiska Lake </item>
-		<item>Coteau </item>
-		<item>La Grande </item>
-		<item>Port Alberni </item>
-		<item>Port Hope Simpson </item>
-		<item>Quebec Sainte-Foy Rail service </item>
-		<item>Lansdowne House </item>
-		<item>Parent </item>
-		<item>Maxville </item>
-		<item>Nakina </item>
-		<item>Gander </item>
-		<item>Winnipeg </item>
-		<item>St Lewis </item>
-		<item>Bagotville </item>
-		<item>Brochet </item>
-		<item>Churchill </item>
-		<item>Peawanuck </item>
-		<item>Guelph </item>
-		<item>Prince George </item>
-		<item>Saint Hyacinthe </item>
-		<item>Shawnigan </item>
-		<item>Lutselke </item>
-		<item>Chibougamau </item>
-		<item>Fredericton Junction </item>
-		<item>Smith Falls </item>
-		<item>Fort Norman </item>
-		<item>Postville </item>
-		<item>Norway House </item>
-		<item>Kuujjuarapik </item>
-		<item>Fort Severn </item>
-		<item>Perce </item>
-		<item>Ottawa </item>
-		<item>Bonaventure </item>
-		<item>Burns Lake </item>
-		<item>Baker Lake </item>
-		<item>Garden Hill </item>
-		<item>Blanc Sablon </item>
-		<item>Terrace </item>
-		<item>Hervey </item>
-		<item>Taloyoak </item>
-		<item>Poplar Hill </item>
-		<item>Rigolet </item>
-		<item>Brantford </item>
-		<item>Gaspe </item>
-		<item>Chisasibi </item>
-		<item>Chambord </item>
-		<item>Hall Beach </item>
-		<item>Qikiqtarjuaq </item>
-		<item>Regina </item>
-		<item>Fort Nelson </item>
-		<item>Fort Hope </item>
-		<item>South Indian Lake </item>
-		<item>Anahim Lake </item>
-		<item>Wunnummin Lake </item>
-		<item>Rimouski </item>
-		<item>Kimmirut </item>
-		<item>Resolute </item>
-		<item>Coral Harbour </item>
-		<item>Napanee </item>
-		<item>Schefferville </item>
-		<item>Kingfisher Lake </item>
-		<item>Sudbury </item>
-		<item>The Pas </item>
-		<item>Tulita </item>
-		<item>Miramichi </item>
-		<item>Charlottetown </item>
-		<item>Hay River </item>
-		<item>Angling Lake </item>
-		<item>Holman </item>
-		<item>Lake Harbour NU </item>
-		<item>Tofino </item>
-		<item>Cranbrook </item>
-		<item>Sandy Lake </item>
-		<item>Drummondville </item>
-		<item>Houston </item>
-		<item>Thicket Portage </item>
-		<item>La Tuque </item>
-		<item>St Catharines </item>
-		<item>Ingersoll </item>
-		<item>Wabush </item>
-		<item>Vancouver </item>
-		<item>Yarmouth </item>
-		<item>Pukatawagan </item>
-		<item>Medicine Hat </item>
-		<item>Wollaston Lake </item>
-		<item>Calgary </item>
+	<string-array name="canada">
+		<item>Jasper</item>
+		<item>North Spirit Lake</item>
+		<item>Wemindji</item>
+		<item>Sioux Lookout</item>
+		<item>Chemainus</item>
+		<item>New Carlisle</item>
+		<item>Fort Smith</item>
+		<item>Muskrat Dam</item>
+		<item>Natashquan</item>
+		<item>Qualicum</item>
+		<item>Windsor</item>
+		<item>Chatham</item>
+		<item>Red Sucker Lake</item>
+		<item>Grimsby</item>
+		<item>Sachs Harbour</item>
+		<item>Quam</item>
+		<item>Courtenay</item>
+		<item>Cobourg</item>
+		<item>Glencoe</item>
+		<item>Mont Joli</item>
+		<item>Joliette</item>
+		<item>Thunder Bay</item>
+		<item>Fort Simpson</item>
+		<item>Gods Narrows</item>
+		<item>Rae Lakes</item>
+		<item>Sanikiluaq</item>
+		<item>Nemiscau</item>
+		<item>York Landing</item>
+		<item>Saint John</item>
+		<item>Kangiqsualujjuaq</item>
+		<item>Sarnia</item>
+		<item>Saint Leonard</item>
+		<item>North Bay</item>
+		<item>Uranium City</item>
+		<item>Campbell River</item>
+		<item>Quebec Quebec Station Rail service</item>
+		<item>Big Trout</item>
+		<item>Flin Flon</item>
+		<item>Ste Therese Point</item>
+		<item>Moosonee</item>
+		<item>Fox Harbour</item>
+		<item>Quesnel</item>
+		<item>Oshawa</item>
+		<item>Fond du Lac</item>
+		<item>Island Lake</item>
+		<item>Langford</item>
+		<item>Parksville</item>
+		<item>St Anthony</item>
+		<item>Grise Fiord</item>
+		<item>Shawinigan</item>
+		<item>Igloolik</item>
+		<item>New Richmond</item>
+		<item>Bella Bella</item>
+		<item>White River</item>
+		<item>Gjoa Haven</item>
+		<item>Kugluktuk</item>
+		<item>Dawson Creek</item>
+		<item>Bella Coola</item>
+		<item>Kingston</item>
+		<item>Nanaimo</item>
+		<item>Umiujag</item>
+		<item>Fort Good Hope</item>
+		<item>Inukjuak</item>
+		<item>Kangirsuk</item>
+		<item>Port Hardy</item>
+		<item>Prince Albert</item>
+		<item>Goose Bay</item>
+		<item>Iles De La Madeleine</item>
+		<item>Old Crow</item>
+		<item>Fort Frances</item>
+		<item>Penticton</item>
+		<item>Chapleau</item>
+		<item>Tasiujuaq</item>
+		<item>Smithers</item>
+		<item>Gods River</item>
+		<item>Edmonton</item>
+		<item>Sackville</item>
+		<item>Wha Ti</item>
+		<item>Sydney</item>
+		<item>Campbellton</item>
+		<item>Pembroke</item>
+		<item>Kapuskasing</item>
+		<item>Port Meiner</item>
+		<item>Brockville</item>
+		<item>Nain</item>
+		<item>Leaf Rapids</item>
+		<item>Cross Lake</item>
+		<item>La Tabatiere</item>
+		<item>Sault Ste-Marie</item>
+		<item>Fort Albany</item>
+		<item>Kuujjuaq</item>
+		<item>Salluit</item>
+		<item>East Main</item>
+		<item>Saint Johns</item>
+		<item>Strathroy</item>
+		<item>Capreol</item>
+		<item>Kelowna</item>
+		<item>Colville Lake</item>
+		<item>Ilford</item>
+		<item>Jonquiere</item>
+		<item>Arviat</item>
+		<item>Duncan</item>
+		<item>Fort Mcmurray</item>
+		<item>Berens River</item>
+		<item>Hamilton</item>
+		<item>Pangnirtung</item>
+		<item>Quebec Charny Rail service</item>
+		<item>Swan River</item>
+		<item>Niagara Falls</item>
+		<item>Rouyn</item>
+		<item>Kangiqsujuaq</item>
+		<item>Roberval</item>
+		<item>Klemtu</item>
+		<item>Lethbridge</item>
+		<item>Montreal</item>
+		<item>Gethsemani</item>
+		<item>Quebec Airport</item>
+		<item>Shamattawa</item>
+		<item>Watford</item>
+		<item>Whale Cove</item>
+		<item>Kugaaruk</item>
+		<item>Georgetown</item>
+		<item>Weymont</item>
+		<item>Belleville</item>
+		<item>Castlegar</item>
+		<item>Webequie</item>
+		<item>Cartwright</item>
+		<item>Stephenville</item>
+		<item>Norman Wells</item>
+		<item>Pikangikum</item>
+		<item>Woodstock</item>
+		<item>Pond Inlet</item>
+		<item>Clyde River</item>
+		<item>Points North Landing</item>
+		<item>Prince Rupert</item>
+		<item>Inuvik</item>
+		<item>Sept-Iles</item>
+		<item>Snare Lake</item>
+		<item>Cat Lake</item>
+		<item>Victoria</item>
+		<item>Timmins</item>
+		<item>High Level</item>
+		<item>Ivujivik</item>
+		<item>London</item>
+		<item>Senneterre</item>
+		<item>Fredericton</item>
+		<item>Alexandria</item>
+		<item>Hopedale</item>
+		<item>Kitchener</item>
+		<item>Baie Comeau</item>
+		<item>Comox</item>
+		<item>Stony Rapids</item>
+		<item>Riviere-a-Pierre</item>
+		<item>Cambridge Bay</item>
+		<item>Chesterfield Inlet</item>
+		<item>Saskatoon</item>
+		<item>Kaschechewan</item>
+		<item>Yellowknife</item>
+		<item>Abbotsford</item>
+		<item>Snowdrift</item>
+		<item>Cape Dorset</item>
+		<item>Davis Inlet</item>
+		<item>Ogoki</item>
+		<item>Bathhurst</item>
+		<item>Brampton</item>
+		<item>Lac Edouard</item>
+		<item>Prescott</item>
+		<item>Pointe-aux-Trembles</item>
+		<item>Sachigo Lake</item>
+		<item>Paulatuk</item>
+		<item>Tadoule Lake</item>
+		<item>Brandon</item>
+		<item>Deline</item>
+		<item>Repulse Bay</item>
+		<item>Williams Harbour</item>
+		<item>Rankin Inlet</item>
+		<item>Lac La Martre</item>
+		<item>Powell River</item>
+		<item>Kegaska</item>
+		<item>Ladysmith</item>
+		<item>Nanisivik</item>
+		<item>Round Lake</item>
+		<item>Mary\'s Harbour</item>
+		<item>Gillam</item>
+		<item>Quaqtaq</item>
+		<item>Aldershot</item>
+		<item>Bearskin Lake</item>
+		<item>Melville</item>
+		<item>Coppermine</item>
+		<item>Churchill Falls</item>
+		<item>Dauphin</item>
+		<item>Alma</item>
+		<item>Kamloops</item>
+		<item>Quebec Levis Rail service</item>
+		<item>Halifax</item>
+		<item>Esquimalt</item>
+		<item>Gillies Bay</item>
+		<item>Aupaluk</item>
+		<item>Pakuashipi</item>
+		<item>Tuktoyaktuk</item>
+		<item>Wyoming</item>
+		<item>Thompson</item>
+		<item>Waskaganish</item>
+		<item>Akulivik</item>
+		<item>Rainbow Lake</item>
+		<item>Casselman</item>
+		<item>Pickle Lake</item>
+		<item>Dryden</item>
+		<item>Fort St John</item>
+		<item>St Marys</item>
+		<item>Iqaluit</item>
+		<item>Kenora</item>
+		<item>Hudson Bay</item>
+		<item>La Ronge</item>
+		<item>Fort Chipewyan</item>
+		<item>Williams Lake</item>
+		<item>Grande Prairie</item>
+		<item>Val-d\'Or</item>
+		<item>Summer Beaver</item>
+		<item>Moncton</item>
+		<item>Tete-a-La Baleine</item>
+		<item>Red Lake</item>
+		<item>Black Tickle</item>
+		<item>Povungnituk</item>
+		<item>Kasabonika</item>
+		<item>Cornwall</item>
+		<item>Lloydminister</item>
+		<item>Chandler</item>
+		<item>Chevery</item>
+		<item>Attawapiskat</item>
+		<item>Peace River</item>
+		<item>Truro</item>
+		<item>Havre St Pierre</item>
+		<item>Toronto</item>
+		<item>Lac Brochet</item>
+		<item>Noranda</item>
+		<item>Dawson City</item>
+		<item>Deer Lake</item>
+		<item>Whitehorse</item>
+		<item>Oxford House</item>
+		<item>Arctic Bay</item>
+		<item>Keewaywin</item>
+		<item>Opapamiska Lake</item>
+		<item>Coteau</item>
+		<item>La Grande</item>
+		<item>Port Alberni</item>
+		<item>Port Hope Simpson</item>
+		<item>Quebec Sainte-Foy Rail service</item>
+		<item>Lansdowne House</item>
+		<item>Parent</item>
+		<item>Maxville</item>
+		<item>Nakina</item>
+		<item>Gander</item>
+		<item>Winnipeg</item>
+		<item>St Lewis</item>
+		<item>Bagotville</item>
+		<item>Brochet</item>
+		<item>Churchill</item>
+		<item>Peawanuck</item>
+		<item>Guelph</item>
+		<item>Prince George</item>
+		<item>Saint Hyacinthe</item>
+		<item>Shawnigan</item>
+		<item>Lutselke</item>
+		<item>Chibougamau</item>
+		<item>Fredericton Junction</item>
+		<item>Smith Falls</item>
+		<item>Fort Norman</item>
+		<item>Postville</item>
+		<item>Norway House</item>
+		<item>Kuujjuarapik</item>
+		<item>Fort Severn</item>
+		<item>Perce</item>
+		<item>Ottawa</item>
+		<item>Bonaventure</item>
+		<item>Burns Lake</item>
+		<item>Baker Lake</item>
+		<item>Garden Hill</item>
+		<item>Blanc Sablon</item>
+		<item>Terrace</item>
+		<item>Hervey</item>
+		<item>Taloyoak</item>
+		<item>Poplar Hill</item>
+		<item>Rigolet</item>
+		<item>Brantford</item>
+		<item>Gaspe</item>
+		<item>Chisasibi</item>
+		<item>Chambord</item>
+		<item>Hall Beach</item>
+		<item>Qikiqtarjuaq</item>
+		<item>Regina</item>
+		<item>Fort Nelson</item>
+		<item>Fort Hope</item>
+		<item>South Indian Lake</item>
+		<item>Anahim Lake</item>
+		<item>Wunnummin Lake</item>
+		<item>Rimouski</item>
+		<item>Kimmirut</item>
+		<item>Resolute</item>
+		<item>Coral Harbour</item>
+		<item>Napanee</item>
+		<item>Schefferville</item>
+		<item>Kingfisher Lake</item>
+		<item>Sudbury</item>
+		<item>The Pas</item>
+		<item>Tulita</item>
+		<item>Miramichi</item>
+		<item>Charlottetown</item>
+		<item>Hay River</item>
+		<item>Angling Lake</item>
+		<item>Holman</item>
+		<item>Lake Harbour NU</item>
+		<item>Tofino</item>
+		<item>Cranbrook</item>
+		<item>Sandy Lake</item>
+		<item>Drummondville</item>
+		<item>Houston</item>
+		<item>Thicket Portage</item>
+		<item>La Tuque</item>
+		<item>St Catharines</item>
+		<item>Ingersoll</item>
+		<item>Wabush</item>
+		<item>Vancouver</item>
+		<item>Yarmouth</item>
+		<item>Pukatawagan</item>
+		<item>Medicine Hat</item>
+		<item>Wollaston Lake</item>
+		<item>Calgary</item>
 	</string-array>
+	<string-array name="maldives">
 		<item>Hanimaadhoo</item>
 		<item>Male</item>
 		<item>Kaadedhdhoo</item>
 		<item>Gan Island</item>
 		<item>Kadhonoo</item>
 	</string-array>
+	<string-array name="turkey">
 		<item>Antalya</item>
 		<item>Elazig</item>
 		<item>Agri</item>
@@ -2330,10 +2470,12 @@
 		<item>Istanbul</item>
 		<item>Erzincan</item>
 	</string-array>
+	<string-array name="belgium">
 		<item>Brussels</item>
 		<item>Liege</item>
 		<item>Antwerp</item>
 	</string-array>
+	<string-array name="taiwan">
 		<item>Tainan</item>
 		<item>Chiayi</item>
 		<item>Chi Mei</item>
@@ -2345,6 +2487,7 @@
 		<item>Wonan</item>
 		<item>Pingtung</item>
 	</string-array>
+	<string-array name="south_africa">
 		<item>Durban</item>
 		<item>Pietersburb</item>
 		<item>Ulundi</item>
@@ -2367,20 +2510,25 @@
 		<item>East London</item>
 		<item>Richards Bay</item>
 	</string-array>
+	<string-array name="trinidad_and_tobago">
 		<item>Tobago</item>
 		<item>Trinidad</item>
 	</string-array>
+	<string-array name="bermuda">
 		<item>Hamilton</item>
 		<item>Bermuda</item>
 	</string-array>
+	<string-array name="central_african_republic">
 		<item>Banqui</item>
 	</string-array>
+	<string-array name="jamaica">
 		<item>Port Antonio</item>
 		<item>Montego Bay</item>
 		<item>Kingston</item>
 		<item>Negril</item>
 		<item>Ocho Rios</item>
 	</string-array>
+	<string-array name="peru">
 		<item>Iquitos</item>
 		<item>Juliaca</item>
 		<item>Cajamarca</item>
@@ -2396,8 +2544,10 @@
 		<item>Arequipa</item>
 		<item>Tumbes</item>
 	</string-array>
+	<string-array name="turkmenistan">
 		<item>Ashgabat</item>
 	</string-array>
+	<string-array name="germany">
 		<item>Hanover</item>
 		<item>Frankfurt</item>
 		<item>Dresden</item>
@@ -2439,6 +2589,7 @@
 		<item>Cologne</item>
 		<item>Mannheim</item>
 	</string-array>
+	<string-array name="fiji">
 		<item>Moala</item>
 		<item>Laucala Island</item>
 		<item>Suva</item>
@@ -2455,14 +2606,18 @@
 		<item>Nadi</item>
 		<item>Malololailai</item>
 	</string-array>
+	<string-array name="greeland">
 		<item>Uummannaq</item>
 	</string-array>
+	<string-array name="hong_kong">
 		<item>Hong Kong</item>
 	</string-array>
+	<string-array name="guinea">
 		<item>Conakry</item>
 		<item>Bissau</item>
 		<item>Lanzhau</item>
 	</string-array>
+	<string-array name="united_states">
 		<item>Milwaukee</item>
 		<item>Charleston</item>
 		<item>Morgantown</item>
@@ -2750,7 +2905,7 @@
 		<item>Tupelo</item>
 		<item>Greenville</item>
 		<item>Pueblo</item>
-		<item>Martha's Vineyard</item>
+		<item>Martha\'s Vineyard</item>
 		<item>Bozeman</item>
 		<item>Huron</item>
 		<item>Alamosa</item>
@@ -2969,7 +3124,7 @@
 		<item>Grand Island</item>
 		<item>Plattsburgh</item>
 		<item>Martinsburg</item>
-		<item>Devil's Lake</item>
+		<item>Devil\'s Lake</item>
 		<item>Fort Collins/Loveland</item>
 		<item>Nondalton</item>
 		<item>Roanoke</item>
@@ -3035,7 +3190,7 @@
 		<item>Hampton</item>
 		<item>New Koliganek</item>
 		<item>Medford</item>
-		<item>Saint Mary's</item>
+		<item>Saint Mary\'s</item>
 		<item>Bullhead City</item>
 		<item>Cheyenne</item>
 		<item>Moses Lake</item>
@@ -3152,16 +3307,20 @@
 		<item>Teller Mission</item>
 		<item>Levelock</item>
 	</string-array>
+	<string-array name="somalia">
 		<item>Burao</item>
 		<item>Berbera</item>
 		<item>Mogadishu</item>
 		<item>Bossaro</item>
 	</string-array>
+	<string-array name="chad">
 		<item>Mao</item>
 		<item>Ndjamena</item>
 	</string-array>
-		<item>Sao Tome Is.</item>
+	<string-array name="sao_tome_and_principe">
+		<item>Sao Tome Is</item>
 	</string-array>
+	<string-array name="thailand">
 		<item>Nakhon Ratchosima</item>
 		<item>Utapao</item>
 		<item>Koh Samui</item>
@@ -3189,13 +3348,17 @@
 		<item>Chiang Rai</item>
 		<item>Ranong</item>
 	</string-array>
+	<string-array name="equatorial_guinea">
 		<item>Malabo</item>
 	</string-array>
+	<string-array name="kiribati">
 		<item>Tarawa</item>
 	</string-array>
+	<string-array name="dominician_republic">
 		<item>Samana</item>
 		<item>El Portillo</item>
 	</string-array>
+	<string-array name="costa_rica">
 		<item>Barra Colorado</item>
 		<item>Golfito</item>
 		<item>Tambor</item>
@@ -3210,6 +3373,7 @@
 		<item>Tortuquero</item>
 		<item>Puerto Jimenez</item>
 	</string-array>
+	<string-array name="vietnam">
 		<item>Son-La</item>
 		<item>Nha Trang</item>
 		<item>Rach Gia</item>
@@ -3227,6 +3391,7 @@
 		<item>Da Nang</item>
 		<item>Vinh City</item>
 	</string-array>
+	<string-array name="nigeria">
 		<item>Kano</item>
 		<item>Calabar</item>
 		<item>Port Harcourt</item>
@@ -3234,8 +3399,10 @@
 		<item>Enugu</item>
 		<item>Lagos</item>
 	</string-array>
+	<string-array name="kuwait">
 		<item>Kuwait</item>
 	</string-array>
+	<string-array name="croatia">
 		<item>Zagreb</item>
 		<item>Pula</item>
 		<item>Split</item>
@@ -3245,10 +3412,12 @@
 		<item>Osijek</item>
 		<item>Zadar</item>
 	</string-array>
+	<string-array name="syrian_arab_republic">
 		<item>Damascus</item>
 		<item>Aleppo</item>
 		<item>Kameshli</item>
 	</string-array>
+	<string-array name="cook_islands">
 		<item>Mangaia Island</item>
 		<item>Mauke Island</item>
 		<item>Atiu Island</item>
@@ -3258,11 +3427,14 @@
 		<item>Mitiaro Island</item>
 		<item>Penrhyn Island</item>
 	</string-array>
+	<string-array name="sri_lanka">
 		<item>Colombo</item>
 	</string-array>
+	<string-array name="uruguay">
 		<item>Punta Del Este</item>
 		<item>Montevideo</item>
 	</string-array>
+	<string-array name="united_kingdom">
 		<item>Nottingham</item>
 		<item>Eveter</item>
 		<item>Cardiff</item>
@@ -3317,6 +3489,7 @@
 		<item>Lands End</item>
 		<item>Fair Isle</item>
 	</string-array>
+	<string-array name="switzerland">
 		<item>Basel</item>
 		<item>Lugano</item>
 		<item>Berne</item>
@@ -3324,6 +3497,7 @@
 		<item>Altenrhein</item>
 		<item>Zurich</item>
 	</string-array>
+	<string-array name="spain">
 		<item>Gerona</item>
 		<item>Lanzarote</item>
 		<item>Barcelona</item>
@@ -3348,6 +3522,7 @@
 		<item>Pamplona</item>
 		<item>Valencia</item>
 	</string-array>
+	<string-array name="venezuela">
 		<item>Maracaibo</item>
 		<item>Puerto Ayacucha</item>
 		<item>Guiria</item>
@@ -3375,21 +3550,29 @@
 		<item>Valera</item>
 		<item>Valencia</item>
 	</string-array>
+	<string-array name="liberia">
 		<item>Monrovia</item>
 	</string-array>
+	<string-array name="burkina_faso">
 		<item>Ouagadougou</item>
 	</string-array>
+	<string-array name="swaziland">
 		<item>Manzini</item>
 	</string-array>
+	<string-array name="palau">
 		<item>Koror</item>
 	</string-array>
+	<string-array name="estonia">
 		<item>Kardia</item>
 		<item>Tallinn</item>
 	</string-array>
+	<string-array name="turkey_etimesqut">
 		<item>Ankara</item>
 	</string-array>
+	<string-array name="niue">
 		<item>Niue Island</item>
 	</string-array>
+	<string-array name="south_korea">
 		<item>Gwangju</item>
 		<item>Jeju</item>
 		<item>Ulsan</item>
@@ -3404,12 +3587,14 @@
 		<item>Gangneung</item>
 		<item>WonJu</item>
 	</string-array>
+	<string-array name="austria">
 		<item>Graz</item>
 		<item>Vienna</item>
 		<item>Innsbruck</item>
 		<item>Salzburg</item>
 		<item>Linz</item>
 	</string-array>
+	<string-array name="mozambique">
 		<item>Pemba</item>
 		<item>Belaga</item>
 		<item>Lichinga</item>
@@ -3421,22 +3606,29 @@
 		<item>Nacala</item>
 		<item>Vilanculos</item>
 	</string-array>
+	<string-array name="el_salvador">
 		<item>San Salvador</item>
 	</string-array>
+	<string-array name="monaco">
 		<item>Monte Carlo</item>
 	</string-array>
+	<string-array name="guam">
 		<item>Guam</item>
 	</string-array>
+	<string-array name="lesotho">
 		<item>Maseru</item>
 	</string-array>
+	<string-array name="tonga">
+		<item>Niuafoou</item>
+		<item>NukuAlofa</item>
+		<item>Vavau</item>
 		<item>Niuatoputapu</item>
-		<item>Nuku'Alofa</item>
-		<item>Niuafo'ou</item>
 		<item>HaApa</item>
-		<item>Vava'u</item>
 	</string-array>
+	<string-array name="hungary">
 		<item>Budapest</item>
 	</string-array>
+	<string-array name="japan">
 		<item>Tokunoshima</item>
 		<item>Asahikawa</item>
 		<item>Rishiri</item>
@@ -3492,22 +3684,30 @@
 		<item>Okoshiri</item>
 		<item>Ishigakij</item>
 	</string-array>
+	<string-array name="belguim">
 		<item>Brussels</item>
 	</string-array>
+	<string-array name="belarus">
 		<item>Vitebsk</item>
 		<item>Minsk</item>
 	</string-array>
+	<string-array name="madgascar">
 		<item>Antaninvarivo</item>
 	</string-array>
+	<string-array name="mauritius">
 		<item>Rodrigues Island</item>
 		<item>Mauritius</item>
 	</string-array>
+	<string-array name="bangledesh">
 		<item>Dhaka</item>
 	</string-array>
+	<string-array name="norfolk_island">
 		<item>Norfolk Island</item>
 	</string-array>
+	<string-array name="albania">
 		<item>Tirana</item>
 	</string-array>
+	<string-array name="new_zealand">
 		<item>Mount Cook</item>
 		<item>Chatham Island</item>
 		<item>Christchurch</item>
@@ -3536,13 +3736,14 @@
 		<item>Te Anau</item>
 		<item>Timaru</item>
 	</string-array>
-		<item>Nevis</item>
-	</string-array>
+	<string-array name="senegal">
 		<item>Dakar</item>
 	</string-array>
+	<string-array name="macedonia">
 		<item>Ohrid</item>
 		<item>Skopie</item>
 	</string-array>
+	<string-array name="ethiopia">
 		<item>Jinka</item>
 		<item>Neghelli</item>
 		<item>Arba Mintch</item>
@@ -3569,6 +3770,13 @@
 		<item>Mekane Selam</item>
 		<item>Jijiga</item>
 	</string-array>
+	<string-array name="us_virgin_islands">
+		<item>Saint Croix</item>
+		<item>St Croix Island</item>
+		<item>Saint Thomas</item>
+		<item>St Thomas Island</item>
+	</string-array>
+	<string-array name="egypt">
 		<item>Sharm El Sheikh</item>
 		<item>Al Arish</item>
 		<item>Hurghada</item>
@@ -3583,8 +3791,10 @@
 		<item>Mersa Matruh</item>
 		<item>Alexandria</item>
 	</string-array>
+	<string-array name="sierra_leone">
 		<item>Freetown</item>
 	</string-array>
+	<string-array name="bolivia">
 		<item>Guayaramerin</item>
 		<item>Cochabamba</item>
 		<item>Trinidad</item>
@@ -3596,11 +3806,14 @@
 		<item>Santa Cruz</item>
 		<item>Sucre</item>
 	</string-array>
+	<string-array name="st_pierre_and_miquelon">
 		<item>St Pierre</item>
 	</string-array>
+	<string-array name="malta">
 		<item>Gozo</item>
 		<item>Malta</item>
 	</string-array>
+	<string-array name="saudi_arabia">
 		<item>Al-Baha</item>
 		<item>Rafha</item>
 		<item>Wadi Ad Dawasir</item>
@@ -3625,6 +3838,7 @@
 		<item>Hail</item>
 		<item>Gizan</item>
 	</string-array>
+	<string-array name="cape_verde">
 		<item>Santo Antao</item>
 		<item>Sao Vicente</item>
 		<item>Boa Vista</item>
@@ -3632,6 +3846,7 @@
 		<item>Maio</item>
 		<item>Sao Nicolau</item>
 	</string-array>
+	<string-array name="pakistan">
 		<item>Faisalabad</item>
 		<item>Kadanwari</item>
 		<item>Gwadar</item>
@@ -3661,8 +3876,10 @@
 		<item>Bannu</item>
 		<item>Turbat</item>
 	</string-array>
+	<string-array name="gambia">
 		<item>Banjul</item>
 	</string-array>
+	<string-array name="ireland">
 		<item>Knock</item>
 		<item>Belfast</item>
 		<item>Waterford</item>
@@ -3673,22 +3890,21 @@
 		<item>Sligo</item>
 		<item>Donegal</item>
 	</string-array>
+	<string-array name="qatar">
 		<item>Doha</item>
 	</string-array>
+	<string-array name="serbia_and_montenegro">
 		<item>Belgrade</item>
 		<item>Tivat</item>
 		<item>Pristina</item>
 		<item>Podgoriea</item>
 	</string-array>
-		<item>Saint Croix</item>
-		<item>St. Thomas Island</item>
-		<item>St. Croix Island</item>
-		<item>Saint Thomas</item>
-	</string-array>
+	<string-array name="slovakia">
 		<item>Popraol</item>
 		<item>Tatry</item>
 		<item>Bratislava</item>
 	</string-array>
+	<string-array name="france">
 		<item>Bordeaux</item>
 		<item>Pau</item>
 		<item>Marseille</item>
@@ -3696,9 +3912,9 @@
 		<item>Tarbes</item>
 		<item>Valenciennes</item>
 		<item>Chambery</item>
-		<item>St. Etienne</item>
 		<item>Grenoble</item>
 		<item>Poitiers</item>
+		<item>St Etienne</item>
 		<item>Annecy</item>
 		<item>Metz</item>
 		<item>Figari</item>
@@ -3754,31 +3970,38 @@
 		<item>Toulon</item>
 		<item>Paris</item>
 	</string-array>
+	<string-array name="lithuania">
 		<item>Kaunas</item>
 		<item>Vilnius</item>
 		<item>Palanga</item>
 	</string-array>
+	<string-array name="bosnia_and_herzegovina">
 		<item>Mostar</item>
 	</string-array>
-		<item>V.C. Bird International</item>
-	</string-array>
+	<string-array name="niger">
 		<item>Niamey</item>
 	</string-array>
+	<string-array name="rwanda">
 		<item>Kigali</item>
 	</string-array>
+	<string-array name="philipines">
 		<item>Davao</item>
 	</string-array>
+	<string-array name="bangladesh">
 		<item>Barisal</item>
 		<item>Rajshahi</item>
 		<item>Chittagong</item>
 		<item>Jessore</item>
-		<item>Cox's Bazar</item>
+		<item>Coxs Bazar</item>
 		<item>Sylhet</item>
 	</string-array>
+	<string-array name="barbados">
 		<item>Bridgetown</item>
 	</string-array>
+	<string-array name="nicaragua">
 		<item>Managua</item>
 	</string-array>
+	<string-array name="norway">
 		<item>Batsfijord</item>
 		<item>Tromso</item>
 		<item>Stavanger</item>
@@ -3820,14 +4043,17 @@
 		<item>Honningsvag</item>
 		<item>Vadso</item>
 	</string-array>
+	<string-array name="saint_vincent_and_the_grenadines">
 		<item>Canouan</item>
 		<item>St Vincent</item>
 	</string-array>
+	<string-array name="botswana">
 		<item>Kasane</item>
 		<item>Gaborone</item>
 		<item>Maun</item>
 		<item>Francistown</item>
 	</string-array>
+	<string-array name="denmark">
 		<item>Copenhagen</item>
 		<item>Mohenjodaro</item>
 		<item>Aarhus</item>
@@ -3840,16 +4066,19 @@
 		<item>Fredericia</item>
 		<item>Odense</item>
 	</string-array>
+	<string-array name="dominican_republic">
 		<item>Santo Domingo</item>
 		<item>Puerto Plata</item>
 		<item>Santiago</item>
 		<item>La Romana</item>
 		<item>Punta Cana</item>
 	</string-array>
+	<string-array name="mexico">
 		<item>Merida</item>
 		<item>Hermosillo</item>
 		<item>Matamoros</item>
 		<item>San Luis Potosi</item>
+		<item>S Cristobal del Casas</item>
 		<item>Monclova</item>
 		<item>Monterrey</item>
 		<item>Tapachula</item>
@@ -3883,7 +4112,6 @@
 		<item>Queretaro</item>
 		<item>Huatulco</item>
 		<item>Mexicali</item>
-		<item>S. Cristobal del Casas</item>
 		<item>Cancun</item>
 		<item>Ciudad Juarez</item>
 		<item>Puebla</item>
@@ -3912,6 +4140,7 @@
 		<item>Colima</item>
 		<item>Mexico City</item>
 	</string-array>
+	<string-array name="uganda">
 		<item>Arua</item>
 		<item>Jinja</item>
 		<item>Gulu</item>
@@ -3919,15 +4148,19 @@
 		<item>Lugansk</item>
 		<item>Entebbe</item>
 	</string-array>
+	<string-array name="suriname">
 		<item>Paramaribo</item>
 	</string-array>
+	<string-array name="micronesia">
 		<item>Truk</item>
 		<item>Pohnpei</item>
 		<item>Yap</item>
 		<item>Ulithi</item>
 	</string-array>
+	<string-array name="occupied_palestinian_territory">
 		<item>Gaza City</item>
 	</string-array>
+	<string-array name="greenland">
 		<item>Sisimiut</item>
 		<item>Narsaq</item>
 		<item>Pituffik</item>

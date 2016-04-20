@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string-array name="">
-		<item>Geraldton, Australia=GET</item>
-	</string-array>
 	<string-array name="Papua_New_Guinea">
 		<item>Daru=DAU</item>
 		<item>Garasa=GRL</item>
@@ -123,10 +120,10 @@
 		<item>Freeport=FPO</item>
 		<item>Inagua=IGA</item>
 		<item>North Eleuthera=ELH</item>
-		<item>Arthur's Town=ATC</item>
 		<item>Spring Point=AXP</item>
 		<item>Treasure Cay=TCB</item>
 		<item>Eleuthera Island=ELH</item>
+		<item>Arthurs Town=ATC</item>
 	</string-array>
 	<string-array name="Solomon_Islands">
 		<item>Kirakira=IRA</item>
@@ -213,9 +210,6 @@
 	<string-array name="Philippines_D">
 		<item>Cebu=CEB</item>
 	</string-array>
-	<string-array name="ST._LUCIA">
-		<item>Saint Lucia=SLU</item>
-	</string-array>
 	<string-array name="Laos">
 		<item>Vientiane=VTE</item>
 		<item>Luang Namtha=LXG</item>
@@ -233,7 +227,6 @@
 	<string-array name="Argentina">
 		<item>La Rioja=IRJ</item>
 		<item>San Martin De Los Andes=CPC</item>
-		<item>Pres. Roque Saenz Pena, CH=PRQ</item>
 		<item>Reconquista, SF=RCQ</item>
 		<item>Jujuy=JUJ</item>
 		<item>Malargue, MD=LGS</item>
@@ -256,6 +249,7 @@
 		<item>Mendoza, MD=MDZ</item>
 		<item>Bahia Blanca=BHI</item>
 		<item>Rio Grande, TF=RGA</item>
+		<item>Pres Roque Saenz Pena, CH=PRQ</item>
 		<item>San Luis, SL=LUQ</item>
 		<item>Formosa=FMA</item>
 		<item>Parana, ER=PRA</item>
@@ -313,7 +307,11 @@
 		<item>Lusaka=LUN</item>
 	</string-array>
 	<string-array name="St_Kitts_and_Nevis">
+		<item>Nevis=NEV</item>
 		<item>St Kitts=SKB</item>
+	</string-array>
+	<string-array name="Svalbard_and_Jan_Mayen_Island">
+		<item>Longyearbyen=LYR</item>
 	</string-array>
 	<string-array name="Bahrain">
 		<item>Bahrain=BAH</item>
@@ -369,8 +367,8 @@
 		<item>Moroni=HAH</item>
 	</string-array>
 	<string-array name="Netherlands_Antilles">
-		<item>St. Eustatius=EUX</item>
 		<item>Saint Maarten=SXM</item>
+		<item>St Eustatius=EUX</item>
 		<item>Bonaire=BON</item>
 		<item>Curacao=CUR</item>
 	</string-array>
@@ -384,10 +382,10 @@
 		<item>Aden=ADE</item>
 		<item>Riyan Mukalla=RIY</item>
 		<item>Hodeidah=HOD</item>
-		<item>Sana'a=SAH</item>
 		<item>Seiyun=GXF</item>
 		<item>Taiz=TAI</item>
 		<item>Ataq=AXK</item>
+		<item>Sanaa=SAH</item>
 	</string-array>
 	<string-array name="BC">
 		<item>Vancouver=YVR</item>
@@ -643,6 +641,11 @@
 		<item>Aioun El Atrouss=AEO</item>
 		<item>Nema=EMN</item>
 	</string-array>
+	<string-array name="Saint_Lucia">
+		<item>Sait Lucia=SLU</item>
+		<item>Sait Lucia=UVF</item>
+		<item>Sait Lucia=UVF</item>
+	</string-array>
 	<string-array name="Mayotte">
 		<item>Dzaoudzi=DZA</item>
 	</string-array>
@@ -696,6 +699,7 @@
 		<item>Brewarrina=BWQ</item>
 		<item>Mount Gambier, SA=MGB</item>
 		<item>Mildura, VI=MQL</item>
+		<item>Geraldton, WA=GET</item>
 		<item>Rockhampton, QL=ROK</item>
 		<item>Darnley Island, QL=NLF</item>
 		<item>Mabuiag Island, QL=UBB</item>
@@ -1072,6 +1076,7 @@
 		<item>Cocos Islands=Keeling</item>
 	</string-array>
 	<string-array name="Antigua_and_Barbuda">
+		<item>VC Bird International=ANU</item>
 		<item>Antigua=ANU</item>
 	</string-array>
 	<string-array name="Colombia">
@@ -1242,10 +1247,6 @@
 	<string-array name="French_Guiana">
 		<item>Cayenne=CAY</item>
 	</string-array>
-	<string-array name="St._Lucia">
-		<item>St. Lucia=UVF</item>
-		<item>St. Lucia=UVF</item>
-	</string-array>
 	<string-array name="Christmas_Island">
 		<item>Christmas Island=XCH</item>
 	</string-array>
@@ -1271,10 +1272,10 @@
 		<item>Tiksi=IKS</item>
 		<item>Chevepovets=CEE</item>
 		<item>Ust-Ilimsk=UIK</item>
+		<item>St Petersburg=LED</item>
 		<item>Yuzhno-Sakhalinsk=UUS</item>
 		<item>Barnaul=BAX</item>
 		<item>Neryjungri=NER</item>
-		<item>St. Petersburg=LED</item>
 		<item>Saint Petersburg=LED</item>
 		<item>Vorkuta=VKT</item>
 		<item>Novokuznetsk=NOZ</item>
@@ -1311,7 +1312,6 @@
 		<item>Vladikavkaz=OGZ</item>
 		<item>Nojabrxsk=NOJ</item>
 		<item>Tomsk=TOF</item>
-		<item>Noril'sk=NSK</item>
 		<item>Rostov=ROV</item>
 		<item>Bugulma=UUA</item>
 		<item>Magnitogorsk=MQF</item>
@@ -1329,6 +1329,7 @@
 		<item>Makhachkala=MCX</item>
 		<item>Usinsk=USK</item>
 		<item>Mirnyj=MJZ</item>
+		<item>Norilsk=NSK</item>
 		<item>Sochi=AER</item>
 		<item>Bulgulma=UUA</item>
 		<item>Igarka=IAA</item>
@@ -1348,6 +1349,10 @@
 		<item>Amsterdam=AMS</item>
 		<item>Groningen=GRQ</item>
 		<item>Maastricht=MST</item>
+	</string-array>
+	<string-array name="Cote_dIvoire">
+		<item>Gagnoa=GGN</item>
+		<item>Abidjan=ABJ</item>
 	</string-array>
 	<string-array name="China">
 		<item>Baoshan=BSD</item>
@@ -1440,10 +1445,10 @@
 		<item>Taiyuan=TYN</item>
 		<item>Wuhan=WUH</item>
 		<item>Chongqing=CKG</item>
+		<item>Yanan=ENY</item>
 		<item>Juzha=JUZ</item>
 		<item>Chaoyang=CHG</item>
 		<item>Xuzhou=XUZ</item>
-		<item>Yan'an=ENY</item>
 		<item>Luzhou=LZO</item>
 		<item>Simao=SYM</item>
 		<item>Wuyishan=WUS</item>
@@ -1468,10 +1473,7 @@
 	</string-array>
 	<string-array name="Reunion">
 		<item>St Denis de la Reunion=RUN</item>
-		<item>St. Pierre de la Reunion=ZSE</item>
-	</string-array>
-	<string-array name="Cote_D'Ivoire">
-		<item>Gagnoa=GGN</item>
+		<item>St Pierre de la Reunion=ZSE</item>
 	</string-array>
 	<string-array name="Bhutan">
 		<item>Paro=PBH</item>
@@ -1515,9 +1517,6 @@
 		<item>Puerto Princesa=PPS</item>
 		<item>Laoag=LAO</item>
 		<item>Bacolod=BCD</item>
-	</string-array>
-	<string-array name="Cote_d'Ivoire">
-		<item>Abidjan=ABJ</item>
 	</string-array>
 	<string-array name="Uzbekistan">
 		<item>Andizhan=AZN</item>
@@ -1664,9 +1663,6 @@
 		<item>El Fasher=ELF</item>
 		<item>Malakai=MAK</item>
 		<item>Merave=MWE</item>
-	</string-array>
-	<string-array name="Svalbard_&amp;_Jan_Mayen_Island">
-		<item>Longyearbyen=LYR</item>
 	</string-array>
 	<string-array name="Portugal">
 		<item>Pico Island=PIX</item>
@@ -2100,7 +2096,7 @@
 		<item>Ladysmith =XEH</item>
 		<item>Nanisivik =YSR</item>
 		<item>Round Lake =ZRJ</item>
-		<item>Mary's Harbour =YMH</item>
+		<item>Mary\'s Harbour =YMH</item>
 		<item>Gillam =YGX</item>
 		<item>Quaqtaq =YQC</item>
 		<item>Aldershot =XLY</item>
@@ -2136,7 +2132,7 @@
 		<item>Fort Chipewyan =YPY</item>
 		<item>Williams Lake =YWL</item>
 		<item>Grande Prairie =YQU</item>
-		<item>Val-d'Or =YVO</item>
+		<item>Val-d\'Or =YVO</item>
 		<item>Summer Beaver =SUR</item>
 		<item>Moncton =XDP</item>
 		<item>Moncton =YQM</item>
@@ -2772,7 +2768,7 @@
 		<item>Greenville=PGV</item>
 		<item>Greenville=GSP</item>
 		<item>Pueblo=PUB</item>
-		<item>Martha's Vineyard=MVY</item>
+		<item>Martha\'s Vineyard=MVY</item>
 		<item>Bozeman=BZN</item>
 		<item>Huron=HON</item>
 		<item>Alamosa=ALS</item>
@@ -3004,7 +3000,7 @@
 		<item>Grand Island=GRI</item>
 		<item>Plattsburgh=PLB</item>
 		<item>Martinsburg=AOO</item>
-		<item>Devil's Lake=DVL</item>
+		<item>Devil\'s Lake=DVL</item>
 		<item>Fort Collins/Loveland=FNL</item>
 		<item>Fort Collins/Loveland=QWF</item>
 		<item>Nondalton=NNL</item>
@@ -3075,7 +3071,7 @@
 		<item>Hampton=PHF</item>
 		<item>New Koliganek=KGK</item>
 		<item>Medford=MFR</item>
-		<item>Saint Mary's=KSM</item>
+		<item>Saint Mary\'s=KSM</item>
 		<item>Bullhead City=IFP</item>
 		<item>Cheyenne=CYS</item>
 		<item>Moses Lake=MWH</item>
@@ -3207,7 +3203,7 @@
 		<item>Ndjamena=NDJ</item>
 	</string-array>
 	<string-array name="Sao_Tome_and_Principe">
-		<item>Sao Tome Is.=TMS</item>
+		<item>Sao Tome Is=TMS</item>
 	</string-array>
 	<string-array name="Thailand">
 		<item>Nakhon Ratchosima=NAK</item>
@@ -3522,11 +3518,11 @@
 		<item>Maseru=MSU</item>
 	</string-array>
 	<string-array name="Tonga">
+		<item>Niuafoou=NFO</item>
+		<item>NukuAlofa=TBU</item>
+		<item>Vavau=VAV</item>
 		<item>Niuatoputapu=NTT</item>
-		<item>Nuku'Alofa=TBU</item>
-		<item>Niuafo'ou=NFO</item>
 		<item>HaApa=HPA</item>
-		<item>Vava'u=VAV</item>
 	</string-array>
 	<string-array name="Hungary">
 		<item>Budapest=BUD</item>
@@ -3646,9 +3642,6 @@
 		<item>Te Anau=TEU</item>
 		<item>Timaru=TIU</item>
 	</string-array>
-	<string-array name="St._Kitts_and_Nevis">
-		<item>Nevis=NEV</item>
-	</string-array>
 	<string-array name="Senegal">
 		<item>Dakar=DKR</item>
 	</string-array>
@@ -3682,6 +3675,12 @@
 		<item>Tum=TUJ</item>
 		<item>Mekane Selam=MKS</item>
 		<item>Jijiga=JIJ</item>
+	</string-array>
+	<string-array name="US_Virgin_Islands">
+		<item>Saint Croix=STX</item>
+		<item>St Croix Island=STX</item>
+		<item>Saint Thomas=STT</item>
+		<item>St Thomas Island=STT</item>
 	</string-array>
 	<string-array name="Egypt">
 		<item>Sharm El Sheikh=SSH</item>
@@ -3806,12 +3805,6 @@
 		<item>Pristina=PRN</item>
 		<item>Podgoriea=TGD</item>
 	</string-array>
-	<string-array name="U.S._Virgin_Islands">
-		<item>Saint Croix=STX</item>
-		<item>St. Thomas Island=STT</item>
-		<item>St. Croix Island=STX</item>
-		<item>Saint Thomas=STT</item>
-	</string-array>
 	<string-array name="Slovakia">
 		<item>Popraol=TAT</item>
 		<item>Tatry=TAT</item>
@@ -3825,10 +3818,10 @@
 		<item>Tarbes=LDE</item>
 		<item>Valenciennes=XVS</item>
 		<item>Chambery=CMF</item>
-		<item>St. Etienne=EBU</item>
 		<item>Grenoble=GNB</item>
 		<item>Poitiers=PIS</item>
 		<item>Poitiers=XOP</item>
+		<item>St Etienne=EBU</item>
 		<item>Annecy=NCY</item>
 		<item>Metz=ETZ</item>
 		<item>Figari=FSC</item>
@@ -3904,9 +3897,6 @@
 	<string-array name="Bosnia_and_Herzegovina">
 		<item>Mostar=OMO</item>
 	</string-array>
-	<string-array name="Antigua_&amp;_Barbuda">
-		<item>V.C. Bird International=ANU</item>
-	</string-array>
 	<string-array name="Niger">
 		<item>Niamey=NIM</item>
 	</string-array>
@@ -3921,7 +3911,7 @@
 		<item>Rajshahi=RJH</item>
 		<item>Chittagong=CGP</item>
 		<item>Jessore=JSR</item>
-		<item>Cox's Bazar=CXB</item>
+		<item>Coxs Bazar=CXB</item>
 		<item>Sylhet=ZYL</item>
 	</string-array>
 	<string-array name="Barbados">
@@ -4011,6 +4001,7 @@
 		<item>Hermosillo=HMO</item>
 		<item>Matamoros=MAM</item>
 		<item>San Luis Potosi=SLP</item>
+		<item>S Cristobal del Casas=SZT</item>
 		<item>Monclova=LOV</item>
 		<item>Monterrey=MTY</item>
 		<item>Tapachula=TAP</item>
@@ -4045,7 +4036,6 @@
 		<item>Queretaro=QRO</item>
 		<item>Huatulco=HUX</item>
 		<item>Mexicali=MXL</item>
-		<item>S. Cristobal del Casas=SZT</item>
 		<item>Cancun=CUN</item>
 		<item>Ciudad Juarez=CJS</item>
 		<item>Puebla=PBC</item>
