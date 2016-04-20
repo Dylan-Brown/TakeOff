@@ -87,7 +87,7 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
     @Override
     protected void onPostExecute(JSONArray result) {
         try {
-            QPXAPIParser.getAPIResultsAsFlight(result);
+            QPXJSONReader.getAPIResultsAsFlights(result);
             if(result != null) {
                 System.out.println(result.toString(2));
             }

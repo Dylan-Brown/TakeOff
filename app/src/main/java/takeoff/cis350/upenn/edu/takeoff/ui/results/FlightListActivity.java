@@ -14,14 +14,14 @@ import java.util.List;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.FlightResultActivity;
-import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
+import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 
 /**
  * Created by tangson on 2/23/16.
  */
 public class FlightListActivity extends ListActivity {
 
-    List<Flight> flightList = QPXAPIParser.getFlightResultsFromMostRecentSearch();
+    List<Flight> flightList = QPXJSONReader.getFlightResultsFromMostRecentSearch();
     Flight[] flights = flightList.toArray(new Flight[flightList.size()]);
     FlightAdapter adapter;
     ListView listView;
@@ -86,7 +86,7 @@ public class FlightListActivity extends ListActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        Flight f=QPXAPIParser.FlightCache.get(index);
+        Flight f= QPXJSONReader.FlightCache.get(index);
         boolean returnTrip = f.isReturnTrip();
         boolean directFlight = f.isDirectFlight();
        Intent myIntent = new Intent();

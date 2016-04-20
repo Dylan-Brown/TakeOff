@@ -32,6 +32,7 @@ public class SearchParameterProcessor {
 
     /**
      *
+     *
      * @param returningDateInput
      */
     public void setReturningDate(String returningDateInput) {

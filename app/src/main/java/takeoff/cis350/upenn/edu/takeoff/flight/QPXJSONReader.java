@@ -114,7 +114,7 @@ public class QPXJSONReader {
                 fullFlight.retarrivalTime = lastF.arrivalTime + "";
                 fullFlight.retarrivalDate = lastF.arrivalDate + "";
                 fullFlight.retdepartureCityCode = lastF.departureCityCode + "";
-        }
+            }
             if ((fullFlight.isReturnTrip && sfList.size() == 2) || sfList.size() == 1) {
                 fullFlight.isDirectFlight = true;
             }

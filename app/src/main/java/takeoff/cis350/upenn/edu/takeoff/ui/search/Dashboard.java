@@ -28,7 +28,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.favorites.FilterSearch;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.FlightInfoActivity;
-import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
+import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 
 /**
  * This class is the list fragment for the dashboard, to display the search results
@@ -58,7 +58,7 @@ public class Dashboard extends ListFragment {
         listView = getListView();
 
         // get the flight information information if there is any
-        flightResults = QPXAPIParser.getFlightResultsFromMostRecentSearch();
+        flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
 
         if (flightResults != null) {
             System.out.println("FLIGHTRESULTS NOT NULL");

@@ -54,11 +54,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIParser;
-import takeoff.cis350.upenn.edu.takeoff.flight.QPXAPIReader;
+import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
+import takeoff.cis350.upenn.edu.takeoff.flight.SearchQuerytoQPXReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
-
-import takeoff.cis350.upenn.edu.takeoff.flight.JSONAsyncTask;
 
 
 /**
@@ -469,7 +467,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setRefundable(refundable);
         //spp.setairportCodes(airportCodes);
         final SearchQuery sq = spp.getQuery();
-        String request = QPXAPIReader.makeJSONObjectFromSearchQuery(sq);
+        String request = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
 
 
         // Store the SearchQuery in FireBase
@@ -762,7 +760,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         protected void onPostExecute(JSONArray result) {
             try {
                 System.out.println("IN POST EXECUTE");
-                QPXAPIParser.getAPIResultsAsFlight(result);
+                QPXJSONReader.getAPIResultsAsFlights(result);
                 System.out.println("ASyncTask: IT WORKS!");
 
                 if(result != null) {

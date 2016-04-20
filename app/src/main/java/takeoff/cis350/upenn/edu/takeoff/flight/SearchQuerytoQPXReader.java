@@ -10,7 +10,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchQuery;
 /**
  * Created by tangson on 3/17/16.
  */
-public class QPXAPIReader {
+public class SearchQuerytoQPXReader {
 
     static RequestQueue queue;
     static JSONArray JSONResponse;
@@ -30,7 +30,7 @@ public class QPXAPIReader {
      * @param sq
      * @return
      */
-    public static String makeJSONObjectFromSearchQuery(SearchQuery sq) {
+    public static String makeJSONSearchObject(SearchQuery sq) {
         int adultCount = sq.adultCount;
         boolean refundability = sq.refundability;
         int numberOfSolutions = sq.numberOfSolutions;
@@ -77,7 +77,7 @@ public class QPXAPIReader {
         String jsonRequest = requestSlice + requestPassenger + requestInfo;
         Log.e("JSONREQUEST", jsonRequest);
         try {
-            Log.i("QPXAPIReader", "makeJSONObjectFromSearchQuery: " + new JSONArray(jsonRequest).toString(2));
+            Log.i("SearchQuerytoQPXReader", "makeJSONSearchObject: " + new JSONArray(jsonRequest).toString(2));
         } catch (Exception e) {
             // TODO: Handle
         }
@@ -99,26 +99,26 @@ public class QPXAPIReader {
             JSONObject firstLeg = segments.getJSONObject(0).getJSONArray("leg").getJSONObject(0);
             JSONObject lastLeg = segments.getJSONObject(segmentLength - 1).getJSONArray("leg").getJSONObject(0);
 
-            Log.i("QPXAPIReader", "printAPIResults: Sale Total " + tripOption.getString("saleTotal"));
-            Log.i("QPXAPIReader", "printAPIResults: Number of connections: " + segmentLength);
-            Log.i("QPXAPIReader", "printAPIResults: Departure: " + firstLeg.getString("origin"));
-            Log.i("QPXAPIReader", "printAPIResults: Departure Time: " + firstLeg.getString("departureTime"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Sale Total " + tripOption.getString("saleTotal"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Number of connections: " + segmentLength);
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Departure: " + firstLeg.getString("origin"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Departure Time: " + firstLeg.getString("departureTime"));
             if (segmentLength > 1) {
                 for (int segIndex = 0; segIndex < segmentLength - 1; segIndex++) {
                     JSONObject connectingArrival = segments.getJSONObject(segIndex).getJSONArray("leg")
                             .getJSONObject(0);
 
-                    Log.i("QPXAPIReader", "printAPIResults: Connecting Arrival Time: " + connectingArrival.getString("arrivalTime"));
-                    Log.i("QPXAPIReader", "printAPIResults: Connection: " + connectingArrival.getString("destination"));
+                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connecting Arrival Time: " + connectingArrival.getString("arrivalTime"));
+                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connection: " + connectingArrival.getString("destination"));
                     JSONObject connectingDeparture = segments.getJSONObject(segIndex + 1).getJSONArray("leg")
                             .getJSONObject(0);
-                    Log.i("QPXAPIReader", "printAPIResults: Connecting Departure Time: " + connectingDeparture.getString("departureTime"));
+                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connecting Departure Time: " + connectingDeparture.getString("departureTime"));
                 }
             }
-            Log.i("QPXAPIReader", "printAPIResults: Arrival: " + lastLeg.getString("destination"));
-            Log.i("QPXAPIReader", "printAPIResults: Arrival Time: " + lastLeg.getString("arrivalTime"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Arrival: " + lastLeg.getString("destination"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Arrival Time: " + lastLeg.getString("arrivalTime"));
         }
-        Log.i("QPXAPIReader", "printAPIResults: Length is: " + jsonArray.length());
+        Log.i("SearchQuerytoQPXReader", "printAPIResults: Length is: " + jsonArray.length());
     }
 
 
