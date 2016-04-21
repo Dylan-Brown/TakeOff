@@ -15,7 +15,7 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.FlightResultActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
+
 /**
  * Created by tangson on 2/23/16.
  */
@@ -86,7 +86,7 @@ public class FlightListActivity extends ListActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        Flight f= Dashboard.FlightCache.get(index);
+        Flight f= QPXJSONReader.FlightCache.get(index);
         boolean returnTrip = f.isReturnTrip();
         boolean directFlight = f.isDirectFlight();
        Intent myIntent = new Intent();

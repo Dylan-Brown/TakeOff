@@ -11,7 +11,7 @@
         android:text="PHL"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/favoriteButton"
-        android:layout_marginRight="0dp"
+        android:layout_marginRight="30dp"
         android:textColor="#000000" />
 
     <TextView    android:id="@+id/arrivalTextView"
@@ -19,37 +19,38 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="BOS"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/departureTextView"
         android:textColor="#000000"
-        android:paddingStart="20dp"
-        android:layout_below="@+id/favoriteButton"
-        android:layout_toStartOf="@+id/departureDateTextView" />
+        android:layout_above="@+id/departureDateTextView"
+        android:paddingStart="20dp" />
 
     <ImageButton    android:id="@+id/favoriteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:drawable/star_on"
         android:layout_alignParentStart="true"
-        android:layout_marginRight="0dp" />
+        android:layout_marginRight="20dp" />
 
     <TextView        android:id="@+id/departureDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="3-1-2016"
-        android:textColor="#000000"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/departureTextView"
-        android:layout_marginStart="49dp" />
+        android:layout_below="@+id/departureTextView"
+        android:layout_toEndOf="@+id/favoriteButton"
+        android:textColor="#000000" />
 
     <TextView         android:id="@+id/arrivalDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="3-8-2016"
+        android:layout_below="@+id/arrivalTextView"
+        android:layout_alignStart="@+id/arrivalTextView"
         android:textColor="#000000"
-        android:paddingStart="20dp"
-        android:layout_alignTop="@+id/arrivalTimeTextView"
-        android:layout_toEndOf="@+id/departureTimeTextView" />
+        android:layout_alignBottom="@+id/departureDateTextView"
+        android:paddingStart="20dp" />
 
     <TextView         android:id="@+id/costTextView"
         android:layout_width="wrap_content"
@@ -68,8 +69,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="3:00"
         android:textColor="#000000"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/departureTextView" />
+        android:layout_below="@+id/departureDateTextView"
+        android:layout_alignStart="@+id/departureDateTextView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,10 +78,10 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="12:30"
         android:textColor="#000000"
+        android:layout_below="@+id/arrivalDateTextView"
+        android:layout_alignStart="@+id/arrivalDateTextView"
         android:id="@+id/arrivalTimeTextView"
-        android:paddingStart="0dp"
-        android:layout_alignTop="@+id/arrivalTextView"
-        android:layout_toEndOf="@+id/arrivalTextView" />
+        android:paddingStart="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,10 +89,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Connections"
         android:id="@+id/conxnTextView"
+        android:layout_alignParentTop="true"
         android:textSize="12sp"
-        android:paddingStart="0dp"
+        android:layout_toEndOf="@+id/arrivalDateTextView"
+        android:paddingStart="20dp"
         android:textColor="#000000"
-        android:layout_below="@+id/arrivalTextView"
-        android:layout_toEndOf="@+id/favoriteButton" />
+        android:layout_alignBottom="@+id/arrivalTimeTextView" />
 
 </RelativeLayout>

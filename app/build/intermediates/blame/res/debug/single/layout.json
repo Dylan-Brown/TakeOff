@@ -1,115 +1,111 @@
 [
     {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_tab_icon.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_info2.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_search_info2.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_page.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_search_page.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_group_page_view.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_group_page_view.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_big_media_narrow.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_big_media.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_main.xml"
-    },
-    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_select_dialog_material.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_alert_dialog_button_bar_material.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_search_info.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/content_search_info.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_media_action.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_layout.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/flightresult_page.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/flightresult_page.xml"
     },
     {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_content_include.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/login_page.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/login_page.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_radio.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_info.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_search_info.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_item_layout.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_filter.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_filter.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_simple.xml"
-    },
-    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_snackbar.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_snackbar.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/fragment_favorites.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/fragment_favorites.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_layout.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_mode_close_item_material.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_expanded_menu_layout.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item_separator.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_icon.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item_header.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_tabbing.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/content_tabbing.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_login.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_expanded_menu_layout.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_menu_item.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_title_item.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_menu_item_action_area.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/favorite_list.xml",
@@ -120,40 +116,56 @@
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/fragment_dashboard_history.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/select_dialog_item_material.xml"
-    },
-    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_dialog_title_material.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/fragment_profile.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/fragment_profile.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_menu_item_action_area.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_dashboard.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/content_dashboard.xml"
     },
     {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_tabbing.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_tabbing.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_dialog_title_material.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_tab_text.xml"
     },
     {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_tabbing.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_tabbing.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/login_page.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/login_page.xml"
+    },
+    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_menu.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_menu.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_flight_info.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/content_flight_info.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_flight_info.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_flight_info.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_view.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_history_wrapper.xml",
@@ -168,6 +180,10 @@
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_item_layout.xml"
     },
     {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_sign_up.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_sign_up.xml"
+    },
+    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_part_time.xml"
     },
@@ -176,40 +192,32 @@
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_mode_close_item_material.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/select_dialog_singlechoice_material.xml"
-    },
-    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_icon.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/fragment_favorites.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/fragment_favorites.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item_header.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/fragment_dashboard.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/fragment_dashboard.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item_subheader.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_search_info2.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/content_search_info2.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/flight_item.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/flight_item.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_alert_dialog_material.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_mode_bar.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
@@ -228,28 +236,36 @@
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_simple.xml"
     },
     {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_title_item.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_group_page.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_group_page.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/fragment_profile.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/fragment_profile.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_title_item.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_info2.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_search_info2.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/fragment_dashboard_history.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/fragment_dashboard_history.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_log_in.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_log_in.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_search_info.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/content_search_info.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_media.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_menu_item.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_dropdown_item_icons_2line.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_main.xml",
@@ -264,326 +280,6 @@
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_media_cancel_action.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_snackbar_include.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_toolbar.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_filter.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_filter.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_layout.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view_list_item.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_tab_icon.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_alert_dialog_material.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_page.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_search_page.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/support_simple_spinner_dropdown_item.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/flight_item_roundtrip.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/flight_item_roundtrip.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_select_dialog_material.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item_separator.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_content_include.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_popup_menu_item_layout.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_dashboard.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/content_dashboard.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_media_action.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_part_chronometer.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_menu_layout.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view_list_item.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_up_container.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_radio.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_media_cancel_action.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_snackbar.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/select_dialog_multichoice_material.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_expanded_menu_layout.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_history_wrapper.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_search_history_wrapper.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/support_simple_spinner_dropdown_item.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_checkbox.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_login.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_menu_item.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_part_time.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_media.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_menu_item_action_area.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_main.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/content_main.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_lines.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/fragment_profile.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/fragment_profile.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_search_info2.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/content_search_info2.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_dashboard.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/content_dashboard.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_dialog_title_material.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/login_page.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/login_page.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_snackbar_include.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_main.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_flight_info.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/content_flight_info.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_up_container.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_view.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/flightresult_page.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/flightresult_page.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_layout.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_toolbar.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_flight_info.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/content_flight_info.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_layout_tab_text.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_radio.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_sign_up.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_sign_up.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_group_page_view.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_group_page_view.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item_header.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_search_info2.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/content_search_info2.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_media_action.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_media_action.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_sign_up.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_sign_up.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_flight_info.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_flight_info.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_log_in.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_log_in.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_info.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_search_info.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_login.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/fragment_dashboard.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/fragment_dashboard.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item_subheader.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_group_page.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_group_page.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_search_page.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_search_page.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_view.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_tabbing.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_tabbing.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_log_in.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_log_in.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/content_search_info.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/content_search_info.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/favorite_list.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/favorite_list.xml"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_popup_menu_item_layout.xml"
-    },
-    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_checkbox.xml"
     },
@@ -592,15 +288,15 @@
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_lines.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_group_page.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/activity_group_page.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/flight_item.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/layout/flight_item.xml"
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/activity_filter.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/activity_filter.xml"
     }
 ]
