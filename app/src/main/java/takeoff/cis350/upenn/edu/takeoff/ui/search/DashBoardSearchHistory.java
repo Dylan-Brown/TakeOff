@@ -21,10 +21,11 @@ import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
+import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 public class DashBoardSearchHistory extends ListFragment {
-    private final Firebase usersRef =
-            new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+
+    private final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
     List<Flight> flightResults;
     DummySearchQueryHistory history = new DummySearchQueryHistory();
     String[] stringhistory = history.stringHistory2;
@@ -32,7 +33,6 @@ public class DashBoardSearchHistory extends ListFragment {
     ListView l;
 
     public DashBoardSearchHistory() {
-
     }
 
     public final static String EXTRA_MESSAGE1 = "Flight";
@@ -79,41 +79,24 @@ public class DashBoardSearchHistory extends ListFragment {
                     // TODO: Internally display error message, externally claim nothing found
                 }
             });
-        } else {
-            // No authenticated user (guestsession or some error) - no favorites data
-            Toast toast = Toast.makeText(getActivity(),
-                    "No favorites found.", Toast.LENGTH_SHORT);
-            toast.show();
         }
 
-
-        setListAdapter(new ArrayAdapter(getActivity(),
-                android.R.layout.simple_list_item_single_choice, stringhistory));
+        int layout = android.R.layout.simple_list_item_single_choice;
+        setListAdapter(new ArrayAdapter(getActivity(), layout, stringhistory));
         setAdapter(stringhistory);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_dashboard_history, container, false);
         return rootView;
     }
 
     private void setAdapter(String[] info) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, info);
+        int layout = android.R.layout.simple_list_item_1;
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout, info);
         l.setAdapter(adapter);
     }
-/*
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-
-        // I want it to go to the DashBoard from here.
-        // So the information needs to be passed to Jason and Jason sends Anaka a List of Flights to Dashboard
-        // For now, I'm calling the Dashboard with Dummy information.
-        TextView temp = (TextView) v;
-
-        Intent intent = new  Intent (this, Dashboard.class);
-
-        startActivity(intent);
-    }*/
-
 }
