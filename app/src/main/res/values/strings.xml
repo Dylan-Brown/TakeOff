@@ -60,6 +60,7 @@
     <string name="error_field_required">This field is required</string>
     <string name="error_no_favorites">No favorites found</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="firebase_profile_fail">Failed to retrieve user information</string>
 
     <!-- Continent Boxes -->
     <string name="africa">Africa</string>
@@ -105,5 +106,6 @@
     <string name="firebase_uid">uid</string>
     <string name="firebase_fav">favoriteFlights</string>
     <string name="firebase_uname">username</string>
+
 
 </resources>

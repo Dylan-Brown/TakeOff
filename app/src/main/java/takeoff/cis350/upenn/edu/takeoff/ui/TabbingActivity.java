@@ -28,6 +28,7 @@ import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.*;
+import takeoff.cis350.upenn.edu.takeoff.ui.authentication.LogInActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.favorites.FavoritesFragment;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.DashBoardSearchHistory;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
@@ -258,6 +259,20 @@ public class TabbingActivity extends AppCompatActivity {
                 dash.loadDashboard();
             }
         }
+    }
+
+
+    /**
+     * This method is called when the user clicks on the profile picture
+     * @param view
+     */
+    public void picOnClick(View view){
+        if (WelcomeActivity.FIREBASE.getAuth() != null) {
+            Log.e("TabbingActivity", "picOnClick: User clicked on profile image");
+        } else {
+            Log.e("TabbingActivity", "picOnClick: Guest clicked on profile image");
+        }
+
     }
 
 

@@ -55,6 +55,13 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        FIREBASE.unauth();
+        USER_FIREBASE.unauth();
+    }
+
+    @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
