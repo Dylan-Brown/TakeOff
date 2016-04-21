@@ -101,7 +101,6 @@ public class LogInActivity extends AppCompatActivity {
             return;
         }
 
-        Firebase usersRef = WelcomeActivity.USER_FIREBASE;
         final Intent intent = new  Intent(this, TabbingActivity.class);
 
         // create a handler to handle the result of the authentication
@@ -132,7 +131,7 @@ public class LogInActivity extends AppCompatActivity {
         };
 
         // make the authentication attempt
-        usersRef.authWithPassword(email, password, authResultHandler);
+        WelcomeActivity.USER_FIREBASE.authWithPassword(email, password, authResultHandler);
     }
 
 }

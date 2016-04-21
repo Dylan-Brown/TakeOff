@@ -62,6 +62,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="firebase_profile_fail">Failed to retrieve user information</string>
     <string name="please_sign_in">Please sign in to use this feature!</string>
+    <string name="error_no_groups">No groups to display</string>
 
     <!-- Continent Boxes -->
     <string name="africa">Africa</string>
@@ -106,6 +107,7 @@
     <string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string>
     <string name="firebase_uid">uid</string>
     <string name="firebase_fav">favoriteFlights</string>
+    <string name="firebase_grp">groups</string>
     <string name="firebase_uname">username</string>
 
 

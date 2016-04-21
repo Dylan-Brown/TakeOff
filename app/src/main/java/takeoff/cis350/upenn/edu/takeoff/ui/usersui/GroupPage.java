@@ -27,11 +27,12 @@ public class GroupPage extends Activity {
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
-        System.out.println("IN GROUP PAGE");
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
+
         String mesg = intent.getStringExtra("GROUP_MESSAGE");
-        group = Group.parseGroup(mesg);
+        Log.e("GroupPage", "onCreate: mesg is " + mesg);
+        // group = Group.parseGroup(mesg);
         Log.e("GroupPageActual", "Group message is " + mesg);
 
         displayInfo = (TextView) findViewById(R.id.textViewGroup);

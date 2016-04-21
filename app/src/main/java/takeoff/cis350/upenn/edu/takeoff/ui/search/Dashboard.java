@@ -41,6 +41,7 @@ public class Dashboard extends ListFragment {
     public final static String FLIGHT_MESSAGE = "FlightActual";
     List<Flight> flightResults;
     ListView listView;
+    boolean initialLoad = true;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -60,7 +61,7 @@ public class Dashboard extends ListFragment {
         // get the flight information information if there is any
         flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
 
-        if (flightResults != null) {
+        if (flightResults != null && !initialLoad) {
             System.out.println("FLIGHTRESULTS NOT NULL");
             //flightResults =new ArrayList<>(Arrays.asList(new DummyFlightInfo().getFlights()));
             // Make flight information human readable
@@ -84,9 +85,8 @@ public class Dashboard extends ListFragment {
 
                 listView.setAdapter(adapter);
             }
-        } else {
-            // no results
-            setToastText("No Searches Yet");
+        } else if (initialLoad) {
+            initialLoad = false;
         }
 
         // display the toolbar

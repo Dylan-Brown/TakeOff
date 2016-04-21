@@ -45,10 +45,6 @@ public class ProfileFragment extends Fragment {
         profilePic = (ImageView) rootView.findViewById(R.id.userpic);
         username = (TextView) rootView.findViewById(R.id.username_tv);
 
-        if (username == null) {
-            Log.e("ProfileFragment", "username is null");
-        }
-
         // if there is a userlogged-in, display their information
         if (WelcomeActivity.USER_FIREBASE.getAuth() != null) {
             AuthData auth = WelcomeActivity.USER_FIREBASE.getAuth();
@@ -72,7 +68,6 @@ public class ProfileFragment extends Fragment {
                     (Toast.makeText(getContext(), error, Toast.LENGTH_SHORT)).show();
                 }
             });
-
         }
 
         return rootView;
