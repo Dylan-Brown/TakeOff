@@ -8,5 +8,28 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewGroup"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.35" />
+        android:textSize="30dp"/>
+
+    <ListView
+        android:id="@+id/member_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/member_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp" />
+
+        <TextView
+            android:id="@+id/member_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/member_icon"
+            android:layout_centerVertical="true"
+            android:textSize="16dp" />
+    </ListView>
+
+
 </LinearLayout>

@@ -1,18 +1,12 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.user.Group;
@@ -23,28 +17,40 @@ import takeoff.cis350.upenn.edu.takeoff.user.Group;
 public class GroupPage extends Activity {
 
     private Group group;
-    private TextView displayInfo;
+    private TextView groupNameView;
+    private ListView groupMembersView;
+    private String[] groupMembers;
+    private String groupName;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
 
-        String mesg = intent.getStringExtra("GROUP_MESSAGE");
-        Log.e("GroupPage", "onCreate: mesg is " + mesg);
+        setContentView(R.layout.activity_group_page);
+
+        // TODO: Get group name from intent message
+        // String mesg = intent.getStringExtra("GROUP_MESSAGE");
+        // Log.e("GroupPage", "onCreate: mesg is " + mesg);
         // group = Group.parseGroup(mesg);
-        Log.e("GroupPageActual", "Group message is " + mesg);
+        // Log.e("GroupPageActual", "Group message is " + mesg);
+        groupName = "This_would_be_the_group_name";
 
-        displayInfo = (TextView) findViewById(R.id.textViewGroup);
-        if (displayInfo == null)
-            displayInfo = new TextView(getApplicationContext());
-        displayInfo.setText("this is where the group info would go");
-        setContentView(displayInfo);
+        // TODO: Populate array with actual group members
+        groupMembers = new String[10];
+        Arrays.fill(groupMembers, "fake_group_member");
 
-        // TODO: Implement this class
+        groupNameView = (TextView) findViewById(R.id.textViewGroup);
+        if (groupNameView == null) {
+            groupNameView = new TextView(getApplicationContext());
+        }
+        groupNameView.setText(groupName);
+
+
+        // TODO: Make the custom list view where each member's profile icon shows up
+        // TODO: next to their name
+        groupMembersView = (ListView) findViewById(R.id.member_list);
+        int layout = android.R.layout.simple_list_item_single_choice;
+        groupMembersView.setAdapter(new ArrayAdapter(this, layout, groupMembers));
     }
-
-
-
 
 }

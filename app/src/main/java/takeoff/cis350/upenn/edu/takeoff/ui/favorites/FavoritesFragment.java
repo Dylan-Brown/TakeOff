@@ -2,6 +2,7 @@ package takeoff.cis350.upenn.edu.takeoff.ui.favorites;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +69,10 @@ public class FavoritesFragment extends ListFragment {
             return;
         }
         flightResults = dash.getFlightResults();
+        display();
+    }
 
+    protected void display() {
         // form the results array
         String[] flights;
         if (flightResults != null) {
@@ -98,9 +102,16 @@ public class FavoritesFragment extends ListFragment {
                     new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            // TODO: See if this works
-                            if(flightResults == null) {
-                                flightResults = new ArrayList<>();
+                            flightResults = new ArrayList<>();
+                            if (snapshot.getValue() != null) {
+                                for (String s : (ArrayList<String>) snapshot.getValue()) {
+                                    // Log.e("FavoritesFragment", "onDataSnapshot: " + s.getClass());
+                                    // TODO: Figure out why parsing is causing a problem
+                                    // TODO: s is clearly a flight; I've tested it. However, we must
+                                    // TODO: make sure that our newer versions of Flight can parse properly
+                                    // flightResults.add(Flight.parseFlight(s));
+                                }
+                                display();
                             }
                         }
                         @Override
