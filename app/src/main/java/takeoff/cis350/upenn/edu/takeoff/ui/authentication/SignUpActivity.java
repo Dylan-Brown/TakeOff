@@ -27,9 +27,11 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
+import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -38,7 +40,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class SignUpActivity extends AppCompatActivity {
 
-    private final Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+    private final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
     private static final int REQUEST_READ_CONTACTS = 0;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
@@ -111,7 +113,6 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-
     /**
      * Attempts to sign up the  user
      */
@@ -123,70 +124,73 @@ public class SignUpActivity extends AppCompatActivity {
         // store values at the time of the login attempt
         final String email = mEmailView.getText().toString();
         final String password = mPasswordView.getText().toString();
-        String password2 = mPasswordConfirmView.getText().toString();
-        System.out.println("Email entered: " + email);
-        System.out.println("Password entered: " + password);
-        System.out.println("Password2 entered: " + password2);
 
-        boolean cancel = false;
-        View focusView = null;
 
-        // check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && password.length() < 4) {
-            mPasswordView.setError("Password must be at least 4 characters");
-            focusView = mPasswordView;
-            cancel = true;
+            // user did not enter password or a password that is too short
+            mPasswordView.setError(getString(R.string.error_password_short));
+            mPasswordView.requestFocus();
+            return;
+
+        } else if (!password.equals(mPasswordConfirmView.getText().toString())) {
+            // passwords did not match
+            mPasswordView.setError(getString(R.string.error_password_match));
+            mPasswordView.requestFocus();
+            return;
         }
 
         // check for a valid email address.
         if (TextUtils.isEmpty(email)) {
+            // no email entered
             mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!email.contains("@")) {
+            mEmailView.requestFocus();
+            return;
+
+        } else if (!Pattern.compile(".+@.+\\.[a-z]+").matcher(email).matches()) {
+            // invalid email address format
             mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
-            cancel = true;
+            mEmailView.requestFocus();
+            return;
         }
 
-        if (cancel) {
-            // there was an error; don't attempt login and focus the first form field with an error
-            focusView.requestFocus();
-        } else {
-            // continue  with the signup request
-            final Intent intent = new  Intent(this, TabbingActivity.class);
-            usersRef.createUser(email, password,
-                    new Firebase.ValueResultHandler<Map<String, Object>>() {
+        // make the sign-up request
+        final Intent intent = new  Intent(this, TabbingActivity.class);
+        usersRef.createUser(email, password,
+                new Firebase.ValueResultHandler<Map<String, Object>>() {
 
-                        @Override
-                        public void onSuccess(Map<String, Object> result) {
-                            // the creation of a user was successful
-                            Map<String, Object> userMap = new HashMap<>();
-                            userMap.put("uid", (String) result.get("uid"));
-                            userMap.put("username", email);
-                            userMap.put("password", password);
-                            userMap.put("favoriteFlights", new ArrayList<>());
-                            Map<String, Object> users = new HashMap<>();
-                            users.put((String) result.get("uid"), userMap);
-                            usersRef.updateChildren(users);
-                            // go to search page
-                            startActivity(intent);
+                    @Override
+                    public void onSuccess(Map<String, Object> result) {
+                        // the creation of a user was successful; create user
+                        Map<String, Object> userMap = new HashMap<>();
+                        String uid = getString(R.string.firebase_uid);
+                        userMap.put(uid, result.get(uid));
+                        userMap.put(getString(R.string.firebase_uname), email);
+                        userMap.put(getString(R.string.prompt_password), password);
+                        userMap.put(getString(R.string.firebase_fav), new ArrayList<>());
+                        Map<String, Object> users = new HashMap<>();
+                        users.put((String) result.get(uid), userMap);
+                        usersRef.updateChildren(users);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onError(FirebaseError firebaseError) {
+                        // authenticated failed
+                        String error = "";
+                        switch (firebaseError.getCode()) {
+                            case FirebaseError.INVALID_EMAIL:
+                                error = getString(R.string.error_invalid_email);
+                                break;
+                            case FirebaseError.INVALID_PASSWORD:
+                                error = getString(R.string.error_invalid_password);
+                                break;
+                            default:
+                                error = getString(R.string.error_invalid_credentials);
                         }
+                        (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
 
-                        @Override
-                        public void onError(FirebaseError firebaseError) {
-                            // the creation of a user was not successful
-                            Log.e("SignUpActivity", "attemptSignUp: onError "
-                                    + firebaseError.toString() + ", no user account created");
-                            // TODO: Make error message more specific
-                            Toast toast = Toast.makeText(getApplicationContext(),
-                                    "There is already an account associated with this email "
-                                            + "address.", Toast.LENGTH_SHORT);
-                            toast.show();
-
-                        }
-                    });
-        }
+                    }
+                });
     }
 
 }

@@ -1,10 +1,8 @@
 package takeoff.cis350.upenn.edu.takeoff.ui;
 
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
-import takeoff.cis350.upenn.edu.takeoff.ui.*;
 import takeoff.cis350.upenn.edu.takeoff.ui.favorites.FavoritesFragment;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.DashBoardSearchHistory;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
@@ -35,7 +32,6 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPage;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPageActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
-import takeoff.cis350.upenn.edu.takeoff.user.Group;
 
 /**
  *
@@ -262,6 +258,20 @@ public class TabbingActivity extends AppCompatActivity {
 
 
     /**
+     * This method is called when the user clicks on the profile picture
+     * @param view
+     */
+    public void picOnClick(View view){
+        if (WelcomeActivity.FIREBASE.getAuth() != null) {
+            Log.e("TabbingActivity", "picOnClick: User clicked on profile image");
+        } else {
+            Log.e("TabbingActivity", "picOnClick: Guest clicked on profile image");
+        }
+
+    }
+
+
+    /**
      * called when clicking on the MyGroups button in the Profile tab
      */
     public void goToMyGroups(View v) {
@@ -273,11 +283,11 @@ public class TabbingActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             System.out.println("REQUEST CODE = " + GROUP_PAGE_REQUEST);
             startActivityForResult(intent, GROUP_PAGE_REQUEST);
+
         } else {
             // The user logged in is anonymous and cannot create a group
-            Toast toast = Toast.makeText(this, "Please sign in to use this feature!",
-                    Toast.LENGTH_SHORT);
-            toast.show();
+            String error = (String) getText(R.string.please_sign_in);
+            (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
         }
 
     }
@@ -313,9 +323,8 @@ public class TabbingActivity extends AppCompatActivity {
             builder.show();
         } else {
             // The user logged in is anonymous and cannot create a group
-            Toast toast = Toast.makeText(this, "Please sign in to use this feature!",
-                    Toast.LENGTH_SHORT);
-            toast.show();
+            String error = (String) getText(R.string.please_sign_in);
+            (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
         }
     }
 
@@ -355,11 +364,9 @@ public class TabbingActivity extends AppCompatActivity {
                     // if the user does not belong to any  groups, add to a new group category
                     if (!groupMap.containsKey(newGroupName)) {
                         Log.e("GroupStuffInTabs", "New group  does not yet exist");
-                        Group group = new Group(username, newGroupName);
                         // add the group to the global list of groups
-                        groupMap.put(newGroupName, group.toString());
                         // add the group name to the intent
-                        intent.putExtra(GROUP_MESSAGE, group.toString());
+                        intent.putExtra(GROUP_MESSAGE, newGroupName);
                         // update firebase
                         ref.child("groups").updateChildren(groupMap);
                     } else {

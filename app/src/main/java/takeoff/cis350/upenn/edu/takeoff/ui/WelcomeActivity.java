@@ -25,6 +25,8 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     int boardSize = 4;
     //Extra Message
     public final static String EXTRA_MESSAGE = "spinnerValue";
+    public static Firebase FIREBASE;
+    public static Firebase USER_FIREBASE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +34,15 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
 
-        final Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
-        usersRef.addValueEventListener(new ValueEventListener() {
+
+        FIREBASE = new Firebase("https://brilliant-inferno-6470.firebaseio.com/");
+        USER_FIREBASE = FIREBASE.child("users");
+        USER_FIREBASE.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() == null) {
                     Map<String, Map<String, String>> users = new HashMap<String, Map<String, String>>();
-                    usersRef.setValue(users);
+                    USER_FIREBASE.setValue(users);
                 }
             }
 
@@ -49,6 +53,13 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
         });
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FIREBASE.unauth();
+        USER_FIREBASE.unauth();
+    }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

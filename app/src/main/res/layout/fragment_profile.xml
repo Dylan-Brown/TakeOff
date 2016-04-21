@@ -34,4 +34,24 @@
             />
     </android.widget.Toolbar>
 
+    <ImageView
+        android:id="@+id/userpic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="picOnClick"
+        android:src="@drawable/defaultuserpic" />
+
+    <TextView
+        android:id="@+id/username_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userpic"
+        android:layout_margin="5dp"
+        android:layout_centerHorizontal="true"
+        android:text="guest@example.com"
+        android:textColor="#1565C0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+
 </RelativeLayout>
