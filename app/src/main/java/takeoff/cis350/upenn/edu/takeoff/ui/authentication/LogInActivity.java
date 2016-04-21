@@ -1,14 +1,10 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.authentication;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,14 +24,13 @@ import java.util.regex.Pattern;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
 /**
- * A login screen that offers login via email/password.
+ * A Log In screen that offers users the ability to log into their accounts via an email/password
+ * combination.
  */
 public class LogInActivity extends AppCompatActivity {
 
-    private static final int REQUEST_READ_CONTACTS = 0;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
 
@@ -72,7 +67,6 @@ public class LogInActivity extends AppCompatActivity {
      * Attempts to sign in or register the account specified by the login form, handles errors
      */
     private void attemptLogin() {
-        // reset errors
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
@@ -101,9 +95,8 @@ public class LogInActivity extends AppCompatActivity {
             return;
         }
 
-        final Intent intent = new  Intent(this, TabbingActivity.class);
-
         // create a handler to handle the result of the authentication
+        final Intent intent = new  Intent(this, TabbingActivity.class);
         Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
 
             @Override

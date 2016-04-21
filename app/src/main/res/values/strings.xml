@@ -99,6 +99,8 @@
     <!-- PROFILE STRINGS START HERE -->
     <string name="profile_group_button">My Groups</string>
     <string name="profile_make_group_button">New Group</string>
+    <string name="profile_enter_name">Please enter the new group name:</string>
+    <string name="profile_ok">OK</string>
     <!-- PROFILE STRINGS END HERE -->
 
 
@@ -108,6 +110,7 @@
     <string name="firebase_uid">uid</string>
     <string name="firebase_fav">favoriteFlights</string>
     <string name="firebase_grp">groups</string>
+    <string name="firebase_users">users</string>
     <string name="firebase_uname">username</string>
 
 

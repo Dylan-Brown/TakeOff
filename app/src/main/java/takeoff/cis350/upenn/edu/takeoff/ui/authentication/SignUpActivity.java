@@ -1,16 +1,10 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.authentication;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,15 +27,13 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
-import static android.Manifest.permission.READ_CONTACTS;
-
 /**
- * A login screen that offers login via email/password.
+ * A Sign Up screen that offers users the ability to create a new account given an email and
+ * and password combination. SignUpActivitty also has an EditText for the user to re-type their
+ * password, so that they may confirm that it is what they expected.
  */
 public class SignUpActivity extends AppCompatActivity {
 
-    private final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
-    private static final int REQUEST_READ_CONTACTS = 0;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private EditText mPasswordConfirmView;
@@ -76,45 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     /**
-     * Returns true if this user may request contact
-     */
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale,
-                    Snackbar.LENGTH_INDEFINITE).setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // TODO: handle
-            }
-        }
-    }
-
-    /**
-     * Attempts to sign up the  user
+     * Attempts to create a new account for the user, given correctly-formatted input
      */
     private void attemptSignUp() {
         // reset errors
@@ -155,7 +109,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         // make the sign-up request
         final Intent intent = new  Intent(this, TabbingActivity.class);
-        usersRef.createUser(email, password,
+        WelcomeActivity.USER_FIREBASE.createUser(email, password,
                 new Firebase.ValueResultHandler<Map<String, Object>>() {
 
                     @Override
@@ -169,7 +123,7 @@ public class SignUpActivity extends AppCompatActivity {
                         userMap.put(getString(R.string.firebase_fav), new ArrayList<>());
                         Map<String, Object> users = new HashMap<>();
                         users.put((String) result.get(uid), userMap);
-                        usersRef.updateChildren(users);
+                        WelcomeActivity.USER_FIREBASE.updateChildren(users);
                         startActivity(intent);
                     }
 

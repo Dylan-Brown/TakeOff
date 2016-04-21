@@ -276,8 +276,7 @@ public class TabbingActivity extends AppCompatActivity {
      */
     public void goToMyGroups(View v) {
 
-        Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
-        if (usersRef.getAuth() != null) {
+        if (WelcomeActivity.FIREBASE.getAuth() != null) {
             // the user is logged in and can go to groups
             Intent intent = new Intent(this, GroupPageActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -298,11 +297,10 @@ public class TabbingActivity extends AppCompatActivity {
     public void goToMakeGroup(View v) {
         // Create a pop-up dialog asking for the name of the new group
 
-        Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
-        if (usersRef.getAuth() != null) {
+        if (WelcomeActivity.FIREBASE.getAuth() != null) {
             // the user is logged in and can create a group
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Please enter the new group name:");
+            builder.setTitle(getString(R.string.profile_enter_name));
 
             // Set up the input
             final EditText input = new EditText(this);
@@ -311,11 +309,13 @@ public class TabbingActivity extends AppCompatActivity {
             builder.setView(input);
 
             // Set up the buttons
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            String buttonText = getString(R.string.profile_ok);
+            builder.setPositiveButton(buttonText, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    // TODO: Set restrictions on group names
+                    // TODO: Check if a group name already exists
                     String m_Text = input.getText().toString();
-                    Log.e("MakeGroupFromProfile", m_Text);
                     goToNewGroupPage(m_Text);
                 }
             });
@@ -334,44 +334,41 @@ public class TabbingActivity extends AppCompatActivity {
      */
     protected void goToNewGroupPage(final String newGroupName) {
         final Intent intent = new Intent(this, GroupPage.class);
-        Log.e("JustMadeANewGroupAndGo", "Here!!!");
+        if (WelcomeActivity.FIREBASE.getAuth() != null) {
+            final String uid = WelcomeActivity.FIREBASE.getAuth().getUid();
 
-        final Firebase ref = new Firebase("https://brilliant-inferno-6470.firebaseio.com/");
-        if (ref.getAuth() != null) {
-            final String uid = ref.getAuth().getUid();
-
-            // and the group  to the global list of groups
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            // and the group to the global list of groups
+            WelcomeActivity.FIREBASE.addListenerForSingleValueEvent(new ValueEventListener() {
 
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
+                    // get the data from firebase about existing groups
                     Map<String, Object> globalData = (Map<String, Object>) snapshot.getValue();
-
                     HashMap<String, Object> groupMap;
+                    String grp = getString(R.string.firebase_grp);
+                    String uid = getString(R.string.firebase_uid);
+                    String unm = getString(R.string.firebase_uname);
+                    String urs = getString(R.string.firebase_users);
 
-                    // add  a groups section if one does not exist
-                    if (!globalData.containsKey("groups")) {
-                        Log.e("GroupStuffInTabs", "Made a global groups map thing");
-                        groupMap = new HashMap<String, Object>();
-                        globalData.put("groups", groupMap);
+                    if (!globalData.containsKey(grp)) {
+                        // there is no groups map
+                        groupMap = new HashMap<>();
+                        globalData.put(grp, groupMap);
+
                     } else {
-                        Log.e("GroupStuffInTabs", "Getting existing group map");
-                        groupMap = (HashMap<String, Object>) globalData.get("groups");
+                        // a groups map  already exists
+                        groupMap = (HashMap<String, Object>) globalData.get(grp);
                     }
 
                     String username = (String) ((Map<String, Object>) ((Map<String, Object>)
-                            globalData.get("users")).get(uid)).get("username");
+                            globalData.get(urs)).get(uid)).get(unm);
                     // if the user does not belong to any  groups, add to a new group category
                     if (!groupMap.containsKey(newGroupName)) {
-                        Log.e("GroupStuffInTabs", "New group  does not yet exist");
-                        // add the group to the global list of groups
-                        // add the group name to the intent
+                        // add the group name to the intent, update firebase
                         intent.putExtra(GROUP_MESSAGE, newGroupName);
-                        // update firebase
-                        ref.child("groups").updateChildren(groupMap);
-                    } else {
-                        Log.e("GroupStuffInTabs", "Group by same name already exists");
+                        WelcomeActivity.FIREBASE.child(grp).updateChildren(groupMap);
 
+                    } else {
                         // TODO: Handle the event that a group with the same name already exists
 
                     }
