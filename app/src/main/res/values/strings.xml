@@ -6,6 +6,7 @@
        <string name="search_message">Please set your search parameters.\nDeparture Date and
        at least one airport code is required</string>
     <string name="continent_message">Continent:</string>
+    <string name="date_format">MM-dd-yyyy</string>
     <string name="search_button">Search</string>
     <string name="history_button">History</string>
     <string name="title_activity_search_info">SearchInfo</string>
@@ -47,13 +48,18 @@
     <string name="south_america">South America</string>
     <string name="oceania">Oceania</string>
 
-    <string-array name="class_array">
-        <item>Select Class</item>
-        <item>Coach</item>
-        <item>Premium Coach</item>
-        <item>Business</item>
-        <item>First</item>
-    </string-array>
+    <!-- Seat Classes -->
+    <string name="class_none">None</string>
+    <string name="class_coach">Coach</string>
+    <string name="class_p_coach">Premium Coach</string>
+    <string name="class_business">Business</string>
+    <string name="class_first">First</string>
+
+    <!-- Alliances Classes -->
+    <string name="alliance_none">None</string>
+    <string name="alliance_oneworld">Oneworld</string>
+    <string name="alliance_star">Star Alliance</string>
+    <string name="alliance_sky">SkyTeam</string>
     <!-- SEARCH PAGE STRINGS END HERE -->
 
 
@@ -85,6 +91,7 @@
     <string name="profile_make_group_button">New Group</string>
     <string name="profile_enter_name">Please enter the new group name:</string>
     <string name="profile_ok">OK</string>
+    <string name="group_extra">GROUP_MESSAGE</string>
 
     <!-- Firebase -->
     <string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string>

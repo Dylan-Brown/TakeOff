@@ -2,7 +2,6 @@ package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,17 +15,15 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.Map;
-
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 /**
- * The Fragment in the TabbingActivity to display User's profile information
+ * The Fragment in the TabbingActivity to display User's profile information. We display a profile
+ * image for the user, as well as their username. Additioanlly, there is a toolbar to view a list
+ * of groups to which the user belongs, or to start a new group. Most features in this fragment have
+ * default values and guest users cannot view or create groups.
  */
 public class ProfileFragment extends Fragment {
 
@@ -45,11 +42,12 @@ public class ProfileFragment extends Fragment {
         profilePic = (ImageView) rootView.findViewById(R.id.userpic);
         username = (TextView) rootView.findViewById(R.id.username_tv);
 
-        // if there is a userlogged-in, display their information
+        // if there is a user logged in, display their information
         if (WelcomeActivity.USER_FIREBASE.getAuth() != null) {
             AuthData auth = WelcomeActivity.USER_FIREBASE.getAuth();
             final String uid = auth.getUid();
             Firebase userRef = WelcomeActivity.USER_FIREBASE.child(uid);
+
             userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
@@ -58,7 +56,7 @@ public class ProfileFragment extends Fragment {
                     username.setText(uData.get(getString(R.string.firebase_uname)));
 
                     // get the user's profile image, if there is one
-                    // TODO: Do this
+                    // TODO: get the user's profile image
                 }
 
                 @Override

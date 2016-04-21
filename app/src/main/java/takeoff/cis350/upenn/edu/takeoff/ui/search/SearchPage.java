@@ -82,6 +82,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     private EditText airportEditText;
     private EditText waitTimeEditText;
 
+    // TODO: Do these need to be global variables? Do any of these?
     private int day;
     private int month;
     private int year;
@@ -93,24 +94,24 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     private List<String> allCities = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { System.out.println("Here!");
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
 
-        // current Date
+        // get the current Date
         Calendar newCalendar = Calendar.getInstance();
         day = newCalendar.get(Calendar.DAY_OF_MONTH);
         month = newCalendar.get(Calendar.MONTH) + 1;
         year = newCalendar.get(Calendar.YEAR);
 
-        // setting date views
+        // set the date views
         departureDateInput = "";
         returningDateInput = "";
-        dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat(getString(R.string.date_format), Locale.US);
         findDateViews();
         setDateField();
 
-        // making the autocomplete Text
+        // set-up the countries auto-complete feature
         countriesAutoComp = (MultiAutoCompleteTextView) findViewById(R.id.autocomplete_country);
         String[] countryArray = getResources().getStringArray(R.array.countries);
         countriesAutoComp.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
@@ -120,18 +121,16 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         countriesAutoComp.setAdapter(adapter);
         countriesAutoComp.addTextChangedListener(countryTextWatcher);
 
-        // cities, airport code, wait time edittext setters
+        // set the cities, airport code, and wait time EditText setters
         citiesEditText = (MultiAutoCompleteTextView) findViewById(R.id.city_input);
         citiesEditText.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         citiesEditText.setOnFocusChangeListener(getOnFocusChangeListener());
-
         airportEditText = (EditText) findViewById(R.id.airport_input);
         airportEditText.setOnFocusChangeListener(getOnFocusChangeListener());
-
         waitTimeEditText = (EditText) findViewById(R.id.wait_time_input);
         waitTimeEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
-        // budget
+        // set up the budget fields
         budgetEditText = (EditText) findViewById(R.id.budget_input);
         budgetEditText.addTextChangedListener(textWatcher);
         budgetEditText.setOnFocusChangeListener(getOnFocusChangeListener());
@@ -139,11 +138,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         ticketEditText.setText("1");
         ticketEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
-        // classes Spinner
+        // set the classes Spinner
         setClassSpinner();
         setAllianceSpinner();
 
-        // extra option checkboxes
+        // default the extra option checkboxes to false
         refundable = false;
         nonstop = false;
     }
@@ -166,32 +165,34 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     }
 
     /**
+     * When the focus is not in this designated view, this method hides the onScreen Keyboard
      * @param view
-     * Description: When the focus is not in this designated view,
-     *             the onScreen Keyboard disappears
      */
     public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        String ims = Activity.INPUT_METHOD_SERVICE;
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(ims);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     /**
-     * Sets the options for the spinner for flight class options
+     * This method sets the options for the spinner for flight class options
      */
     private void setClassSpinner() {
         cabin = "";
-
         Spinner spinner = (Spinner) findViewById(R.id.class_spinner);
         spinner.setOnItemSelectedListener(this);
 
+        // add each class option to the array
         List<String> list = new ArrayList<String>();
-        list.add("None");
-        list.add("Coach");
-        list.add("Premium Coach");
-        list.add("Business");
-        list.add("First");
+        list.add(getString(R.string.class_none));
+        list.add(getString(R.string.class_coach));
+        list.add(getString(R.string.class_p_coach));
+        list.add(getString(R.string.class_business));
+        list.add(getString(R.string.class_first));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        // set the adapter
+        int layout = android.R.layout.simple_spinner_item;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, layout, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
@@ -201,17 +202,19 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
      */
     private void setAllianceSpinner() {
         alliance = "";
-
         Spinner spinner = (Spinner) findViewById(R.id.alliance_spinner);
         spinner.setOnItemSelectedListener(this);
 
+        // add each alliance option to the array
         List<String> list = new ArrayList<String>();
-        list.add("None");
-        list.add("Oneworld");
-        list.add("Star Alliance");
-        list.add("SkyTeam");
+        list.add(getString(R.string.alliance_none));
+        list.add(getString(R.string.alliance_oneworld));
+        list.add(getString(R.string.alliance_star));
+        list.add(getString(R.string.alliance_sky));
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        // set  the adapter
+        int layout = android.R.layout.simple_spinner_item;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, layout, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }

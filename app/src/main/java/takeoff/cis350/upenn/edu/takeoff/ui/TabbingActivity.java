@@ -40,7 +40,6 @@ public class TabbingActivity extends AppCompatActivity {
 
     private static final int SEARCH_PAGE_REQUEST = 100;
     private static final int GROUP_PAGE_REQUEST = 120;
-    private static final String GROUP_MESSAGE = "GROUP_MESSAGE";
     private FragmentTabHost tabhost;
     private boolean fromSearch = false;
 
@@ -365,7 +364,7 @@ public class TabbingActivity extends AppCompatActivity {
                     // if the user does not belong to any  groups, add to a new group category
                     if (!groupMap.containsKey(newGroupName)) {
                         // add the group name to the intent, update firebase
-                        intent.putExtra(GROUP_MESSAGE, newGroupName);
+                        intent.putExtra(getString(R.string.group_extra), newGroupName);
                         WelcomeActivity.FIREBASE.child(grp).updateChildren(groupMap);
 
                     } else {

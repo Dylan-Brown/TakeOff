@@ -11,7 +11,8 @@ import java.util.Arrays;
 import takeoff.cis350.upenn.edu.takeoff.R;
 
 /**
- * Class representing the Activity relevant to displaying a group's information
+ * This class represents the Activity relevant to displaying a group's information. The name of the
+ * group is displayed at the top of the page, and... TODO: finish class description
  */
 public class GroupPage extends Activity {
 
