@@ -708,7 +708,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
      * Created by anakagold on 4/8/16.
      */
     public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
-
+        public String[] APIKeys=new String[5];
         Context context;
 
         public JSONAsyncTask(Context context) {
@@ -723,11 +723,16 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         @Override
         protected JSONArray doInBackground(String... params) {
+            APIKeys[0]="AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA";
+            APIKeys[1]="AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ";
+            APIKeys[2]="AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos";
+            APIKeys[3]="AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w";
+            APIKeys[4]="AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU";
             try {
                 System.out.println("IN DOINBACKGROUND");
                 JSONObject json = new JSONObject(params[0]);
                 System.out.println(json.toString(4));
-                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w");
+                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key"+APIKeys[0]);
                 StringEntity SEJson = new StringEntity(json.toString());
                 httpPost.setEntity(SEJson);
                 httpPost.setHeader("Content-type", "application/json");
