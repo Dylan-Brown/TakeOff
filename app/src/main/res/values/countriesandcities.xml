@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--This file contains string arrays, each representing a country's cities, as well as one array of
+	all the countries in which we have found IATA airport codes-->
 <resources>
 	<string-array name="countries">
 		<item>Papua New Guinea</item>

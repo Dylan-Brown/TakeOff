@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--This file contains string arrays, each representing a country's cities, and each entry has the
+	name of a city and it's IATA airport code.-->
 <resources>
 	<string-array name="Papua_New_Guinea">
 		<item>Daru=DAU</item>
