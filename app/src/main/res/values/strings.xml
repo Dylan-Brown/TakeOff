@@ -61,6 +61,7 @@
     <string name="error_no_favorites">No favorites found</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="firebase_profile_fail">Failed to retrieve user information</string>
+    <string name="please_sign_in">Please sign in to use this feature!</string>
 
     <!-- Continent Boxes -->
     <string name="africa">Africa</string>

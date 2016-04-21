@@ -288,11 +288,11 @@ public class TabbingActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             System.out.println("REQUEST CODE = " + GROUP_PAGE_REQUEST);
             startActivityForResult(intent, GROUP_PAGE_REQUEST);
+
         } else {
             // The user logged in is anonymous and cannot create a group
-            Toast toast = Toast.makeText(this, "Please sign in to use this feature!",
-                    Toast.LENGTH_SHORT);
-            toast.show();
+            String error = (String) getText(R.string.please_sign_in);
+            (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
         }
 
     }
@@ -328,9 +328,8 @@ public class TabbingActivity extends AppCompatActivity {
             builder.show();
         } else {
             // The user logged in is anonymous and cannot create a group
-            Toast toast = Toast.makeText(this, "Please sign in to use this feature!",
-                    Toast.LENGTH_SHORT);
-            toast.show();
+            String error = (String) getText(R.string.please_sign_in);
+            (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
         }
     }
 

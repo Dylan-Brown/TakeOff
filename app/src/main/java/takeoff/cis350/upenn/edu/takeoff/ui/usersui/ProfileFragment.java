@@ -2,6 +2,7 @@ package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.firebase.client.ValueEventListener;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
@@ -40,8 +42,12 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-        profilePic = (ImageView) getActivity().findViewById(R.id.userpic);
-        username = (TextView) getActivity().findViewById(R.id.username);
+        profilePic = (ImageView) rootView.findViewById(R.id.userpic);
+        username = (TextView) rootView.findViewById(R.id.username_tv);
+
+        if (username == null) {
+            Log.e("ProfileFragment", "username is null");
+        }
 
         // if there is a userlogged-in, display their information
         if (WelcomeActivity.USER_FIREBASE.getAuth() != null) {
