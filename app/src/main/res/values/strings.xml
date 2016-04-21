@@ -1,22 +1,16 @@
 <resources>
     <string name="app_name">TakeOff</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Sign up / Log in -->
     <string name="prompt_email">email</string>
     <string name="prompt_password">password</string>
     <string name="prompt_password_2">confirm password</string>
-    <string name="action_sign_in_short">Log In</string>
-    <string name="action_sign_in">Log In</string>
     <string name="action_sign_up">Sign Up</string>
-    <string name="error_invalid_password">Invalid email or password</string>
-    <string name="error_incorrect_password">Invalid password</string>
-    <string name="error_invalid_email">Invalid email</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="action_log_in">Log In</string>
+    <string name="title_activity_sign_up">Sign Up</string>
     <string name="title_activity_log_in">Log In</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-    <string name="title_activity_search_info">SearchInfo</string>
-    <string name="title_activity_sign_up">Sign in</string>
+
 
 
     <!-- SEARCH PAGE STRINGS START HERE-->
@@ -25,6 +19,7 @@
     <string name="continent_message">Continent:</string>
     <string name="search_button">Search</string>
     <string name="history_button">History</string>
+    <string name="title_activity_search_info">SearchInfo</string>
     <string name="clear_departure_button">Clear Departure</string>
     <string name="clear_return_button">Clear Return</string>
     <string name="country_message">Enter the countries you want with a comma separating each:</string>
@@ -54,6 +49,18 @@
     <string name="airport">Airport Code</string>
     <string name = "filter_message">Please Enter the information to filter your Search Query</string>
 
+
+    <!-- Error Handling -->
+    <string name="error_invalid_credentials">Invalid email or password</string>
+    <string name="error_invalid_email">Invalid email</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="error_password_short">Password must be at least 4 characters</string>
+    <string name="error_password_match">Passwords do not match</string>
+    <string name="error_incorrect_password">Incorrect password</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_no_favorites">No favorites found</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."</string>
 
     <!-- Continent Boxes -->
     <string name="africa">Africa</string>
@@ -91,5 +98,10 @@
     <string name="profile_group_button">My Groups</string>
     <string name="profile_make_group_button">New Group</string>
     <!-- PROFILE STRINGS END HERE -->
+
+
+
+    <!-- Firebase link -->
+    <string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string>
 
 </resources>

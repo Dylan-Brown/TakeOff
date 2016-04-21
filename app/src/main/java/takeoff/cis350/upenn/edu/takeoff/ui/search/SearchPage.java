@@ -58,6 +58,9 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 import takeoff.cis350.upenn.edu.takeoff.flight.SearchQuerytoQPXReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
 
+import takeoff.cis350.upenn.edu.takeoff.flight.JSONAsyncTask;
+import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
+
 
 /**
  * This class is the page the user sees when they enter their requirements for the flight search
@@ -71,9 +74,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     private DatePickerDialog departureDatePickerDialog;
     private DatePickerDialog returningDatePickerDialog;
     private SimpleDateFormat dateFormatter;
-    private final Firebase usersRef =
-            new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
-
     private MultiAutoCompleteTextView countriesAutoComp;
     private MultiAutoCompleteTextView citiesEditText;
     private EditText budgetEditText;
@@ -471,6 +471,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
 
         // Store the SearchQuery in FireBase
+        final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
         if (usersRef.getAuth() !=  null) {
             Log.e("SearchPage", "Authorized to store query");
 

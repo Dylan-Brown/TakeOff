@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view_list_item.xml"
-    },
-    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
@@ -286,6 +286,10 @@
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/notification_template_lines.xml"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/flight_item_roundtrip.xml",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/layout/flight_item_roundtrip.xml"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
