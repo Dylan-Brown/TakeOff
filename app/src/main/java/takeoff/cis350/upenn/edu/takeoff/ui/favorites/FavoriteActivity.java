@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
-import takeoff.cis350.upenn.edu.takeoff.user.User;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 
 /**
@@ -22,8 +21,8 @@ public class FavoriteActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        User user = new User();
-        Flight[] favoriteFlights = user.getFavorites();
+        // todo: actually get favorites? or is this class outdated?
+        Flight[] favoriteFlights = new Flight[20];
         ArrayAdapter adapter = new ArrayAdapter(getListView().getContext(), android.R.layout.simple_list_item_1, favoriteFlights);
         getListView().setAdapter(adapter);
     }

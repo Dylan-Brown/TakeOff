@@ -9,14 +9,12 @@ import android.widget.TextView;
 import java.util.Arrays;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
-import takeoff.cis350.upenn.edu.takeoff.user.Group;
 
 /**
  * Class representing the Activity relevant to displaying a group's information
  */
 public class GroupPage extends Activity {
 
-    private Group group;
     private TextView groupNameView;
     private ListView groupMembersView;
     private String[] groupMembers;

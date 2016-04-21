@@ -1,10 +1,8 @@
 package takeoff.cis350.upenn.edu.takeoff.ui;
 
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -27,8 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
-import takeoff.cis350.upenn.edu.takeoff.ui.*;
-import takeoff.cis350.upenn.edu.takeoff.ui.authentication.LogInActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.favorites.FavoritesFragment;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.DashBoardSearchHistory;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
@@ -36,7 +32,6 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPage;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPageActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
-import takeoff.cis350.upenn.edu.takeoff.user.Group;
 
 /**
  *
@@ -369,11 +364,9 @@ public class TabbingActivity extends AppCompatActivity {
                     // if the user does not belong to any  groups, add to a new group category
                     if (!groupMap.containsKey(newGroupName)) {
                         Log.e("GroupStuffInTabs", "New group  does not yet exist");
-                        Group group = new Group(username, newGroupName);
                         // add the group to the global list of groups
-                        groupMap.put(newGroupName, group.toString());
                         // add the group name to the intent
-                        intent.putExtra(GROUP_MESSAGE, group.toString());
+                        intent.putExtra(GROUP_MESSAGE, newGroupName);
                         // update firebase
                         ref.child("groups").updateChildren(groupMap);
                     } else {
