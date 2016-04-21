@@ -58,15 +58,16 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 import takeoff.cis350.upenn.edu.takeoff.flight.SearchQuerytoQPXReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
 
-import takeoff.cis350.upenn.edu.takeoff.flight.JSONAsyncTask;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 
 /**
  * This class is the page the user sees when they enter their requirements for the flight search
  */
-
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
+
+    private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
+        + "search?key=AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
@@ -96,21 +97,20 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
 
-        //Current Date
+        // current Date
         Calendar newCalendar = Calendar.getInstance();
         day = newCalendar.get(Calendar.DAY_OF_MONTH);
         month = newCalendar.get(Calendar.MONTH) + 1;
         year = newCalendar.get(Calendar.YEAR);
-        //System.out.println("day: " + day + " month: " + month + " year: " + year);
 
-        //Setting Dates views
+        // setting date views
         departureDateInput = "";
         returningDateInput = "";
         dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
         findDateViews();
         setDateField();
 
-        //Making the autocomplete Text
+        // making the autocomplete Text
         countriesAutoComp = (MultiAutoCompleteTextView) findViewById(R.id.autocomplete_country);
         String[] countryArray = getResources().getStringArray(R.array.countries_array);
         countriesAutoComp.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
@@ -120,7 +120,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         countriesAutoComp.setAdapter(adapter);
         countriesAutoComp.addTextChangedListener(countryTextWatcher);
 
-        //Cities, airport code, wait time edittext setters
+        // cities, airport code, wait time edittext setters
         citiesEditText = (MultiAutoCompleteTextView) findViewById(R.id.city_input);
         citiesEditText.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
         citiesEditText.setOnFocusChangeListener(getOnFocusChangeListener());
@@ -131,7 +131,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         waitTimeEditText = (EditText) findViewById(R.id.wait_time_input);
         waitTimeEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
-        //Budget
+        // budget
         budgetEditText = (EditText) findViewById(R.id.budget_input);
         budgetEditText.addTextChangedListener(textWatcher);
         budgetEditText.setOnFocusChangeListener(getOnFocusChangeListener());
@@ -139,11 +139,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         ticketEditText.setText("1");
         ticketEditText.setOnFocusChangeListener(getOnFocusChangeListener());
 
-        //Classes Spinner
+        // classes Spinner
         setClassSpinner();
         setAllianceSpinner();
 
-        //Extra option checkboxes
+        // extra option checkboxes
         refundable = false;
         nonstop = false;
     }
@@ -295,9 +295,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                             allCities.add(cities[j]);
                         }
 
-                    } catch (NoSuchFieldException e) {
-                        Log.e("afterTextChanged", e.getMessage());
-                    } catch (IllegalAccessException e) {
+                     } catch (Exception e) {
                         Log.e("afterTextChanged", e.getMessage());
                     }
                 }
@@ -330,7 +328,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         @Override
         public void afterTextChanged(Editable s) {
-
             if (!s.toString().matches("^\\$(\\d{1,3}(\\,\\d{3})*|(\\d+))(\\.\\d{2})?$")) {
                 String userInput = "" + s.toString().replaceAll("[^\\d]", "");
                 StringBuilder cashAmountBuilder = new StringBuilder(userInput);
@@ -362,10 +359,8 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         departureDateText = (EditText) findViewById(R.id.departure_date);
         departureDateText.setInputType(InputType.TYPE_NULL);
         departureDateText.requestFocus();
-
         returningDateText = (EditText) findViewById(R.id.returning_date);
         returningDateText.setInputType(InputType.TYPE_NULL);
-
     }
 
     /**
@@ -377,11 +372,13 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         Calendar newCalendar = Calendar.getInstance();
         departureDatePickerDialog = new DatePickerDialog(this, getDateSetListener(true),
-                newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+                newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH),
+                newCalendar.get(Calendar.DAY_OF_MONTH));
 
         returningDatePickerDialog = new DatePickerDialog(this, getDateSetListener(false),
-                newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-        System.out.println("SETDATEFIELD");
+                newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH),
+                newCalendar.get(Calendar.DAY_OF_MONTH));
+
     }
 
     /**
@@ -400,8 +397,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                     departureDateText.setText(dateFormatter.format(newDate.getTime()));
                     departureDateInput = dateFormatter.format(newDate.getTime());
 
-                    System.out.println("DEPARTURE LISTENER");
-                    System.out.println(departureDateInput);
+                    Log.e("OnDateSetListener", "DEPARTURE LISTENER: " + departureDateInput);
                 }
             };
         } else {
@@ -412,12 +408,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                     newDate.set(year, monthOfYear, dayOfMonth);
                     returningDateText.setText(dateFormatter.format(newDate.getTime()));
                     returningDateInput = dateFormatter.format(newDate.getTime());
-                    System.out.println("returning LISTENER");
-                    System.out.println(returningDateInput);
+
+                    Log.e("OnDateSetListener", "RETURN LISTENER: " + returningDateInput);
                 }
             };
         }
-        System.out.println("GETLISTENER");
         return listener;
     }
 
@@ -426,7 +421,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
      * @param view Description: Handles which checkboxes are clicked
      */
     public void onCheckboxClicked(View view) {
-        // Is the view now checked?
+        // get the id of the checkbox
         int id = view.getId();
         switch (id) {
             case R.id.checkbox_refundable:
@@ -437,7 +432,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             default:
                 break;
         }
-
     }
 
 
@@ -473,14 +467,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         // Store the SearchQuery in FireBase
         final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
         if (usersRef.getAuth() !=  null) {
-            Log.e("SearchPage", "Authorized to store query");
-
             final String uid = usersRef.getAuth().getUid();
             usersRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     // User has favorites; get this information and replace search results
-                    Log.e("SearchPage", "onDataChange: storing query: " + sq.toString());
                     Map<String, Object> userInfo = (Map<String, Object>) snapshot.getValue();
                     if (!userInfo.containsKey("searchQueries")) {
                         ArrayList<Object> queries = new ArrayList<>();
@@ -494,14 +485,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 }
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
-                    // TODO: Internally display error message, externally claim nothing found
+                    // no favorites or some other error
+                    String error = getString(R.string.error_no_favorites);
+                    (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
                 }
             });
-        } else {
-            // No authenticated user (guestsession or some error) - no favorites data
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "No favorites found. Search", Toast.LENGTH_SHORT);
-            toast.show();
         }
 
 
@@ -700,7 +688,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     // Modified by Anaka
     public void DashBoardHistory(View view) {
         //start an intent
-        Intent intent = new Intent(this, SearchHistoryWrapper.class);                                 //Give me the last 20 searches from FireBase
+        Intent intent = new Intent(this, SearchHistoryWrapper.class);
         startActivity(intent);
     }
 
@@ -725,10 +713,10 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         @Override
         protected JSONArray doInBackground(String... params) {
             try {
-                System.out.println("IN DOINBACKGROUND");
+                Log.e("SearchPage", "doInBackground()");
                 JSONObject json = new JSONObject(params[0]);
                 System.out.println(json.toString(4));
-                HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w");
+                HttpPost httpPost = new HttpPost(HTTP_LINK);
                 StringEntity SEJson = new StringEntity(json.toString());
                 httpPost.setEntity(SEJson);
                 httpPost.setHeader("Content-type", "application/json");
@@ -737,21 +725,18 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 HttpResponse response = hc.execute(httpPost);
                 // StatusLine stat = response.getStatusLine();
                 int status = response.getStatusLine().getStatusCode();
-                System.out.println("ATTEMPT??");
 
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
                     JSONObject jsonResponse = new JSONObject(EntityUtils.toString(entity));
-                    JSONArray jsonArray = jsonResponse.getJSONObject("trips").getJSONArray("tripOption");
+                    JSONArray jsonArray =
+                            jsonResponse.getJSONObject("trips").getJSONArray("tripOption");
 
                     return jsonArray;
                 }
 
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
@@ -760,20 +745,18 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         @Override
         protected void onPostExecute(JSONArray result) {
             try {
-                System.out.println("IN POST EXECUTE");
+                Log.e("SearchPage", "IN POST EXECUTE");
                 QPXJSONReader.getAPIResultsAsFlights(result);
-                System.out.println("ASyncTask: IT WORKS!");
+                Log.e("SearchPage", "ASyncTask: IT WORKS!");
 
                 if(result != null) {
-                    System.out.println(result.toString(2));
-                    System.out.println("SOMETHINGSOMETHING");
+                    Log.e("SearchPage", "result.toString(2) = " + result.toString(2));
                 }
 
-                System.out.println("SOMETHING");
             } catch (JSONException e) {
-                System.out.println("ASyncTask: FAILED!");
+                Log.e("SearchPage", "ASyncTask: FAILED!");
             }
-            System.out.println("ENDING SEARCH PAGE");
+            Log.e("SearchPage", "ENDING SEARCH PAGE");
             finish();
         }
     }

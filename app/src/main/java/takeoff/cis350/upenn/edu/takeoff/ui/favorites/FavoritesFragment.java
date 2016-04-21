@@ -2,7 +2,6 @@ package takeoff.cis350.upenn.edu.takeoff.ui.favorites;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,7 @@ import java.util.List;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
+import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 
 /**
@@ -28,8 +28,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
  */
 public class FavoritesFragment extends ListFragment {
 
-    private final Firebase usersRef =
-            new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+    private final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
     List<Flight> flightResults;
     ListView listView;
 
@@ -61,13 +60,16 @@ public class FavoritesFragment extends ListFragment {
      *Sets the global vairables
      */
     private void setVariables() {
-        Dashboard dash = (Dashboard) getActivity().getSupportFragmentManager().findFragmentByTag("dashboard");
-        listView = getListView();
-        if(listView == null) {
+
+        // get the flight results
+        Dashboard dash = (Dashboard)
+                getActivity().getSupportFragmentManager().findFragmentByTag("dashboard");
+        if((listView = getListView()) == null) {
             return;
         }
         flightResults = dash.getFlightResults();
 
+        // form the results array
         String[] flights;
         if (flightResults != null) {
             flights = new String[flightResults.size()];
@@ -75,49 +77,39 @@ public class FavoritesFragment extends ListFragment {
             flights = new String[10];
             Arrays.fill(flights, "");
         }
-        setListAdapter(new ArrayAdapter(getActivity(),
-                android.R.layout.simple_list_item_single_choice, flights));
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
-                flights);
+
+        // set the adapters
+        int layout1 = android.R.layout.simple_list_item_single_choice;
+        int layout2 = android.R.layout.simple_list_item_1;
+        setListAdapter(new ArrayAdapter(getActivity(), layout1, flights));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout2, flights);
         listView.setAdapter(adapter);
     }
 
     /**
-     * Gets the favorites from
+     * If the user is signed in, this method attempts to load that user's favorites
      */
     private void loadFavorites() {
-
-
+        // try authenticating the user
         if (usersRef.getAuth() !=  null) {
-            Log.e("Dashboard", "Authorized");
-
             String uid = usersRef.getAuth().getUid();
-            usersRef.child(uid).child("favoriteFlights").addListenerForSingleValueEvent(
+            String fav = getString(R.string.firebase_fav);
+            usersRef.child(uid).child(fav).addListenerForSingleValueEvent(
                     new ValueEventListener() {
-
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            // User has favorites; get this information and replace search results
-                            Log.e("Favorites Fragment", "onDataChange");
+                            // TODO: See if this works
                             if(flightResults == null) {
-                                flightResults = new ArrayList<Flight>();
+                                flightResults = new ArrayList<>();
                             }
                         }
-
                         @Override
                         public void onCancelled(FirebaseError firebaseError) {
-                            // Internally display error message, externally claim nothing found
-                            Log.e("Dashboard", "The read failed: " + firebaseError.getMessage());
-                            Toast toast = Toast.makeText(getActivity(),
-                                    "No favorites found.", Toast.LENGTH_SHORT);
-                            toast.show();
+                            // notify the user no favorites were found
+                            String error = getString(R.string.error_no_favorites);
+                            (Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT)).show();
                         }
                     });
-
-        } else {
-            // No authenticated user (guest session or some error) - no favorites data
-            Toast toast = Toast.makeText(getActivity(), "No favorites found.", Toast.LENGTH_SHORT);
-            toast.show();
         }
     }
 
@@ -126,8 +118,8 @@ public class FavoritesFragment extends ListFragment {
      * @param info
      */
     private void setAdapter(String[] info) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
-                info);
+        int layout = android.R.layout.simple_list_item_1;
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout, info);
         listView.setAdapter(adapter);
     }
 }

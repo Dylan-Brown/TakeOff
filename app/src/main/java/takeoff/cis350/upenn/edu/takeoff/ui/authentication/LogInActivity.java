@@ -23,8 +23,11 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.util.regex.Pattern;
+
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
+import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
 /**
@@ -66,19 +69,6 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // TODO: Handle
-            }
-        }
-    }
-
-    /**
      * Attempts to sign in or register the account specified by the login form, handles errors
      */
     private void attemptLogin() {
@@ -89,65 +79,60 @@ public class LogInActivity extends AppCompatActivity {
         // store values at the time of the login attempt
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-        System.out.println("Email entered: " + email);
-        System.out.println("Password entered: " + password);
-
-        boolean cancel = false;
-        View focusView = null;
 
         // check for a valid password, if the user entered one
         if (!TextUtils.isEmpty(password) && !(password.length() > 4)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
+            mPasswordView.requestFocus();
+            return;
         }
 
         // check for a valid email address
         if (TextUtils.isEmpty(email)) {
+            // no email address entered
             mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!email.contains("@")) {
+            mEmailView.requestFocus();
+            return;
+
+        } else if (!Pattern.compile(".+@.+\\.[a-z]+").matcher(email).matches()) {
+            // invalid email address format
             mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
-            cancel = true;
+            mEmailView.requestFocus();
+            return;
         }
 
-        if (cancel) {
-            // there was an error; don't attempt login and focus the first form field with an error
-            focusView.requestFocus();
-        } else {
-            // perform the user login attempt.
+        Firebase usersRef = WelcomeActivity.USER_FIREBASE;
+        final Intent intent = new  Intent(this, TabbingActivity.class);
 
-            Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
-            final Intent intent = new  Intent(this, TabbingActivity.class);
+        // create a handler to handle the result of the authentication
+        Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
 
-            // create a handler to handle the result of the authentication
-            Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
+            @Override
+            public void onAuthenticated(AuthData authData) {
+                // authenticated successfully; enter the search page
+                startActivity(intent);
+            }
 
-                @Override
-                public void onAuthenticated(AuthData authData) {
-                    // authenticated successfully with payload authData
-                    Log.e("LoginActivity", "attemptLogin onAuthenticated: Authenticated");
-                    // enter the search page
-                    startActivity(intent);
+            @Override
+            public void onAuthenticationError(FirebaseError firebaseError) {
+                // authenticated failed
+                String error = "";
+                switch (firebaseError.getCode()) {
+                    case FirebaseError.INVALID_EMAIL:
+                        error = getString(R.string.error_invalid_email);
+                        break;
+                    case FirebaseError.INVALID_PASSWORD:
+                        error = getString(R.string.error_incorrect_password);
+                        break;
+                    default:
+                        error = getString(R.string.error_invalid_credentials);
                 }
+                (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+            }
+        };
 
-                @Override
-                public void onAuthenticationError(FirebaseError firebaseError) {
-                    // authenticated failed with error firebaseError
-                    Log.e("LoginActivity", "attemptLogin onAuthenticationError: Error");
-                    Context context = getApplicationContext();
-                    CharSequence text = "Incorrect email or password.";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
-            };
-
-            // authenticate users with an email/password combination
-            usersRef.authWithPassword(email, password, authResultHandler);
-        }
+        // make the authentication attempt
+        usersRef.authWithPassword(email, password, authResultHandler);
     }
 
 }

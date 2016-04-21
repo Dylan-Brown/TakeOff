@@ -24,6 +24,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.favorites.FilterSearch;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
@@ -34,10 +35,9 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
  * This class is the list fragment for the dashboard, to display the search results
  */
 public class Dashboard extends ListFragment {
-    public static List<Flight> FlightCache=new ArrayList<Flight>();
 
-    private final Firebase usersRef =
-            new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
+    public static List<Flight> FlightCache=new ArrayList<>();
+    private final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
     public final static String FLIGHT_MESSAGE = "FlightActual";
     List<Flight> flightResults;
     ListView listView;
