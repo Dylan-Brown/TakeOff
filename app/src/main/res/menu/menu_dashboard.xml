@@ -33,6 +33,6 @@
     <item android:id="@+id/advanced_filter"
         android:title="Advanced Filter"
         android:orderInCategory="60"
-        android:onClick="advancedFilter"
+        android:onClick="dashboardAdvancedFilter"
         />
 </menu>

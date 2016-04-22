@@ -102,8 +102,8 @@ public class TabbingActivity extends AppCompatActivity {
      */
     public void sortDashboardResults(MenuItem item) {
         String tag = getString(R.string.dashboard_tag);
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag);
-        if (dash != null) {
+        Dashboard dash;
+        if((dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag)) != null) {
             dash.sortBy(item.getItemId());
         }
     }
@@ -112,10 +112,10 @@ public class TabbingActivity extends AppCompatActivity {
      * Make a call to the dashboard to start the Advanced Filter activity
      * @param item the MenuItem selected
      */
-    public void advancedFilter(MenuItem item) {
+    public void dashboardAdvancedFilter(MenuItem item) {
         String tag = getString(R.string.dashboard_tag);
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag);
-        if(dash != null) {
+        Dashboard dash;
+        if((dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag)) != null) {
             dash.advancedFilter();
         }
     }
@@ -167,7 +167,6 @@ public class TabbingActivity extends AppCompatActivity {
         }
     }
 
-
     /**
      * This method is called when the user clicks on the profile picture
      * @param view
@@ -181,7 +180,6 @@ public class TabbingActivity extends AppCompatActivity {
         }
 
     }
-
 
     /**
      * When a user clicks on the MyGroups button in the Profile tab, go to the GroupPageActivity
@@ -205,10 +203,11 @@ public class TabbingActivity extends AppCompatActivity {
      * @param v the view of the New Group button
      */
     public void goToMakeGroup(View v) {
+        // check if there is a user logged in
         if (WelcomeActivity.FIREBASE.getAuth() != null) {
-            // the user is logged in and can create a group
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.profile_enter_name));
+            final String userUid = WelcomeActivity.FIREBASE.getAuth().getUid();
 
             // set the expected input type
             final EditText input = new EditText(this);
@@ -220,10 +219,10 @@ public class TabbingActivity extends AppCompatActivity {
             builder.setPositiveButton(buttonText, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // TODO: Set restrictions on group names
-                    // TODO: Check if a group name already exists
+                    // update the global, user's lists of groups to include this new group
                     String newGroupName = input.getText().toString();
-                    goToNewGroupPage(newGroupName);
+                    setNewGroupGlobally(userUid, newGroupName);
+                    setNewGroupForUser(userUid, newGroupName);
                 }
             });
 
@@ -236,95 +235,94 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * Only called from New Group button dialog, goes to the page of the new group
+     * This helper method will add the new group to the global list of groups
+     * @param userUid the user's uid who created the group
      * @param newGroupName the name of the new group
      */
-    protected void goToNewGroupPage(final String newGroupName) {
-        final Intent intent = new Intent(this, GroupPage.class);
+    private void setNewGroupGlobally(final String userUid, final String newGroupName) {
+        final String grp = getString(R.string.firebase_grp);
 
-        if (WelcomeActivity.FIREBASE.getAuth() != null) {
-            final String userUid = WelcomeActivity.FIREBASE.getAuth().getUid();
-            final String grp = getString(R.string.firebase_grp);
-            final String uid = getString(R.string.firebase_uid);
-            final String unm = getString(R.string.firebase_uname);
-            final String urs = getString(R.string.firebase_users);
+        WelcomeActivity.FIREBASE.addListenerForSingleValueEvent(new ValueEventListener() {
 
-            WelcomeActivity.FIREBASE.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                // get the data from firebase about existing groups
+                Map<String, Object> globalData = (Map<String, Object>) snapshot.getValue();
+                HashMap<String, Object> groupMap;
 
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    // get the data from firebase about existing groups
-                    Map<String, Object> globalData = (Map<String, Object>) snapshot.getValue();
-                    HashMap<String, Object> groupMap;
-
-                    if (!globalData.containsKey(grp)) {
-                        // there is no groups map
-                        groupMap = new HashMap<>();
-                        globalData.put(grp, groupMap);
-
-                    } else {
-                        // a groups map  already exists
-                        groupMap = (HashMap<String, Object>) globalData.get(grp);
-                    }
-
-                    Map<String, Object> usersInfo = (Map<String, Object>) globalData.get(urs);
-                    Map<String, Object> userInfo = (Map<String, Object>)  usersInfo.get(uid);
-                    String username = (String) userInfo.get(unm);
-                    // TODO: What is this for?
-
-                    // if the user does not belong to any  groups, add to a new group category
-                    if (!groupMap.containsKey(newGroupName)) {
-                        // add the group name to the intent, update firebase
-                        intent.putExtra(getString(R.string.group_extra), newGroupName);
-                        WelcomeActivity.FIREBASE.child(grp).updateChildren(groupMap);
-
-                    } else {
-                        // TODO: Handle the event that a group with the same name already exists
-
-                    }
+                // if there is no groups map, make one, otherwise get the existing map
+                if (!globalData.containsKey(grp)) {
+                    groupMap = new HashMap<>();
+                    globalData.put(grp, groupMap);
+                } else {
+                    groupMap = (HashMap<String, Object>) globalData.get(grp);
                 }
 
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-                    // TODO: Handle
+                // if the user does not belong to any groups, add to a new group category
+                if (!groupMap.containsKey(newGroupName)) {
+                    groupMap.put(grp, newGroupName);
+                    WelcomeActivity.FIREBASE.child(grp).updateChildren(groupMap);
                 }
-            });
+            }
 
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                // inform the user of an internal error
+                String error = (String) getText(R.string.error_internal);
+                (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+            }
+        });
+    }
 
-            // add the group to the user's list of groups
-            final Firebase ref = WelcomeActivity.USER_FIREBASE;
-            ref.child(userUid).addListenerForSingleValueEvent(new ValueEventListener() {
+    /**
+     * This helper method will specify a user as a member of a new group in Firebase
+     */
+    private void setNewGroupForUser(final String userUid, final String newGroupName) {
+        final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
+        final String grp = getString(R.string.firebase_grp);
 
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
-                    // if the user does not belong to any  groups, add to a new group category
-                    if (!userData.containsKey(grp)) {
-                        ArrayList<String> groups = new ArrayList<>();
-                        // add the group to the user data
-                        groups.add(newGroupName);
-                        userData.put(grp, groups);
-                        ref.child(userUid).updateChildren(userData);
+        // add the group to the user's list of groups
+        usersRef.child(userUid).addListenerForSingleValueEvent(new ValueEventListener() {
 
-                    } else {
-                        Map<String, Object> groups = (Map<String, Object>) userData.get(grp);
-                        groups.put(newGroupName, "");
-                        userData.put(grp, groups);
-                        ref.child(userUid).updateChildren(userData);
-                    }
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
+
+                // get or create the user's group list and set the new group in it
+                if (!userData.containsKey(grp)) {
+                    ArrayList<String> groups = new ArrayList<>();
+                    groups.add(newGroupName);
+                    userData.put(grp, groups);
+                    usersRef.child(userUid).updateChildren(userData);
+
+                } else {
+                    Map<String, Object> groups = (Map<String, Object>) userData.get(grp);
+                    groups.put(newGroupName, "");
+                    userData.put(grp, groups);
+                    usersRef.child(userUid).updateChildren(userData);
                 }
 
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-                    // TODO: Handle
-                }
-            });
+                // go to the new group page
+                goToGroupPage(newGroupName);
+            }
 
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                // inform the user of an internal error
+                String error = (String) getText(R.string.error_internal);
+                (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+            }
+        });
+    }
 
-
-        }
-
-        // Start the FlightInfoActivity
+    /**
+     * After a new group is confirmed and created, go to the new group page
+     * @param groupName
+     */
+    protected void goToGroupPage(String groupName) {
+        // start the GroupPage activity
+        Intent intent = new Intent(this, GroupPage.class);
+        intent.putExtra(getString(R.string.group_extra), groupName);
         startActivity(intent);
     }
 }

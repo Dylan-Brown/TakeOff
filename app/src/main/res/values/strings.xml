@@ -76,6 +76,7 @@
     <string name="firebase_profile_fail">Failed to retrieve user information</string>
     <string name="please_sign_in">Please sign in to use this feature!</string>
     <string name="error_no_groups">No groups to display</string>
+    <string name="error_internal">Sorry, TakeOff has experienced an internal error. Please try again later.</string>
 
     <!-- FlightInfo -->
     <string name="title_activity_flight_info">FlightInfo</string>
