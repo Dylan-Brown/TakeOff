@@ -111,6 +111,7 @@
     <string name="firebase_grp">groups</string>
     <string name="firebase_users">users</string>
     <string name="firebase_uname">username</string>
+    <string name="firebase_sqs">searchQueries</string>
 
     <!-- Sign up / Log in -->
     <string name="prompt_email">email</string>

@@ -25,58 +25,54 @@ import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 public class DashBoardSearchHistory extends ListFragment {
 
-    private final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
     List<Flight> flightResults;
     DummySearchQueryHistory history = new DummySearchQueryHistory();
     String[] stringhistory = history.stringHistory2;
 
-    ListView l;
-
-    public DashBoardSearchHistory() {
-    }
-
-    public final static String EXTRA_MESSAGE1 = "Flight";
-    public final static String EXTRA_MESSAGE2 = "FavFlight";
+    ListView lv;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        System.out.println("ENTER SEARCH HISTORY PAGE");
-
         super.onActivityCreated(savedInstanceState);
-        l = getListView();
-        Log.e("getListView", "Dashboard");
+        this.lv = getListView();
 
         // Retrieve the search queries from the database
-        if (usersRef.getAuth() !=  null) {
-            Log.e("SearchPage", "Authorized to store query");
+        final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
+        final String sqs = getString(R.string.firebase_sqs);
 
+        if (usersRef.getAuth() !=  null) {
             final String uid = usersRef.getAuth().getUid();
+
             usersRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    Log.e("DashBoardSearchHistory", "onDataChange: retrieving queries ");
                     Map<String, Object> userInfo = (Map<String, Object>) snapshot.getValue();
-                    if (!userInfo.containsKey("searchQueries")) {
+
+                    if (!userInfo.containsKey(sqs)) {
+                        // user has no previous search queries; create the array
                         ArrayList<Object> queries = new ArrayList<>();
-                        userInfo.put("searchQueries", queries);
+                        userInfo.put(sqs, queries);
+
                     } else {
-                        ArrayList<Object> queries = (ArrayList<Object>) userInfo.get("searchQueries");
+                        // get user's previouos search queries
+                        ArrayList<Object> queries = (ArrayList<Object>) userInfo.get(sqs);
                         String[] queryStrings = new String[queries.size()];
-                        int i = 0;
-                        for (Object q : queries) {
-                            Log.e("SearchQueries", "query: " + q.toString());
-                            SearchQuery sq = SearchQuery.parseSearchQuery(q.toString());
-                            Log.e("SearchQueries", "query is " + sq);
+                        for (int i = 0; i < queries.size(); i++) {
+                            String sqString = (String) queries.get(i);
+                            SearchQuery sq = SearchQuery.parseSearchQuery(sqString);
                             queryStrings[i++] = sq.humanReadable();
+
+                            Log.e("SearchQueries", "query is " + sqString);
+                            Log.e("SearchQueries", "human readable query is " + sq);
                         }
                         stringhistory = queryStrings;
                         setAdapter(queryStrings);
                     }
-
                 }
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
-                    // TODO: Internally display error message, externally claim nothing found
+                    String error = (String) getText(R.string.dashboard_no_results);
+                    (Toast.makeText(getContext(), error, Toast.LENGTH_SHORT)).show();
                 }
             });
         }
@@ -87,16 +83,18 @@ public class DashBoardSearchHistory extends ListFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.fragment_dashboard_history, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup vGroup, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_dashboard_history, vGroup, false);
         return rootView;
     }
 
+    /**
+     * Set the list adapter for a list of String representations of search queries
+     * @param info the list of String representations of search queries
+     */
     private void setAdapter(String[] info) {
         int layout = android.R.layout.simple_list_item_1;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout, info);
-        l.setAdapter(adapter);
+        this.lv.setAdapter(adapter);
     }
 }
