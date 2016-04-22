@@ -68,7 +68,7 @@
         <activity android:name=".ui.search.SearchHistoryWrapper">
         </activity>
 
-        <activity android:name=".ui.usersui.GroupPageActivity" android:label="GroupPage"/>
+        <activity android:name=".ui.usersui.GroupListActivity" android:label="GroupPage"/>
         <activity android:name=".ui.usersui.GroupPage" android:label="GroupPageActual"/>
     </application>
 

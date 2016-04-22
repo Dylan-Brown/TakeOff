@@ -2,13 +2,23 @@ package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 /**
  * This class represents the Activity relevant to displaying a group's information. The name of the
@@ -26,17 +36,7 @@ public class GroupPage extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_group_page);
-
-        // TODO: Get group name from intent message
-        // String mesg = intent.getStringExtra("GROUP_MESSAGE");
-        // Log.e("GroupPage", "onCreate: mesg is " + mesg);
-        // group = Group.parseGroup(mesg);
-        // Log.e("GroupPageActual", "Group message is " + mesg);
-        groupName = "This_would_be_the_group_name";
-
-        // TODO: Populate array with actual group members
-        groupMembers = new String[10];
-        Arrays.fill(groupMembers, "fake_group_member");
+        groupName = getIntent().getStringExtra(getString(R.string.group_extra));
 
         groupNameView = (TextView) findViewById(R.id.textViewGroup);
         if (groupNameView == null) {
@@ -44,9 +44,49 @@ public class GroupPage extends Activity {
         }
         groupNameView.setText(groupName);
 
+        // populate array with actual group members
+        final String grp = getString(R.string.firebase_grp);
+        final Firebase groups = WelcomeActivity.FIREBASE.child(grp);
 
-        // TODO: Make the custom list view where each member's profile icon shows up
-        // TODO: next to their name
+        groups.addListenerForSingleValueEvent(new ValueEventListener() {
+            public Object List;
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                // get the group members
+                HashMap<String, Object> allGroups = (HashMap<String, Object>) snapshot.getValue();
+                HashMap<String, Object> data = (HashMap<String, Object>) allGroups.get(groupName);
+                String mem = getString(R.string.firebase_mem);
+                ArrayList<String> members = (ArrayList<String>) data.get(mem);
+                if (members != null) {
+                    setMemberAdapter(members);
+                }
+
+                // get the shared flights
+                String shared = getString(R.string.firebase_shared);
+                if (data.get(shared) != null) {
+                    ArrayList<String> sharedFlights = (ArrayList<String>) data.get(shared);
+                    // TODO: Display these shared flights
+                }
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                String error = (String) getText(R.string.error_internal);
+                (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+            }
+        });
+    }
+
+    /**
+     * This method sets the adapter for the Listview to populate it with group member names
+     * @param members the list of group members
+     */
+    private void setMemberAdapter(ArrayList<String> members) {
+        groupMembers = new String[members.size()];
+        for (int i = 0; i < members.size(); i++) {
+            Log.e("setMemberAdapter", "Group members include: " + members.get(i));
+            groupMembers[i] = members.get(i);
+        }
         groupMembersView = (ListView) findViewById(R.id.member_list);
         int layout = android.R.layout.simple_list_item_single_choice;
         groupMembersView.setAdapter(new ArrayAdapter(this, layout, groupMembers));

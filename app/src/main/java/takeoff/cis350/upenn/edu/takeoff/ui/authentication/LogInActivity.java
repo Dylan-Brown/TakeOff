@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -75,7 +76,7 @@ public class LogInActivity extends AppCompatActivity {
         String password = mPasswordView.getText().toString();
 
         // check for a valid password, if the user entered one
-        if (!TextUtils.isEmpty(password) && !(password.length() > 4)) {
+        if (password.length() < 4) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             mPasswordView.requestFocus();
             return;
@@ -117,9 +118,11 @@ public class LogInActivity extends AppCompatActivity {
                         error = getString(R.string.error_incorrect_password);
                         break;
                     default:
-                        error = getString(R.string.error_invalid_credentials);
+                        break;
                 }
-                (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+                if (!error.isEmpty()) {
+                    (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+                }
             }
         };
 

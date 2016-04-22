@@ -30,7 +30,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.DashBoardSearchHistory;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPage;
-import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPageActivity;
+import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupListActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
 
 /**
@@ -187,7 +187,7 @@ public class TabbingActivity extends AppCompatActivity {
     public void goToMyGroups(View v) {
         if (WelcomeActivity.FIREBASE.getAuth() != null) {
             // the user is logged in and can go to groups
-            Intent intent = new Intent(this, GroupPageActivity.class);
+            Intent intent = new Intent(this, GroupListActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivityForResult(intent, GROUP_PAGE_REQUEST);
 
@@ -222,7 +222,6 @@ public class TabbingActivity extends AppCompatActivity {
                     // update the global, user's lists of groups to include this new group
                     String newGroupName = input.getText().toString();
                     setNewGroupGlobally(userUid, newGroupName);
-                    setNewGroupForUser(userUid, newGroupName);
                 }
             });
 
@@ -248,21 +247,33 @@ public class TabbingActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 // get the data from firebase about existing groups
                 Map<String, Object> globalData = (Map<String, Object>) snapshot.getValue();
-                HashMap<String, Object> groupMap;
+                String usrs = getString(R.string.firebase_users);
+                Map<String, Object> usersInfo = (Map<String, Object>) globalData.get(usrs);
+                Map<String, Object> userInfo= (Map<String, Object>) usersInfo.get(userUid);
+                String uName = (String) userInfo.get(getString(R.string.firebase_uname));
+                HashMap<String, Object> groupsMap;
 
                 // if there is no groups map, make one, otherwise get the existing map
                 if (!globalData.containsKey(grp)) {
-                    groupMap = new HashMap<>();
-                    globalData.put(grp, groupMap);
+                    groupsMap = new HashMap<>();
+                    globalData.put(grp, groupsMap);
+                    WelcomeActivity.FIREBASE.setValue(globalData);
                 } else {
-                    groupMap = (HashMap<String, Object>) globalData.get(grp);
+                    groupsMap = (HashMap<String, Object>) globalData.get(grp);
                 }
 
                 // if the user does not belong to any groups, add to a new group category
-                if (!groupMap.containsKey(newGroupName)) {
-                    groupMap.put(grp, newGroupName);
-                    WelcomeActivity.FIREBASE.child(grp).updateChildren(groupMap);
+                if (!groupsMap.containsKey(newGroupName)) {
+                    HashMap<String, Object> newGroupMap = new HashMap<>();
+                    newGroupMap.put(getString(R.string.firebase_grn), newGroupName);
+                    ArrayList<String> members = new ArrayList<>();
+                    members.add(uName);
+                    String mem = getString(R.string.firebase_mem);
+                    newGroupMap.put(mem, members);
+                    groupsMap.put(newGroupName, newGroupMap);
                 }
+                WelcomeActivity.FIREBASE.child(grp).updateChildren(groupsMap);
+                setNewGroupForUser(userUid, newGroupName);
             }
 
             @Override
@@ -296,8 +307,8 @@ public class TabbingActivity extends AppCompatActivity {
                     usersRef.child(userUid).updateChildren(userData);
 
                 } else {
-                    Map<String, Object> groups = (Map<String, Object>) userData.get(grp);
-                    groups.put(newGroupName, "");
+                    ArrayList<Object> groups = (ArrayList<Object>) userData.get(grp);
+                    groups.add(newGroupName);
                     userData.put(grp, groups);
                     usersRef.child(userUid).updateChildren(userData);
                 }

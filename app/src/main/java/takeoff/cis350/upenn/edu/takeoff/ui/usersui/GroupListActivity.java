@@ -15,6 +15,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
  * This class represents the activity to display the list of groups to which the logged-in user
  * belongs
  */
-public class GroupPageActivity extends ListActivity {
+public class GroupListActivity extends ListActivity {
 
     private ListView groupView;
     private String[] groups;
@@ -57,8 +58,8 @@ public class GroupPageActivity extends ListActivity {
                     String grp = getString(R.string.firebase_grp);
                     if (uData.get(grp) != null) {
                         // user is a member of some groups; get their names
-                        HashMap<String, String> uGroups = (HashMap<String, String>) uData.get(grp);
-                        setGroups(uGroups.keySet());
+                        ArrayList<String> uGroups = (ArrayList<String>) uData.get(grp);
+                        setGroups(uGroups);
                     } else {
                         // user is not a member of a group
                         noGroups();
@@ -97,7 +98,7 @@ public class GroupPageActivity extends ListActivity {
      * Displays the names of the user's groups in a list
      * @param groupNames the set containing each of the user's groups' names
      */
-    public void setGroups(Set<String> groupNames) {
+    public void setGroups(ArrayList<String> groupNames) {
         // store each group's name in the array
         groups = new String[groupNames.size()];
         int i = 0;

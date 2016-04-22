@@ -109,9 +109,12 @@
     <string name="firebase_uid">uid</string>
     <string name="firebase_fav">favoriteFlights</string>
     <string name="firebase_grp">groups</string>
+    <string name="firebase_grn">groupname</string>
     <string name="firebase_users">users</string>
     <string name="firebase_uname">username</string>
     <string name="firebase_sqs">searchQueries</string>
+    <string name="firebase_mem">members</string>
+    <string name="firebase_shared">members</string>
 
     <!-- Sign up / Log in -->
     <string name="prompt_email">email</string>

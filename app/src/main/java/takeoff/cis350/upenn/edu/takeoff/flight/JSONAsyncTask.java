@@ -25,6 +25,8 @@ import java.io.IOException;
  */
 public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
 
+    private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
+            + "search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ";
     Context context;
 
     /**
@@ -54,7 +56,7 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
         try {
             JSONObject json = new JSONObject(params[0]);
             System.out.println(json.toString(4));
-            HttpPost httpPost = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ");
+            HttpPost httpPost = new HttpPost(HTTP_LINK);
             StringEntity SEJson = new StringEntity(json.toString());
             httpPost.setEntity(SEJson);
             httpPost.setHeader("Content-type", "application/json");
