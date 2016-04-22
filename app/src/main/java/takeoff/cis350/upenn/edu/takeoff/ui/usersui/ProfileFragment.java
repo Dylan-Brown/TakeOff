@@ -37,16 +37,15 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup vGroup, Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.fragment_profile, vGroup, false);
         profilePic = (ImageView) rootView.findViewById(R.id.userpic);
         username = (TextView) rootView.findViewById(R.id.username_tv);
 
         // if there is a user logged in, display their information
         if (WelcomeActivity.USER_FIREBASE.getAuth() != null) {
             AuthData auth = WelcomeActivity.USER_FIREBASE.getAuth();
-            final String uid = auth.getUid();
-            Firebase userRef = WelcomeActivity.USER_FIREBASE.child(uid);
+            Firebase userRef = WelcomeActivity.USER_FIREBASE.child(auth.getUid());
 
             userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
