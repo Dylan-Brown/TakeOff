@@ -84,7 +84,17 @@
     <string name="title_activity_tabbing">TabbingActivity</string>
 
     <!-- Dashboard -->
-    <string name= "dashboard_search_button">Search</string>
+    <string name="dashboard_tag">dashboard</string>
+    <string name="dashboard_fav">favorites</string>
+    <string name="dashboard_his">searchHistory</string>
+    <string name="dashboard_pro">profile</string>
+    <string name="dashboard_Tag">Dashboard</string>
+    <string name="dashboard_Fav">Favorites</string>
+    <string name="dashboard_His">Search History</string>
+    <string name="dashboard_Pro">Profile</string>
+    <string name="dashboard_search_button">Search</string>
+    <string name="dashboard_flight_mesg">FlightActual</string>
+    <string name="dashboard_no_results">No Results</string>
 
     <!-- Profile -->
     <string name="profile_group_button">My Groups</string>

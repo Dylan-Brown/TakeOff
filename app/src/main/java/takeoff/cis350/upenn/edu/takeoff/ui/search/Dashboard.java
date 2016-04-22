@@ -16,10 +16,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +34,12 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 public class Dashboard extends ListFragment {
 
     public static List<Flight> FlightCache=new ArrayList<>();
-    private final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
-    public final static String FLIGHT_MESSAGE = "FlightActual";
-    List<Flight> flightResults;
-    ListView listView;
-    boolean initialLoad = true;
+    private List<Flight> flightResults;
+    private ListView listView;
+    private boolean initialLoad = true;
 
-    @SuppressWarnings("unchecked")
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
-        System.out.println("IN DASHBOARD");
         super.onActivityCreated(savedInstanceState);
         loadDashboard();
     }
@@ -55,37 +48,27 @@ public class Dashboard extends ListFragment {
      * Initializes all the variables and decides what to display
      */
     public void loadDashboard() {
-        System.out.println("IN DASHBOARD LOADING");
         listView = getListView();
 
-        // get the flight information information if there is any
+        // get the flight information information, if there is any
         flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
 
         if (flightResults != null && !initialLoad) {
-            System.out.println("FLIGHTRESULTS NOT NULL");
-            //flightResults =new ArrayList<>(Arrays.asList(new DummyFlightInfo().getFlights()));
-            // Make flight information human readable
             if (flightResults.size() == 0) {
-                //if there are no results, then just say so
-                setToastText("No Results");
+                // no results; display the messag
+                String mesg = getString(R.string.dashboard_no_results);
+                setToastText(mesg);
             }
             else {
-
-                String[] flights = new String[flightResults.size()];
-                int i = 0;
-                for (Flight f : flightResults) {
-                    flights[i++] = f.humanReadable();
-                }
-
-                // display a list of the information
-                setListAdapter(new ArrayAdapter(getActivity(),
-                        android.R.layout.simple_list_item_single_choice, flights));
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-                        android.R.layout.simple_list_item_1, flights);
-
-                listView.setAdapter(adapter);
+                // display a list of the flight information
+                String[] flights = loadFlights();
+                int layout1 = android.R.layout.simple_list_item_single_choice;
+                int layout2 = android.R.layout.simple_list_item_1;
+                setListAdapter(new ArrayAdapter(getActivity(), layout1, flights));
+                listView.setAdapter(new ArrayAdapter<>(getActivity(), layout2, flights));
             }
         } else if (initialLoad) {
+            // this is the first time the user is entering the dashboard; display nothing
             initialLoad = false;
         }
 
@@ -113,26 +96,41 @@ public class Dashboard extends ListFragment {
     }
 
     /**
+     * Load the flight results into human readable strings
+     * @return the array of human-readable flight strings
+     */
+    private String[] loadFlights() {
+        String[] flights = new String[flightResults.size()];
+        for (int i = 0; i < flightResults.size(); i++) {
+            flights[i++] = flightResults.get(i).humanReadable();
+        }
+        return flights;
+    }
+
+    /**
      * Handle the event in which a list item has been clicked
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new  Intent(getActivity(), FlightInfoActivity.class);
+
         // parse the TextView to a new Flight for comparsion
         Flight flight = Flight.fromHumanReadable(((TextView) v).getText().toString());
+        String extraMesg = getString(R.string.dashboard_flight_mesg);
 
         // determine which Flight in flightResults this refers to
         boolean found = false;
         for (Flight f : flightResults) {
             if (Flight.minimalCompare(f, flight)) {
-                intent.putExtra(FLIGHT_MESSAGE, f);
+                intent.putExtra(extraMesg, f);
                 found = true;
                 break;
             }
         }
         if (!found) {
-            intent.putExtra(FLIGHT_MESSAGE, flight);
+            intent.putExtra(extraMesg, flight);
         }
+
         // start the FlightInfoActivity
         startActivity(intent);
     }
@@ -143,59 +141,11 @@ public class Dashboard extends ListFragment {
         inflater.inflate(R.menu.menu_dashboard, menu);
     }
 
-    public void sortByAirline() {
-        bubbleSortBy("airline");
-    }
-
-    /**
-     * Sort the displayed Flights by their cost
-     */
-    public void sortByCost() {
-        bubbleSortBy("cost");
-    }
-
-    /**
-     * Sort the displayed Flights by their departure date
-     */
-    public void sortByDepartureDate() {
-        bubbleSortBy("dep_date");
-    }
-
-    /**
-     * Sort the displayed Flights by their departure city
-     */
-    public void sortByDepartureCity() {
-        bubbleSortBy("dep_city");
-    }
-
-    /**
-     * Sort the displayed Flights by their arrival date
-     */
-    public void sortByArrivalDate() {
-        bubbleSortBy("arr_date");
-    }
-
-    /**
-     * Sort the displayed Flights by their arrival city
-     */
-    public void sortByArrivalCity() {
-        bubbleSortBy("arr_city");
-    }
-
-    /**
-     * Display the favorite Flights of the User on the dashboard
-     */
-    public void sortByFavoriteFlights() {
-        // TODO: Remove this option from the menu xml file and here
-        bubbleSortBy("fav_flights");
-    }
-
     /**
      * Go to the AdvancedFilter activity after the user has selected that menu option
      */
     public void advancedFilter() {
         Log.e("AdvancedFilter", "Here");
-        // TODO: Put search results into firebase
         SearchQuery sq = new SearchQuery();
 
         // make a dummy SearchQuery
@@ -215,179 +165,91 @@ public class Dashboard extends ListFragment {
      * Sorts the list of flights to be displayed on the dashboard.
      * @param feature the feature by which we sort the results
      */
-    public void bubbleSortBy(String feature) {
+    public void sortBy(int feature) {
         // TODO: Change the sorting algorithm. While bubbleSort is efficient enough for our
         // TODO: purposes, I'd like to not go halfway on this
 
-        // check for null input
-        if(flightResults == null) {
-            return;
+        if(flightResults != null) {
+            // create the auxiliary array to assist sort
+            Flight[] array = new Flight[flightResults.size()];
+            flightResults.toArray(array);
+            int n = array.length;
+            int k;
+
+            // sort based on the given feature
+            for (int m = n; m >= 0; m--) {
+                for (int i = 0; i < n - 1; i++) {
+                    k = i + 1;
+                    if (compare(i, k, array, feature) < 0) {
+                        Flight temp;
+                        temp = array[i];
+                        array[i] = array[k];
+                        array[k] = temp;
+                    }
+                }
+            }
+
+            // finally, display the sorted list
+            String[] flightInfo = new String[array.length];
+            for (int i = 0; i < array.length; i++) {
+                flightInfo[i] = array[i].humanReadable();
+            }
+            setAdapter(flightInfo);
         }
+    }
 
-        // create the auxiliary array to assist sort
-        Flight[] array = new Flight[flightResults.size()];
-        flightResults.toArray(array);
-        int n = array.length;
-        int k;
 
-        // sort based on the given feature
+    /**
+     * Get the compareTo value between to Flights based on a specific feature of the Flight class
+     * @param feature the parameter to compare
+     * @param array the array of flights
+     * @param i the index of the first flight to compare
+     * @param k the index of the second flight to compare
+     * @return the value of the comparison
+     */
+    private int compare(int i, int k, Flight[] array, int feature) {
         switch (feature) {
-            case "airline":
-                for (int m = n; m >= 0; m--) {
-                    for (int i = 0; i < n - 1; i++) {
-                        k = i + 1;
-                        if (array[i].getSubFlights().get(0).getAirline().compareTo(array[k].getSubFlights().get(0).getAirline()) < 0) {
-                            Flight temp;
-                            temp = array[i];
-                            array[i] = array[k];
-                            array[k] = temp;
-                        }
-                    }
-                }
-                break;
-            case "cost":
-                for (int m = n; m >= 0; m--) {
-                    for (int i = 0; i < n - 1; i++) {
-                        k = i + 1;
-                        if (array[i].getCost() < array[k].getCost()) {
-                            Flight temp;
-                            temp = array[i];
-                            array[i] = array[k];
-                            array[k] = temp;
-                        }
-                    }
-                }
-                break;
-            case "dep_date":
-                for (int m = n; m >= 0; m--) {
-                    for (int i = 0; i < n - 1; i++) {
-                        k = i + 1;
-                        if (array[i].getDepartureDate().compareTo(array[k].getDepartureDate()) < 0) {
-                            Flight temp;
-                            temp = array[i];
-                            array[i] = array[k];
-                            array[k] = temp;
-                        }
-                    }
-                }
-                break;
-            case "dep_city":
-                // depart city
-                for (int m = n; m >= 0; m--) {
-                    for (int i = 0; i < n - 1; i++) {
-                        k = i + 1;
-                        if (array[i].getDepartureCityCode().compareTo(array[k].getDepartureCityCode()) < 0) {
-                            Flight temp;
-                            temp = array[i];
-                            array[i] = array[k];
-                            array[k] = temp;
-                        }
-                    }
-                }
-                break;
-            case "arr_date":
-                for (int m = n; m >= 0; m--) {
-                    for (int i = 0; i < n - 1; i++) {
-                        k = i + 1;
-                        if (array[i].getArrivalDate().compareTo(array[k].getArrivalDate()) < 0) {
-                            Flight temp;
-                            temp = array[i];
-                            array[i] = array[k];
-                            array[k] = temp;
-                        }
-                    }
-                }
-                break;
-            case "arr_city":
-                for (int m = n; m >= 0; m--) {
-                    for (int i = 0; i < n - 1; i++) {
-                        k = i + 1;
-                        if (array[i].getArrivalCityCode().compareTo(array[k].getArrivalCityCode()) < 0) {
-                            Flight temp;
-                            temp = array[i];
-                            array[i] = array[k];
-                            array[k] = temp;
-                        }
-                    }
-                }
-            case "fav_flights":
-                // if there is a logged in user, display list of favorites
-                if (usersRef.getAuth() !=  null) {
-                    Log.e("Dashboard", "Authorized");
+            case R.id.sort_by_1:
+                // airline
+                String iAirline =  array[i].getSubFlights().get(0).getAirline();
+                String kAirline =  array[k].getSubFlights().get(0).getAirline();
+                return iAirline.compareTo(kAirline);
 
-                    String uid = usersRef.getAuth().getUid();
-                    usersRef.child(uid).child("favoriteFlights").addListenerForSingleValueEvent(
-                            new ValueEventListener() {
+            case R.id.sort_by_2:
+                // cost
+                return array[i].getCost() < array[k].getCost() ? 1 : -1;
 
-                                @Override
-                                public void onDataChange(DataSnapshot snapshot) {
-                                    // user has favorites; get this information and replace search results
+            case R.id.sort_by_3:
+                // departure date
+                return array[i].getDepartureDate().compareTo(array[k].getDepartureDate());
 
-                                    ArrayList<Object> userFavs = (ArrayList<Object>) snapshot.getValue();
-                                    flightResults.clear();
-                                    for (Object o : userFavs) {
-                                        Flight f = Flight.parseFlight((String) o);
-                                        flightResults.add(f);
-                                        Log.i("Dashboard", "onDataChange: Flight: " + f.toString());
-                                    }
-                                    String[] flightInfo = new String[flightResults.size()];
-                                    int i = 0;
-                                    for (Flight f : flightResults) {
-                                        flightInfo[i++] = f.humanReadable();
-                                    }
-                                    setAdapter(flightInfo);
-                                    // TODO: flightInfo is the humanReadable list of favorites, display it.
-                                }
-                                @Override
-                                public void onCancelled(FirebaseError firebaseError) {
-                                    // internally display error message, externally claim nothing found
-                                    Log.e("Dashboard", "The read failed: " + firebaseError.getMessage());
-                                    Toast toast = Toast.makeText(getActivity(),
-                                            "No favorites found.", Toast.LENGTH_SHORT);
-                                    toast.show();
-                                }
-                            });
-                } else {
-                    // no authenticated user (guestsession or some error) - no favorites data
-                    Toast toast = Toast.makeText(getActivity(),
-                            "No favorites found.", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+            case R.id.sort_by_4:
+                // departure city
+                return array[i].getDepartureCityCode().compareTo(array[k].getDepartureCityCode());
 
-                break;
+            case R.id.sort_by_5:
+                // arrival city
+                return array[i].getArrivalCityCode().compareTo(array[k].getArrivalCityCode());
+
+            case R.id.sort_by_6:
+                // arrival date
+                return array[i].getArrivalDate().compareTo(array[k].getArrivalDate());
 
             default:
+                // advanced_filter
+                return 0;
         }
-
-        // finally, display the sorted list
-        String[] flightInfo = new String[array.length];
-        for (int i = 0; i < array.length; i++) {
-            flightInfo[i] = array[i].humanReadable();
-        }
-        setAdapter(flightInfo);
     }
 
+
     /**
-     *
-     * @param info
+     * Set the ListView's adapter to a new adapter, based on the flight info in the array info
+     * @param info the String array of human-readable flight information
      */
     private void setAdapter(String[] info) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
-                info);
+        int layout = android.R.layout.simple_list_item_1;
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout, info);
         listView.setAdapter(adapter);
-    }
-
-    /**
-     * Gets the Flight in the Flight results List corresponding to the given ID
-     * @param id the unique id of the flight
-     * @return the Flight if it is found, null otherwise
-     */
-    @SuppressWarnings("unused")
-    private Flight getFlightByID(String id) {
-        for (Flight f : flightResults) {
-            if (f.getId().equals(id)) { return f; }
-        }
-        return null;
     }
 
     /**

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import android.util.Log;
 import android.view.View;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -28,19 +27,14 @@ import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 public class FlightInfoView extends View {
 
     private Flight flight;
-    private int buttonRadius = 0;
     private int canvasWidth = 0;
     private int canvasHeight = 0;
-    private int x, y;
+    private int favButtonRadius = 0;
+    private int favButtonXCoord, favButtonYCoord;
+    private double[] buyBound;
+    private double[] bckBound;
     private boolean isFavorite = false;
     private boolean ticket = false;
-
-    /**
-     * The constructor for the class. Calls View's constructor and sets the FireBase reference
-     */
-    public FlightInfoView(Context c) {
-        super(c);
-    }
 
     /**
      * The constructor for the class. Calls View's constructor and sets the FireBase reference.
@@ -99,10 +93,9 @@ public class FlightInfoView extends View {
         // get the canvas information
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
-        buttonRadius = canvasHeight / 30;
-        x = canvasWidth / 2;
-        y = canvasHeight - canvasHeight / 10;
-        int radius = canvasHeight / 30;
+        favButtonRadius = canvasHeight / 30;
+        favButtonXCoord = canvasWidth / 2;
+        favButtonYCoord = canvasHeight - canvasHeight / 10;
 
         Paint paint = new Paint();
         canvas.drawPaint(paint);
@@ -124,7 +117,8 @@ public class FlightInfoView extends View {
         paint.setColor(Color.parseColor(color));
 
         // draw the favorites button
-        canvas.drawCircle(x, y, radius, paint);
+        canvas.drawCircle(favButtonXCoord, favButtonYCoord, favButtonRadius, paint);
+        getButtonBoundaries();
     }
 
 
@@ -134,31 +128,18 @@ public class FlightInfoView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
-            // Check if clicked within the right coordinates
-            int x = (int)event.getRawX();
-            int y = (int)event.getRawY();
-            
-            // favorite button bounds 
-            double favXBound = Math.abs(this.x - x);
-            double favYBound = Math.abs((this.y + canvasHeight / 28) - y);
-            
-            // buy button bounds 
-            double buyXLow = canvasWidth / 8 + this.x;
-            double buyXHi= canvasWidth / 4 + canvasWidth / 8 + this.x;
-            double buyYLow = this.y - buttonRadius;
-            double buyYHi = this.y + buttonRadius;
+            int x = (int) event.getRawX();
+            int y = (int) event.getRawY();
 
-            // back button bounds 
-            double backXLow = canvasWidth / 8;
-            double backXHi = canvasWidth / 4 + canvasWidth / 8;
-            double backYLow = this.y - buttonRadius;
-            double backYHi = this.y + buttonRadius;
+            // favorite button bounds are dependent on where the user clicked
+            double favXBound = Math.abs(this.favButtonXCoord - x);
+            double favYBound = Math.abs((this.favButtonYCoord + canvasHeight / 28) - y);
 
             // determine which button has been clicked, if any
-            if (favXBound < buttonRadius && favYBound < buttonRadius) {
+            if (favXBound < favButtonRadius && favYBound < favButtonRadius) {
                 // favorite button clicked; update the favorites list and change the favorite status
-                if ( WelcomeActivity.USER_FIREBASE.getAuth() != null) {
-                    final String uid =  WelcomeActivity.USER_FIREBASE.getAuth().getUid();
+                if (WelcomeActivity.USER_FIREBASE.getAuth() != null) {
+                    String uid =  WelcomeActivity.USER_FIREBASE.getAuth().getUid();
                     if (isFavorite) {
                         removeFavorite(uid);
                     } else {
@@ -172,11 +153,11 @@ public class FlightInfoView extends View {
                     (Toast.makeText(getContext(), error, Toast.LENGTH_SHORT)).show();
                 }
 
-            } else if  (buyXLow < x && x < buyXHi && buyYLow < y && y < buyYHi) {
+            } else if (buyBound[0] < x && x < buyBound[1] && buyBound[2] < y && y < buyBound[3]) {
                 // buy button clicked
                 buyTicket();
 
-            } else if (backXLow < x && x < backXHi && y > backYLow && y < backYHi) {
+            } else if (bckBound[0] < x && x < bckBound[1] && bckBound[2] < y && y < bckBound[3]) {
                 // the "Go Back" button has been clicked
                 goBack();
 
@@ -191,9 +172,31 @@ public class FlightInfoView extends View {
     }
 
     /**
+     * Sets the array instances to the appropriate values for where each button is on the canvas.
+     * For the buy and back buttons, array[0], array[1] are the low and high x bounds. where
+     * array[2] and array[3] are the low and high y bounds.
+     * @return
+     */
+    private void getButtonBoundaries() {
+        // calculate boundaries on the buy button
+        buyBound = new double[4];
+        buyBound[0] = canvasWidth / 8 + this.favButtonXCoord;
+        buyBound[1] = canvasWidth / 4 + canvasWidth / 8 + this.favButtonXCoord;
+        buyBound[2] = this.favButtonYCoord - favButtonRadius;
+        buyBound[3] = this.favButtonYCoord + favButtonRadius;
+
+        // calculate boundaries on the back button
+        bckBound = new double[4];
+        bckBound[0] = canvasWidth / 8;
+        bckBound[1] = canvasWidth / 4 + canvasWidth / 8;
+        bckBound[2] = this.favButtonYCoord - favButtonRadius;
+        bckBound[3] = this.favButtonYCoord + favButtonRadius;
+    }
+
+    /**
      * Go back to the dashboard and
      */
-    public void goBack() {
+    private void goBack() {
         // TODO: Handle the GO BACK action
         ticket = true;
     }
@@ -201,7 +204,7 @@ public class FlightInfoView extends View {
     /**
      * Starts the motion to go purchase the ticket
      */
-    public void buyTicket() {
+    private void buyTicket() {
         // TODO: Implement
     }
 
@@ -209,7 +212,7 @@ public class FlightInfoView extends View {
      * Make a call to Firebase to remove the favorite from the user's list of favorites
      * @param uid the unique identifier for the user's Firebase information
      */
-    public void removeFavorite(final String uid) {
+    private void removeFavorite(final String uid) {
 
         final Firebase ref = WelcomeActivity.USER_FIREBASE.child(uid);
         final String favKey = getResources().getString(R.string.firebase_fav);
@@ -248,7 +251,7 @@ public class FlightInfoView extends View {
      * Make a call to Firebase to add the flight to the user's list of favorites
      * @param uid the unique identifier for the user's Firebase information
      */
-    public void addFavorite(final String uid) {
+    private void addFavorite(final String uid) {
 
         final Firebase ref = WelcomeActivity.USER_FIREBASE.child(uid);
         final String favKey = getResources().getString(R.string.firebase_fav);

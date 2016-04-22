@@ -3,37 +3,32 @@
     <item android:id="@+id/sort_by_1"
         android:title="Sort by Airline"
         android:orderInCategory="0"
-        android:onClick="sortByAirline"
+        android:onClick="sortDashboardResults"
         />
     <item android:id="@+id/sort_by_2"
         android:title="Sort by Cost"
         android:orderInCategory="10"
-        android:onClick="sortByCost"
+        android:onClick="sortDashboardResults"
         />
     <item android:id="@+id/sort_by_3"
         android:title="Sort by Departure City"
         android:orderInCategory="20"
-        android:onClick="sortByDepartureCity"
+        android:onClick="sortDashboardResults"
         />
     <item android:id="@+id/sort_by_4"
         android:title="Sort by Departure Date"
         android:orderInCategory="30"
-        android:onClick="sortByDepartureDate"
+        android:onClick="sortDashboardResults"
         />
     <item android:id="@+id/sort_by_5"
         android:title="Sort by Arrival City"
         android:orderInCategory="40"
-        android:onClick="sortByArrivalCity"
+        android:onClick="sortDashboardResults"
         />
     <item android:id="@+id/sort_by_6"
         android:title="Sort by Arrival Date"
         android:orderInCategory="50"
-        android:onClick="sortByArrivalDate"
-        />
-    <item android:id="@+id/favorites_option"
-        android:title="View Favorites"
-        android:orderInCategory="60"
-        android:onClick="sortByFavoriteFlights"
+        android:onClick="sortDashboardResults"
         />
     <item android:id="@+id/advanced_filter"
         android:title="Advanced Filter"

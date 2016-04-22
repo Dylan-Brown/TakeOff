@@ -34,208 +34,121 @@ import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPageActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
 
 /**
- *
+ * This activity handles all of the tabs and fragments associated with them; after a user logs in
+ * or a guest session begins, this activity will be the main use of the app.
  */
 public class TabbingActivity extends AppCompatActivity {
 
     private static final int SEARCH_PAGE_REQUEST = 100;
     private static final int GROUP_PAGE_REQUEST = 120;
-    private FragmentTabHost tabhost;
     private boolean fromSearch = false;
+    private FragmentTabHost tabHost;
 
-    /**
-     *
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbing);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        //set and create TabHost
-        Firebase.setAndroidContext(this);
         createTabHost();
-        System.out.println("ACTIVITY ONCREATE END");
     }
 
     /**
-     * Helper to create all the tabs and assign their contents
+     * Create all the tabs to see in this activity and assign their contents
      */
     private void createTabHost() {
-        tabhost = (FragmentTabHost) (FragmentTabHost) findViewById(android.R.id.tabhost);
-        tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
+        tabHost = (FragmentTabHost) (FragmentTabHost) findViewById(android.R.id.tabhost);
+        tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
-        //Setting the tags for each tab
-        TabSpec dashboardTab = tabhost.newTabSpec("dashboard");
-        TabSpec favoritesTab = tabhost.newTabSpec("favorites");
-        TabSpec searchHistoryTab = tabhost.newTabSpec("searchHistory");
-        TabSpec profileTab = tabhost.newTabSpec("profile");
+        // set the tags (text) of each tab
+        TabSpec dashboardTab = tabHost.newTabSpec(getString(R.string.dashboard_tag));
+        TabSpec favoritesTab = tabHost.newTabSpec(getString(R.string.dashboard_fav));
+        TabSpec searchHistoryTab = tabHost.newTabSpec(getString(R.string.dashboard_his));
+        TabSpec profileTab = tabHost.newTabSpec(getString(R.string.dashboard_pro));
 
-        //Setting the names shown for each tag
-        dashboardTab.setIndicator("DashBoard");
-        favoritesTab.setIndicator("Favorites");
-        searchHistoryTab.setIndicator("Search History");
-        profileTab.setIndicator("Profile");
+        // set the names shown for each tag
+        dashboardTab.setIndicator(getString(R.string.dashboard_Tag));
+        favoritesTab.setIndicator(getString(R.string.dashboard_Fav));
+        searchHistoryTab.setIndicator(getString(R.string.dashboard_His));
+        profileTab.setIndicator(getString(R.string.dashboard_Pro));
 
-        //Setting the correct activity each
-        tabhost.addTab(dashboardTab, Dashboard.class, null);
-        tabhost.addTab(searchHistoryTab, DashBoardSearchHistory.class, null);
-        tabhost.addTab(favoritesTab, FavoritesFragment.class, null);
-        tabhost.addTab(profileTab, ProfileFragment.class, null);
+        // set the correct fragment corresponding to each tag
+        tabHost.addTab(dashboardTab, Dashboard.class, null);
+        tabHost.addTab(searchHistoryTab, DashBoardSearchHistory.class, null);
+        tabHost.addTab(favoritesTab, FavoritesFragment.class, null);
+        tabHost.addTab(profileTab, ProfileFragment.class, null);
     }
 
-    /**
-     *
-     * @param item
-     * @return
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // handle action bar item clicks
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
         return super.onOptionsItemSelected(item);
-
     }
 
-    /**
-     *
-     * @param menu
-     * @return
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+        // inflate the menu; this adds items to the action bar if it is present.
+        // getMenuInflater().inflate(R.menu.menu_dashboard, menu);
         return true;
     }
 
     /**
-     * Call the dashboard's sort method to sort by airline
-     * @param item
+     * Make a call to the dashboard to sort the Flight results in it. The MenuItem's id, defined in
+     * menu_dashboard.xml, determines the feature by which we sort.
+     * @param item the MenuItem selected
      */
-    public void sortByAirline(MenuItem item) {
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
-        if(dash != null) {
-            dash.sortByAirline();
-        }
-
-    }
-
-    /**
-     * Call the dashboard's sort method to sort by cost
-     * @param item
-     */
-    public void sortByCost(MenuItem item) {
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
-        if(dash != null) {
-            dash.sortByCost();
+    public void sortDashboardResults(MenuItem item) {
+        String tag = getString(R.string.dashboard_tag);
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag);
+        if (dash != null) {
+            dash.sortBy(item.getItemId());
         }
     }
 
     /**
-     *
-     * @param item
-     */
-    public void sortByDepartureDate(MenuItem item) {
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
-        if(dash != null) {
-            dash.sortByDepartureDate();
-        }
-    }
-
-    /**
-     * Call the dashboard's sort method to sort by departure city
-     * @param item
-     */
-    public void sortByDepartureCity(MenuItem item) {
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
-        if(dash != null) {
-            dash.sortByDepartureCity();
-        }
-    }
-
-    /**
-     * Call the dashboard's sort method to sort by arrival date
-     * @param item
-     */
-    public void sortByArrivalDate(MenuItem item) {
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
-        if(dash != null) {
-            dash.sortByArrivalDate();
-        }
-    }
-
-    /**
-     * Call the dashboard's sort method to sort by arrival city
-     * @param item
-     */
-    public void sortByArrivalCity(MenuItem item) {
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
-        if(dash != null) {
-            dash.sortByArrivalCity();
-        }
-    }
-
-    /**
-     * Call the dashboard's sort method to sort by favorite flight
-     * @param item
-     */
-    public void sortByFavoriteFlights(MenuItem item) {
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
-        if(dash != null) {
-            dash.sortByFavoriteFlights();
-        }
-    }
-
-    /**
-     * Call the dashboard's sort method to sort by advance filter
-     * @param item
+     * Make a call to the dashboard to start the Advanced Filter activity
+     * @param item the MenuItem selected
      */
     public void advancedFilter(MenuItem item) {
-        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+        String tag = getString(R.string.dashboard_tag);
+        Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag);
         if(dash != null) {
             dash.advancedFilter();
         }
     }
 
     /**
-     * go to the search page
-     * @param v
+     * Go to the search page after the user has clicked the Search button
+     * @param v the view of the search button
      */
     public void goToSearchPage(View v) {
         Intent intent = new Intent(this, SearchPage.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        System.out.println("REQUEST CODE = " + SEARCH_PAGE_REQUEST);
         startActivityForResult(intent, SEARCH_PAGE_REQUEST);
     }
 
     /**
-     *
-     * @param requestCode
-     * @param resultCode
+     * This method handles when the activity is restarted after leaving to some other activity
+     * @param requestCode the requestCode of the previous activity
+     * @param resultCode the resultCode of the previous activity
      * @param intent
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        Dashboard dash;
         if(requestCode == 100) {
-            //if the activity is restarted from search, display search results
-            System.out.println("ON ACTIVITYRESULT");
+            // returned from search; display search results
             fromSearch = true;
-            if(tabhost != null) {
-                System.out.println("ON ACTIVITYRESULT again");
-                Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+            if(tabHost != null) {
+                String tag = getString(R.string.dashboard_tag);
+                dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag);
                 dash.loadDashboard();
             }
-            System.out.println("ON ACTIVITYRESULT end");
+        } else if (requestCode == 120) {
+            // returned from groups; TODO: Handle
         }
     }
 
@@ -245,10 +158,9 @@ public class TabbingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("ON RESUME");
         if(fromSearch){
-            System.out.println("GETTING DASHY DASH");
-            Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag("dashboard");
+            String tag = getString(R.string.dashboard_tag);
+            Dashboard dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag);
             if (dash != null) {
                 dash.loadDashboard();
             }
@@ -260,50 +172,46 @@ public class TabbingActivity extends AppCompatActivity {
      * This method is called when the user clicks on the profile picture
      * @param view
      */
-    public void picOnClick(View view){
+    public void onClickProfilePicture(View view){
+        // TODO: Implement
         if (WelcomeActivity.FIREBASE.getAuth() != null) {
-            Log.e("TabbingActivity", "picOnClick: User clicked on profile image");
+            Log.e("TabbingActivity", "onClickProfilePicture: User clicked on profile image");
         } else {
-            Log.e("TabbingActivity", "picOnClick: Guest clicked on profile image");
+            Log.e("TabbingActivity", "onClickProfilePicture: Guest clicked on profile image");
         }
 
     }
 
 
     /**
-     * called when clicking on the MyGroups button in the Profile tab
+     * When a user clicks on the MyGroups button in the Profile tab, go to the GroupPageActivity
      */
     public void goToMyGroups(View v) {
-
         if (WelcomeActivity.FIREBASE.getAuth() != null) {
             // the user is logged in and can go to groups
             Intent intent = new Intent(this, GroupPageActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            System.out.println("REQUEST CODE = " + GROUP_PAGE_REQUEST);
             startActivityForResult(intent, GROUP_PAGE_REQUEST);
 
         } else {
-            // The user logged in is anonymous and cannot create a group
+            // the user is a guest and cannot create a group
             String error = (String) getText(R.string.please_sign_in);
             (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
         }
-
     }
 
     /**
-     * called when clicking  on the New Group button in the Profile tab
+     * Create a pop-up dialog asking for the name of the new group
+     * @param v the view of the New Group button
      */
     public void goToMakeGroup(View v) {
-        // Create a pop-up dialog asking for the name of the new group
-
         if (WelcomeActivity.FIREBASE.getAuth() != null) {
             // the user is logged in and can create a group
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.profile_enter_name));
 
-            // Set up the input
+            // set the expected input type
             final EditText input = new EditText(this);
-            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
             input.setInputType(InputType.TYPE_CLASS_TEXT);
             builder.setView(input);
 
@@ -314,8 +222,8 @@ public class TabbingActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     // TODO: Set restrictions on group names
                     // TODO: Check if a group name already exists
-                    String m_Text = input.getText().toString();
-                    goToNewGroupPage(m_Text);
+                    String newGroupName = input.getText().toString();
+                    goToNewGroupPage(newGroupName);
                 }
             });
 
@@ -329,14 +237,18 @@ public class TabbingActivity extends AppCompatActivity {
 
     /**
      * Only called from New Group button dialog, goes to the page of the new group
-     * @param newGroupName
+     * @param newGroupName the name of the new group
      */
     protected void goToNewGroupPage(final String newGroupName) {
         final Intent intent = new Intent(this, GroupPage.class);
-        if (WelcomeActivity.FIREBASE.getAuth() != null) {
-            final String uid = WelcomeActivity.FIREBASE.getAuth().getUid();
 
-            // and the group to the global list of groups
+        if (WelcomeActivity.FIREBASE.getAuth() != null) {
+            final String userUid = WelcomeActivity.FIREBASE.getAuth().getUid();
+            final String grp = getString(R.string.firebase_grp);
+            final String uid = getString(R.string.firebase_uid);
+            final String unm = getString(R.string.firebase_uname);
+            final String urs = getString(R.string.firebase_users);
+
             WelcomeActivity.FIREBASE.addListenerForSingleValueEvent(new ValueEventListener() {
 
                 @Override
@@ -344,10 +256,6 @@ public class TabbingActivity extends AppCompatActivity {
                     // get the data from firebase about existing groups
                     Map<String, Object> globalData = (Map<String, Object>) snapshot.getValue();
                     HashMap<String, Object> groupMap;
-                    String grp = getString(R.string.firebase_grp);
-                    String uid = getString(R.string.firebase_uid);
-                    String unm = getString(R.string.firebase_uname);
-                    String urs = getString(R.string.firebase_users);
 
                     if (!globalData.containsKey(grp)) {
                         // there is no groups map
@@ -359,8 +267,11 @@ public class TabbingActivity extends AppCompatActivity {
                         groupMap = (HashMap<String, Object>) globalData.get(grp);
                     }
 
-                    String username = (String) ((Map<String, Object>) ((Map<String, Object>)
-                            globalData.get(urs)).get(uid)).get(unm);
+                    Map<String, Object> usersInfo = (Map<String, Object>) globalData.get(urs);
+                    Map<String, Object> userInfo = (Map<String, Object>)  usersInfo.get(uid);
+                    String username = (String) userInfo.get(unm);
+                    // TODO: What is this for?
+
                     // if the user does not belong to any  groups, add to a new group category
                     if (!groupMap.containsKey(newGroupName)) {
                         // add the group name to the intent, update firebase
@@ -375,42 +286,36 @@ public class TabbingActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
-                    Log.e("FlightInfoView", "getAuth onCancelled for error: "
-                            + firebaseError.getMessage());
                     // TODO: Handle
                 }
             });
 
-            final Firebase usersRef = new Firebase("https://brilliant-inferno-6470.firebaseio.com/users");
 
             // add the group to the user's list of groups
-            usersRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            final Firebase ref = WelcomeActivity.USER_FIREBASE;
+            ref.child(userUid).addListenerForSingleValueEvent(new ValueEventListener() {
 
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
                     // if the user does not belong to any  groups, add to a new group category
-                    if (!userData.containsKey("groups")) {
-                        Log.e("GroupStuffInTabs", "Creating user's new group array");
+                    if (!userData.containsKey(grp)) {
                         ArrayList<String> groups = new ArrayList<>();
                         // add the group to the user data
                         groups.add(newGroupName);
-                        userData.put("groups", groups);
-                        usersRef.child(uid).updateChildren(userData);
+                        userData.put(grp, groups);
+                        ref.child(userUid).updateChildren(userData);
 
                     } else {
-                        Log.e("GroupStuffInTabs", "Getting user's group array");
-                        Map<String, Object> groups = (Map<String, Object>) userData.get("groups");
+                        Map<String, Object> groups = (Map<String, Object>) userData.get(grp);
                         groups.put(newGroupName, "");
-                        userData.put("groups", groups);
-                        usersRef.child(uid).updateChildren(userData);
+                        userData.put(grp, groups);
+                        ref.child(userUid).updateChildren(userData);
                     }
                 }
 
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
-                    Log.e("FlightInfoView", "getAuth onCancelled for error: "
-                            + firebaseError.getMessage());
                     // TODO: Handle
                 }
             });
