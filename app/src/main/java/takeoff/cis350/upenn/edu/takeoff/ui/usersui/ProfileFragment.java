@@ -1,5 +1,6 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -55,7 +56,11 @@ public class ProfileFragment extends Fragment {
                     username.setText(uData.get(getString(R.string.firebase_uname)));
 
                     // get the user's profile image, if there is one
-                    // TODO: get the user's profile image
+                    String pic = uData.get(getString(R.string.firebase_pic));
+                    if (pic != null) {
+                        Bitmap bmPic = ImageOps.stringToBitmap(pic);
+                        profilePic.setImageBitmap(bmPic);
+                    }
                 }
 
                 @Override
@@ -68,5 +73,34 @@ public class ProfileFragment extends Fragment {
         }
 
         return rootView;
+    }
+
+    public void setProfilePictrue(Bitmap image, final String base64Image) {
+        profilePic.setImageBitmap(image);
+
+        AuthData auth = WelcomeActivity.USER_FIREBASE.getAuth();
+        final Firebase userRef = WelcomeActivity.USER_FIREBASE.child(auth.getUid());
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                // get the username to display
+                HashMap<String, Object> uData = (HashMap<String, Object>) snapshot.getValue();
+                uData.put(getString(R.string.firebase_pic), base64Image);
+                userRef.updateChildren(uData);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                // failed to retrieve user information
+                String error = getString(R.string.firebase_profile_fail);
+                (Toast.makeText(getContext(), error, Toast.LENGTH_SHORT)).show();
+            }
+        });
+
+
+
+
+        profilePic.invalidate();
     }
 }

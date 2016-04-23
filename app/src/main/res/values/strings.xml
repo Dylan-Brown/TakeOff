@@ -102,6 +102,7 @@
     <string name="profile_make_group_button">New Group</string>
     <string name="profile_enter_name">Please enter the new group name:</string>
     <string name="profile_ok">OK</string>
+    <string name="profile_select">Select Image</string>
     <string name="group_extra">GROUP_MESSAGE</string>
     <string name="group_invite">Add a Member</string>
     <string name="group_invite_email">Enter the email of the new member:</string>
@@ -110,6 +111,7 @@
     <string name="group_invite_success">Group member added!</string>
     <string name="group_share">Share a Flight</string>
     <string name="group_share_none">You have no favorites to share!</string>
+    <string name="group_share_choose">Choose one of your favorite Flights to share:</string>
 
     <!-- Firebase -->
     <string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string>
@@ -121,6 +123,8 @@
     <string name="firebase_uname">username</string>
     <string name="firebase_sqs">searchQueries</string>
     <string name="firebase_mem">members</string>
+    <string name="firebase_pic">profilePicture</string>
+    <string name="firebase_img_type">image/*</string>
     <string name="firebase_shared">members</string>
 
     <!-- Sign up / Log in -->

@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.regex.Pattern;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
@@ -122,28 +123,77 @@ public class GroupPage extends Activity {
      */
     public void share(View v) {
         Log.e("GroupPage", "in share()");
+        userHasFavorites = true;
         if (userHasFavorites) {
-            // TODO: Implement
-            /* // create a spinner dialog from the user's favorites
-            AlertDialog.Builder b = new AlertDialog.Builder(this);
-            b.setTitle("Example");
-            String[] types = {"By Zip", "By Category"};
+            final String fav = getString(R.string.firebase_fav);
+            final String users = getString(R.string.firebase_users);
+            String uid = WelcomeActivity.FIREBASE.getAuth().getUid();
+            final Firebase userRef = WelcomeActivity.FIREBASE.child(users).child(uid);
 
-            b.setItems(types, new DialogInterface.OnClickListener() {
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                public Object List;
+
                 @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // update the global, user's lists of groups to include this new group
+                public void onDataChange(DataSnapshot snapshot) {
+                    // get the favorited flights
+                    HashMap<String, Object> userInfo = (HashMap<String, Object>) snapshot.getValue();
+                    ArrayList<String> favs = (ArrayList<String>) userInfo.get(fav);
+                    Flight[] flights = new Flight[favs.size()];
+                    String[] flightsInfo = new String[favs.size()];
+                    for (int i = 0; i < favs.size(); i++) {
+                        flights[i] = Flight.parseFlight(favs.get(i));
+                        flightsInfo[i] = flights[i].humanReadable();
+                    }
+                    sharePopup(flightsInfo, flights);
+
+                }
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                    String error = (String) getText(R.string.error_internal);
+                    (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
                 }
             });
-            b.show(); */
+
 
         } else {
             String error = (String) getText(R.string.group_share_none);
             (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
         }
+        userHasFavorites = false;
     }
 
-    //  group_share_none
+    /**
+     * Display a spinner popup for the user to pick from their list of favorites
+      * @param flightInfo the different favorites in String form
+     */
+    private void sharePopup(String[] flightInfo, Flight[] flights) {
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle(getString(R.string.group_share_choose));
+
+        b.setItems(flightInfo, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // update the global, user's lists of groups to include this new group
+
+            }
+        });
+        b.show();
+    }
+
+    /**
+     *
+     */
+    private void postNewSharedFlight(Flight flight) {
+
+        // firebase, post, update children, restart activity
+        /*
+        // restart the activity
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        */
+    }
+
 
     /**
      * After getting an email to invite, check firebase that the user exists. If so, this method
@@ -209,7 +259,6 @@ public class GroupPage extends Activity {
                 Intent intent = getIntent();
                 finish();
                 startActivity(intent);
-
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {

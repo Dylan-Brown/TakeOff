@@ -1,7 +1,10 @@
 package takeoff.cis350.upenn.edu.takeoff.ui;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AlertDialog;
@@ -31,6 +34,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPage;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupListActivity;
+import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ImageOps;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
 
 /**
@@ -40,6 +44,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
 public class TabbingActivity extends AppCompatActivity {
 
     private static final int SEARCH_PAGE_REQUEST = 100;
+    private static final int PROFILE_PICK_IMAGE = 110;
     private static final int GROUP_PAGE_REQUEST = 120;
     private boolean fromSearch = false;
     private FragmentTabHost tabHost;
@@ -139,7 +144,9 @@ public class TabbingActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         Dashboard dash;
-        if(requestCode == 100) {
+        ProfileFragment prof;
+
+        if(requestCode == SEARCH_PAGE_REQUEST) {
             // returned from search; display search results
             fromSearch = true;
             if(tabHost != null) {
@@ -147,8 +154,27 @@ public class TabbingActivity extends AppCompatActivity {
                 dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag);
                 dash.loadDashboard();
             }
-        } else if (requestCode == 120) {
-            // returned from groups; TODO: Handle
+        } else if (requestCode == PROFILE_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+            // returned from pick image; get the image selected and the URI
+            if (intent == null) {
+                // something went wrong; display an error
+                String error = (String) getText(R.string.error_internal);
+                (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
+                return;
+            }
+
+            // get the image URI, the base64 string, and the bitmap
+            Uri imageUri = intent.getData();
+            String path = ImageOps.getRealPathFromURI(imageUri, getApplicationContext());
+            Bitmap image = ImageOps.pathToBitmap(path);
+            image = ImageOps.scaleProfilePictureBitmap(image);
+            String base64Image = ImageOps.bitmapToString(image);
+
+            // store the string, display the iamge
+            String tag = getString(R.string.dashboard_pro);
+            prof = (ProfileFragment) this.getSupportFragmentManager().findFragmentByTag(tag);
+            prof.setProfilePictrue(image, base64Image);
+
         }
     }
 
@@ -172,11 +198,26 @@ public class TabbingActivity extends AppCompatActivity {
      * @param view
      */
     public void onClickProfilePicture(View view){
-        // TODO: Implement
         if (WelcomeActivity.FIREBASE.getAuth() != null) {
-            Log.e("TabbingActivity", "onClickProfilePicture: User clicked on profile image");
+            // create the intents to get the new image
+            Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
+            getIntent.setType(getString(R.string.firebase_img_type));
+
+            Uri uri = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            Intent pickIntent = new Intent(Intent.ACTION_PICK, uri);
+
+            pickIntent.setType(getString(R.string.firebase_img_type));
+            String select = getString(R.string.profile_select);
+            Intent chooserIntent = Intent.createChooser(getIntent, select);
+            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
+
+            // start the intent
+            startActivityForResult(chooserIntent, PROFILE_PICK_IMAGE);
+
         } else {
-            Log.e("TabbingActivity", "onClickProfilePicture: Guest clicked on profile image");
+            // inform user to sign in to use this  feature
+            String error = (String) getText(R.string.please_sign_in);
+            (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
         }
 
     }
@@ -231,6 +272,14 @@ public class TabbingActivity extends AppCompatActivity {
             String error = (String) getText(R.string.please_sign_in);
             (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
         }
+    }
+
+    /**
+     * Takes the newly set profile image and stores it in Firebase as a base64 binary string
+     * @param image the base64 binary string
+     */
+    private void storeProfileImage(String image) {
+
     }
 
     /**
