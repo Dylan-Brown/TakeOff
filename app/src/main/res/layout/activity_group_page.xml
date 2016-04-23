@@ -32,7 +32,9 @@
     <TextView
         android:layout_width="269dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:id="@+id/textViewGroup"
+        android:textColor="#000000"
         android:layout_gravity="center_horizontal"
         android:textSize="30dp"/>
 

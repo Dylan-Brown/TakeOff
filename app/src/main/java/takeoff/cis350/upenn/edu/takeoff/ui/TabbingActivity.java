@@ -55,7 +55,7 @@ public class TabbingActivity extends AppCompatActivity {
      * Create all the tabs to see in this activity and assign their contents
      */
     private void createTabHost() {
-        tabHost = (FragmentTabHost) (FragmentTabHost) findViewById(android.R.id.tabhost);
+        tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
         // set the tags (text) of each tab

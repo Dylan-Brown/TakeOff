@@ -1,11 +1,15 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +23,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
@@ -60,6 +65,9 @@ public class GroupPage extends Activity {
                 ArrayList<String> members = (ArrayList<String>) data.get(mem);
                 if (members != null) {
                     setMemberAdapter(members);
+                    for (String m : members) {
+                        Log.e("GroupPage", "Members: " + m);
+                    }
                 }
 
                 // get the shared flights
@@ -82,8 +90,32 @@ public class GroupPage extends Activity {
      * @param v the view of the invite button
      */
     public void invite(View v) {
-        // TODO: Implement
-        Log.e("GroupPage", "in invite()");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.group_invite_email));
+
+        // set the expected input type
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        String buttonText = getString(R.string.profile_ok);
+        builder.setPositiveButton(buttonText, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // update the global, user's lists of groups to include this new group
+                String newMemberEmail = input.getText().toString();
+
+                if (!Pattern.compile(".+@.+\\.[a-z]+").matcher(newMemberEmail).matches()) {
+                    String error = (String) getText(R.string.group_invite_error);
+                    (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+                }
+
+                // TODO: Here, check / add to firebase.
+            }
+        });
+
+        builder.show();
     }
 
     /**

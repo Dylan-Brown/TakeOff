@@ -104,6 +104,9 @@
     <string name="profile_ok">OK</string>
     <string name="group_extra">GROUP_MESSAGE</string>
     <string name="group_invite">Add a Member</string>
+    <string name="group_invite_email">Enter the email of the new member:</string>
+    <string name="group_invite_error">Sorry, that\'s not a valid email</string>
+    <string name="group_invite_success">Group member added!</string>
     <string name="group_share">Share a Flight</string>
 
     <!-- Firebase -->
