@@ -3,6 +3,7 @@ package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -17,6 +18,7 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
@@ -58,8 +60,14 @@ public class GroupListActivity extends ListActivity {
                     String grp = getString(R.string.firebase_grp);
                     if (uData.get(grp) != null) {
                         // user is a member of some groups; get their names
-                        ArrayList<String> uGroups = (ArrayList<String>) uData.get(grp);
-                        setGroups(uGroups);
+                        HashMap<String, Object> uGroups = (HashMap<String, Object>) uData.get(grp);
+                        Log.e("uGroups", uGroups.toString());
+                        HashSet<String> groupsSet = new HashSet<String>();
+                        for (String o : uGroups.keySet()) {
+                            String s = (String) uGroups.get(o);
+                            groupsSet.add(s);
+                        }
+                        setGroups(groupsSet);
                     } else {
                         // user is not a member of a group
                         noGroups();
@@ -98,7 +106,7 @@ public class GroupListActivity extends ListActivity {
      * Displays the names of the user's groups in a list
      * @param groupNames the set containing each of the user's groups' names
      */
-    public void setGroups(ArrayList<String> groupNames) {
+    public void setGroups(Set<String> groupNames) {
         // store each group's name in the array
         groups = new String[groupNames.size()];
         int i = 0;

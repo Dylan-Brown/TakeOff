@@ -103,6 +103,8 @@
     <string name="profile_enter_name">Please enter the new group name:</string>
     <string name="profile_ok">OK</string>
     <string name="group_extra">GROUP_MESSAGE</string>
+    <string name="group_invite">Add a Member</string>
+    <string name="group_share">Share a Flight</string>
 
     <!-- Firebase -->
     <string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string>

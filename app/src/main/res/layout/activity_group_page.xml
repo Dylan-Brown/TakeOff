@@ -5,6 +5,30 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
+    <android.widget.Toolbar
+        android:id="@+id/group_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp">
+        <Button
+            android:id="@+id/group_invite_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/group_invite"
+            android:layout_gravity="center_horizontal"
+            android:onClick="invite"
+            />
+        <Button
+            android:id="@+id/group_share_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/group_share"
+            android:layout_gravity="center_horizontal"
+            android:onClick="share"
+            />
+    </android.widget.Toolbar>
+
     <TextView
         android:layout_width="269dp"
         android:layout_height="wrap_content"
@@ -32,6 +56,5 @@
             android:layout_centerVertical="true"
             android:textSize="16dp" /-->
     </ListView>
-
 
 </LinearLayout>

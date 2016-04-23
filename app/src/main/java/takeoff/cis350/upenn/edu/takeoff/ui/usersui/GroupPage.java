@@ -1,12 +1,15 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -19,6 +22,7 @@ import java.util.HashMap;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
+import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
 /**
  * This class represents the Activity relevant to displaying a group's information. The name of the
@@ -37,12 +41,8 @@ public class GroupPage extends Activity {
 
         setContentView(R.layout.activity_group_page);
         groupName = getIntent().getStringExtra(getString(R.string.group_extra));
+        setDisplay();
 
-        groupNameView = (TextView) findViewById(R.id.textViewGroup);
-        if (groupNameView == null) {
-            groupNameView = new TextView(getApplicationContext());
-        }
-        groupNameView.setText(groupName);
 
         // populate array with actual group members
         final String grp = getString(R.string.firebase_grp);
@@ -75,6 +75,41 @@ public class GroupPage extends Activity {
                 (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
             }
         });
+    }
+
+    /**
+     *
+     * @param v the view of the invite button
+     */
+    public void invite(View v) {
+        // TODO: Implement
+        Log.e("GroupPage", "in invite()");
+    }
+
+    /**
+     *
+     * @param v the view of the share button
+     */
+    public void share(View v) {
+        // TODO: Implement
+        Log.e("GroupPage", "in share()");
+    }
+
+    /**
+     * Set up the core display items of the group page
+     */
+    private void setDisplay() {
+        // display the group name
+        groupNameView = (TextView) findViewById(R.id.textViewGroup);
+        if (groupNameView == null) {
+            groupNameView = new TextView(getApplicationContext());
+        }
+        groupNameView.setText(groupName);
+
+        // display the toolbar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.group_toolbar);
+        this.setActionBar(myToolbar);
+        this.getActionBar().setTitle("");
     }
 
     /**
