@@ -21,7 +21,6 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -39,6 +38,7 @@ public class GroupPage extends Activity {
     private ListView groupMembersView;
     private String[] groupMembers;
     private String groupName;
+    private boolean userHasFavorites = false;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
@@ -65,9 +65,6 @@ public class GroupPage extends Activity {
                 ArrayList<String> members = (ArrayList<String>) data.get(mem);
                 if (members != null) {
                     setMemberAdapter(members);
-                    for (String m : members) {
-                        Log.e("GroupPage", "Members: " + m);
-                    }
                 }
 
                 // get the shared flights
@@ -83,6 +80,8 @@ public class GroupPage extends Activity {
                 (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
             }
         });
+
+        checkFavorites();
     }
 
     /**
@@ -105,13 +104,12 @@ public class GroupPage extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 // update the global, user's lists of groups to include this new group
                 String newMemberEmail = input.getText().toString();
-
                 if (!Pattern.compile(".+@.+\\.[a-z]+").matcher(newMemberEmail).matches()) {
                     String error = (String) getText(R.string.group_invite_error);
                     (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
                 }
-
-                // TODO: Here, check / add to firebase.
+                // check with Firebase and finlize adding member
+                confirmInvite(newMemberEmail);
             }
         });
 
@@ -123,8 +121,128 @@ public class GroupPage extends Activity {
      * @param v the view of the share button
      */
     public void share(View v) {
-        // TODO: Implement
         Log.e("GroupPage", "in share()");
+        if (userHasFavorites) {
+            // TODO: Implement
+            /* // create a spinner dialog from the user's favorites
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setTitle("Example");
+            String[] types = {"By Zip", "By Category"};
+
+            b.setItems(types, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // update the global, user's lists of groups to include this new group
+                }
+            });
+            b.show(); */
+
+        } else {
+            String error = (String) getText(R.string.group_share_none);
+            (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+        }
+    }
+
+    //  group_share_none
+
+    /**
+     * After getting an email to invite, check firebase that the user exists. If so, this method
+     * will add the user to the list of groups.
+     * @param email the email of the new user to add
+     */
+    private void confirmInvite(final String email) {
+        final String users = getString(R.string.firebase_users);
+        final Firebase usersRef = WelcomeActivity.FIREBASE.child(users);
+
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            public Object List;
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                // get the group members
+                HashMap<String, Object> users = (HashMap<String, Object>) snapshot.getValue();
+                boolean added = false;
+                for (String uid : users.keySet()) {
+                    HashMap<String, Object> user = (HashMap<String, Object>) users.get(uid);
+                    String username = (String) user.get(getString(R.string.firebase_uname));
+                    if (username.toLowerCase().equals(email.toLowerCase())) {
+                        addToGroup(email);
+                        added = true;
+                        break;
+                    }
+                }
+                if (!added) {
+                    String error = (String) getText(R.string.group_invite_dne);
+                    (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+                }
+
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                String error = (String) getText(R.string.error_internal);
+                (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+            }
+        });
+    }
+
+    /**
+     * After the email has been confirmed, we add a new user to the group
+     * @param email the email of the new user to add
+     */
+    private void addToGroup(final String email) {
+        final String grp = getString(R.string.firebase_grp);
+        final Firebase groupRef = WelcomeActivity.FIREBASE.child(grp).child(groupName);
+
+        groupRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                // get the group members
+                HashMap<String, Object> group = (HashMap<String, Object>) snapshot.getValue();
+                String mem = getString(R.string.firebase_mem);
+                ArrayList<String> members = (ArrayList<String>) group.get(mem);
+                members.add(email);
+                groupRef.child(mem).setValue(members);
+                String mesg = (String) getText(R.string.group_invite_success);
+                (Toast.makeText(getApplicationContext(), mesg, Toast.LENGTH_SHORT)).show();
+
+                // restart the activity
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                String error = (String) getText(R.string.error_internal);
+                (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+            }
+        });
+    }
+
+    /**
+     * Determine if a user has any favorited flights. This function is called when the activity
+     * begins in order to prevent having to check after a user decides to share a Flight with the
+     * group.
+     */
+    private void checkFavorites() {
+        final String users = getString(R.string.firebase_users);
+        final String fav = getString(R.string.firebase_fav);
+        final String uid = WelcomeActivity.FIREBASE.getAuth().getUid();
+        final Firebase userRef = WelcomeActivity.FIREBASE.child(users).child(uid);
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                // if favorites string is not  a key in the map, user does not have favorites
+                HashMap<String, Object> userInfo = (HashMap<String, Object>) snapshot.getValue();
+                userHasFavorites = userInfo.get(fav) != null;
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                String error = (String) getText(R.string.error_internal);
+                (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
+            }
+        });
     }
 
     /**
@@ -151,7 +269,6 @@ public class GroupPage extends Activity {
     private void setMemberAdapter(ArrayList<String> members) {
         groupMembers = new String[members.size()];
         for (int i = 0; i < members.size(); i++) {
-            Log.e("setMemberAdapter", "Group members include: " + members.get(i));
             groupMembers[i] = members.get(i);
         }
         groupMembersView = (ListView) findViewById(R.id.member_list);

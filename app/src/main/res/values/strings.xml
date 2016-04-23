@@ -106,8 +106,10 @@
     <string name="group_invite">Add a Member</string>
     <string name="group_invite_email">Enter the email of the new member:</string>
     <string name="group_invite_error">Sorry, that\'s not a valid email</string>
+    <string name="group_invite_dne">That user does not exist</string>
     <string name="group_invite_success">Group member added!</string>
     <string name="group_share">Share a Flight</string>
+    <string name="group_share_none">You have no favorites to share!</string>
 
     <!-- Firebase -->
     <string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string>
