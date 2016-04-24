@@ -5215,13 +5215,6 @@
     <string-array name="christmas_island">
 		<item>Christmas Island</item>
 	</string-array>
-    <string-array name="class_array">
-        <item>Select Class</item>
-        <item>Coach</item>
-        <item>Premium Coach</item>
-        <item>Business</item>
-        <item>First</item>
-    </string-array>
     <string-array name="cocos">
 		<item>Cocos Islands</item>
 	</string-array>
@@ -5549,204 +5542,6 @@
 		<item>Occupied Palestinian Territory</item>
 		<item>Greenland</item>
 	</string-array>
-    <string-array name="countries_array">
-        <item>Algeria</item>
-        <item>Angola</item>
-        <item>Benin</item>
-        <item>Botswana</item>
-        <item>Burkina Faso</item>
-        <item>Burundi</item>
-        <item>Cameroon</item>
-        <item>Cape Verde</item>
-        <item>Central African Republic</item>
-        <item>Chad</item>
-        <item>Comoros</item>
-        <item>Congo</item>
-        <item>Congo, Democratic Republic of</item>
-        <item>Democratic Republic of Congo</item>
-        <item>Djibouti</item>
-        <item>Egypt</item>
-        <item>Equatorial Guinea</item>
-        <item>Eritrea</item>
-        <item>Ethiopia</item>
-        <item>Gabon</item>
-        <item>Gambia</item>
-        <item>Ghana</item>
-        <item>Guinea</item>
-        <item>Guinea-Bissau</item>
-        <item>Ivory Coast</item>
-        <item>Kenya</item>
-        <item>Lesotho</item>
-        <item>Liberia</item>
-        <item>Libya</item>
-        <item>Madagascar</item>
-        <item>Malawi</item>
-        <item>Mali</item>
-        <item>Mauritania</item>
-        <item>Mauritius</item>
-        <item>Morocco</item>
-        <item>Mozambique</item>
-        <item>Namibia</item>
-        <item>Niger</item>
-        <item>Nigeria</item>
-        <item>Rwanda</item>
-        <item>Sao Tome and Principe</item>
-        <item>Senegal</item>
-        <item>Seychelles</item>
-        <item>Sierra Leone</item>
-        <item>Somalia</item>
-        <item>South Africa</item>
-        <item>South Sudan</item>
-        <item>Sudan</item>
-        <item>Swaziland</item>
-        <item>Tanzania</item>
-        <item>Togo</item>
-        <item>Tunisia</item>
-        <item>Uganda</item>
-        <item>Zambia</item>
-        <item>Zimbabwe</item>
-        <item>Afghanistan</item>
-        <item>Bahrain</item>
-        <item>Bangladesh</item>
-        <item>Bhutan</item>
-        <item>Brunei</item>
-        <item>Burma</item>
-        <item>Myanmar</item>
-        <item>Cambodia</item>
-        <item>China</item>
-        <item>East Timor</item>
-        <item>India</item>
-        <item>Indonesia</item>
-        <item>Iran</item>
-        <item>Iraq</item>
-        <item>Israel</item>
-        <item>Japan</item>
-        <item>Jordan</item>
-        <item>Kazakhstan</item>
-        <item>North Korea</item>
-        <item>South Korea</item>
-        <item>Kuwait</item>
-        <item>Kyrgyzstan</item>
-        <item>Laos</item>
-        <item>Lebanon</item>
-        <item>Malaysia</item>
-        <item>Maldives</item>
-        <item>Mongolia</item>
-        <item>Nepal</item>
-        <item>Oman</item>
-        <item>Pakistan</item>
-        <item>Philippines</item>
-        <item>Qatar</item>
-        <item>Russian Federation</item>
-        <item>Saudi Arabia</item>
-        <item>Singapore</item>
-        <item>Sri Lanka</item>
-        <item>Syria</item>
-        <item>Tajikistan</item>
-        <item>Thailand</item>
-        <item>Turkey</item>
-        <item>Turkmenistan</item>
-        <item>United Arab Emirates</item>
-        <item>Uzbekistan</item>
-        <item>Vietnam</item>
-        <item>Yemen</item>
-        <item>Albania</item>
-        <item>Andorra</item>
-        <item>Armenia</item>
-        <item>Austria</item>
-        <item>Azerbaijan</item>
-        <item>Belarus</item>
-        <item>Belgium</item>
-        <item>Bosnia and Herzegovina</item>
-        <item>Bulgaria</item>
-        <item>Croatia</item>
-        <item>Cyprus</item>
-        <item>Czech Republic</item>
-        <item>Denmark</item>
-        <item>Estonia</item>
-        <item>Finland</item>
-        <item>France</item>
-        <item>Georgia</item>
-        <item>Germany</item>
-        <item>Greece</item>
-        <item>Hungary</item>
-        <item>Iceland</item>
-        <item>Ireland</item>
-        <item>Italy</item>
-        <item>Latvia</item>
-        <item>Liechtenstein</item>
-        <item>Lithuania</item>
-        <item>Luxembourg</item>
-        <item>Macedonia</item>
-        <item>Malta</item>
-        <item>Moldova</item>
-        <item>Monaco</item>
-        <item>Montenegro</item>
-        <item>Netherlands</item>
-        <item>Norway</item>
-        <item>Poland</item>
-        <item>Portugal</item>
-        <item>Romania</item>
-        <item>San Marino</item>
-        <item>Serbia</item>
-        <item>Slovakia</item>
-        <item>Slovenia</item>
-        <item>Spain</item>
-        <item>Sweden</item>
-        <item>Switzerland</item>
-        <item>Ukraine</item>
-        <item>United Kingdom</item>
-        <item>Vatican City</item>
-        <item>Antigua and Barbuda</item>
-        <item>Bahamas</item>
-        <item>Barbados</item>
-        <item>Belize</item>
-        <item>Canada</item>
-        <item>Costa Rica</item>
-        <item>Cuba</item>
-        <item>Dominica</item>
-        <item>Dominican Republic</item>
-        <item>El Salvador</item>
-        <item>Grenada</item>
-        <item>Guatemala</item>
-        <item>Haiti</item>
-        <item>Honduras</item>
-        <item>Jamaica</item>
-        <item>Mexico</item>
-        <item>Nicaragua</item>
-        <item>Panama</item>
-        <item>Saint Kitts and Nevis</item>
-        <item>Saint Lucia</item>
-        <item>Saint Vincent and the Grenadines</item>
-        <item>Trinidad and Tobago</item>
-        <item>United States</item>
-        <item>Argentina</item>
-        <item>Bolivia</item>
-        <item>Brazil</item>
-        <item>Chile</item>
-        <item>Colombia</item>
-        <item>Ecuador</item>
-        <item>Guyana</item>
-        <item>Paraguay</item>
-        <item>Peru</item>
-        <item>Suriname</item>
-        <item>Uruguay</item>
-        <item>Venezuela</item>
-        <item>Fiji</item>
-        <item>Kiribati</item>
-        <item>Marshall Islands</item>
-        <item>Micronesia</item>
-        <item>Nauru</item>
-        <item>New Zealand</item>
-        <item>Palau</item>
-        <item>Papua New Guinea</item>
-        <item>Samoa</item>
-        <item>Solomon Islands</item>
-        <item>Tonga</item>
-        <item>Tuvalu</item>
-        <item>Vanuatu</item>
-        <item>Australia</item>
-    </string-array>
     <string-array name="croatia">
 		<item>Zagreb</item>
 		<item>Pula</item>
@@ -9011,6 +8806,10 @@
     <string name="airport">Airport Code</string>
     <string name="airport_message">Enter Airport Code with a comma separating each:</string>
     <string name="alliance_message">Select your preferred alliance:</string>
+    <string name="alliance_none">None</string>
+    <string name="alliance_oneworld">Oneworld</string>
+    <string name="alliance_sky">SkyTeam</string>
+    <string name="alliance_star">Star Alliance</string>
     <string name="antarctica">Antarctica</string>
     <string name="app_name">TakeOff</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -9023,6 +8822,11 @@
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="cities">Cities</string>
     <string name="city_message">Enter the cities you want with a comma separating each:</string>
+    <string name="class_business">Business</string>
+    <string name="class_coach">Coach</string>
+    <string name="class_first">First</string>
+    <string name="class_none">None</string>
+    <string name="class_p_coach">Premium Coach</string>
     <string name="clear_departure_button">Clear Departure</string>
     <string name="clear_return_button">Clear Return</string>
     <string name="common_android_wear_notification_needs_update_text"><ns1:g id="app_name">%1$s</ns1:g> requires an update to the Android Wear app.</string>
@@ -9058,29 +8862,68 @@
     <string name="continent_message">Continent:</string>
     <string name="countries">Countries</string>
     <string name="country_message">Enter the countries you want with a comma separating each:</string>
+    <string name="dashboard_Fav">Favorites</string>
+    <string name="dashboard_His">Search History</string>
+    <string name="dashboard_Pro">Profile</string>
+    <string name="dashboard_Tag">Dashboard</string>
+    <string name="dashboard_fav">favorites</string>
+    <string name="dashboard_flight_mesg">FlightActual</string>
+    <string name="dashboard_his">searchHistory</string>
+    <string name="dashboard_no_results">No Results</string>
+    <string name="dashboard_pro">profile</string>
     <string name="dashboard_search_button">Search</string>
+    <string name="dashboard_tag">dashboard</string>
+    <string name="date_format">MM-dd-yyyy</string>
     <string name="departure_date">Departure Date</string>
     <string name="departure_early_time">Earliest Departure Time</string>
     <string name="departure_late_time">Latest Departure Time</string>
     <string name="error_field_required">This field is required</string>
     <string name="error_incorrect_password">Incorrect password</string>
+    <string name="error_internal">Sorry, TakeOff has experienced an internal error. Please try again later.</string>
     <string name="error_invalid_credentials">Invalid email or password</string>
     <string name="error_invalid_email">Invalid email</string>
     <string name="error_invalid_password">Invalid password</string>
     <string name="error_no_favorites">No favorites found</string>
+    <string name="error_no_groups">No groups to display</string>
     <string name="error_password_match">Passwords do not match</string>
     <string name="error_password_short">Password must be at least 4 characters</string>
     <string name="europe">Europe</string>
     <string name="filter_message">Please Enter the information to filter your Search Query</string>
+    <string name="firebase_fav">favoriteFlights</string>
+    <string name="firebase_grn">groupname</string>
+    <string name="firebase_grp">groups</string>
+    <string name="firebase_icon">icon</string>
+    <string name="firebase_img_type">image/*</string>
+    <string name="firebase_mem">members</string>
+    <string name="firebase_pic">profilePicture</string>
+    <string name="firebase_profile_fail">Failed to retrieve user information</string>
     <string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string>
+    <string name="firebase_shared">members</string>
+    <string name="firebase_sqs">searchQueries</string>
+    <string name="firebase_uid">uid</string>
+    <string name="firebase_uname">username</string>
+    <string name="firebase_users">users</string>
+    <string name="group_extra">GROUP_MESSAGE</string>
+    <string name="group_invite">Add a Member</string>
+    <string name="group_invite_dne">That user does not exist</string>
+    <string name="group_invite_email">Enter the email of the new member:</string>
+    <string name="group_invite_error">Sorry, that\'s not a valid email</string>
+    <string name="group_invite_success">Group member added!</string>
+    <string name="group_share">Share a Flight</string>
+    <string name="group_share_choose">Choose one of your favorite Flights to share:</string>
+    <string name="group_share_none">You have no favorites to share!</string>
+    <string name="group_shared">shared</string>
     <string name="history_button">History</string>
     <string name="nonstop_checkbox">Direct Flight Only</string>
     <string name="north_america">North America</string>
     <string name="oceania">Oceania</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="please_sign_in">Please sign in to use this feature!</string>
+    <string name="profile_enter_name">Please enter the new group name:</string>
     <string name="profile_group_button">My Groups</string>
     <string name="profile_make_group_button">New Group</string>
+    <string name="profile_ok">OK</string>
+    <string name="profile_select">Select Image</string>
     <string name="prompt_email">email</string>
     <string name="prompt_password">password</string>
     <string name="prompt_password_2">confirm password</string>

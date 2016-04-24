@@ -8,6 +8,9 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="23" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -76,7 +79,7 @@
         <activity android:name="takeoff.cis350.upenn.edu.takeoff.ui.search.SearchHistoryWrapper" >
         </activity>
         <activity
-            android:name="takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPageActivity"
+            android:name="takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupListActivity"
             android:label="GroupPage" />
         <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPage"

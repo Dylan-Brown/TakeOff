@@ -1445,7 +1445,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-    </style></file><file name="ic_launcher" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/mipmap-mdpi/ic_launcher.png" qualifiers="mdpi-v4" type="mipmap"/><file name="menu_main" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_main.xml" qualifiers="" type="menu"/><file name="menu_flightinfo" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_flightinfo.xml" qualifiers="" type="menu"/><file name="menu_dashboard" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_dashboard.xml" qualifiers="" type="menu"/><file name="menu_search_page" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_search_page.xml" qualifiers="" type="menu"/><file name="option_box_style" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/option_box_style.xml" qualifiers="" type="drawable"/><file name="background_no_border" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/background_no_border.xml" qualifiers="" type="drawable"/><file name="defaultuserpic" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/defaultuserpic.jpg" qualifiers="" type="drawable"/><file name="flight_takeoff" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/flight_takeoff.jpg" qualifiers="" type="drawable"/><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/countriesandcities.xml" qualifiers=""><string-array name="dominica">
+    </style></file><file name="ic_launcher" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/mipmap-mdpi/ic_launcher.png" qualifiers="mdpi-v4" type="mipmap"/><file name="menu_main" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_main.xml" qualifiers="" type="menu"/><file name="menu_flightinfo" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_flightinfo.xml" qualifiers="" type="menu"/><file name="menu_dashboard" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_dashboard.xml" qualifiers="" type="menu"/><file name="menu_search_page" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/menu/menu_search_page.xml" qualifiers="" type="menu"/><file name="option_box_style" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/option_box_style.xml" qualifiers="" type="drawable"/><file name="background_no_border" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/background_no_border.xml" qualifiers="" type="drawable"/><file name="defaultusericon" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/defaultusericon.jpg" qualifiers="" type="drawable"/><file name="defaultuserpic" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/defaultuserpic.jpg" qualifiers="" type="drawable"/><file name="flight_takeoff" path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/drawable/flight_takeoff.jpg" qualifiers="" type="drawable"/><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/countriesandcities.xml" qualifiers=""><string-array name="dominica">
 		<item>Dominica</item>
 	</string-array><string-array name="guinea">
 		<item>Conakry</item>
@@ -5451,203 +5451,6 @@
         <item>Saint Vincent and the Grenadines</item>
         <item>Trinidad and Tobago</item>
         <item>United States</item>
-    </string-array><string-array name="countries_array">
-        <item>Algeria</item>
-        <item>Angola</item>
-        <item>Benin</item>
-        <item>Botswana</item>
-        <item>Burkina Faso</item>
-        <item>Burundi</item>
-        <item>Cameroon</item>
-        <item>Cape Verde</item>
-        <item>Central African Republic</item>
-        <item>Chad</item>
-        <item>Comoros</item>
-        <item>Congo</item>
-        <item>Congo, Democratic Republic of</item>
-        <item>Democratic Republic of Congo</item>
-        <item>Djibouti</item>
-        <item>Egypt</item>
-        <item>Equatorial Guinea</item>
-        <item>Eritrea</item>
-        <item>Ethiopia</item>
-        <item>Gabon</item>
-        <item>Gambia</item>
-        <item>Ghana</item>
-        <item>Guinea</item>
-        <item>Guinea-Bissau</item>
-        <item>Ivory Coast</item>
-        <item>Kenya</item>
-        <item>Lesotho</item>
-        <item>Liberia</item>
-        <item>Libya</item>
-        <item>Madagascar</item>
-        <item>Malawi</item>
-        <item>Mali</item>
-        <item>Mauritania</item>
-        <item>Mauritius</item>
-        <item>Morocco</item>
-        <item>Mozambique</item>
-        <item>Namibia</item>
-        <item>Niger</item>
-        <item>Nigeria</item>
-        <item>Rwanda</item>
-        <item>Sao Tome and Principe</item>
-        <item>Senegal</item>
-        <item>Seychelles</item>
-        <item>Sierra Leone</item>
-        <item>Somalia</item>
-        <item>South Africa</item>
-        <item>South Sudan</item>
-        <item>Sudan</item>
-        <item>Swaziland</item>
-        <item>Tanzania</item>
-        <item>Togo</item>
-        <item>Tunisia</item>
-        <item>Uganda</item>
-        <item>Zambia</item>
-        <item>Zimbabwe</item>
-        <item>Afghanistan</item>
-        <item>Bahrain</item>
-        <item>Bangladesh</item>
-        <item>Bhutan</item>
-        <item>Brunei</item>
-        <item>Burma</item>
-        <item>Myanmar</item>
-        <item>Cambodia</item>
-        <item>China</item>
-        <item>East Timor</item>
-        <item>India</item>
-        <item>Indonesia</item>
-        <item>Iran</item>
-        <item>Iraq</item>
-        <item>Israel</item>
-        <item>Japan</item>
-        <item>Jordan</item>
-        <item>Kazakhstan</item>
-        <item>North Korea</item>
-        <item>South Korea</item>
-        <item>Kuwait</item>
-        <item>Kyrgyzstan</item>
-        <item>Laos</item>
-        <item>Lebanon</item>
-        <item>Malaysia</item>
-        <item>Maldives</item>
-        <item>Mongolia</item>
-        <item>Nepal</item>
-        <item>Oman</item>
-        <item>Pakistan</item>
-        <item>Philippines</item>
-        <item>Qatar</item>
-        <item>Russian Federation</item>
-        <item>Saudi Arabia</item>
-        <item>Singapore</item>
-        <item>Sri Lanka</item>
-        <item>Syria</item>
-        <item>Tajikistan</item>
-        <item>Thailand</item>
-        <item>Turkey</item>
-        <item>Turkmenistan</item>
-        <item>United Arab Emirates</item>
-        <item>Uzbekistan</item>
-        <item>Vietnam</item>
-        <item>Yemen</item>
-        <item>Albania</item>
-        <item>Andorra</item>
-        <item>Armenia</item>
-        <item>Austria</item>
-        <item>Azerbaijan</item>
-        <item>Belarus</item>
-        <item>Belgium</item>
-        <item>Bosnia and Herzegovina</item>
-        <item>Bulgaria</item>
-        <item>Croatia</item>
-        <item>Cyprus</item>
-        <item>Czech Republic</item>
-        <item>Denmark</item>
-        <item>Estonia</item>
-        <item>Finland</item>
-        <item>France</item>
-        <item>Georgia</item>
-        <item>Germany</item>
-        <item>Greece</item>
-        <item>Hungary</item>
-        <item>Iceland</item>
-        <item>Ireland</item>
-        <item>Italy</item>
-        <item>Latvia</item>
-        <item>Liechtenstein</item>
-        <item>Lithuania</item>
-        <item>Luxembourg</item>
-        <item>Macedonia</item>
-        <item>Malta</item>
-        <item>Moldova</item>
-        <item>Monaco</item>
-        <item>Montenegro</item>
-        <item>Netherlands</item>
-        <item>Norway</item>
-        <item>Poland</item>
-        <item>Portugal</item>
-        <item>Romania</item>
-        <item>San Marino</item>
-        <item>Serbia</item>
-        <item>Slovakia</item>
-        <item>Slovenia</item>
-        <item>Spain</item>
-        <item>Sweden</item>
-        <item>Switzerland</item>
-        <item>Ukraine</item>
-        <item>United Kingdom</item>
-        <item>Vatican City</item>
-        <item>Antigua and Barbuda</item>
-        <item>Bahamas</item>
-        <item>Barbados</item>
-        <item>Belize</item>
-        <item>Canada</item>
-        <item>Costa Rica</item>
-        <item>Cuba</item>
-        <item>Dominica</item>
-        <item>Dominican Republic</item>
-        <item>El Salvador</item>
-        <item>Grenada</item>
-        <item>Guatemala</item>
-        <item>Haiti</item>
-        <item>Honduras</item>
-        <item>Jamaica</item>
-        <item>Mexico</item>
-        <item>Nicaragua</item>
-        <item>Panama</item>
-        <item>Saint Kitts and Nevis</item>
-        <item>Saint Lucia</item>
-        <item>Saint Vincent and the Grenadines</item>
-        <item>Trinidad and Tobago</item>
-        <item>United States</item>
-        <item>Argentina</item>
-        <item>Bolivia</item>
-        <item>Brazil</item>
-        <item>Chile</item>
-        <item>Colombia</item>
-        <item>Ecuador</item>
-        <item>Guyana</item>
-        <item>Paraguay</item>
-        <item>Peru</item>
-        <item>Suriname</item>
-        <item>Uruguay</item>
-        <item>Venezuela</item>
-        <item>Fiji</item>
-        <item>Kiribati</item>
-        <item>Marshall Islands</item>
-        <item>Micronesia</item>
-        <item>Nauru</item>
-        <item>New Zealand</item>
-        <item>Palau</item>
-        <item>Papua New Guinea</item>
-        <item>Samoa</item>
-        <item>Solomon Islands</item>
-        <item>Tonga</item>
-        <item>Tuvalu</item>
-        <item>Vanuatu</item>
-        <item>Australia</item>
     </string-array><string-array name="europe_array">
         <item>Albania</item>
         <item>Andorra</item>
@@ -9650,15 +9453,8 @@
 	</string-array><string-array name="Uruguay">
 		<item>Punta Del Este=PDP</item>
 		<item>Montevideo=MVD</item>
-	</string-array></file><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/strings.xml" qualifiers=""><string name="cities">Cities</string><string name="departure_date">Departure Date</string><string name="refundable_checkbox">Refundable Tickets Only</string><string name="prompt_password">password</string><string name="error_password_match">Passwords do not match</string><string name="title_activity_flight_info">FlightInfo</string><string name="title_activity_search_info">SearchInfo</string><string name="error_incorrect_password">Incorrect password</string><string name="budget_message">Enter your maximum budget per ticket:</string><string name="error_no_favorites">No favorites found</string><string name="title_activity_filter_search">FilterSearch</string><string name="continent_message">Continent:</string><string name="wait_time_message">Maximum wait time in hours:</string><string name="returning_date">Return Date(optional)</string><string name="clear_return_button">Clear Return</string><string name="profile_group_button">My Groups</string><string name="ticket_message">Quantity:</string><string name="prompt_password_2">confirm password</string><string name="alliance_message">Select your preferred alliance:</string><string name="filter_message">Please Enter the information to filter your Search Query</string><string-array name="class_array">
-        <item>Select Class</item>
-        <item>Coach</item>
-        <item>Premium Coach</item>
-        <item>Business</item>
-        <item>First</item>
-    </string-array><string name="departure_early_time">Earliest Departure Time</string><string name="ticket">Quantity</string><string name="city_message">Enter the cities you want with a comma separating each:</string><string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."</string><string name="airport_message">Enter Airport Code with a comma separating each:</string><string name="oceania">Oceania</string><string name="asia">Asia</string><string name="nonstop_checkbox">Direct Flight Only</string><string name="africa">Africa</string><string name="departure_late_time">Latest Departure Time</string><string name="prompt_email">email</string><string name="error_field_required">This field is required</string><string name="north_america">North America</string><string name="antarctica">Antarctica</string><string name="dashboard_search_button">Search</string><string name="title_activity_sign_up">Sign Up</string><string name="profile_make_group_button">New Group</string><string name="south_america">South America</string><string name="error_invalid_credentials">Invalid email or password</string><string name="countries">Countries</string><string name="search_button">Search</string><string name="title_activity_dash_board_search_history">DashBoardSearchHistory</string><string name="wait_time">Maximum Wait Time</string><string name="action_settings">Settings</string><string name="app_name">TakeOff</string><string name="country_message">Enter the countries you want with a comma separating each:</string><string name="clear_departure_button">Clear Departure</string><string name="title_activity_log_in">Log In</string><string name="title_activity_flight_info_view">FlightInfoView</string><string name="error_invalid_email">Invalid email</string><string name="action_sign_up">Sign Up</string><string name="action_log_in">Log In</string><string name="search_message">Please set your search parameters.\nDeparture Date and
-       at least one airport code is required</string><string name="budget">Maximum Budget</string><string name="airport">Airport Code</string><string name="australia">Australia</string><string name="travel_class_message">Select your preferred travel class:</string><string name="title_activity_tabbing">TabbingActivity</string><string name="history_button">History</string><string name="europe">Europe</string><string name="error_invalid_password">Invalid password</string><string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string><string name="refundable_message">Check if you only want refundable tickets:</string><string name="error_password_short">Password must be at least 4 characters</string></file><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/colors.xml" qualifiers=""><color name="colorPrimaryDark">#303F9F</color><color name="colorPrimary">#3F51B5</color><color name="colorAccent">#FF4081</color></file><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/dimens.xml" qualifiers=""><dimen name="activity_vertical_margin">16dp</dimen><dimen name="activity_horizontal_margin">16dp</dimen><dimen name="fab_margin">16dp</dimen></file><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+	</string-array></file><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/strings.xml" qualifiers=""><string name="error_password_match">Passwords do not match</string><string name="title_activity_flight_info">FlightInfo</string><string name="group_invite_dne">That user does not exist</string><string name="group_invite_success">Group member added!</string><string name="title_activity_filter_search">FilterSearch</string><string name="group_invite_error">Sorry, that\'s not a valid email</string><string name="wait_time_message">Maximum wait time in hours:</string><string name="returning_date">Return Date(optional)</string><string name="firebase_shared">members</string><string name="dashboard_no_results">No Results</string><string name="alliance_sky">SkyTeam</string><string name="ticket_message">Quantity:</string><string name="prompt_password_2">confirm password</string><string name="alliance_none">None</string><string name="alliance_message">Select your preferred alliance:</string><string name="error_no_groups">No groups to display</string><string name="alliance_star">Star Alliance</string><string name="firebase_uid">uid</string><string name="city_message">Enter the cities you want with a comma separating each:</string><string name="error_internal">Sorry, TakeOff has experienced an internal error. Please try again later.</string><string name="airport_message">Enter Airport Code with a comma separating each:</string><string name="oceania">Oceania</string><string name="firebase_fav">favoriteFlights</string><string name="date_format">MM-dd-yyyy</string><string name="asia">Asia</string><string name="dashboard_His">Search History</string><string name="alliance_oneworld">Oneworld</string><string name="north_america">North America</string><string name="group_extra">GROUP_MESSAGE</string><string name="group_shared">shared</string><string name="antarctica">Antarctica</string><string name="dashboard_search_button">Search</string><string name="south_america">South America</string><string name="error_invalid_credentials">Invalid email or password</string><string name="dashboard_Tag">Dashboard</string><string name="dashboard_his">searchHistory</string><string name="app_name">TakeOff</string><string name="clear_departure_button">Clear Departure</string><string name="title_activity_flight_info_view">FlightInfoView</string><string name="dashboard_Pro">Profile</string><string name="action_log_in">Log In</string><string name="budget">Maximum Budget</string><string name="error_invalid_password">Invalid password</string><string name="group_share_none">You have no favorites to share!</string><string name="firebase_users">users</string><string name="dashboard_tag">dashboard</string><string name="cities">Cities</string><string name="departure_date">Departure Date</string><string name="refundable_checkbox">Refundable Tickets Only</string><string name="class_p_coach">Premium Coach</string><string name="group_invite">Add a Member</string><string name="prompt_password">password</string><string name="firebase_grn">groupname</string><string name="dashboard_flight_mesg">FlightActual</string><string name="firebase_grp">groups</string><string name="dashboard_pro">profile</string><string name="title_activity_search_info">SearchInfo</string><string name="error_incorrect_password">Incorrect password</string><string name="profile_select">Select Image</string><string name="budget_message">Enter your maximum budget per ticket:</string><string name="error_no_favorites">No favorites found</string><string name="continent_message">Continent:</string><string name="please_sign_in">Please sign in to use this feature!</string><string name="clear_return_button">Clear Return</string><string name="group_share">Share a Flight</string><string name="group_invite_email">Enter the email of the new member:</string><string name="firebase_profile_fail">Failed to retrieve user information</string><string name="profile_group_button">My Groups</string><string name="profile_enter_name">Please enter the new group name:</string><string name="filter_message">Please Enter the information to filter your Search Query</string><string name="departure_early_time">Earliest Departure Time</string><string name="class_business">Business</string><string name="ticket">Quantity</string><string name="firebase_sqs">searchQueries</string><string name="firebase_mem">members</string><string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string><string name="nonstop_checkbox">Direct Flight Only</string><string name="africa">Africa</string><string name="firebase_img_type">image/*</string><string name="departure_late_time">Latest Departure Time</string><string name="error_field_required">This field is required</string><string name="prompt_email">email</string><string name="group_share_choose">Choose one of your favorite Flights to share:</string><string name="title_activity_sign_up">Sign Up</string><string name="class_none">None</string><string name="profile_make_group_button">New Group</string><string name="class_first">First</string><string name="class_coach">Coach</string><string name="dashboard_Fav">Favorites</string><string name="countries">Countries</string><string name="search_button">Search</string><string name="title_activity_dash_board_search_history">DashBoardSearchHistory</string><string name="firebase_icon">icon</string><string name="wait_time">Maximum Wait Time</string><string name="action_settings">Settings</string><string name="country_message">Enter the countries you want with a comma separating each:</string><string name="title_activity_log_in">Log In</string><string name="error_invalid_email">Invalid email</string><string name="action_sign_up">Sign Up</string><string name="profile_ok">OK</string><string name="search_message">Please set your search parameters.\nDeparture Date and
+       at least one airport code is required</string><string name="airport">Airport Code</string><string name="australia">Australia</string><string name="firebase_pic">profilePicture</string><string name="travel_class_message">Select your preferred travel class:</string><string name="title_activity_tabbing">TabbingActivity</string><string name="history_button">History</string><string name="europe">Europe</string><string name="firebase_uname">username</string><string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string><string name="refundable_message">Check if you only want refundable tickets:</string><string name="dashboard_fav">favorites</string><string name="error_password_short">Password must be at least 4 characters</string></file><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/colors.xml" qualifiers=""><color name="colorPrimaryDark">#303F9F</color><color name="colorPrimary">#3F51B5</color><color name="colorAccent">#FF4081</color></file><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/dimens.xml" qualifiers=""><dimen name="activity_vertical_margin">16dp</dimen><dimen name="activity_horizontal_margin">16dp</dimen><dimen name="fab_margin">16dp</dimen></file><file path="/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/values/styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

@@ -1,12 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
+
+    <android.widget.Toolbar
+        android:id="@+id/group_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp">
+        <Button
+            android:id="@+id/group_invite_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/group_invite"
+            android:layout_gravity="center_horizontal"
+            android:onClick="invite"
+            />
+        <Button
+            android:id="@+id/group_share_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/group_share"
+            android:layout_gravity="center_horizontal"
+            android:onClick="share"
+            />
+    </android.widget.Toolbar>
+
     <TextView
         android:layout_width="269dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:id="@+id/textViewGroup"
+        android:textColor="#000000"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.35" />
+        android:textSize="30dp"/>
+
+    <ListView
+        android:id="@+id/member_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="#B29090"/>
+
+    <ListView
+        android:id="@+id/group_favs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="#B29090"/>
+
+        <!--ImageView
+            android:id="@+id/member_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp" />
+
+        <TextView
+            android:id="@+id/member_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/member_icon"
+            android:layout_centerVertical="true"
+            android:textSize="16dp" /-->
+
+
 </LinearLayout>
