@@ -75,7 +75,7 @@ public class ProfileFragment extends Fragment {
         return rootView;
     }
 
-    public void setProfilePictrue(Bitmap image, final String base64Image) {
+    public void setProfilePictrue(Bitmap image, final String base64Image, Bitmap icon, final String base64Icon) {
         profilePic.setImageBitmap(image);
 
         AuthData auth = WelcomeActivity.USER_FIREBASE.getAuth();
@@ -87,6 +87,7 @@ public class ProfileFragment extends Fragment {
                 // get the username to display
                 HashMap<String, Object> uData = (HashMap<String, Object>) snapshot.getValue();
                 uData.put(getString(R.string.firebase_pic), base64Image);
+                uData.put(getString(R.string.firebase_icon), base64Icon);
                 userRef.updateChildren(uData);
             }
 
@@ -98,8 +99,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-
+        // TODO: Set the icon (Bitmap icon)
 
         profilePic.invalidate();
     }

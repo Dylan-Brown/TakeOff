@@ -41,7 +41,16 @@
     <ListView
         android:id="@+id/member_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="#B29090"/>
+
+    <ListView
+        android:id="@+id/group_favs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="#B29090"/>
 
         <!--ImageView
             android:id="@+id/member_icon"
@@ -57,6 +66,6 @@
             android:layout_toRightOf="@+id/member_icon"
             android:layout_centerVertical="true"
             android:textSize="16dp" /-->
-    </ListView>
+
 
 </LinearLayout>

@@ -27,7 +27,6 @@ import java.util.regex.Pattern;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 
 /**
  * This class represents the Activity relevant to displaying a group's information. The name of the
@@ -37,7 +36,9 @@ public class GroupPage extends Activity {
 
     private TextView groupNameView;
     private ListView groupMembersView;
+    private ListView groupSharedView;
     private String[] groupMembers;
+    private String[] groupShared;
     private String groupName;
     private boolean userHasFavorites = false;
 
@@ -69,10 +70,12 @@ public class GroupPage extends Activity {
                 }
 
                 // get the shared flights
-                String shared = getString(R.string.firebase_shared);
+                String shared = getString(R.string.group_shared);
                 if (data.get(shared) != null) {
-                    ArrayList<String> sharedFlights = (ArrayList<String>) data.get(shared);
-                    // TODO: Display these shared flights
+                    setSharedAdapter((ArrayList<String>) data.get(shared));
+                    // TODO: Confirm this worked
+                } else {
+                    // TODO: Notify user this group has no shared flights
                 }
             }
             @Override
@@ -323,6 +326,16 @@ public class GroupPage extends Activity {
         groupMembersView = (ListView) findViewById(R.id.member_list);
         int layout = android.R.layout.simple_list_item_single_choice;
         groupMembersView.setAdapter(new ArrayAdapter(this, layout, groupMembers));
+    }
+
+    private void setSharedAdapter(ArrayList<String> favorites) {
+        groupShared = new String[favorites.size()];
+        for (int i = 0; i < favorites.size(); i++) {
+            groupShared[i] = favorites.get(i);
+        }
+        groupSharedView = (ListView) findViewById(R.id.group_favs);
+        int layout = android.R.layout.simple_list_item_single_choice;
+        groupSharedView.setAdapter(new ArrayAdapter(this, layout, groupShared));
     }
 
 }

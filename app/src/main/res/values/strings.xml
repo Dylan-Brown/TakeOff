@@ -110,6 +110,7 @@
     <string name="group_invite_dne">That user does not exist</string>
     <string name="group_invite_success">Group member added!</string>
     <string name="group_share">Share a Flight</string>
+    <string name="group_shared">shared</string>
     <string name="group_share_none">You have no favorites to share!</string>
     <string name="group_share_choose">Choose one of your favorite Flights to share:</string>
 
@@ -124,6 +125,7 @@
     <string name="firebase_sqs">searchQueries</string>
     <string name="firebase_mem">members</string>
     <string name="firebase_pic">profilePicture</string>
+    <string name="firebase_icon">icon</string>
     <string name="firebase_img_type">image/*</string>
     <string name="firebase_shared">members</string>
 

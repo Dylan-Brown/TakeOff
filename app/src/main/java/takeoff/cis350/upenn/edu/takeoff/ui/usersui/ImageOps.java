@@ -4,7 +4,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.MediaStore;
 
@@ -20,8 +24,8 @@ import java.io.IOException;
  */
 public class ImageOps {
 
-    private static int profilePicDimension = 336;
-    private static int iconPicDimension = 50;
+    private static int profileDimension = 336;
+    private static int iconDimension = 50;
 
     /**
      * Code sourced from the following:
@@ -29,6 +33,7 @@ public class ImageOps {
      *  https://stackoverflow.com/questions/2789276/android-get-real-path-by-uri-getpath
      *  https://stackoverflow.com/questions/10796660/convert-image-to-bitmap
      *  https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
+     *  https://stackoverflow.com/questions/14050813/how-to-make-an-image-fit-into-a-circular-frame-in-android
      */
 
     /**
@@ -38,10 +43,33 @@ public class ImageOps {
      */
     public static Bitmap scaleProfilePictureBitmap(Bitmap bitmap) {
         //get the original width and height
-        return Bitmap.createScaledBitmap(bitmap, profilePicDimension, profilePicDimension, true);
+        return Bitmap.createScaledBitmap(bitmap, profileDimension, profileDimension, true);
     }
 
-    //
+    /**
+     * Turns a profile bitmap image into a small, round icon
+     * @param bitmap
+     * @return
+     */
+    public static Bitmap createProfileIcon(Bitmap bitmap) {
+        Bitmap scaled = Bitmap.createScaledBitmap(bitmap, iconDimension, iconDimension, true);
+
+        Bitmap result = Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(result);
+
+        int color = 0xff424242;
+        Paint paint = new Paint();
+        Rect rect = new Rect(0, 0, 200, 200);
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawCircle(50, 50, 50, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(scaled, rect, rect, paint);
+
+        return result;
+    }
 
     /**
      * Get an image's filepath from the Uri object
@@ -115,4 +143,7 @@ public class ImageOps {
             return null;
         }
     }
+
+
+
 }

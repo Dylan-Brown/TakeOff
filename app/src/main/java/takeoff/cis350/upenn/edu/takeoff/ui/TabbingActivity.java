@@ -170,10 +170,14 @@ public class TabbingActivity extends AppCompatActivity {
             image = ImageOps.scaleProfilePictureBitmap(image);
             String base64Image = ImageOps.bitmapToString(image);
 
+            // creaete the icon
+            Bitmap icon = ImageOps.createProfileIcon(image);
+            String base64Icon = ImageOps.bitmapToString(icon);
+
             // store the string, display the iamge
             String tag = getString(R.string.dashboard_pro);
             prof = (ProfileFragment) this.getSupportFragmentManager().findFragmentByTag(tag);
-            prof.setProfilePictrue(image, base64Image);
+            prof.setProfilePictrue(image, base64Image,  icon, base64Icon);
 
         }
     }
@@ -336,6 +340,8 @@ public class TabbingActivity extends AppCompatActivity {
 
     /**
      * This helper method will specify a user as a member of a new group in Firebase
+     * @param userUid the unique uid of the user
+     * @param newGroupName the name of the new group
      */
     private void setNewGroupForUser(final String userUid, final String newGroupName) {
         final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
@@ -377,7 +383,7 @@ public class TabbingActivity extends AppCompatActivity {
 
     /**
      * After a new group is confirmed and created, go to the new group page
-     * @param groupName
+     * @param groupName the name of the group
      */
     protected void goToGroupPage(String groupName) {
         // start the GroupPage activity
