@@ -60,14 +60,21 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
+/*
 
+Jason:			      AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA
+Anaka: Take Off               AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ
+Judy: Flight Engine	      AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos
+Dylan: flight-1223            AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w
+Judy: 			AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU
+*/
 /**
  * This class is the page the user sees when they enter their requirements for the flight search
  */
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
-        + "search?key=AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w";
+        + "search?key=AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;

@@ -65,7 +65,7 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
             HttpResponse response = hc.execute(httpPost);
             // StatusLine stat = response.getStatusLine();
             int status = response.getStatusLine().getStatusCode();
-
+            Log.e("ASyncTask","trying");
             if (status == 200) {
                 HttpEntity entity = response.getEntity();
                 JSONObject jsonResponse = new JSONObject(EntityUtils.toString(entity));
@@ -89,6 +89,7 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
     @Override
     protected void onPostExecute(JSONArray result) {
         try {
+            Log.e("ASyncTask","It executed worked.");
             QPXJSONReader.getAPIResultsAsFlights(result);
             if(result != null) {
                 System.out.println(result.toString(2));
