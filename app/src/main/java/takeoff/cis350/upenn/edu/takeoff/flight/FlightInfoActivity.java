@@ -28,7 +28,7 @@ public class FlightInfoActivity extends AppCompatActivity {
         // get the Flight information from the bundle
         Bundle extras = getIntent().getExtras();
         String extraMesg = getString(R.string.dashboard_flight_mesg);
-        flight = (Flight) extras.get(extraMesg);
+        flight = Flight.parseFlight(extras.get(extraMesg));
         view = new FlightInfoView (this, flight.humanReadable());
         setContentView(view);
     }

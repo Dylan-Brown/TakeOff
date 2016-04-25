@@ -32,88 +32,114 @@ public class Flight implements Serializable {
     String arrivalTime = "";            // HH-MM
 
     // these variables are for the return flight
-    int retduration = 0;                // duration of the Flight in minutes
-    int retnumOfConnections = 0;        // number of one-way connections
-    String retdepartureCityCode = "";   // XYZ
-    String retdepartureDate = "";       // YYYY-MM-DD
-    String retdepartureTime = "";       // HH-MM
-    String retarrivalCityCode = "";     // XYZ
-    String retarrivalDate = "";         // YYYY-MM-DD
-    String retarrivalTime = "";         // HH-MM
+    int retDuration = 0;                // duration of the Flight in minutes
+    int retNumOfConnections = 0;        // number of one-way connections
+    String retDepartureCityCode = "";   // XYZ
+    String retDepartureDate = "";       // YYYY-MM-DD
+    String retDepartureTime = "";       // HH-MM
+    String retArrivalCityCode = "";     // XYZ
+    String retArrivalDate = "";         // YYYY-MM-DD
+    String retArrivalTime = "";         // HH-MM
 
+    /**
+     * Get the SubFlights of this Flight
+     * @return the SubFlights
+     */
     public ArrayList<SubFlight> getSubFlights() {
         return this.subFlights;
     }
 
+    /**
+     * Get the number of connections of this Flight
+     * @return the number of connections
+     */
     public int getNumOfConnections() {
         return this.numOfConnections;
     }
 
+    /**
+     * Get the boolean representing if this Flight is a return Flight
+     * @return the boolean
+     */
     public boolean isReturnTrip() {
         return this.isReturnTrip;
     }
 
+    /**
+     * Get the boolean representing if this Flight is a direct Flight
+     * @return the boolean
+     */
     public boolean isDirectFlight() {
         return this.isDirectFlight;
     }
 
+    /**
+     * Get the unique ID of this Flight
+     * @return the unique ID
+     */
     public String getId() {
         return this.id;
     }
 
+    /**
+     * Get the city code of the city from which this Flight departs
+     * @return the city code
+     */
     public String getDepartureCityCode() {
         return this.departureCityCode;
     }
 
+    /**
+     * Get the date on which this Flight departs
+     * @return the date
+     */
     public String getDepartureDate() {
         return this.departureDate;
     }
 
+    /**
+     * Get the time at which this Flight departs
+     * @return the time
+     */
     public String getDepartureTime() {
         return this.departureTime;
     }
 
+    /**
+     * Get the city code of the city at which this Flight arrives
+     * @return the city code
+     */
     public String getArrivalCityCode() {
         return this.arrivalCityCode;
     }
 
+    /**
+     * Get the date on which this Flight arrives
+     * @return the date
+     */
     public String getArrivalDate() {
         return this.arrivalDate;
     }
 
+    /**
+     * Get the time at which this Flight arrives
+     * @return the time
+     */
     public String getArrivalTime() {
         return this.arrivalTime;
     }
 
+    /**
+     * Get the cost of this Flight
+     * @return the cost
+     */
     public double getCost() {
         return this.cost;
     }
 
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(id + "-");
-        sb.append(isReturnTrip + "-");
-        sb.append(((int) cost) + "-");
-        sb.append(numOfConnections + "-");
-        sb.append(departureCityCode + "-");
-        sb.append(departureDate + "-");
-        sb.append(departureTime + "-");
-        sb.append(arrivalCityCode + "-");
-        sb.append(arrivalDate + "-");
-        sb.append(arrivalTime + "-");
-        sb.append(retdepartureCityCode + "-");
-        sb.append(retdepartureTime + "-");
-        sb.append(retdepartureDate + "-");
-        sb.append(retarrivalCityCode + "-");
-        sb.append(retarrivalDate + "-");
-        sb.append(retarrivalTime + "-");
-        return sb.toString();
-    }
-
     /**
-     * Turns a Flight object into a String that contains the basic information about the Flight
+     * Turns a Flight object into a String that contains the basic information
+     * about the Flight
      * @return a human readable String
      */
     public String humanReadable() {
@@ -123,79 +149,102 @@ public class Flight implements Serializable {
         sb.append("Departure Date: " + this.departureDate + "\n");
         sb.append("Arrival City: " + this.arrivalCityCode + "\n");
         sb.append("Arrival Date: " + this.arrivalDate + "\n");
+        sb.append("id: " + this.id);
         return sb.toString();
     }
 
     /**
-     * Creates a Flight object representing the information from the human-readable format
-     * @param hr the human readable String containing the Flight information
-     * @return the new Flight object
+     * Compares two Flights; the id field is assumed to be unique among Flights
+     * and is the only field necessary to compare.
+     * @return true if the id of this  flight and the id of o are the same
      */
-    public static Flight fromHumanReadable(String hr) {
-        Flight f = new Flight();
-        String[] info = hr.split("\n");
-        for (int i = 0; i < info.length; i++) {
-            info[i] = info[i].split(": ")[1];
+    @Override
+    public boolean equals(Object o) {
+        // assert o is not null and is a Flight class instance
+        if (o == null || !o.getClass().equals(Flight.class)) {
+            return false;
         }
-        f.cost = Double.parseDouble(info[0]);
-        f.departureCityCode = info[1];
-        f.departureDate = info[2];
-        f.arrivalCityCode = info[3];
-        f.arrivalDate = info[4];
+        Flight f = (Flight) o;
 
-        return f;
-    }
-
-
-    /**
-     * Compares the flightID's of two Flights
-     * @param f1 the first Flight to compare
-     * @param f2 the second Flight to compare
-     * @return true if the id's are equal, false otherwase
-     */
-    public static boolean minimalCompare(Flight f1, Flight f2) {
-        return f1.id.equals(f2.id);
+        // compare the ids of the Flights
+        return f.id.equals(this.id);
     }
 
     /**
-     * Takes a string representation of a Flight and parses it into a new Flight object
+     * Takes a string representation of a Flight and parses it into a new Flight
+     * object
      * @param o the string representing the flight
      * @return the new Flight object
      */
-    public static Flight parseFlight(String o) {
-        String[] info = o.contains(":") ?
-                Flight.fromHumanReadable(o).toString().split("-") : o.split("-");
-
+    public static Flight parseFlight(Object o) {
+        // assert o is not null and is a Flight class instance
+        if (o == null || !o.getClass().equals(String.class)) {
+            return new SubFlight("", "", "", 0);
+        }
+        String s = (String) o;
+        String[] info = s.split("-");
         Flight f = new Flight();
-        if (info.length < 23) {
-            f.cost = Double.parseDouble(info[1]);
-            f.departureCityCode = info[2];
-            f.departureDate = info[3];
-            f.arrivalCityCode = info[4];
-            f.arrivalDate = info[5];
 
-        } else {
-            f.id = info[0];
-            f.isReturnTrip = Boolean.parseBoolean(info[1]);
-            f.cost = Double.parseDouble(info[2]);
-            f.numOfConnections = Integer.parseInt(info[3]);
-            f.departureCityCode = info[6];
-            f.departureDate = info[7];
-            f.departureTime = info[8];
-            f.arrivalCityCode = info[9];
-            f.arrivalDate = info[10];  //10
-            f.arrivalTime = info[11];
-            f.retdepartureCityCode = info[13];
-            f.retdepartureTime = info[14];
-            f.retdepartureDate = info[15];
-            f.retarrivalCityCode = info[16];
-            f.retarrivalDate = info[17];
-            f.retarrivalTime = info[18];
-            if (info.length >= 24) {
-                f.arrivalDate = info[23];
-            }
+        // parse the instance variables
+        f.id = info[0];
+        f.isReturnTrip = Boolean.parseBoolean(info[1]);
+        f.isDirectFlight = Boolean.parseBoolean(info[2]);
+        f.cost = Double.parseDouble(info[3]);
+        f.duration = Integer.parseInt(info[4]);
+        f.numOfConnections = Integer.parseInt(info[5]);
+        f.departureCityCode = info[6];
+        f.departureDate = info[7];
+        f.departureTime = info[8];
+        f.arrivalCityCode = info[9];
+        f.arrivalDate = info[10];
+        f.arrivalTime = info[11];
+        f.retDuration = Integer.parseInt(info[12]);
+        f.retNumOfConnections = Integer.parseInt(info[13]);
+        f.retDepartureCityCode = info[14];
+        f.retDepartureDate = info[15];
+        f.retDepartureTime = info[16];
+        f.retArrivalCityCode = info[17];
+        f.retArrivalDate = info[18];
+        f.retArrivalTime = info[19];
+
+        // parse each SubFlight
+        for (int i = 20; i < info.length; i++) {
+            f.subFlights.add(SubFlight.parseSubFlight(info[i]));
         }
         return f;
+    }
+
+    /**
+     * Generate a string based on the Flight's instance variables that can later
+     * be parsed into another Flight instance
+     * @return the string containing the instance variables
+     */
+    @Override
+    public String toString() {
+        String s = id;
+        s += "-" + isReturnTrip;
+        s += "-" + isDirectFlight;
+        s += "-" + cost;
+        s += "-" + duration;
+        s += "-" + numOfConnections;
+        s += "-" + departureCityCode;
+        s += "-" + departureDate;
+        s += "-" + departureTime;
+        s += "-" + arrivalCityCode;
+        s += "-" + arrivalDate;
+        s += "-" + arrivalTime;
+        s += "-" + retDuration;
+        s += "-" + retNumOfConnections;
+        s += "-" + retDepartureCityCode;
+        s += "-" + retDepartureDate;
+        s += "-" + retDepartureTime;
+        s += "-" + retArrivalCityCode;
+        s += "-" + retArrivalDate;
+        s += "-" + retArrivalTime;
+        for (SubFlight sf :  subFlights) {
+            s += "-" + sf.toString();
+        }
+        return s;
     }
 
 }

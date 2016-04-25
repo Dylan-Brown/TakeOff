@@ -36,6 +36,8 @@ public class Dashboard extends ListFragment {
     public static List<Flight> FlightCache=new ArrayList<>();
     private List<Flight> flightResults;
     private ListView listView;
+    private String[] flights;
+    private Flight[] flightObjects;
     private boolean initialLoad = true;
 
     @Override
@@ -61,7 +63,7 @@ public class Dashboard extends ListFragment {
             }
             else {
                 // display a list of the flight information
-                String[] flights = loadFlights();
+                loadFlights();
                 int layout1 = android.R.layout.simple_list_item_single_choice;
                 int layout2 = android.R.layout.simple_list_item_1;
                 setListAdapter(new ArrayAdapter(getActivity(), layout1, flights));
@@ -99,12 +101,14 @@ public class Dashboard extends ListFragment {
      * Load the flight results into human readable strings
      * @return the array of human-readable flight strings
      */
-    private String[] loadFlights() {
-        String[] flights = new String[flightResults.size()];
+    private void loadFlights() {
+        // instantiate and populate the arrays
+        flights = new String[flightResults.size()];
+        flightObjects = new Flight[flightResults.size()];
         for (int i = 0; i < flightResults.size(); i++) {
-            flights[i++] = flightResults.get(i).humanReadable();
+            flightObjects[i] = flightResults.get(i);
+            flights[i] = flightResults.get(i).humanReadable();
         }
-        return flights;
     }
 
     /**
@@ -114,22 +118,18 @@ public class Dashboard extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new  Intent(getActivity(), FlightInfoActivity.class);
 
-        // parse the TextView to a new Flight for comparsion
-        Flight flight = Flight.fromHumanReadable(((TextView) v).getText().toString());
-        String extraMesg = getString(R.string.dashboard_flight_mesg);
-
-        // determine which Flight in flightResults this refers to
-        boolean found = false;
-        for (Flight f : flightResults) {
-            if (Flight.minimalCompare(f, flight)) {
-                intent.putExtra(extraMesg, f);
-                found = true;
+        // find the corresponding Flight object
+        String text = ((TextView) v).getText().toString();
+        Flight flightReferenced = new Flight();
+        for (int i = 0; i < flights.length; i++) {
+            if (flights[i].equals(text)) {
+                flightReferenced = flightObjects[i];
                 break;
             }
         }
-        if (!found) {
-            intent.putExtra(extraMesg, flight);
-        }
+        String extraMesg = getString(R.string.dashboard_flight_mesg);
+        Log.e("Dashboard", "flighReferenced.toString() is " + flightReferenced.toString());
+        intent.putExtra(extraMesg, flightReferenced.toString());
 
         // start the FlightInfoActivity
         startActivity(intent);

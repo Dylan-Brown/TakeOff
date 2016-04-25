@@ -101,19 +101,19 @@ public class QPXJSONReader {
             fullFlight.arrivalDate = lastF.arrivalDate + "";
             fullFlight.duration = slices.getJSONObject(0).getInt("duration");
             if (fullFlight.isReturnTrip) {
-                fullFlight.retnumOfConnections = sfList.size() - roundTripCounter-1;
+                fullFlight.retNumOfConnections = sfList.size() - roundTripCounter-1;
                 //first flight for return trip
                 firstF = sfList.get(roundTripCounter);
                 //last flight for return trip
                 lastF = sfList.get(sfList.size() - 1);
-                fullFlight.retduration = slices.getJSONObject(1).getInt("duration");
-                fullFlight.retdepartureCityCode = firstF.departureCityCode + "";
-                fullFlight.retdepartureTime = firstF.departureTime + "";
-                fullFlight.retdepartureDate = firstF.departureDate + "";
-                fullFlight.retarrivalCityCode = lastF.arrivalCityCode + "";
-                fullFlight.retarrivalTime = lastF.arrivalTime + "";
-                fullFlight.retarrivalDate = lastF.arrivalDate + "";
-                fullFlight.retdepartureCityCode = lastF.departureCityCode + "";
+                fullFlight.retDuration = slices.getJSONObject(1).getInt("duration");
+                fullFlight.retDepartureCityCode = firstF.departureCityCode + "";
+                fullFlight.retDepartureTime = firstF.departureTime + "";
+                fullFlight.retDepartureDate = firstF.departureDate + "";
+                fullFlight.retArrivalCityCode = lastF.arrivalCityCode + "";
+                fullFlight.retArrivalTime = lastF.arrivalTime + "";
+                fullFlight.retArrivalDate = lastF.arrivalDate + "";
+                fullFlight.retDepartureCityCode = lastF.departureCityCode + "";
             }
             if ((fullFlight.isReturnTrip && sfList.size() == 2) || sfList.size() == 1) {
                 fullFlight.isDirectFlight = true;
@@ -142,7 +142,7 @@ public class QPXJSONReader {
             System.out.println("Arrival: " + flight.arrivalCityCode);
             System.out.println("Arrival Time: " + flight.arrivalTime);
             System.out.println("ArrivalDate: " + flight.arrivalDate);
-            System.out.println("Num Connections: " + flight.retnumOfConnections);
+            System.out.println("Num Connections: " + flight.retNumOfConnections);
 
             int counter = 0;
 
@@ -156,13 +156,13 @@ public class QPXJSONReader {
             }
             if (flight.isReturnTrip) {
 
-                System.out.println(" Ret Departure: " + flight.retdepartureCityCode);
-                System.out.println(" Ret Departure Time: " + flight.retdepartureTime);
-                System.out.println(" Ret Departure Date: " + flight.retdepartureDate);
-                System.out.println(" Ret Arrival: " + flight.retarrivalCityCode);
-                System.out.println(" Ret Arrival Time: " + flight.retarrivalTime);
-                System.out.println(" Ret ArrivalDate: " + flight.retarrivalDate);
-                System.out.println("Ret Num Connections: " + flight.retnumOfConnections);
+                System.out.println(" Ret Departure: " + flight.retDepartureCityCode);
+                System.out.println(" Ret Departure Time: " + flight.retDepartureTime);
+                System.out.println(" Ret Departure Date: " + flight.retDepartureDate);
+                System.out.println(" Ret Arrival: " + flight.retArrivalCityCode);
+                System.out.println(" Ret Arrival Time: " + flight.retArrivalTime);
+                System.out.println(" Ret ArrivalDate: " + flight.retArrivalDate);
+                System.out.println("Ret Num Connections: " + flight.retNumOfConnections);
                 counter = 0;
                 for (SubFlight sf : flight.subFlights) {
                     counter++;

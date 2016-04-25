@@ -35,12 +35,12 @@ public class DummyFlightInfo {
             temp.arrivalCityCode = "NY";
             temp.arrivalDate = "01/01/2017";
             temp.arrivalTime="14/20";
-            temp.retdepartureCityCode="N/A";
-            temp.retdepartureTime="N/A";
-            temp.retdepartureDate="N/A";
-            temp.retarrivalCityCode="N/A";
-            temp.retarrivalDate="N/A";
-            temp.retarrivalTime="N/A";
+            temp.retDepartureCityCode="N/A";
+            temp.retDepartureTime="N/A";
+            temp.retDepartureDate="N/A";
+            temp.retArrivalCityCode="N/A";
+            temp.retArrivalDate="N/A";
+            temp.retArrivalTime="N/A";
 
             // store the dummy Flight and its String representation
             flights[i] = temp;

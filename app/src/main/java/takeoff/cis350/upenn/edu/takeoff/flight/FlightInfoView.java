@@ -40,11 +40,11 @@ public class FlightInfoView extends View {
      * The constructor for the class. Calls View's constructor and sets the FireBase reference.
      * Also uses the FlightInfo string to get relevant Flight information to display
      */
-    public FlightInfoView(Context c, String FlightInfo) {
+    public FlightInfoView(Context c, String flightInfo) {
         super(c);
 
         // save the Flight information
-        this.flight = Flight.fromHumanReadable(FlightInfo);
+        this.flight = Flight.parseFlight(flightInfo);
 
         // if the user is logged in and determine if this flight is among their favorites
         final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
