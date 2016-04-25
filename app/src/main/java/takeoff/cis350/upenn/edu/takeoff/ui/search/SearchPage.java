@@ -74,7 +74,7 @@ Judy: 			AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
-        + "search?key=AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU";
+        + "search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
@@ -469,11 +469,11 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setAlliance(alliance.toUpperCase());
         spp.setNonStop(nonstop);
         spp.setRefundable(refundable);
-        //spp.setairportCodes(airportCodes);
+        spp.setAirportCodes(airportCodes);
         final SearchQuery sq = spp.getQuery();
         String request = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
 
-
+        new JSONAsyncTask(this.getApplicationContext()).execute(request);
         // Store the SearchQuery in FireBase
         final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
         if (usersRef.getAuth() !=  null) {
@@ -506,7 +506,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
         //finish();
         //System.out.println("SearchPage: About to execute request...");
-        new JSONAsyncTask(this.getApplicationContext()).execute(request);
 
 
         //Intent intent = new Intent(this, Dashboard.class);
@@ -605,55 +604,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
 
     /**
-     * @param departure - string representing departure date in the format MM-dd-yyyy
-     * @param returning - string representing return date in the format MM-dd-yyyy
-     * @return boolean indicating whether the departure and return dates are valid inputs
-     */
-    private boolean validDates(String departure, String returning) {
-        int[] departureArr = parseDate(departure);
-        int[] arrivalArr = parseDate(returning);
-        //entered in years that have passed
-        if (departureArr[2] < this.year || arrivalArr[2] < this.year) {
-            return false;
-        }
-        //departure year after arrival year
-        if (departureArr[2] > arrivalArr[2]) {
-            return false;
-        }
-        //same year
-        else if (departureArr[2] == arrivalArr[2]) {
-            //entered in months that have passed in this year
-            if (departureArr[2] == this.year &&
-                    (departureArr[0] < this.month || arrivalArr[0] < this.month)) {
-                return false;
-            }
-
-            //departure month after arrival month
-            if (departureArr[0] > arrivalArr[0]) {
-                return false;
-            }
-
-            //same month, same year
-            else if (departureArr[0] == arrivalArr[0]) {
-
-                //entered in days that have passed for this month
-                if (departureArr[0] == this.month &&
-                        (departureArr[1] < this.day || arrivalArr[1] < this.day)) {
-                    return false;
-                }
-                //departure day after arrival day
-                if (departureArr[1] > arrivalArr[1]) {
-                    return false;
-                }
-                return true;
-            }
-        } else {
-            return true;
-        }
-        return true;
-    }
-
-    /**
      * @param date - the string represent of the desired date in the format MM-dd-yyyy
      * @return integer array with the integers where [0] = month, [1] = day of month, [2] = year
      */
@@ -744,11 +694,10 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
                     return jsonArray;
                 }
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            Log.e("SearchPage","OH??");
             return null;
         }
 
@@ -767,7 +716,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 Log.e("SearchPage", "ASyncTask: FAILED!");
             }
             Log.e("SearchPage", "ENDING SEARCH PAGE");
-            finish();
         }
     }
 }

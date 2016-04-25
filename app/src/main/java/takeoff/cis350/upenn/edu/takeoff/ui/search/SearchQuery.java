@@ -11,7 +11,7 @@ public class SearchQuery {
 
     public Time timeOfSearch;
     public String origin=" ";
-    public String destination=" ";
+    public String destination="";
     public String date=""; //in the format of YYYY-MM-DD
     public boolean isRoundtrip;
     public String returnDate=""; //in the format of YYYY-MM-DD, only present if roundtrip

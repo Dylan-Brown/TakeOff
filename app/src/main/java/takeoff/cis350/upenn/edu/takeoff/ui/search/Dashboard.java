@@ -49,7 +49,7 @@ public class Dashboard extends ListFragment {
      */
     public void loadDashboard() {
         listView = getListView();
-
+        Log.e("Dashboard","LogDashboard");
         // get the flight information information, if there is any
         flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
 
