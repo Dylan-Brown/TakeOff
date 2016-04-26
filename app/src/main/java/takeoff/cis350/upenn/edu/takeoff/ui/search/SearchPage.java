@@ -707,7 +707,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 Log.e("SearchPage", "IN POST EXECUTE");
                 QPXJSONReader.getAPIResultsAsFlights(result);
                 Log.e("SearchPage", "ASyncTask: IT WORKS!");
-
+                finish();
                 if(result != null) {
                     Log.e("SearchPage", "result.toString(2) = " + result.toString(2));
                 }
