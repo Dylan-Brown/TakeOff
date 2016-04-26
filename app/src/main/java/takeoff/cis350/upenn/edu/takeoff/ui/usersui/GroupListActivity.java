@@ -60,12 +60,11 @@ public class GroupListActivity extends ListActivity {
                     String grp = getString(R.string.firebase_grp);
                     if (uData.get(grp) != null) {
                         // user is a member of some groups; get their names
-                        HashMap<String, Object> uGroups = (HashMap<String, Object>) uData.get(grp);
+                        ArrayList<String> uGroups = (ArrayList<String>) uData.get(grp);
                         Log.e("uGroups", uGroups.toString());
                         HashSet<String> groupsSet = new HashSet<String>();
-                        for (String o : uGroups.keySet()) {
-                            String s = (String) uGroups.get(o);
-                            groupsSet.add(s);
+                        for (String o : uGroups) {
+                            groupsSet.add(o);
                         }
                         setGroups(groupsSet);
                     } else {

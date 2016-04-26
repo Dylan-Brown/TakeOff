@@ -141,13 +141,19 @@ public class GroupPage extends Activity {
                     // get the favorited flights
                     HashMap<String, Object> userInfo = (HashMap<String, Object>) snapshot.getValue();
                     ArrayList<String> favs = (ArrayList<String>) userInfo.get(fav);
-                    Flight[] flights = new Flight[favs.size()];
-                    String[] flightsInfo = new String[favs.size()];
-                    for (int i = 0; i < favs.size(); i++) {
-                        flights[i] = Flight.parseFlight(favs.get(i));
-                        flightsInfo[i] = flights[i].humanReadable();
+                    if (favs != null) {
+                        Flight[] flights = new Flight[favs.size()];
+                        String[] flightsInfo = new String[favs.size()];
+                        for (int i = 0; i < favs.size(); i++) {
+                            flights[i] = Flight.parseFlight(favs.get(i));
+                            flightsInfo[i] = flights[i].humanReadable();
+                        }
+                        sharePopup(flightsInfo, flights);
+                    } else {
+                        String error = (String) getText(R.string.group_share_none);
+                        (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
                     }
-                    sharePopup(flightsInfo, flights);
+
 
                 }
                 @Override
