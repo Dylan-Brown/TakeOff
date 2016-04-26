@@ -52,7 +52,7 @@ public class ImageOps {
      * @return
      */
     public static Bitmap createProfileIcon(Bitmap bitmap) {
-        Bitmap scaled = Bitmap.createScaledBitmap(bitmap, iconDimension, iconDimension, true);
+        Bitmap scaled = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
 
         Bitmap result = Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(result);
