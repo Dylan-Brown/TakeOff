@@ -51,7 +51,6 @@ public class SearchParameterProcessor {
         String[] c = countries.split(",");
         for (int i = 0; i < c.length; i++) {
             this.countries.add(c[i].trim().replace(" ", "_"));
-
         }
     }
 
@@ -60,8 +59,7 @@ public class SearchParameterProcessor {
      * @param cities
      */
     public void setCities(String cities) {
-        // TODO: "cities" is a string of iata airport codes separated by spaces. Handle this.
-
+        if (cities.length()>0){sq.destination=cities.split(",")[0];}
     }
 
     /**
@@ -115,7 +113,9 @@ public class SearchParameterProcessor {
      * @param airportCodes
      */
     public void setAirportCodes(String airportCodes) {
-        sq.destination = parseLocations(airportCodes).get(0);
+        if (parseLocations(airportCodes).size()>0) {
+            sq.destination = parseLocations(airportCodes).get(0);
+        }
     }
 
     /**

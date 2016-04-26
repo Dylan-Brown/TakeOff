@@ -461,7 +461,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setDepartureDate(departureDateInput);
         spp.setReturningDate(returningDateInput);
         spp.setCountries(countries);
-        spp.setCities(getCityCodes(cities, countries));
         spp.setBudget(budget.replace("$", ""));
         spp.setPassengerCount(passengerCount);
         spp.setMaxConnectionDuration(maxConnectionDurationinHours);
@@ -470,6 +469,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setNonStop(nonstop);
         spp.setRefundable(refundable);
         spp.setAirportCodes(airportCodes);
+        spp.setCities(getCityCodes(cities, countries));
         final SearchQuery sq = spp.getQuery();
         String request = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
 
