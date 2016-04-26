@@ -1,4 +1,4 @@
-package takeoff.cis350.upenn.edu.takeoff.flight;
+package takeoff.cis350.upenn.edu.takeoff.ui.results;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -19,6 +19,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 /**

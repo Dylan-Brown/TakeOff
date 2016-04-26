@@ -12,15 +12,15 @@
     <string name="title_activity_search_info">SearchInfo</string>
     <string name="clear_departure_button">Clear Departure</string>
     <string name="clear_return_button">Clear Return</string>
-    <string name="country_message">Enter the countries you want with a comma separating each:</string>
-    <string name="city_message">Enter the cities you want with a comma separating each:</string>
+    <string name="country_message">Enter countrie(s), separated by comma:</string>
+    <string name="city_message">Enter citie(s), separated by comma:</string>
     <string name="budget_message">Enter your maximum budget per ticket:</string>
     <string name="refundable_message">Check if you only want refundable tickets:</string>
     <string name="travel_class_message">Select your preferred travel class:</string>
     <string name="alliance_message">Select your preferred alliance:</string>
     <string name="wait_time_message">Maximum wait time in hours:</string>
     <string name="ticket_message">Quantity:</string>
-    <string name="airport_message">Enter Airport Code with a comma separating each:</string>
+    <string name="airport_message">OR \n Enter Airport Code(s), separated by comma:</string>
 
     <!-- Text Hints -->
     <string name="title_activity_filter_search">FilterSearch</string>

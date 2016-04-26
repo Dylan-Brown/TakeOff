@@ -1,4 +1,4 @@
-package takeoff.cis350.upenn.edu.takeoff.flight;
+package takeoff.cis350.upenn.edu.takeoff.ui.results;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 
 /**
  * This class represents the Activity when user's click on an individual flight in the dashboard.

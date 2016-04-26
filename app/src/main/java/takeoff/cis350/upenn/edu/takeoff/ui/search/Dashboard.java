@@ -16,16 +16,13 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 
-import com.firebase.client.Firebase;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.favorites.FilterSearch;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
-import takeoff.cis350.upenn.edu.takeoff.flight.FlightInfoActivity;
+import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfoActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 
 /**

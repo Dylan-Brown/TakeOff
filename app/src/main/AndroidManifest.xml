@@ -34,7 +34,7 @@
             android:label="@string/title_activity_sign_up" />
         <activity android:name=".ui.search.SearchPage" />
         <!-- <activity android:name=".ui.search.Dashboard" /> -->
-        <activity android:name=".flight.FlightResultActivity" />
+        <activity android:name=".ui.results.FlightResultActivity" />
         <activity
             android:name=".ui.results.FlightListActivity"
             android:label="Favorite " />
@@ -43,7 +43,7 @@
             android:label="@string/title_activity_flight_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".flight.FlightInfoActivity"
+            android:name=".ui.results.FlightInfoActivity"
             android:label="@string/title_activity_flight_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

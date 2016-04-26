@@ -8804,7 +8804,7 @@
     <string name="action_sign_up">Sign Up</string>
     <string name="africa">Africa</string>
     <string name="airport">Airport Code</string>
-    <string name="airport_message">Enter Airport Code with a comma separating each:</string>
+    <string name="airport_message">OR \n Enter Airport Code(s), separated by comma:</string>
     <string name="alliance_message">Select your preferred alliance:</string>
     <string name="alliance_none">None</string>
     <string name="alliance_oneworld">Oneworld</string>
@@ -8821,7 +8821,7 @@
     <string name="budget_message">Enter your maximum budget per ticket:</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="cities">Cities</string>
-    <string name="city_message">Enter the cities you want with a comma separating each:</string>
+    <string name="city_message">Enter citie(s), separated by comma:</string>
     <string name="class_business">Business</string>
     <string name="class_coach">Coach</string>
     <string name="class_first">First</string>
@@ -8861,7 +8861,7 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="continent_message">Continent:</string>
     <string name="countries">Countries</string>
-    <string name="country_message">Enter the countries you want with a comma separating each:</string>
+    <string name="country_message">Enter countrie(s), separated by comma:</string>
     <string name="dashboard_Fav">Favorites</string>
     <string name="dashboard_His">Search History</string>
     <string name="dashboard_Pro">Profile</string>

@@ -1,4 +1,4 @@
-package takeoff.cis350.upenn.edu.takeoff.flight;
+package takeoff.cis350.upenn.edu.takeoff.ui.results;
 
 import android.app.Activity;
 import android.content.Intent;
