@@ -2,5 +2,9 @@
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/mipmap-mdpi-v4/ic_launcher.png",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/mipmap-mdpi-v4/ic_launcher.png",
+        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     }
 ]
