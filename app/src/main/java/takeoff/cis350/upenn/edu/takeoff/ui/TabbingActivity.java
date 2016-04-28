@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -292,7 +291,7 @@ public class TabbingActivity extends AppCompatActivity {
      * @param newGroupName the name of the new group
      */
     private void setNewGroupGlobally(final String userUid, final String newGroupName) {
-        final String grp = getString(R.string.firebase_grp);
+        final String grp = getString(R.string.fb_grp);
 
         WelcomeActivity.FIREBASE.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -300,7 +299,7 @@ public class TabbingActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 // get the data from firebase about existing groups
                 Map<String, Object> globalData = (Map<String, Object>) snapshot.getValue();
-                String usrs = getString(R.string.firebase_users);
+                String usrs = getString(R.string.fb_users);
                 Map<String, Object> usersInfo = (Map<String, Object>) globalData.get(usrs);
                 Map<String, Object> userInfo= (Map<String, Object>) usersInfo.get(userUid);
                 String uName = (String) userInfo.get(getString(R.string.firebase_uname));
@@ -345,7 +344,7 @@ public class TabbingActivity extends AppCompatActivity {
      */
     private void setNewGroupForUser(final String userUid, final String newGroupName) {
         final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
-        final String grp = getString(R.string.firebase_grp);
+        final String grp = getString(R.string.fb_grp);
 
         // add the group to the user's list of groups
         usersRef.child(userUid).addListenerForSingleValueEvent(new ValueEventListener() {

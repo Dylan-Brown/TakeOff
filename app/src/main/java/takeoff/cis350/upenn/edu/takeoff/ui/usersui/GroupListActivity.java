@@ -57,7 +57,7 @@ public class GroupListActivity extends ListActivity {
                 public void onDataChange(DataSnapshot snapshot) {
                     // get the username to display
                     HashMap<String, Object> uData = (HashMap<String, Object>) snapshot.getValue();
-                    String grp = getString(R.string.firebase_grp);
+                    String grp = getString(R.string.fb_grp);
                     if (uData.get(grp) != null) {
                         // user is a member of some groups; get their names
                         ArrayList<String> uGroups = (ArrayList<String>) uData.get(grp);

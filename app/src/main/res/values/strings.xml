@@ -118,9 +118,9 @@
     <string name="firebase_ref">https://brilliant-inferno-6470.firebaseio.com/</string>
     <string name="firebase_uid">uid</string>
     <string name="firebase_fav">favoriteFlights</string>
-    <string name="firebase_grp">groups</string>
+    <string name="fb_grp">groups</string>
     <string name="firebase_grn">groupname</string>
-    <string name="firebase_users">users</string>
+    <string name="fb_users">users</string>
     <string name="firebase_uname">username</string>
     <string name="firebase_sqs">searchQueries</string>
     <string name="firebase_mem">members</string>

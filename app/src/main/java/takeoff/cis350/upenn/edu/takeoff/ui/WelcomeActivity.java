@@ -36,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
         // set up FireBase
         Firebase.setAndroidContext(this);
         FIREBASE = new Firebase(getString(R.string.firebase_ref));
-        USER_FIREBASE = FIREBASE.child(getString(R.string.firebase_users));
+        USER_FIREBASE = FIREBASE.child(getString(R.string.fb_users));
 
         USER_FIREBASE.addValueEventListener(new ValueEventListener() {
             @Override
