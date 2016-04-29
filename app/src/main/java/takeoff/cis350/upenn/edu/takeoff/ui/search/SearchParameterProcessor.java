@@ -264,7 +264,7 @@ public class SearchParameterProcessor {
         // getTime() returns current time in milliseconds
         Date now = calendar.getTime();
         // passed the milliseconds to constructor of Timestamp class
-        sq.timeOfSearch = new Time(now.getTime());
+        //sq.timeOfSearch = new Time(now.getTime());
         return sq;
     }
 }

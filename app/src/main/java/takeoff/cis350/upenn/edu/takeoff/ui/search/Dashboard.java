@@ -19,7 +19,6 @@ import android.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-import takeoff.cis350.upenn.edu.takeoff.ui.results.FilterSearch;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfoActivity;

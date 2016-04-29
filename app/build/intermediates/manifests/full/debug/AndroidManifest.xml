@@ -46,7 +46,7 @@
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.results.FlightListActivity"
             android:label="Favorite " />
         <activity
-            android:name="takeoff.cis350.upenn.edu.takeoff.ui.favorites.FlightInfo"
+            android:name="takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfo"
             android:label="@string/title_activity_flight_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -54,7 +54,7 @@
             android:label="@string/title_activity_flight_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="takeoff.cis350.upenn.edu.takeoff.ui.favorites.FilterSearch"
+            android:name="takeoff.cis350.upenn.edu.takeoff.ui.search.FilterSearch"
             android:label="@string/title_activity_filter_search" />
         DashBoardSearchHistory
         <!--

@@ -4,194 +4,87 @@
     android:orientation="vertical"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    >
+    android:weightSum="1">
 
     <!-- Instructions -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/filter_message"
-            android:textColor="@color/black"
-            android:alpha="1.0"
-            android:textSize="18sp"
-            />
-
-    </LinearLayout>
-
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:fillViewport="false"
-        >
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-            <!-- Budget input -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/budget_message"
-                        android:textColor="@color/black"
-                        android:alpha="1.0"
-                        android:textSize="18sp"
-                        android:padding="5dp"
-                        />
-
-                    <EditText
-                        android:id="@+id/budget_input"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:alpha="1.0"
-                        android:inputType="numberSigned"
-                        android:hint="@string/budget"
-                        android:background="@drawable/option_box_style"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    >
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ticket_message"
-                        android:textColor="@color/black"
-                        android:alpha="1.0"
-                        android:textSize="18sp"
-                        android:padding="5dp"
-                        />
-
-                    <EditText
-                        android:id="@+id/num_ticket_input"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:alpha="1.0"
-                        android:inputType="numberSigned"
-                        android:hint="@string/ticket"
-                        android:background="@drawable/option_box_style"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-
-
-
-
-            <!-- Spinners -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                >
-
-                <!-- Travel Class input -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/travel_class_message"
-                        android:textColor="@color/black"
-                        android:alpha="1.0"
-                        android:textSize="18sp"
-                        android:padding="5dp"
-                        />
-
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/class_spinner"
-                        android:ellipsize="marquee"
-                        android:textColor="@color/black"
-                        android:background="@drawable/option_box_style"
-                        />
-                </LinearLayout>
-
-                <!-- Alliance input -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/alliance_message"
-                        android:textColor="@color/black"
-                        android:alpha="1.0"
-                        android:textSize="18sp"
-                        android:padding="5dp"
-                        />
-
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/alliance_spinner"
-                        android:ellipsize="marquee"
-                        android:textColor="@color/black"
-                        android:background="@drawable/option_box_style"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
 
     <!-- Search Box at the bottom -->
-    <LinearLayout
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please enter all the required informationfor advance filtering"
+        android:id="@+id/textView4"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.19" />
+
+    <EditText
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/max"
+        android:text="" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="1"
-        android:layout_gravity="end"
-        >
+        android:text="Enter maximum budget value"
+        android:id="@+id/textView"
+        android:layout_weight="0.03" />
 
-        <Button
-            android:id="@+id/search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="end"
-            android:text="@string/search_button"
-            android:onClick="transitionToSearch" />
-    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/min"
+        android:text="" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter minimum budget value"
+        android:id="@+id/textView2"
+        android:layout_weight="0.04" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/quantity"
+        android:text="Number of Tickets required" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please Enter a number "
+        android:id="@+id/textView3"
+        android:layout_weight="0.05" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText6"
+        android:text="Choose your start flight" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:spinnerMode="dropdown" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText7"
+        android:text="Choose your class choice" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:onClick="transitionToSearch"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
