@@ -55,8 +55,8 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     protected void onResume() {
-        super.onResume();
         // log out users returning to the welcome page
+        super.onResume();
         FIREBASE.unauth();
         USER_FIREBASE.unauth();
     }
@@ -68,19 +68,28 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView <?> parent, View view, int position, long id) {
     }
 
-    // Log In button clicked; go to the LogInActivity
+    /**
+     * Log In button clicked; go to the LogInActivity
+     * @param view the view of the Log In button
+     */
     public void login(View view) {
         Intent intent = new  Intent (this, LogInActivity.class);
         startActivity(intent);
     }
 
-    // Continue as Guest button clicked; go to the TabbingActivity
+    /**
+     * Continue as Guest button clicked; go to the TabbingActivity
+     * @param view the view of the Continue as Guest button
+     */
     public void guest (View view) {
         Intent intent = new  Intent (this, TabbingActivity.class);
         startActivity(intent);
     }
 
-    // Sign Up button clicked; go to the SignUpActivity
+    /**
+     * Sign Up button clicked; go to the SignUpActivity
+     * @param view the view of the Sign Up button
+     */
     public void sign (View view) {
         Intent intent = new  Intent (this, SignUpActivity.class);
         startActivity(intent);
