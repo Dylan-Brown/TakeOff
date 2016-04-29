@@ -1,86 +1,89 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
-import java.sql.Time;
-
 /**
- * Created by tangson on 3/17/16.
+ * TODO: Write the class description
  */
-
 public class SearchQuery {
-    public int no_of_Slices=1; //number of total trips; one-way is 1 slice, roundtrip is 2 slices
 
-    public Time timeOfSearch;
+    public int no_of_Slices=1;              // number of total trips; one-way is 1, roundtrip is 2
     public String origin=" ";
     public String destination="";
-    public String date=""; //in the format of YYYY-MM-DD
+    public String date="";                  // in the format of YYYY-MM-DD
     public boolean isRoundtrip;
-    public String returnDate=""; //in the format of YYYY-MM-DD, only present if roundtrip
-    public int adultCount=1;	//number of adults (i.e. passengers)
+    public String returnDate="";            // in the format of YYYY-MM-DD, only if roundtrip
+    public int adultCount=1;	            // number of adults (i.e. passengers)
 
-    public String preferredCabin=""; //COACH, PREMIUM_COACH, BUSINESS, FIRST
-    public double maxPrice=99999; //in USD
-    public boolean refundability=false; //is refundable or not
-    public int numberOfSolutions=20; //maximum number of search results
-    public int maxStops=5; //number of connections, direct flights = 0
-    public String earliestTime=""; //in the format of HH:MM (24 hours)
-    public String latestTime=""; //in the format of HH:MM (24 hours)
-    public int maxConnectionDuration=4320; //maximum amount in minutes
-    public String alliance=""; //NONE, STAR, ONEWORLD, XXX,XXX
+    public String preferredCabin="";        // COACH, PREMIUM_COACH, BUSINESS, FIRST
+    public double maxPrice=99999;           // in USD
+    public boolean refundability=false;     // is refundable or not
+    public int numberOfSolutions=20;        // maximum number of search results
+    public int maxStops=5;                  // number of connections, direct flights = 0
+    public String earliestTime="";          // in the format of HH:MM (24 hours)
+    public String latestTime="";            // in the format of HH:MM (24 hours)
+    public int maxConnectionDuration=4320;  // maximum amount in minutes
+    public String alliance="";              // NONE, STAR, ONEWORLD, XXX, ...
 
+    /**
+     * Empty constructor
+     */
     public SearchQuery() {
     };
 
     // returns the query in a String with a : separating them
     @Override
     public String toString() {
-        String toReturn = " ";
-        //not stroring the time now.
-        toReturn += "" + no_of_Slices + ":";
-        toReturn += origin + ":";
-        toReturn += destination + ":";
-        toReturn += date + ":";
+        String sq = no_of_Slices + ":";
+        sq += origin + ":";
+        sq += destination + ":";
+        sq += date + ":";
         if (isRoundtrip){
-            toReturn += "true" + ":";
+            sq += "true" + ":";
+        } else {
+            sq += "false" + ":";
         }
-        else {
-            toReturn += "false" + ":";
-        }
-        toReturn += returnDate + ":";
-        toReturn += adultCount + ":";
-        toReturn += preferredCabin + ":";
-        toReturn += maxPrice + ":";
+        sq += returnDate + ":";
+        sq += adultCount + ":";
+        sq += preferredCabin + ":";
+        sq += maxPrice + ":";
         if (refundability){
-            toReturn += "true" + ":";
+            sq += "true" + ":";
+        } else {
+            sq += "false" + ":";
         }
-        else {
-            toReturn += "false" + ":";
-        }
-        toReturn += numberOfSolutions + ":";
-        toReturn += maxStops + ":";
-        toReturn += earliestTime + ":";
-        toReturn += latestTime + ":";
-        toReturn += maxConnectionDuration + ":";
-        toReturn += alliance + ":";
+        sq += numberOfSolutions + ":";
+        sq += maxStops + ":";
+        sq += earliestTime + ":";
+        sq += latestTime + ":";
+        sq += maxConnectionDuration + ":";
+        sq += alliance + ":";
 
-        return toReturn;
+        return sq;
     }
 
+    /**
+     * Creates a human-readable String that summarizes the contents of a given search query
+     * @return the human readable String
+     */
     public String humanReadable() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Departure Date: " + date + "\n");
-        sb.append("Airport Code: " + origin + "\n");
+        String hr = "Departure Date: " + date + "\n";
+        hr += "Airport Code: " + origin + "\n";
         if (destination != null & !destination.isEmpty()) {
-            sb.append("Destination: " + destination + "\n");
+            hr += "Destination: " + destination + "\n";
         }
-        // TODO: Add more when relevant
-        // Departure Date*, Return Date, Countries, Cities, Airport Code*
-        return sb.toString();
+        return hr;
     }
 
+    /**
+     * Takes in a String that represents a SearchQuery and parses it back into a SearchQuery object
+     * @param s the String that represents a SearchQuery
+     * @return
+     */
     public static SearchQuery parseSearchQuery(String s) {
+        if (s == null || s.getClass() != String.class) {
+            return null;
+        }
 
         SearchQuery sq = new SearchQuery();
-
         String[] temp = s.split(":");
 
         sq.no_of_Slices = Integer.parseInt(temp[0].trim());
@@ -90,8 +93,7 @@ public class SearchQuery {
         sq.date= temp[3].trim(); //in the format of YYYY-MM-DD
         if (temp[4].equals("true")) {
             sq.isRoundtrip = true;
-        }
-        else {
+        } else {
             sq.isRoundtrip = false;
         }
         sq.returnDate = temp[5]; //in the format of YYYY-MM-DD, only present if roundtrip
@@ -100,8 +102,7 @@ public class SearchQuery {
         sq.maxPrice = Double.parseDouble(temp[8]); //in USD
         if (temp[9].equals("true")) {
             sq.refundability = true;
-        }
-        else {
+        } else {
             sq.refundability = false;
         }
         sq.numberOfSolutions = Integer.parseInt(temp[10]); //maximum number of search results
