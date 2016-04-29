@@ -17,18 +17,18 @@ import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 
 /**
- * Created by tangson on 2/23/16.
+ * TODO: Write a class description
  */
 public class FlightListActivity extends ListActivity {
 
-    List<Flight> flightList = QPXJSONReader.getFlightResultsFromMostRecentSearch();
-    Flight[] flights = flightList.toArray(new Flight[flightList.size()]);
-    FlightAdapter adapter;
-    ListView listView;
+    protected List<Flight> flightList = QPXJSONReader.getFlightResultsFromMostRecentSearch();
+    protected Flight[] flights = flightList.toArray(new Flight[flightList.size()]);
+    protected FlightAdapter adapter;
+    protected ListView listView;
     // TODO: flight list will be bundled in. Get the flights from the favorite_list.
 
     /**
-     *
+     * TODO: Write the javadoc comment
      * @param savedInstanceState
      */
     @Override
@@ -47,7 +47,6 @@ public class FlightListActivity extends ListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
                 Intent i = new Intent(getApplicationContext(), FlightResultActivity.class);
                 i.putExtra("departureDate", flights[position].getDepartureDate());
                 i.putExtra("arrivalDate", flights[position].getArrivalDate());
@@ -62,24 +61,21 @@ public class FlightListActivity extends ListActivity {
         });
     }
 
-    /**
-     *
-     * @param menu
-     * @return
-     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        // TODO: Comment this code
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    /**
-     *
-     * @param item
-     * @return
-     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        // TODO: Comment this code
+
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int index = info.position;
         int id = item.getItemId();

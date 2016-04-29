@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
-import takeoff.cis350.upenn.edu.takeoff.ui.favorites.FavoritesFragment;
+import takeoff.cis350.upenn.edu.takeoff.ui.usersui.FavoritesFragment;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.DashBoardSearchHistory;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;

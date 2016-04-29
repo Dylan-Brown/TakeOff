@@ -1,4 +1,4 @@
-package takeoff.cis350.upenn.edu.takeoff.ui.favorites;
+package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;

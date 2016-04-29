@@ -14,7 +14,7 @@ import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.SubFlight;
 
 /**
- * Created by tangson on 2/23/16.
+ * TODO: Write the class description
  */
 public class FlightAdapter extends ArrayAdapter {
 
@@ -29,7 +29,7 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
+     * TODO: Describe this
      */
     static class DataHandler {
         TextView departureCityCode;
@@ -43,7 +43,7 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
+     * TODO: Describe this
      * @param object
      */
     @Override
@@ -53,7 +53,7 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
+     * TODO: Describe this
      * @return
      */
     @Override
@@ -62,7 +62,7 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
+     * TODO: Describe this
      * @param position
      * @return
      */
@@ -72,7 +72,7 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
+     * TODO: Describe this
      * @param position
      * @param convertView
      * @param parent
@@ -130,7 +130,7 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
+     * TODO: Describe this
      * @param flight
      * @return
      */

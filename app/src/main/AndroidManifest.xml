@@ -39,7 +39,7 @@
             android:name=".ui.results.FlightListActivity"
             android:label="Favorite " />
         <activity
-            android:name=".ui.favorites.FlightInfo"
+            android:name=".ui.results.FlightInfo"
             android:label="@string/title_activity_flight_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -47,7 +47,7 @@
             android:label="@string/title_activity_flight_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.favorites.FilterSearch"
+            android:name=".ui.results.FilterSearch"
             android:label="@string/title_activity_filter_search"/>
 
         DashBoardSearchHistory

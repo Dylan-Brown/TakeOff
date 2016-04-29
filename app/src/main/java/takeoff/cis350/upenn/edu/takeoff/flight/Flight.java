@@ -15,7 +15,7 @@ public class Flight implements Serializable {
 
     ArrayList<SubFlight> subFlights = new ArrayList<SubFlight>();
 
-    public String id = "";                     // unique per flight
+    public String id = "";              // unique per flight
     boolean isReturnTrip = false;
     boolean isDirectFlight = false;
     double cost = 99999.99;             // in USD

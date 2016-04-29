@@ -1,17 +1,16 @@
 package takeoff.cis350.upenn.edu.takeoff.flight;
 
 /**
- * Created by anakagold on 2/25/16.
- *
  * This class makes 20 dummy flight results for testing purposes
+ * TODO: Decide if we are going to remove this
  */
 public class DummyFlightInfo {
 
-    String[] flightInfo = new String[20];
-    Flight[] flights = new Flight[20];
+    private String[] flightInfo = new String[20];
+    private Flight[] flights = new Flight[20];
 
     /**
-     * The constructor for  the DummyFlightInfo class. This populates the protected fields with
+     * The constructor for the DummyFlightInfo class. This populates the protected fields with
      * dummy flight information.
      */
     public DummyFlightInfo() {

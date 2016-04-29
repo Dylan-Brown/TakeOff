@@ -1,4 +1,4 @@
-package takeoff.cis350.upenn.edu.takeoff.ui.favorites;
+package takeoff.cis350.upenn.edu.takeoff.ui.results;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

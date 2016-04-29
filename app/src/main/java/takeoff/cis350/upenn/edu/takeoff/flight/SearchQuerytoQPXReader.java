@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchQuery;
 
 /**
- * Created by tangson on 3/17/16.
+ * TODO: Write a class description
  */
 public class SearchQuerytoQPXReader {
 
@@ -17,7 +17,7 @@ public class SearchQuerytoQPXReader {
     static boolean isSet = true;
 
     /**
-     *
+     * TODO: Write a method javadoc comment, explain parameters
      * @param ja
      */
     public static void changeResponse(JSONArray ja) {
@@ -26,11 +26,14 @@ public class SearchQuerytoQPXReader {
     }
 
     /**
-     *
+     * TODO: Write a method javadoc comment, explain parameters and return values
      * @param sq
      * @return
      */
     public static String makeJSONSearchObject(SearchQuery sq) {
+
+        // TODO: comment this code so that it's understandable
+
         int adultCount = sq.adultCount;
         boolean refundability = sq.refundability;
         int numberOfSolutions = sq.numberOfSolutions;
@@ -46,9 +49,10 @@ public class SearchQuerytoQPXReader {
         String earliestTime = sq.earliestTime;
         String latestTime = sq.latestTime;
 
-        String requestSlice = "{ \"request\":{\"slice\": " + "[{\"origin\": \"" + origin + "\",\"destination\": \""
-                + destination + "\",\"date\": \"" + date + "\",\"maxStops\": " + maxStops + ",\"preferredCabin\": \""
-                + preferredCabin + "\",\"alliance\": \"" + alliance + "\",\"permittedDepartureTime\": {"
+        String requestSlice = "{ \"request\":{\"slice\": " + "[{\"origin\": \"" + origin
+                + "\",\"destination\": \"" + destination + "\",\"date\": \"" + date
+                + "\",\"maxStops\": " + maxStops + ",\"preferredCabin\": \"" + preferredCabin
+                + "\",\"alliance\": \"" + alliance + "\",\"permittedDepartureTime\": {"
                 + "\"earliestTime\": \"" + earliestTime + "\",\"latestTime\": \"" + latestTime
                 + "\"},\"maxConnectionDuration\": \"" + maxConnectionDuration + "\" } ";
 
@@ -63,21 +67,25 @@ public class SearchQuerytoQPXReader {
             earliestTime = sq.earliestTime;
             latestTime = sq.latestTime;
 
-            String slice = " , {\"origin\": \"" + origin + "\",\"destination\": \""
-                    + destination + "\",\"date\": \"" + date + "\",\"maxStops\": " + maxStops + ",\"preferredCabin\": \""
-                    + preferredCabin + "\",\"alliance\": \"" + alliance + "\",\"permittedDepartureTime\": {"
-                    + "\"earliestTime\": \"" + earliestTime + "\",\"latestTime\": \"" + latestTime
-                    + "\"},\"maxConnectionDuration\": \"" + maxConnectionDuration + "\" } ";
+            String slice = " , {\"origin\": \"" + origin + "\",\"destination\": \"" + destination
+                    + "\",\"date\": \"" + date + "\",\"maxStops\": " + maxStops
+                    + ",\"preferredCabin\": \"" + preferredCabin + "\",\"alliance\": \"" + alliance
+                    + "\",\"permittedDepartureTime\": {" + "\"earliestTime\": \"" + earliestTime
+                    + "\",\"latestTime\": \"" + latestTime + "\"},\"maxConnectionDuration\": \""
+                    + maxConnectionDuration + "\" } ";
             requestSlice += slice;
         }
+
         String requestPassenger = "],\"passengers\": { \"adultCount\": " + adultCount
-                + ", \"infantInLapCount\": 0, \"infantInSeatCount\": 0, \"childCount\": 0, \"seniorCount\": 0 }, ";
-        String requestInfo = "\"solutions\":" + numberOfSolutions + ", " + "\"refundable\":" + refundability + ", "
-                + "\"maxPrice\": \"USD" + maxPrice + "\" }}";
+                + ", \"infantInLapCount\": 0, \"infantInSeatCount\": 0, \"childCount\": 0, "
+                + "\"seniorCount\": 0 }, ";
+        String requestInfo = "\"solutions\":" + numberOfSolutions + ", " + "\"refundable\":"
+                + refundability + ", " + "\"maxPrice\": \"USD" + maxPrice + "\" }}";
         String jsonRequest = requestSlice + requestPassenger + requestInfo;
-        Log.e("JSONREQUEST", jsonRequest);
+
         try {
-            Log.i("SearchQuerytoQPXReader", "makeJSONSearchObject: " + new JSONArray(jsonRequest).toString(2));
+            Log.i("SearchQuerytoQPXReader", "makeJSONSearchObject: "
+                    + new JSONArray(jsonRequest).toString(2));
         } catch (Exception e) {
             // TODO: Handle
         }
@@ -85,11 +93,14 @@ public class SearchQuerytoQPXReader {
     }
 
     /**
-     *
+     * TODO: Write a method javadoc comment, explain parameters
      * @param jsonArray
      * @throws JSONException
      */
     public static void printAPIResults(JSONArray jsonArray) throws JSONException {
+
+        // TODO: comment this code so that it's understandable
+
         for (int index = 0; index < jsonArray.length(); index++) {
             JSONObject tripOption = jsonArray.getJSONObject(index);
 
@@ -97,26 +108,37 @@ public class SearchQuerytoQPXReader {
             JSONArray segments = slices.getJSONObject(0).getJSONArray("segment");
             int segmentLength = segments.length();
             JSONObject firstLeg = segments.getJSONObject(0).getJSONArray("leg").getJSONObject(0);
-            JSONObject lastLeg = segments.getJSONObject(segmentLength - 1).getJSONArray("leg").getJSONObject(0);
+            JSONArray tempArr = segments.getJSONObject(segmentLength - 1).getJSONArray("leg");
+            JSONObject lastLeg = tempArr.getJSONObject(0);
 
-            Log.i("SearchQuerytoQPXReader", "printAPIResults: Sale Total " + tripOption.getString("saleTotal"));
-            Log.i("SearchQuerytoQPXReader", "printAPIResults: Number of connections: " + segmentLength);
-            Log.i("SearchQuerytoQPXReader", "printAPIResults: Departure: " + firstLeg.getString("origin"));
-            Log.i("SearchQuerytoQPXReader", "printAPIResults: Departure Time: " + firstLeg.getString("departureTime"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Sale Total "
+                    + tripOption.getString("saleTotal"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Number of connections: "
+                    + segmentLength);
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Departure: "
+                    + firstLeg.getString("origin"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Departure Time: "
+                    + firstLeg.getString("departureTime"));
+
             if (segmentLength > 1) {
                 for (int segIndex = 0; segIndex < segmentLength - 1; segIndex++) {
-                    JSONObject connectingArrival = segments.getJSONObject(segIndex).getJSONArray("leg")
-                            .getJSONObject(0);
+                    JSONObject connectingArrival = segments.getJSONObject(segIndex)
+                            .getJSONArray("leg").getJSONObject(0);
 
-                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connecting Arrival Time: " + connectingArrival.getString("arrivalTime"));
-                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connection: " + connectingArrival.getString("destination"));
-                    JSONObject connectingDeparture = segments.getJSONObject(segIndex + 1).getJSONArray("leg")
-                            .getJSONObject(0);
-                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connecting Departure Time: " + connectingDeparture.getString("departureTime"));
+                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connecting Arrival Time: "
+                            + connectingArrival.getString("arrivalTime"));
+                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connection: "
+                            + connectingArrival.getString("destination"));
+                    JSONObject connectingDeparture = segments.getJSONObject(segIndex + 1)
+                            .getJSONArray("leg").getJSONObject(0);
+                    Log.i("SearchQuerytoQPXReader", "printAPIResults: Connecting Departure Time: "
+                            + connectingDeparture.getString("departureTime"));
                 }
             }
-            Log.i("SearchQuerytoQPXReader", "printAPIResults: Arrival: " + lastLeg.getString("destination"));
-            Log.i("SearchQuerytoQPXReader", "printAPIResults: Arrival Time: " + lastLeg.getString("arrivalTime"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Arrival: "
+                    + lastLeg.getString("destination"));
+            Log.i("SearchQuerytoQPXReader", "printAPIResults: Arrival Time: "
+                    + lastLeg.getString("arrivalTime"));
         }
         Log.i("SearchQuerytoQPXReader", "printAPIResults: Length is: " + jsonArray.length());
     }

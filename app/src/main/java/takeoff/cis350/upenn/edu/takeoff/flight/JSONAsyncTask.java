@@ -21,7 +21,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * Created by anakagold on 4/8/16.
+ * TODO: Write the class javadoc description
  */
 public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
 
@@ -38,7 +38,7 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
     }
 
     /**
-     *
+     * TODO: Write a method javadoc comment, explain parameters
      */
     @Override
     protected void onPreExecute() {
@@ -47,15 +47,15 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
     }
 
     /**
-     *
+     * TODO: Write a method javadoc comment, explain parameters
      * @param params
      * @return
      */
     @Override
     protected JSONArray doInBackground(String... params) {
         try {
+            // TODO: comment this code so that it's understandable
             JSONObject json = new JSONObject(params[0]);
-            System.out.println(json.toString(4));
             HttpPost httpPost = new HttpPost(HTTP_LINK);
             StringEntity SEJson = new StringEntity(json.toString());
             httpPost.setEntity(SEJson);
@@ -65,39 +65,36 @@ public class JSONAsyncTask extends AsyncTask<String, Void, JSONArray> {
             HttpResponse response = hc.execute(httpPost);
             // StatusLine stat = response.getStatusLine();
             int status = response.getStatusLine().getStatusCode();
-            Log.e("ASyncTask","trying");
             if (status == 200) {
                 HttpEntity entity = response.getEntity();
                 JSONObject jsonResponse = new JSONObject(EntityUtils.toString(entity));
-                JSONArray jsonArray = jsonResponse.getJSONObject("trips").getJSONArray("tripOption");
+                JSONObject trips = jsonResponse.getJSONObject("trips");
+                JSONArray jsonArray = trips.getJSONArray("tripOption");
                 return jsonArray;
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-
-            e.printStackTrace();
+        } catch (Exception e) {
+            Log.e("JSONAsyncTask", "doInBackground: " + e.getMessage());
         }
         return null;
     }
 
     /**
-     *
+     * TODO: Write a method javadoc comment, explain parameters
      * @param result
      */
     @Override
     protected void onPostExecute(JSONArray result) {
+
+        // TODO: comment this code so that it's understandable
+
         try {
-            Log.e("ASyncTask","It executed worked.");
             QPXJSONReader.getAPIResultsAsFlights(result);
             if(result != null) {
                 System.out.println(result.toString(2));
             }
         } catch (JSONException e) {
-            Log.e("ASyncTask", "onPostExecute: the task failed with a JSONException");
-
+            Log.e("ASyncTask", "onPostExecute: " + e.getMessage());
         }
-        Log.i("ASyncTask", "onPostExecute: ending search page");
     }
 }
