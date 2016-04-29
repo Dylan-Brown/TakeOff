@@ -15,7 +15,7 @@ public class FlightResultActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.flightresult_page);
+        setContentView(R.layout.flightresult_1);
 
         Intent intent = getIntent();
         String departureDate = intent.getStringExtra("departureDate");
@@ -28,7 +28,7 @@ public class FlightResultActivity extends Activity {
         TextView arrivaltextView = (TextView) findViewById(R.id.arrivalCityCode);
         arrivaltextView.setText(arrivalCityCode);
 
-        TextView departuretextView = (TextView) findViewById(R.id.rdepartureCityCode);
+        TextView departuretextView = (TextView) findViewById(R.id.departureCityCode);
         departuretextView.setText(departureCityCode);
 
     }

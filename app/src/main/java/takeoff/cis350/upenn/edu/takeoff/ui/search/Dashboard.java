@@ -10,32 +10,42 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
+import takeoff.cis350.upenn.edu.takeoff.ui.search.FilterSearch;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
+import takeoff.cis350.upenn.edu.takeoff.flight.FlightAdapter;
 import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfoActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
-
+import java.util.*;
 /**
  * This class is the list fragment for the dashboard, to display the search results
  */
 public class Dashboard extends ListFragment {
 
     public static List<Flight> FlightCache=new ArrayList<>();
+    public static Map<String,Flight> FlightCacheById=new HashMap<>();
     private List<Flight> flightResults;
     private ListView listView;
     private String[] flights;
     private Flight[] flightObjects;
     private boolean initialLoad = true;
-
+    private FlightAdapter adapter;
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -60,10 +70,15 @@ public class Dashboard extends ListFragment {
             else {
                 // display a list of the flight information
                 loadFlights();
-                int layout1 = android.R.layout.simple_list_item_single_choice;
-                int layout2 = android.R.layout.simple_list_item_1;
-                setListAdapter(new ArrayAdapter(getActivity(), layout1, flights));
-                listView.setAdapter(new ArrayAdapter<>(getActivity(), layout2, flights));
+                int layout1 =R.layout.flight_item_one;
+
+                adapter = new FlightAdapter(getActivity().getApplicationContext(), layout1);
+                for (Flight flight : Dashboard.FlightCache) {
+                    adapter.add(flight);
+                }
+                listView.setAdapter(adapter);
+
+                //listView.setAdapter(new ArrayAdapter<>(getActivity(), layout2, flights));
             }
         } else if (initialLoad) {
             // this is the first time the user is entering the dashboard; display nothing
@@ -254,5 +269,83 @@ public class Dashboard extends ListFragment {
      */
     public List<Flight> getFlightResults() {
         return this.flightResults;
+    }
+
+
+    /**
+     * Make a call to Firebase to remove the favorite from the user's list of favorites
+     * @param uid the unique identifier for the user's Firebase information
+     */
+    private void removeFavorite(final String uid, final Flight flight) {
+
+        final Firebase ref = WelcomeActivity.USER_FIREBASE.child(uid);
+        final String favKey = getResources().getString(R.string.firebase_fav);
+
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
+
+                        if (userData != null && !userData.containsKey(favKey)) {
+                            // the user does not have a list of favorite flights; set an empty list
+                            ArrayList<Object> favFlights = new ArrayList<>();
+                            userData.put(favKey, favFlights);
+                            ref.updateChildren(userData);
+
+                        } else {
+                            // the user has a list of favorite flights; remove the flight
+                            ArrayList<Object> fav = (ArrayList<Object>) userData.get(favKey);
+                            fav.remove(flight.toString());
+                            userData.put(favKey, fav);
+                            ref.updateChildren(userData);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                        // the user cancelled the request; do nothing
+                    }
+                });
+
+    }
+
+    /**
+     * Make a call to Firebase to add the flight to the user's list of favorites
+     * @param uid the unique identifier for the user's Firebase information
+     */
+    private void addFavorite(final String uid, final Flight flight) {
+
+        final Firebase ref = WelcomeActivity.USER_FIREBASE.child(uid);
+        final String favKey = getResources().getString(R.string.firebase_fav);
+
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
+
+                        if (userData != null && !userData.containsKey(favKey)) {
+                            // the user does not have a list of favorite flights
+                            ArrayList<Object> favFlights = new ArrayList<>();
+                            favFlights.add(flight.toString());
+                            userData.put(favKey, favFlights);
+                            ref.updateChildren(userData);
+
+                        } else {
+                            // the user does have favorites; add this flight to the list
+                            List<Object> favFlights = (List<Object>) userData.get(favKey);
+                            favFlights.add(flight.toString());
+                            userData.put(favKey, favFlights);
+                            ref.updateChildren(userData);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                        // the user cancelled the request; do nothing
+                    }
+                });
     }
 }

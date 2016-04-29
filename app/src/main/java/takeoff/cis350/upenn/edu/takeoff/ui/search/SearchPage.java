@@ -50,10 +50,12 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 import takeoff.cis350.upenn.edu.takeoff.flight.SearchQuerytoQPXReader;
 import takeoff.cis350.upenn.edu.takeoff.R;
@@ -74,7 +76,7 @@ Judy: 			AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
-        + "search?key=AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w";
+        + "search?key=AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
@@ -447,6 +449,9 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
 
     //this is called when "search" is pressed and will transition over to Search Results
     public void transitionToSearch(View view) {
+
+        Dashboard.FlightCache = new ArrayList<Flight>();
+        Dashboard.FlightCacheById=new HashMap<>();
 
         //Get the inputs
         String countries = countriesAutoComp.getText().toString();
