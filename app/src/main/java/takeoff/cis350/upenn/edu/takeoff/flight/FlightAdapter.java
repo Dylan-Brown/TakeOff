@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -123,9 +124,17 @@ public class FlightAdapter extends ArrayAdapter {
                 @Override
                 public void onClick(View v)
                 {
+                    if(WelcomeActivity.USER_FIREBASE.getAuth() !=  null) {
 //                  favoriteButton.setBackgroundResource(android.R.drawable.star_off);
-                    favoriteButton.setBackgroundResource(android.R.drawable.star_on);
-                    addFavorite(WelcomeActivity.FIREBASE.getAuth().getUid(), flight);
+                        favoriteButton.setBackgroundResource(android.R.drawable.star_on);
+                        addFavorite(WelcomeActivity.FIREBASE.getAuth().getUid(), flight);
+                    } else {
+                        Context c = getContext();
+                        String message = c.getString(R.string.please_sign_in);
+                        Toast toast = Toast.makeText(c,
+                                message, Toast.LENGTH_LONG);
+                        toast.show();
+                    }
 
                 }
             });
@@ -165,13 +174,13 @@ public class FlightAdapter extends ArrayAdapter {
         handler.departureCityCode.setText(flight.getDepartureCityCode());
         handler.arrivalCityCode.setText(flight.getArrivalCityCode());
 
-        handler.arrivalDate.setText(flight.getArrivalDate());
-        handler.departureDate.setText(flight.getDepartureDate());
+        handler.arrivalDate.setText(flight.getArrivalDate().replace("X", "-"));
+        handler.departureDate.setText(flight.getDepartureDate().replace("X", "-"));
 
         handler.cost.setText(String.valueOf(flight.getCost()));
 
-        handler.departureTime.setText(flight.getDepartureTime());
-        handler.arrivalTime.setText(flight.getArrivalTime());
+        handler.departureTime.setText(flight.getDepartureTime().replace("X", "-"));
+        handler.arrivalTime.setText(flight.getArrivalTime().replace("X", "-"));
 
         if (flight.getNumOfConnections() == 1) {
             handler.connections.setText("1 Conxn\n" + connectionCities);
@@ -207,7 +216,7 @@ public class FlightAdapter extends ArrayAdapter {
 
         }
 
-            return row;
+        return row;
     }
 
     /**

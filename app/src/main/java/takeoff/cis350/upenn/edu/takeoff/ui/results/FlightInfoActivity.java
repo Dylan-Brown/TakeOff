@@ -27,10 +27,20 @@ public class FlightInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // get the Flight information from the bundle
+        //System.out.println("------------------ONCREATE OF FLIGHTINFORACTIVITY----------");
         Bundle extras = getIntent().getExtras();
         String extraMesg = getString(R.string.dashboard_flight_mesg);
-        flight = Flight.parseFlight(extras.get(extraMesg));
-        view = new FlightInfoView (this, flight.humanReadable());
+        //System.out.println("------------------GETTING EXTRA OF THE MSG: " + extraMesg + "----------");
+        String flightText = (String) extras.get(extraMesg);
+        //System.out.println(flightText );
+        flight = Flight.parseFlight(flightText );
+        /*System.out.println("------------------PARSED FLIGHT----------");
+        System.out.println("------------------SANITY CHECK FOR TOSTRING----------");
+        System.out.println(flight.toString());
+        System.out.println(flightText );
+        System.out.println(flight.toString().equals(flightText));
+        System.out.println("------------------SANITY CHECK FOR TOSTRING DONE----------");*/
+        view = new FlightInfoView (this, flightText);
         setContentView(view);
     }
 

@@ -38,7 +38,7 @@ import java.util.*;
  */
 public class Dashboard extends ListFragment {
 
-    public static List<Flight> FlightCache=new ArrayList<>();
+    public static ArrayList<Flight> FlightCache=new ArrayList<>();
     public static Map<String,Flight> FlightCacheById=new HashMap<>();
     private List<Flight> flightResults;
     private ListView listView;
@@ -59,6 +59,8 @@ public class Dashboard extends ListFragment {
         listView = getListView();
         Log.e("Dashboard","LogDashboard");
         // get the flight information information, if there is any
+        /*flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
+        CurrentFlightResults.getInstance().storeCurrentSearch(flightResults);*/
         flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
 
         if (flightResults != null && !initialLoad) {
@@ -127,20 +129,22 @@ public class Dashboard extends ListFragment {
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        //System.out.println("-----------------ONLISTITEMCLICK---------------");
         Intent intent = new  Intent(getActivity(), FlightInfoActivity.class);
-
+        Log.e("ViewName", v.getClass().getName());
+        //System.out.println("------------------ONLISTITEMCLICK BEFORE GETITEM----------");
         // find the corresponding Flight object
-        String text = ((TextView) v).getText().toString();
-        Flight flightReferenced = new Flight();
-        for (int i = 0; i < flights.length; i++) {
-            if (flights[i].equals(text)) {
-                flightReferenced = flightObjects[i];
-                break;
-            }
-        }
+        Flight f = (Flight) adapter.getItem(position);
+        //System.out.println("------------------ONLISTITEMCLICK AFTER GETITEM----------");
+        String flightTostring = f.toString();
+
+
+        //String text = ((TextView) v).getText().toString();
+
+
         String extraMesg = getString(R.string.dashboard_flight_mesg);
-        Log.e("Dashboard", "flighReferenced.toString() is " + flightReferenced.toString());
-        intent.putExtra(extraMesg, flightReferenced.toString());
+        Log.e("Dashboard", "flighReferenced.toString() is " + flightTostring);
+        intent.putExtra(extraMesg, flightTostring);
 
         // start the FlightInfoActivity
         startActivity(intent);
@@ -250,6 +254,21 @@ public class Dashboard extends ListFragment {
                 // advanced_filter
                 return 0;
         }
+    }
+
+    /**
+     * Set the ListView's adapter to a new adapter, based on the flight info in the array info
+     * @param info the String array of human-readable flight information
+     */
+    protected void filterAdapter(Flight[] info) {
+        String input[] = new String[info.length];
+        int layout = android.R.layout.simple_list_item_1;
+        for (int i = 0 ; i < info.length; i++) {
+            input[i] = info[i].toString();
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout, input);
+        listView.setAdapter(adapter);
+        listView.invalidate();
     }
 
 

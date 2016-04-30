@@ -12,6 +12,7 @@ import java.util.List;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
+import takeoff.cis350.upenn.edu.takeoff.flight.FlightAdapter;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 
 /**

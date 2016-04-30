@@ -76,7 +76,7 @@ Judy: 			AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
-        + "search?key=AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos";
+        + "search?key=AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
@@ -476,6 +476,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         spp.setAirportCodes(airportCodes);
         spp.setCities(getCityCodes(cities, countries));
         final SearchQuery sq = spp.getQuery();
+        CurrentSearch.getInstance().storeCurrentSearch(spp);
         String request = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
 
         new JSONAsyncTask(this.getApplicationContext()).execute(request);

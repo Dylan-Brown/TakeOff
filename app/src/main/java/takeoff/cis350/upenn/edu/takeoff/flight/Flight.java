@@ -1,7 +1,10 @@
 package takeoff.cis350.upenn.edu.takeoff.flight;
 
+import android.util.Log;
+
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import takeoff.cis350.upenn.edu.takeoff.ui.results.*;
 
@@ -13,9 +16,11 @@ import takeoff.cis350.upenn.edu.takeoff.ui.results.*;
  */
 public class Flight implements Serializable {
 
+    static String delimiter = "-";
+
     ArrayList<SubFlight> subFlights = new ArrayList<SubFlight>();
 
-    public String id = "";                     // unique per flight
+    public String id = "";              // unique per flight
     boolean isReturnTrip = false;
     boolean isDirectFlight = false;
     double cost = 99999.99;             // in USD
@@ -32,14 +37,14 @@ public class Flight implements Serializable {
     String arrivalTime = "";            // HH-MM
 
     // these variables are for the return flight
-    public int retDuration = 0;                // duration of the Flight in minutes
-    public int retNumOfConnections = 0;        // number of one-way connections
-    public String retDepartureCityCode = "";   // XYZ
-    public String retDepartureDate = "";       // YYYY-MM-DD
-    public String retDepartureTime = "";       // HH-MM
-    public String retArrivalCityCode = "";     // XYZ
-    public String retArrivalDate = "";         // YYYY-MM-DD
-    public String retArrivalTime = "";         // HH-MM
+    int retDuration = 0;                // duration of the Flight in minutes
+    int retNumOfConnections = 0;        // number of one-way connections
+    String retDepartureCityCode = "";   // XYZ
+    String retDepartureDate = "";       // YYYY-MM-DD
+    String retDepartureTime = "";       // HH-MM
+    String retArrivalCityCode = "";     // XYZ
+    String retArrivalDate = "";         // YYYY-MM-DD
+    String retArrivalTime = "";         // HH-MM
 
     /**
      * Get the SubFlights of this Flight
@@ -176,14 +181,29 @@ public class Flight implements Serializable {
      * @param o the string representing the flight
      * @return the new Flight object
      */
-    public static Flight parseFlight(Object o) {
+    public static Flight parseFlight(String o) {
         // assert o is not null and is a Flight class instance
-        if (o == null || !o.getClass().equals(String.class)) {
-            return new SubFlight("", "", "", 0);
+        if (o == null) {
+            return new Flight();
         }
-        String s = (String) o;
-        String[] info = s.split("-");
+        String[] info = o.split(delimiter);
+
+        /*
+        System.out.println("-----");
+        System.out.println("PRINTING EVERYTHING THAT IS SPLITTING");
+        for(String s : info) {
+            System.out.println(s);
+        }
+        System.out.println("PRINT DONE");
+        System.out.println("-----");*/
+
         Flight f = new Flight();
+        if (info.length <= 1) {
+            Log.e("Flight", "parse....");
+            return new Flight();
+        }
+
+        Log.e("Parse", "" + o.indexOf(delimiter));
 
         // parse the instance variables
         f.id = info[0];
@@ -193,20 +213,28 @@ public class Flight implements Serializable {
         f.duration = Integer.parseInt(info[4]);
         f.numOfConnections = Integer.parseInt(info[5]);
         f.departureCityCode = info[6];
-        f.departureDate = info[7];
-        f.departureTime = info[8];
+        f.departureDate = info[7].replace("X", "-");
+        f.departureTime = info[8].replace("X", "-");
         f.arrivalCityCode = info[9];
-        f.arrivalDate = info[10];
-        f.arrivalTime = info[11];
+        f.arrivalDate = info[10].replace("X", "-");
+        f.arrivalTime = info[11].replace("X", "-");
         f.retDuration = Integer.parseInt(info[12]);
         f.retNumOfConnections = Integer.parseInt(info[13]);
         f.retDepartureCityCode = info[14];
-        f.retDepartureDate = info[15];
-        f.retDepartureTime = info[16];
+        f.retDepartureDate = info[15].replace("X", "-");
+        f.retDepartureTime = info[16].replace("X", "-");
         f.retArrivalCityCode = info[17];
-        f.retArrivalDate = info[18];
-        f.retArrivalTime = info[19];
+        f.retArrivalDate = info[18].replace("X", "-");
+        f.retArrivalTime = info[19].replace("X", "-");
 
+        /*
+        System.out.println("PRINTING EVERYTHING THAT IS SPLITTING");
+        for(String s : info) {
+            System.out.println(s);
+        }
+        System.out.println("PRINT DONE");
+        System.out.println("-----");
+*/
         // parse each SubFlight
         for (int i = 20; i < info.length; i++) {
             f.subFlights.add(SubFlight.parseSubFlight(info[i]));
@@ -222,27 +250,27 @@ public class Flight implements Serializable {
     @Override
     public String toString() {
         String s = id;
-        s += "-" + isReturnTrip;
-        s += "-" + isDirectFlight;
-        s += "-" + cost;
-        s += "-" + duration;
-        s += "-" + numOfConnections;
-        s += "-" + departureCityCode;
-        s += "-" + departureDate;
-        s += "-" + departureTime;
-        s += "-" + arrivalCityCode;
-        s += "-" + arrivalDate;
-        s += "-" + arrivalTime;
-        s += "-" + retDuration;
-        s += "-" + retNumOfConnections;
-        s += "-" + retDepartureCityCode;
-        s += "-" + retDepartureDate;
-        s += "-" + retDepartureTime;
-        s += "-" + retArrivalCityCode;
-        s += "-" + retArrivalDate;
-        s += "-" + retArrivalTime;
+        s += delimiter + isReturnTrip;
+        s += delimiter + isDirectFlight;
+        s += delimiter + cost;
+        s += delimiter + duration;
+        s += delimiter + numOfConnections;
+        s += delimiter + departureCityCode;
+        s += delimiter + departureDate;
+        s += delimiter + departureTime;
+        s += delimiter + arrivalCityCode;
+        s += delimiter + arrivalDate;
+        s += delimiter + arrivalTime;
+        s += delimiter + retDuration;
+        s += delimiter + retNumOfConnections;
+        s += delimiter + retDepartureCityCode;
+        s += delimiter + retDepartureDate;
+        s += delimiter + retDepartureTime;
+        s += delimiter + retArrivalCityCode;
+        s += delimiter + retArrivalDate;
+        s += delimiter + retArrivalTime;
         for (SubFlight sf :  subFlights) {
-            s += "-" + sf.toString();
+            s += delimiter + sf.toString();
         }
         return s;
     }

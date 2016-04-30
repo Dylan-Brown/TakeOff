@@ -47,26 +47,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/quantity"
-        android:text="Number of Tickets required" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Please Enter a number "
-        android:id="@+id/textView3"
-        android:layout_weight="0.05" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/editText6"
         android:text="Choose your start flight" />
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:id="@+id/spinner1"
         android:spinnerMode="dropdown" />
 
     <EditText

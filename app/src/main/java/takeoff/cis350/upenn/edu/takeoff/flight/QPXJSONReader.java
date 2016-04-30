@@ -20,10 +20,10 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 public class QPXJSONReader {
 
 
-    public static List<Flight> getAPIResultsAsFlights(JSONArray jsonArray) throws JSONException {
+    public static ArrayList<Flight> getAPIResultsAsFlights(JSONArray jsonArray) throws JSONException {
         //reset the search results
         Dashboard.FlightCache = new ArrayList<Flight>();
-        List<Flight> flightResults = new ArrayList<Flight>();
+        ArrayList<Flight> flightResults = new ArrayList<Flight>();
         Log.e("QPXJSONReader", " attempt to getAPIResultsAsFlights");
 
         // tripOptions, a list of flights
@@ -68,14 +68,28 @@ public class QPXJSONReader {
                         sf.cabinClass = segment.getString("cabin") + "";
                         sf.airline = segment.getJSONObject("flight").getString("carrier") + "";
                         sf.departureCityCode = leg.getString("origin") + "";
-                        sf.departureTime = leg.getString("departureTime").split("T")[0] + "";
-                        sf.departureDate = leg.getString("departureTime").split("T")[1] + "";
+                        sf.departureTime = leg.getString("departureTime").split("T")[1].replace("-", "X") + "";
+                        sf.departureDate = leg.getString("departureTime").split("T")[0].replace("-", "X") + "";
                         sf.arrivalCityCode = leg.getString("destination") + "";
-                        sf.arrivalTime = leg.getString("arrivalTime").split("T")[1] + "";
-                        sf.arrivalDate = leg.getString("arrivalTime").split("T")[0] + "";
+                        sf.arrivalTime = leg.getString("arrivalTime").split("T")[1].replace("-", "X") + "";
+                        sf.arrivalDate = leg.getString("arrivalTime").split("T")[0].replace("-", "X") + "";
                         sf.id = tripOption.getString("id") + "";
                         sf.duration = leg.getInt("duration") + 0;
                         sf.mileage = leg.getInt("mileage") + 0;
+
+                        /*
+                        System.out.println("sf.flightNumber " + sf.flightNumber);
+                        System.out.println("sf.cabinClass " + sf.cabinClass);
+                        System.out.println("sf.airline " + sf.airline);
+                        System.out.println("sf.departureCityCode " + sf.departureCityCode);
+                        System.out.println("sf.departureTime " + sf.departureTime);
+                        System.out.println("sf.departureDat " + sf.departureDate);
+                        System.out.println("sf.arrivalCityCode " + sf.arrivalCityCode);
+                        System.out.println("sf.arrivalDate " + sf.arrivalDate);
+                        System.out.println("sf.id " + sf.id);
+                        System.out.println("sf.duration " + sf.duration);
+                        System.out.println("sf.mileage " + sf.mileage);*/
+
                         fullFlight.subFlights.add(sf);
                     } // leg
                 } // segment
@@ -94,11 +108,11 @@ public class QPXJSONReader {
             SubFlight lastF = sfList.get(roundTripCounter - 1);
             fullFlight.numOfConnections = roundTripCounter-1;
             fullFlight.departureCityCode = firstF.departureCityCode + "";
-            fullFlight.departureTime = firstF.departureTime + "";
-            fullFlight.departureDate = firstF.departureDate + "";
+            fullFlight.departureTime = firstF.departureTime.replace("-", "X") + "";
+            fullFlight.departureDate = firstF.departureDate.replace("-", "X") + "";
             fullFlight.arrivalCityCode = lastF.arrivalCityCode + "";
-            fullFlight.arrivalTime = lastF.arrivalTime + "";
-            fullFlight.arrivalDate = lastF.arrivalDate + "";
+            fullFlight.arrivalTime = lastF.arrivalTime.replace("-", "X") + "";
+            fullFlight.arrivalDate = lastF.arrivalDate.replace("-", "X") + "";
             fullFlight.duration = slices.getJSONObject(0).getInt("duration");
             if (fullFlight.isReturnTrip) {
                 fullFlight.retNumOfConnections = sfList.size() - roundTripCounter-1;
@@ -108,11 +122,11 @@ public class QPXJSONReader {
                 lastF = sfList.get(sfList.size() - 1);
                 fullFlight.retDuration = slices.getJSONObject(1).getInt("duration");
                 fullFlight.retDepartureCityCode = firstF.departureCityCode + "";
-                fullFlight.retDepartureTime = firstF.departureTime + "";
-                fullFlight.retDepartureDate = firstF.departureDate + "";
+                fullFlight.retDepartureTime = firstF.departureTime.replace("-", "X") + "";
+                fullFlight.retDepartureDate = firstF.departureDate.replace("-", "X") + "";
                 fullFlight.retArrivalCityCode = lastF.arrivalCityCode + "";
-                fullFlight.retArrivalTime = lastF.arrivalTime + "";
-                fullFlight.retArrivalDate = lastF.arrivalDate + "";
+                fullFlight.retArrivalTime = lastF.arrivalTime.replace("-", "X") + "";
+                fullFlight.retArrivalDate = lastF.arrivalDate.replace("-", "X") + "";
                 fullFlight.retDepartureCityCode = lastF.departureCityCode + "";
             }
             if ((fullFlight.isReturnTrip && sfList.size() == 2) || sfList.size() == 1) {
@@ -127,11 +141,11 @@ public class QPXJSONReader {
         return flightResults;
     }
 
-    public static List<Flight> getFlightResultsFromMostRecentSearch() {
+    public static ArrayList<Flight> getFlightResultsFromMostRecentSearch() {
         return Dashboard.FlightCache;
     }
 
-    public static void printFlights(List<Flight> flightResults) {
+    public static void printFlights(ArrayList<Flight> flightResults) {
         int Counter = 0;
         for (Flight flight : flightResults) {
             Counter++;

@@ -1,14 +1,18 @@
 [
     {
-        "merged": "/Users/anakagold/Desktop/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
-        "source": "/Users/anakagold/Desktop/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout-sw600dp/design_layout_snackbar.xml"
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
     },
     {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout-sw600dp/design_layout_snackbar.xml"
+        "merged": "D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
     },
     {
-        "merged": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/layout-sw600dp-v13/design_layout_snackbar.xml",
-        "source": "/Users/tangson/Google Drive/CIS350/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout-sw600dp/design_layout_snackbar.xml"
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13\\design_layout_snackbar.xml",
+        "source": "D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout-sw600dp\\design_layout_snackbar.xml"
     }
 ]
