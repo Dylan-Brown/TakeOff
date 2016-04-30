@@ -98,4 +98,20 @@ public class FlightInfoActivity extends AppCompatActivity {
         }
     }
 
+    public void airbnb(MenuItem item) {
+        String flight_details = flight.humanReadable();
+        String[] fd = flight_details.split("\n");
+        String depart = fd[1].split(":")[1].trim();
+        String arrive = fd[3].split(":")[1].trim();
+        String date = fd[2].split(":")[1].trim();
+        //we want to flip the date;
+      //  String[] ddate = date.split("/");
+
+//        String f = ddate[2].trim() + "-" + ddate[1].trim() + "-" + ddate[0].trim();
+       // System.out.println(depart + " " + arrive + " " + f);
+        String url = "https://www.airbnb.com/";
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(browserIntent); //but at least we have something tru
+    }
+
 }

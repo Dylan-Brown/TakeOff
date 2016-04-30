@@ -2779,11 +2779,12 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0d0059;
         public static final int action_mode_bar_stub=0x7f0d0058;
         public static final int action_mode_close_button=0x7f0d003e;
-        public static final int action_settings=0x7f0d00df;
+        public static final int action_settings=0x7f0d00e0;
         public static final int activity_chooser_view_content=0x7f0d003f;
         public static final int adjust_height=0x7f0d0032;
         public static final int adjust_width=0x7f0d0033;
         public static final int advanced_filter=0x7f0d00dc;
+        public static final int airbnb=0x7f0d00df;
         public static final int airline=0x7f0d00bb;
         public static final int airport_input=0x7f0d0092;
         public static final int alertTitle=0x7f0d004b;
