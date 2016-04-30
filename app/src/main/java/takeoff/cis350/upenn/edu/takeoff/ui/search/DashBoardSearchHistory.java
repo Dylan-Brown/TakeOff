@@ -27,14 +27,14 @@ public class DashBoardSearchHistory extends ListFragment {
 
     List<Flight> flightResults;
     DummySearchQueryHistory history = new DummySearchQueryHistory();
-    String[] stringhistory = history.stringHistory2;
+    String[] stringHistory;
 
     ListView lv;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.lv = getListView();
+        this.lv = (ListView) getView().findViewById(android.R.id.list);
 
         // Retrieve the search queries from the database
         final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
@@ -56,17 +56,24 @@ public class DashBoardSearchHistory extends ListFragment {
                     } else {
                         // get user's previouos search queries
                         ArrayList<Object> queries = (ArrayList<Object>) userInfo.get(sqs);
-                        String[] queryStrings = new String[queries.size()];
-                        for (int i = 0; i < queries.size(); i++) {
+                        String[] stringHistory = new String[queries.size()];
+
+                        for (int i = 0; i < stringHistory.length; i++) {
                             String sqString = (String) queries.get(i);
                             SearchQuery sq = SearchQuery.parseSearchQuery(sqString);
-                            queryStrings[i++] = sq.humanReadable();
+                            if (sq != null && sq.humanReadable() != null) {
+                                stringHistory[i] = sq.humanReadable();
+                                Log.e("SearchQueries", "query is " + sq.humanReadable());
+                            } else {
+                                stringHistory[i] = "";
+                            }
 
-                            Log.e("SearchQueries", "query is " + sqString);
-                            Log.e("SearchQueries", "human readable query is " + sq);
+
+
+                            // Log.e("SearchQueries", "human readable query is " + sq);
                         }
-                        stringhistory = queryStrings;
-                        setAdapter(queryStrings);
+                        Log.e("SearchQueries", "Setting adapter");
+                        setAdapter(stringHistory);
                     }
                 }
                 @Override
@@ -77,9 +84,9 @@ public class DashBoardSearchHistory extends ListFragment {
             });
         }
 
-        int layout = android.R.layout.simple_list_item_single_choice;
-        setListAdapter(new ArrayAdapter(getActivity(), layout, stringhistory));
-        setAdapter(stringhistory);
+        // int layout = android.R.layout.simple_list_item_single_choice;
+        // setListAdapter(new ArrayAdapter(getActivity(), layout, stringHistory));
+        // setAdapter(stringHistory);
     }
 
     @Override
@@ -94,7 +101,12 @@ public class DashBoardSearchHistory extends ListFragment {
      */
     private void setAdapter(String[] info) {
         int layout = android.R.layout.simple_list_item_1;
+        Log.e("SearchQueries", "Setting adapterL layout is " +  layout);
+        Log.e("SearchQueries", "Setting adapterL activity is " +  getActivity());
+        for (int i =  0; i < info.length; i++) {
+            Log.e("ForLoop", "info[i] is " + info[i]);
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout, info);
-        this.lv.setAdapter(adapter);
+        lv.setAdapter(adapter);
     }
 }

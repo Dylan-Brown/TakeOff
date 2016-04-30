@@ -65,11 +65,10 @@ public class FavoritesFragment extends ListFragment {
         // get the flight results
         Dashboard dash = (Dashboard)
                 getActivity().getSupportFragmentManager().findFragmentByTag("dashboard");
-        if((listView = getListView()) == null) {
-            return;
-        }
-        flightResults = dash.getFlightResults();
-        display();
+        flightResults = new ArrayList<>();
+        listView = (ListView) getView().findViewById(android.R.id.list);
+        // flightResults = dash.getFlightResults();
+        // display();
     }
 
     protected void display() {
@@ -77,6 +76,9 @@ public class FavoritesFragment extends ListFragment {
         String[] flights;
         if (flightResults != null) {
             flights = new String[flightResults.size()];
+            for (int i = 0; i < flightResults.size(); i++) {
+                flights[i] = flightResults.get(i).humanReadable();
+            }
         } else {
             flights = new String[10];
             Arrays.fill(flights, "");
@@ -98,18 +100,27 @@ public class FavoritesFragment extends ListFragment {
         if (usersRef.getAuth() !=  null) {
             String uid = usersRef.getAuth().getUid();
             String fav = getString(R.string.firebase_fav);
+            flightResults = new ArrayList<>();
             usersRef.child(uid).child(fav).addListenerForSingleValueEvent(
                     new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            flightResults = new ArrayList<>();
+                           //  Log.e("loadFavorites", "here");
+
                             if (snapshot.getValue() != null) {
+                                // Log.e("loadFavorites", "here2");
                                 for (String s : (ArrayList<String>) snapshot.getValue()) {
-                                    // Log.e("FavoritesFragment", "onDataSnapshot: " + s.getClass());
-                                    // TODO: Figure out why parsing is causing a problem
-                                    // TODO: s is clearly a flight; I've tested it. However, we must
-                                    // TODO: make sure that our newer versions of Flight can parse properly
-                                    // flightResults.add(Flight.parseFlight(s));
+                                    // Log.e("loadFavorites", s);
+                                    try {
+                                        Flight f = Flight.parseFlight(s);
+                                        if (f != null) {
+                                            flightResults.add(f);
+                                            // Log.e("loadFavorites", "parsed Flight;  id is " + f.getId());
+                                        }
+                                    } catch (Exception e) {
+                                        // Log.e("loadFavorites", "====failed to parse");
+                                        continue;
+                                    }
                                 }
                                 display();
                             }
