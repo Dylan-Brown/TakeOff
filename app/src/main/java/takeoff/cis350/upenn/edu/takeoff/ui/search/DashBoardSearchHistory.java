@@ -53,8 +53,8 @@ public class DashBoardSearchHistory extends ListFragment {
                     for (SearchQuery q : searches) {
                         if (SearchQuery.compare(sq, q)) {
                             Log.e("DashboardSearchHistory", "Found Search Query");
-                            // String jsonSearch = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
-                            // new JSONAsyncTask(getContext()),execute(jsonSearch);
+                             String jsonSearch = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
+                             new SearchPage().new JSONAsyncTask(getContext()).execute(jsonSearch);
 
                         }
                     }

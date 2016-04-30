@@ -67,7 +67,7 @@ public class FavoritesFragment extends ListFragment {
                 getActivity().getSupportFragmentManager().findFragmentByTag("dashboard");
         flightResults = new ArrayList<>();
         listView = (ListView) getView().findViewById(android.R.id.list);
-        // flightResults = dash.getFlightResults();
+        // flightResuFlts = dash.getFlightResults();
         // display();
     }
 
