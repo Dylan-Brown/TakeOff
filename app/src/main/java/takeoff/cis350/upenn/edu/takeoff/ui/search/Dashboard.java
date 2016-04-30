@@ -66,8 +66,8 @@ public class Dashboard extends ListFragment {
         if (flightResults != null && !initialLoad) {
             if (flightResults.size() == 0) {
                 // no results; display the messag
-                String mesg = getString(R.string.dashboard_no_results);
-                setToastText(mesg);
+                //String mesg = getString(R.string.dashboard_no_results);
+                //setToastText(mesg);
             }
             else {
                 // display a list of the flight information

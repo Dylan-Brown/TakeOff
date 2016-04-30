@@ -151,9 +151,9 @@ public class Flight implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("Cost: " + this.cost + "\n");
         sb.append("Departure City: " + this.departureCityCode + "\n");
-        sb.append("Departure Date: " + this.departureDate + "\n");
+        sb.append("Departure Date: " + this.departureDate.replace("X", "-") + "\n");
         sb.append("Arrival City: " + this.arrivalCityCode + "\n");
-        sb.append("Arrival Date: " + this.arrivalDate + "\n");
+        sb.append("Arrival Date: " + this.arrivalDate.replace("X", "-") + "\n");
         sb.append("id: " + this.id);
         return sb.toString();
     }

@@ -479,6 +479,29 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         CurrentSearch.getInstance().storeCurrentSearch(spp);
         String request = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
 
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        //no departure date
+        if(departureDateInput.equals("")) {
+            String msg = "Please enter a departure date.";
+            alertMessage(msg);
+            return;
+        }
+        if(airportCodes.equals("")) {
+            String[] arr = countriesAutoComp.getText().toString().trim().split(",");
+            if (arr.length == 1 && arr[0] == "") {
+                String msg = "Please enter at least one country.";
+                alertMessage(msg);
+                return;
+            }
+            String[] arr2 = citiesEditText.getText().toString().trim().split(",");
+            if (arr2.length == 1 && arr2[0] == "") {
+                String msg = "Please enter at least one city.";
+                alertMessage(msg);
+                return;
+            }
+        }
+
         new JSONAsyncTask(this.getApplicationContext()).execute(request);
         // Store the SearchQuery in FireBase
         final Firebase usersRef = WelcomeActivity.USER_FIREBASE;
@@ -507,18 +530,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 }
             });
         }
-
-
-
-        //finish();
-        //System.out.println("SearchPage: About to execute request...");
-
-
-        //Intent intent = new Intent(this, Dashboard.class);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //this.startActivity(intent);
-
-
 
         /*
         AlertDialog.Builder alert = new AlertDialog.Builder(this);

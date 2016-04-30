@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -68,11 +70,27 @@ public class TabbingActivity extends AppCompatActivity {
         TabSpec searchHistoryTab = tabHost.newTabSpec(getString(R.string.dashboard_his));
         TabSpec profileTab = tabHost.newTabSpec(getString(R.string.dashboard_pro));
 
+        Drawable dashTab = ResourcesCompat.getDrawable(getResources(), R.drawable.dashboard, null);
+        dashTab.setBounds(0, 0, (int)(dashTab.getIntrinsicWidth()*0.5),
+                (int)(dashTab.getIntrinsicHeight()*0.5));
+
+        Drawable favTab = ResourcesCompat.getDrawable(getResources(), R.drawable.star, null);
+        dashTab.setBounds(0, 0, (int)(favTab.getIntrinsicWidth()*0.5),
+                (int)(favTab.getIntrinsicHeight()*0.5));
+
+        Drawable histTab = ResourcesCompat.getDrawable(getResources(), R.drawable.time, null);
+        dashTab.setBounds(0, 0, (int)(histTab.getIntrinsicWidth()*0.5),
+                (int)(histTab.getIntrinsicHeight()*0.5));
+
+        Drawable profTab = ResourcesCompat.getDrawable(getResources(), R.drawable.profile, null);
+        dashTab.setBounds(0, 0, (int) (profTab.getIntrinsicWidth() * 0.5),
+                (int) (profTab.getIntrinsicHeight() * 0.5));
+
         // set the names shown for each tag
-        dashboardTab.setIndicator(getString(R.string.dashboard_Tag));
-        favoritesTab.setIndicator(getString(R.string.dashboard_Fav));
-        searchHistoryTab.setIndicator(getString(R.string.dashboard_His));
-        profileTab.setIndicator(getString(R.string.dashboard_Pro));
+        dashboardTab.setIndicator("", dashTab);
+        favoritesTab.setIndicator("", favTab);
+        searchHistoryTab.setIndicator("", histTab);
+        profileTab.setIndicator("", profTab);
 
         // set the correct fragment corresponding to each tag
         tabHost.addTab(dashboardTab, Dashboard.class, null);

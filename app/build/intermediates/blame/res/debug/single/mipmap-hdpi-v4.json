@@ -4,15 +4,19 @@
         "source": "D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
         "source": "D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
-        "source": "D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     }
 ]

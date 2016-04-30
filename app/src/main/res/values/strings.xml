@@ -4,7 +4,7 @@
 
     <!-- SEARCH PAGE STRINGS START HERE-->
        <string name="search_message">Please set your search parameters.\nDeparture Date and
-       at least one airport code is required</string>
+       at least one airport code or one city and country is required.</string>
     <string name="continent_message">Continent:</string>
     <string name="date_format">MM-dd-yyyy</string>
     <string name="search_button">Search</string>

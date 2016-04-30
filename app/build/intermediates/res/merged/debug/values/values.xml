@@ -9269,7 +9269,7 @@
     <string name="returning_date">Return Date(optional)</string>
     <string name="search_button">Search</string>
     <string name="search_message">Please set your search parameters.\nDeparture Date and
-       at least one airport code is required</string>
+       at least one airport code or one city and country is required.</string>
     <string name="south_america">South America</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="ticket">Quantity</string>
