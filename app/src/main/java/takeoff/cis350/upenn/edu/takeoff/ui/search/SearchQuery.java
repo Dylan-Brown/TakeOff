@@ -1,5 +1,7 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
+import android.util.Log;
+
 /**
  * TODO: Write the class description
  */
@@ -66,11 +68,31 @@ public class SearchQuery {
      */
     public String humanReadable() {
         String hr = "Departure Date: " + date + "\n";
-        hr += "Airport Code: " + origin + "\n";
+        if (origin.isEmpty()) {
+            hr += "Airport Code: _\n";
+        } else {
+            hr += "Airport Code: " + origin + "\n";
+        }
+
         if (destination != null & !destination.isEmpty()) {
             hr += "Destination: " + destination + "\n";
         }
         return hr;
+    }
+
+
+    public static SearchQuery fromHumanReadable(String s) {
+        SearchQuery sq = new SearchQuery();
+        String info[] = s.split("\n");
+        sq.date = info[0].split(":")[1].trim().replace("\n", "");
+        sq.origin = info[1].split(":")[1].trim().replace("\n", "");
+        sq.destination = info[2].split(":")[1].trim().replace("\n", "");
+        return sq;
+    }
+
+    public static boolean compare(SearchQuery sq1, SearchQuery sq2) {
+
+        return sq1.date.equals(sq2.date) && sq1.destination.equals(sq2.destination);
     }
 
     /**
