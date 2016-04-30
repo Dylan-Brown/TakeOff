@@ -76,7 +76,7 @@ Judy: 			AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
-        + "search?key=AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA";
+        + "search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;

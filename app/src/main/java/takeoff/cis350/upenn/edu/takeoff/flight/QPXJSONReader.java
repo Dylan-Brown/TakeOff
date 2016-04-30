@@ -117,7 +117,7 @@ public class QPXJSONReader {
             if (fullFlight.isReturnTrip) {
                 fullFlight.retNumOfConnections = sfList.size() - roundTripCounter-1;
                 //first flight for return trip
-                firstF = sfList.get(roundTripCounter);
+                firstF = sfList.get(roundTripCounter-1);
                 //last flight for return trip
                 lastF = sfList.get(sfList.size() - 1);
                 fullFlight.retDuration = slices.getJSONObject(1).getInt("duration");
