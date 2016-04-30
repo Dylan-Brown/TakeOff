@@ -240,7 +240,7 @@ public class FlightAdapter extends ArrayAdapter {
     private void addFavorite(final String uid, final Flight flight) {
 
         final Firebase ref = WelcomeActivity.USER_FIREBASE.child(uid);
-        final String favKey = getContext().getResources().getString(R.string.firebase_fav);
+        final String favKey = "favoriteFlights";
 
         ref.addListenerForSingleValueEvent(
                 new ValueEventListener() {

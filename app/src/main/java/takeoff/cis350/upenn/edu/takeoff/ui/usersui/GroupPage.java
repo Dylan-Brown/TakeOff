@@ -36,15 +36,15 @@ public class GroupPage extends Activity {
 
     // constant strings
     private final String UID = WelcomeActivity.FIREBASE.getAuth().getUid();
-    private final String FAV = getString(R.string.firebase_fav);
-    private final String MEM = getString(R.string.firebase_mem);
-    private final String ERROR_INTRNL = getString(R.string.error_internal);
+    private final String FAV = "favoriteFlights";
+    private final String MEM = "members";
+    private final String ERROR_INTRNL = "Sorry, firbase has experienced an internal error";
     private final int TOAST_LEN = Toast.LENGTH_SHORT;
 
     // Firebase references
-    private final Firebase usersRef = WelcomeActivity.FIREBASE.child(getString(R.string.fb_users));
+    private final Firebase usersRef = WelcomeActivity.FIREBASE.child("users");
     private final Firebase userRef =usersRef.child(UID);
-    private final Firebase groups = WelcomeActivity.FIREBASE.child(getString(R.string.fb_grp));
+    private final Firebase groups = WelcomeActivity.FIREBASE.child("groups");
 
     // views and information
     private TextView nameView = null;
@@ -59,7 +59,7 @@ public class GroupPage extends Activity {
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_page);
-        groupName = getIntent().getStringExtra(getString(R.string.group_extra));
+        groupName = getIntent().getStringExtra("GROUP_MESSAGE");
         setDisplay();
 
         // populate array with actual group members
@@ -70,14 +70,14 @@ public class GroupPage extends Activity {
                 // get the group members
                 HashMap<String, Object> allGroups = (HashMap<String, Object>) snapshot.getValue();
                 HashMap<String, Object> data = (HashMap<String, Object>) allGroups.get(groupName);
-                String mem = getString(R.string.firebase_mem);
+                String mem = "members";
                 ArrayList<String> tempMembers = (ArrayList<String>) data.get(mem);
                 if (tempMembers != null) {
                     setMemberAdapter(tempMembers);
                 }
 
                 // get the shared flights
-                String mShared = getString(R.string.group_shared);
+                String mShared = "shared";
                 if (data.get(mShared) != null) {
                     setSharedAdapter((ArrayList<String>) data.get(mShared));
                     // TODO: Confirm this worked
