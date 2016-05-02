@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -62,21 +61,11 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
-/*
 
-Jason:			      AIzaSyBWkE-Lhv0er0KlL6adTT2I1NYEzfjeMbA
-Anaka: Take Off               AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ
-Judy: Flight Engine	      AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos
-Dylan: flight-1223            AIzaSyB_4Rk4qn5CajLsU7T3Y_K9Sc3m6gFVa_w
-Judy: 			AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU
-*/
-/**
- * This class is the page the user sees when they enter their requirements for the flight search
- */
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
-        + "search?key=AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos";
+        + "search?key=AIzaSyCNtycZLQXy0LB5mHLZyopE1JepuxJ46Ow";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
@@ -530,39 +519,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                 }
             });
         }
-
-        /*
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-        //no departure date
-        if(departureDateInput.equals("")) {
-            System.out.println("DATE INPUT");
-            String msg = "Please do not leave date fields empty.";
-            alertMessage(msg);
-            return;
-        }
-
-        //valid dates if 2
-        if(!returningDateText.getText().toString().equals("")) {
-            if (!validDates(departureDateInput, returningDateInput)) {
-                String msg = "Please make sure depature date is the same day or before return date" +
-                        " and the dates have not passed.";
-                alertMessage(msg);
-                return;
-            }
-        }
-        String[] arr = countriesAutoComp.getText().toString().trim().split(",");
-        if(arr.length == 1 && arr[0] == "") {
-            String msg = "Please enter at least one country.";
-            alertMessage(msg);
-            return;
-        }
-        String[] arr2 = citiesEditText.getText().toString().trim().split(",");
-        if(arr2.length == 1 && arr2[0] == "") {
-            String msg = "Please enter at least one city.";
-            alertMessage(msg);
-            return;
-        }*/
     }
 
 

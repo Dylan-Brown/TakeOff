@@ -315,7 +315,7 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Description: Make a call to Firebase to add the flight to the user's list of favorites
+     * Make a call to Firebase to add the flight to the user's list of favorites
      * @param uid the unique identifier for the user's Firebase information
      */
     private void addFavorite(final String uid, final Flight flight) {
