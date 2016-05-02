@@ -2,26 +2,17 @@ package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
 import android.util.Log;
 
-import java.lang.reflect.Field;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import takeoff.cis350.upenn.edu.takeoff.R;
 
-/**
- * Created by judyweng on 3/23/2016.
- */
 public class SearchParameterProcessor {
 
     SearchQuery sq = new SearchQuery();
-    ArrayList<String> airportCodes = new ArrayList<>();
     ArrayList<String> countries = new ArrayList<>();
 
     /**
-     *
+     * Description: sets the departure date that the user chose
      * @param departureDateInput
      */
     public void setDepartureDate(String departureDateInput) {
@@ -31,8 +22,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
-     *
+     * Description: sets the returning date that the user chose
      * @param returningDateInput
      */
     public void setReturningDate(String returningDateInput) {
@@ -43,7 +33,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets the destination countries that the user chose
      * @param countries
      */
     public void setCountries(String countries) {
@@ -55,7 +45,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets the destination cities that the user chose
      * @param cities
      */
     public void setCities(String cities) {
@@ -63,7 +53,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets the max budget that the user chose
      * @param budget
      */
     public void setBudget(String budget) {
@@ -73,7 +63,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets the number of tickets that the user chose
      * @param passengerCount
      */
     public void setPassengerCount(String passengerCount) {
@@ -83,7 +73,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets the max connections (in minutes/hours) that the user chose
      * @param maxConnectionDurationinHours
      */
     public void setMaxConnectionDuration(String maxConnectionDurationinHours) {
@@ -93,7 +83,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets the desired cabin/class that the user chose
      * @param cabin
      */
     public void setCabin(String cabin) {
@@ -101,7 +91,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets the alliance that the user chose
      * @param alliance
      */
     public void setAlliance(String alliance) {
@@ -109,7 +99,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets the airport codes of the destination that the user chose
      * @param airportCodes
      */
     public void setAirportCodes(String airportCodes) {
@@ -119,7 +109,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets if the user wants a non-stop flight
      * @param nonstop
      */
     public void setNonStop(boolean nonstop) {
@@ -131,66 +121,15 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: sets if the user wants a refundable flight
      * @param refundable
      */
     public void setRefundable(boolean refundable) {
         sq.refundability = refundable;
     }
 
-    /*
-    public SearchParameterProcessor(String departureDate, String returnDate, String countries,
-                                    String cities, String airportCodes, String budget,
-                                    String quantity, String waitTime, String flightClass,
-                                    String alliance, boolean nonstop, boolean refundable) {
-
-
-        int parsedBudget;
-        if (budget.equals("")) {
-            parsedBudget = 99999;
-        } else {
-            parsedBudget = Integer.parseInt(budget);
-        }
-
-        int maxStop;
-        int connectionDuration;
-        if (nonstop) {
-            maxStop = 0;
-            connectionDuration = 0;
-        } else {
-            maxStop = 5;
-            if (waitTime.equals("")) {
-                connectionDuration = 4320;
-            } else {
-                connectionDuration = Integer.parseInt(waitTime) * 60;
-            }
-        }
-
-        //dates
-        boolean roundtrip = !returnDate.equals("");
-        String parsedReturnDate = "";
-        String parsedDepartureDate = parseDate(departureDate);
-        if (roundtrip) {
-            parsedReturnDate = parseDate(returnDate);
-        }
-
-        List<String> parsedCountries = parseLocations(countries);
-        List<String> parsedCities = parseLocations(cities);
-        List<String> parsedAirportCodes = parseLocations(airportCodes);
-
-        String cabin = parseCabin(flightClass);
-        String parsedAlliance = parseAlliance(alliance);
-
-        SearchParameters sp = new SearchParameters(parsedDepartureDate, parsedCountries,
-                parsedCities, parsedAirportCodes, parsedBudget, parsedQuantity, connectionDuration,
-                maxStop, cabin, parsedAlliance, nonstop, refundable, roundtrip);
-
-
-    }
-    */
-
     /**
-     *
+     * Description: changes the date format so it's usable for the json request
      * @param date - the string represent of the desired date in the format MM-dd-yyyy
      * @return string - the string represent of the desired date in the format yyyy-MM-dd
      */
@@ -204,7 +143,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: changes the location so it's usable for the json request
      * @param s
      * @return
      */
@@ -218,7 +157,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: changes the cabin choice so it's usable for the json request
      * @param input
      * @return
      */
@@ -237,7 +176,7 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
+     * Description: changes the alliance choice so it's usable for the json request
      * @param input
      * @return
      */
@@ -256,15 +195,10 @@ public class SearchParameterProcessor {
     }
 
     /**
-     *
-     * @return
+     * Description: Gives access to the search query created
+     * @return sq - the current search query created
      */
     public SearchQuery getQuery() {
-        Calendar calendar = Calendar.getInstance();
-        // getTime() returns current time in milliseconds
-        Date now = calendar.getTime();
-        // passed the milliseconds to constructor of Timestamp class
-        //sq.timeOfSearch = new Time(now.getTime());
         return sq;
     }
 }

@@ -1,7 +1,6 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
@@ -17,14 +16,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchQuery;
 
 /**
  * Class to handle the "Advanced Filter" feature of the dashboard
@@ -44,7 +40,7 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filter);
+        setContentView(R.layout.activity_filter_search);
         flightResult = QPXJSONReader.getFlightResultsFromMostRecentSearch();
         /*for (Flight f : flightResult) {
             System.out.println(f.toString());

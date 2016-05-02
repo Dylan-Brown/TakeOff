@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,6 +26,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 /**
+ * Description:
  * A Log In screen that offers users the ability to log into their accounts via an email/password
  * combination.
  */
@@ -65,7 +65,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     /**
-     * Attempts to sign in or register the account specified by the login form, handles errors
+     * Description: Attempts to sign in or register the account specified by the login form, handles errors
      */
     private void attemptLogin() {
         mEmailView.setError(null);
@@ -129,6 +129,5 @@ public class LogInActivity extends AppCompatActivity {
         // make the authentication attempt
         WelcomeActivity.USER_FIREBASE.authWithPassword(email, password, authResultHandler);
     }
-
 }
 

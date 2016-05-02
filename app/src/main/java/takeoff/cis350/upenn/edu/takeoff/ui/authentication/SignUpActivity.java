@@ -28,6 +28,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 /**
+ * Description:
  * A Sign Up screen that offers users the ability to create a new account given an email and
  * and password combination. SignUpActivitty also has an EditText for the user to re-type their
  * password, so that they may confirm that it is what they expected.
@@ -68,7 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     /**
-     * Attempts to create a new account for the user, given correctly-formatted input
+     * Description: Attempts to create a new account for the user, given correctly-formatted input
      */
     private void attemptSignUp() {
         // reset errors
@@ -142,10 +143,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 error = getString(R.string.error_invalid_credentials);
                         }
                         (Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT)).show();
-
                     }
                 });
     }
-
 }
 

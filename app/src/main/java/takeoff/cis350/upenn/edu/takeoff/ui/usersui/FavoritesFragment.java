@@ -2,7 +2,6 @@ package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 
 /**
- * The class representing the Favorites fragment of TabbedActivity
+ * Description: The class representing the Favorites fragment of TabbedActivity
  */
 public class FavoritesFragment extends ListFragment {
 
@@ -33,10 +32,6 @@ public class FavoritesFragment extends ListFragment {
     List<Flight> flightResults;
     ListView listView;
 
-    /**
-     *
-     * @param savedInstanceState
-     */
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +39,6 @@ public class FavoritesFragment extends ListFragment {
         loadFavorites();
     }
 
-    /**
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
-     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_favorites, container, false);
@@ -58,7 +46,7 @@ public class FavoritesFragment extends ListFragment {
     }
 
     /**
-     *Sets the global vairables
+     * Description: Sets the global vairables
      */
     private void setVariables() {
 
@@ -67,10 +55,11 @@ public class FavoritesFragment extends ListFragment {
                 getActivity().getSupportFragmentManager().findFragmentByTag("dashboard");
         flightResults = new ArrayList<>();
         listView = (ListView) getView().findViewById(android.R.id.list);
-        // flightResuFlts = dash.getFlightResults();
-        // display();
     }
 
+    /**
+     * Description: Displays the favorite flights
+     */
     protected void display() {
         // form the results array
         String[] flights;
@@ -93,7 +82,7 @@ public class FavoritesFragment extends ListFragment {
     }
 
     /**
-     * If the user is signed in, this method attempts to load that user's favorites
+     * Description: If the user is signed in, this method attempts to load that user's favorites
      */
     private void loadFavorites() {
         // try authenticating the user
@@ -133,15 +122,5 @@ public class FavoritesFragment extends ListFragment {
                         }
                     });
         }
-    }
-
-    /**
-     *
-     * @param info
-     */
-    private void setAdapter(String[] info) {
-        int layout = android.R.layout.simple_list_item_1;
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout, info);
-        listView.setAdapter(adapter);
     }
 }

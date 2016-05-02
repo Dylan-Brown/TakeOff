@@ -80,7 +80,6 @@ public class GroupPage extends Activity {
                 String mShared = "shared";
                 if (data.get(mShared) != null) {
                     setSharedAdapter((ArrayList<String>) data.get(mShared));
-                    // TODO: Confirm this worked
                 }
             }
             @Override
@@ -88,7 +87,6 @@ public class GroupPage extends Activity {
                 (Toast.makeText(getApplicationContext(), ERROR_INTRNL, TOAST_LEN)).show();
             }
         });
-
         checkFavorites();
     }
 
@@ -110,7 +108,7 @@ public class GroupPage extends Activity {
     }
 
     /**
-     *
+     * Description:
      * @param v the view of the invite button
      */
     public void invite(View v) {
@@ -142,7 +140,7 @@ public class GroupPage extends Activity {
     }
 
     /**
-     *
+     * Desscription
      * @param v the view of the share button
      */
     public void share(View v) {

@@ -25,8 +25,9 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 /**
+ * Description:
  * This class represents the activity to display the list of groups to which the logged-in user
- * belongs
+ * belongs to
  */
 public class GroupListActivity extends ListActivity {
 
@@ -40,13 +41,13 @@ public class GroupListActivity extends ListActivity {
     }
 
     /**
-     * Fill the groups array with any groups the user is a member of, or display a message if the
+     * Description: Fill the groups array with any groups the user is a member of, or display a message if the
      * user is not a member of any groups
      */
     protected void loadGroupPage() {
         groupView = new ListView(getApplicationContext());
 
-
+        // ensure user is logged in
         if (WelcomeActivity.USER_FIREBASE.getAuth() != null) {
             AuthData auth = WelcomeActivity.USER_FIREBASE.getAuth();
             final String uid = auth.getUid();
@@ -84,7 +85,7 @@ public class GroupListActivity extends ListActivity {
     }
 
     /**
-     * Gets the name of the group clicked, and start the GroupPage activity
+     * Description: Gets the name of the group clicked, and start the GroupPage activity
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
@@ -94,7 +95,7 @@ public class GroupListActivity extends ListActivity {
     }
 
     /**
-     * Display a Toast message notify the user that no groups they were a member of were found
+     * Description: Display a Toast message notify the user that no groups they were a member of were found
      */
     public void noGroups() {
         String error = getString(R.string.error_no_groups);
@@ -102,7 +103,7 @@ public class GroupListActivity extends ListActivity {
     }
 
     /**
-     * Displays the names of the user's groups in a list
+     * Description: Displays the names of the user's groups in a list
      * @param groupNames the set containing each of the user's groups' names
      */
     public void setGroups(Set<String> groupNames) {
@@ -121,5 +122,4 @@ public class GroupListActivity extends ListActivity {
         groupView.setAdapter(adapter);
         setContentView(R.layout.activity_group_page_view);
     }
-
 }

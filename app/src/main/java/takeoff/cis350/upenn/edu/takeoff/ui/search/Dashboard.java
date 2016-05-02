@@ -10,9 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -26,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.FilterSearch;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.flight.FlightAdapter;
@@ -34,6 +31,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfoActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 import java.util.*;
 /**
+ * Description:
  * This class is the list fragment for the dashboard, to display the search results
  */
 public class Dashboard extends ListFragment {
@@ -46,6 +44,7 @@ public class Dashboard extends ListFragment {
     private Flight[] flightObjects;
     private boolean initialLoad = true;
     private FlightAdapter adapter;
+
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -58,18 +57,10 @@ public class Dashboard extends ListFragment {
     public void loadDashboard() {
         listView = getListView();
         Log.e("Dashboard","LogDashboard");
-        // get the flight information information, if there is any
-        /*flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
-        CurrentFlightResults.getInstance().storeCurrentSearch(flightResults);*/
         flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
 
         if (flightResults != null && !initialLoad) {
-            if (flightResults.size() == 0) {
-                // no results; display the messag
-                //String mesg = getString(R.string.dashboard_no_results);
-                //setToastText(mesg);
-            }
-            else {
+            if (flightResults.size() != 0) {
                 // display a list of the flight information
                 loadFlights();
                 int layout1 =R.layout.flight_item_one;
@@ -80,7 +71,6 @@ public class Dashboard extends ListFragment {
                 }
                 listView.setAdapter(adapter);
 
-                //listView.setAdapter(new ArrayAdapter<>(getActivity(), layout2, flights));
             }
         } else if (initialLoad) {
             // this is the first time the user is entering the dashboard; display nothing
@@ -101,7 +91,7 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Display a Toast message containing the relevant text
+     * Description: Display a Toast message containing the relevant text
      * @param message the text to display
      */
     private void setToastText(String message) {
@@ -111,7 +101,7 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Load the flight results into human readable strings
+     * Description: Load the flight results into human readable strings
      * @return the array of human-readable flight strings
      */
     private void loadFlights() {
@@ -125,23 +115,17 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Handle the event in which a list item has been clicked
+     * Description: Handle the event in which a list item has been clicked
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        //System.out.println("-----------------ONLISTITEMCLICK---------------");
         Intent intent = new  Intent(getActivity(), FlightInfoActivity.class);
         Log.e("ViewName", v.getClass().getName());
-        //System.out.println("------------------ONLISTITEMCLICK BEFORE GETITEM----------");
         // find the corresponding Flight object
         Flight f = (Flight) adapter.getItem(position);
-        //System.out.println("------------------ONLISTITEMCLICK AFTER GETITEM----------");
         String flightTostring = f.toString();
 
-
-        //String text = ((TextView) v).getText().toString();
-
-
+        //Prepare a bundle/intent
         String extraMesg = getString(R.string.dashboard_flight_mesg);
         Log.e("Dashboard", "flighReferenced.toString() is " + flightTostring);
         intent.putExtra(extraMesg, flightTostring);
@@ -157,7 +141,7 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Go to the AdvancedFilter activity after the user has selected that menu option
+     * Description: Go to the AdvancedFilter activity after the user has selected that menu option
      */
     public void advancedFilter() {
         Log.e("AdvancedFilter", "Here");
@@ -177,7 +161,7 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Sorts the list of flights to be displayed on the dashboard.
+     * Description: Sorts the list of flights to be displayed on the dashboard.
      * @param feature the feature by which we sort the results
      */
     public void sortBy(int feature) {
@@ -215,7 +199,7 @@ public class Dashboard extends ListFragment {
 
 
     /**
-     * Get the compareTo value between to Flights based on a specific feature of the Flight class
+     * Description: Get the compareTo value between to Flights based on a specific feature of the Flight class
      * @param feature the parameter to compare
      * @param array the array of flights
      * @param i the index of the first flight to compare
@@ -257,7 +241,7 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Set the ListView's adapter to a new adapter, based on the flight info in the array info
+     * Description: Set the ListView's adapter to a new adapter, based on the flight info in the array info
      * @param info the String array of human-readable flight information
      */
     protected void filterAdapter(Flight[] info) {
@@ -273,7 +257,7 @@ public class Dashboard extends ListFragment {
 
 
     /**
-     * Set the ListView's adapter to a new adapter, based on the flight info in the array info
+     * Description: Set the ListView's adapter to a new adapter, based on the flight info in the array info
      * @param info the String array of human-readable flight information
      */
     private void setAdapter(String[] info) {
@@ -283,7 +267,7 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Gets the List of Flight results from the search
+     * Description: Gets the List of Flight results from the search
      * @return the List of Flights
      */
     public List<Flight> getFlightResults() {
@@ -292,7 +276,7 @@ public class Dashboard extends ListFragment {
 
 
     /**
-     * Make a call to Firebase to remove the favorite from the user's list of favorites
+     * Description: Make a call to Firebase to remove the favorite from the user's list of favorites
      * @param uid the unique identifier for the user's Firebase information
      */
     private void removeFavorite(final String uid, final Flight flight) {
@@ -331,7 +315,7 @@ public class Dashboard extends ListFragment {
     }
 
     /**
-     * Make a call to Firebase to add the flight to the user's list of favorites
+     * Description: Make a call to Firebase to add the flight to the user's list of favorites
      * @param uid the unique identifier for the user's Firebase information
      */
     private void addFavorite(final String uid, final Flight flight) {

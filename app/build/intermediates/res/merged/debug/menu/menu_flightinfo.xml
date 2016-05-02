@@ -3,18 +3,18 @@
     <item android:id="@+id/purchaseTicket"
         android:title="Purchase Ticket"
         android:orderInCategory="0"
-        android:onClick="PurchaseTicket"
+        android:onClick="purchaseTicket"
         />
 
     <item android:id="@+id/shareTicket"
         android:title="Share via mail"
         android:orderInCategory="0"
-        android:onClick="ShareTicket"
+        android:onClick="shareTicket"
         />
 
     <item android:id="@+id/airbnb"
-        android:title="airbnb"
+        android:title="Go to Airbnb"
         android:orderInCategory="0"
-        android:onClick="airbnb"
+        android:onClick="transitionToAirbnb"
         />
 </menu>

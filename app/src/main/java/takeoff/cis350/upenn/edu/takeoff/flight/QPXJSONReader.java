@@ -5,10 +5,6 @@ import android.util.Log;
 import org.json.*;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
-import takeoff.cis350.upenn.edu.takeoff.flight.SubFlight;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 
 /**QPXJSONReader takes
@@ -19,7 +15,14 @@ import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
  */
 public class QPXJSONReader {
 
-
+    /**
+     * Description: This method parses all the information recieved from the QPX API
+     * It saves flights with all its necessary information, such as their subflights too
+     *
+     * @param jsonArray - the jsonArray formed from the json object recieved from the API
+     * @return ArrayList of the flights generated from the json Array
+     * @throws JSONException
+     */
     public static ArrayList<Flight> getAPIResultsAsFlights(JSONArray jsonArray) throws JSONException {
         //reset the search results
         Dashboard.FlightCache = new ArrayList<Flight>();
@@ -31,6 +34,7 @@ public class QPXJSONReader {
             JSONObject tripOption = jsonArray.getJSONObject(index);// each Trip
             JSONArray slices = tripOption.getJSONArray("slice");
             int numOfSlices = slices.length();
+
             //Create a fullFlight local variable to add to the flightResults
             Flight fullFlight = new Flight();
             fullFlight.subFlights = new ArrayList<SubFlight>();
@@ -77,19 +81,6 @@ public class QPXJSONReader {
                         sf.duration = leg.getInt("duration") + 0;
                         sf.mileage = leg.getInt("mileage") + 0;
 
-                        /*
-                        System.out.println("sf.flightNumber " + sf.flightNumber);
-                        System.out.println("sf.cabinClass " + sf.cabinClass);
-                        System.out.println("sf.airline " + sf.airline);
-                        System.out.println("sf.departureCityCode " + sf.departureCityCode);
-                        System.out.println("sf.departureTime " + sf.departureTime);
-                        System.out.println("sf.departureDat " + sf.departureDate);
-                        System.out.println("sf.arrivalCityCode " + sf.arrivalCityCode);
-                        System.out.println("sf.arrivalDate " + sf.arrivalDate);
-                        System.out.println("sf.id " + sf.id);
-                        System.out.println("sf.duration " + sf.duration);
-                        System.out.println("sf.mileage " + sf.mileage);*/
-
                         fullFlight.subFlights.add(sf);
                     } // leg
                 } // segment
@@ -134,17 +125,25 @@ public class QPXJSONReader {
             }
             flightResults.add(fullFlight);
         } // tripOption loop
-        //  printFlights(flightResults);
 
         //add to FlightCache
         Dashboard.FlightCache.addAll(flightResults);
         return flightResults;
     }
 
+    /**
+     * Description: Gets the last search's flight results
+     * @return ArrayList of the flights from the most recent search
+     */
     public static ArrayList<Flight> getFlightResultsFromMostRecentSearch() {
         return Dashboard.FlightCache;
     }
 
+    /**
+     * Description: Used to print out all the information of a fligh
+     * Mainly used for debugging (leaving this unused method in here for future debugging)
+     * @param flightResults - the flights to print out
+     */
     public static void printFlights(ArrayList<Flight> flightResults) {
         int Counter = 0;
         for (Flight flight : flightResults) {

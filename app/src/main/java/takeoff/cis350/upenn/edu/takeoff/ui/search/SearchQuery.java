@@ -25,9 +25,7 @@ public class SearchQuery {
     public int maxConnectionDuration=4320;  // maximum amount in minutes
     public String alliance="";              // NONE, STAR, ONEWORLD, XXX, ...
 
-    /**
-     * Empty constructor
-     */
+
     public SearchQuery() {
     };
 
@@ -80,7 +78,11 @@ public class SearchQuery {
         return hr;
     }
 
-
+    /**
+     * Converts string representation of a search query to the actual SearchQuery object
+     * @param s - string representation of a search query
+     * @return the actual SearchQuery object
+     */
     public static SearchQuery fromHumanReadable(String s) {
         SearchQuery sq = new SearchQuery();
         String info[] = s.split("\n");
@@ -90,8 +92,13 @@ public class SearchQuery {
         return sq;
     }
 
+    /**
+     * Compares two SearchQuery objects to see if they're equal
+     * @param sq1
+     * @param sq2
+     * @return boolean to indicate if sq1 and dq2 is the same
+     */
     public static boolean compare(SearchQuery sq1, SearchQuery sq2) {
-
         return sq1.date.equals(sq2.date) && sq1.destination.equals(sq2.destination);
     }
 

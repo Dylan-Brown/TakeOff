@@ -8,7 +8,8 @@ import org.json.JSONObject;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchQuery;
 
 /**
- * TODO: Write a class description
+ * This class holds methods that will convert between the desired search parameters (held in SearchQuery class) to
+ * usable format to make the search and then to go from json objects to readable information for debugging
  */
 public class SearchQuerytoQPXReader {
 
@@ -16,24 +17,19 @@ public class SearchQuerytoQPXReader {
     static JSONArray JSONResponse;
     static boolean isSet = true;
 
-    /**
-     * TODO: Write a method javadoc comment, explain parameters
-     * @param ja
-     */
-    public static void changeResponse(JSONArray ja) {
-        JSONResponse = ja;
-        isSet = true;
-    }
 
     /**
-     * TODO: Write a method javadoc comment, explain parameters and return values
-     * @param sq
-     * @return
+     * Description: Given the object that holds the user's desired search parameters, format the information
+     * correctly in json in preparation to be passed to the API
+     *
+     * @param sq - The search query object with all the parameters the user entered to create the API search
+     * @return String - String representation of the search query that can be parsed into a json object
      */
     public static String makeJSONSearchObject(SearchQuery sq) {
 
         // TODO: comment this code so that it's understandable
 
+        //extracting information for the API request from the object to use in the code
         int adultCount = sq.adultCount;
         boolean refundability = sq.refundability;
         int numberOfSolutions = sq.numberOfSolutions;
@@ -49,6 +45,7 @@ public class SearchQuerytoQPXReader {
         String earliestTime = sq.earliestTime;
         String latestTime = sq.latestTime;
 
+        //Formatting the request for a flight search
         String requestSlice = "{ \"request\":{\"slice\": " + "[{\"origin\": \"" + origin
                 + "\",\"destination\": \"" + destination + "\",\"date\": \"" + date
                 + "\",\"maxStops\": " + maxStops + ",\"preferredCabin\": \"" + preferredCabin
@@ -56,16 +53,12 @@ public class SearchQuerytoQPXReader {
                 + "\"earliestTime\": \"" + earliestTime + "\",\"latestTime\": \"" + latestTime
                 + "\"},\"maxConnectionDuration\": \"" + maxConnectionDuration + "\" } ";
 
+        //If this is a return trip, will need to add an extra part to the json object
         if (sq.isRoundtrip) {
+            //Some variables are changed in this slice
             origin = sq.destination;
             destination = "PHL";
             date = sq.returnDate;
-            maxStops = sq.maxStops;// 0 for nonstop
-            alliance = sq.alliance;
-            maxConnectionDuration = sq.maxConnectionDuration;
-            preferredCabin = sq.preferredCabin;
-            earliestTime = sq.earliestTime;
-            latestTime = sq.latestTime;
 
             String slice = " , {\"origin\": \"" + origin + "\",\"destination\": \"" + destination
                     + "\",\"date\": \"" + date + "\",\"maxStops\": " + maxStops
@@ -76,11 +69,14 @@ public class SearchQuerytoQPXReader {
             requestSlice += slice;
         }
 
+        //Remainder of the information
         String requestPassenger = "],\"passengers\": { \"adultCount\": " + adultCount
                 + ", \"infantInLapCount\": 0, \"infantInSeatCount\": 0, \"childCount\": 0, "
                 + "\"seniorCount\": 0 }, ";
         String requestInfo = "\"solutions\":" + numberOfSolutions + ", " + "\"refundable\":"
                 + refundability + ", " + "\"maxPrice\": \"USD" + maxPrice + "\" }}";
+
+        //Adding all the info together to get the final result
         String jsonRequest = requestSlice + requestPassenger + requestInfo;
 
         try {
@@ -93,17 +89,19 @@ public class SearchQuerytoQPXReader {
     }
 
     /**
-     * TODO: Write a method javadoc comment, explain parameters
-     * @param jsonArray
+     * Description: prints out the json array assuming this json array is the result recieved from the QPX API
+     * @param jsonArray - The json array to be printed
      * @throws JSONException
      */
     public static void printAPIResults(JSONArray jsonArray) throws JSONException {
 
         // TODO: comment this code so that it's understandable
 
+        //Iterate through all the flights
         for (int index = 0; index < jsonArray.length(); index++) {
             JSONObject tripOption = jsonArray.getJSONObject(index);
 
+            //Getting the relavent information for this specific flight
             JSONArray slices = tripOption.getJSONArray("slice");
             JSONArray segments = slices.getJSONObject(0).getJSONArray("segment");
             int segmentLength = segments.length();
@@ -120,6 +118,7 @@ public class SearchQuerytoQPXReader {
             Log.i("SearchQuerytoQPXReader", "printAPIResults: Departure Time: "
                     + firstLeg.getString("departureTime"));
 
+            //If this has more than one connection, get all of those too
             if (segmentLength > 1) {
                 for (int segIndex = 0; segIndex < segmentLength - 1; segIndex++) {
                     JSONObject connectingArrival = segments.getJSONObject(segIndex)
@@ -142,7 +141,5 @@ public class SearchQuerytoQPXReader {
         }
         Log.i("SearchQuerytoQPXReader", "printAPIResults: Length is: " + jsonArray.length());
     }
-
-
 }
 

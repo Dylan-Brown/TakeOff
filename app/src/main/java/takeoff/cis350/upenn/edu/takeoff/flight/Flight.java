@@ -4,9 +4,6 @@ import android.util.Log;
 
 import java.io.*;
 import java.util.*;
-import java.util.regex.Pattern;
-
-import takeoff.cis350.upenn.edu.takeoff.ui.results.*;
 
 /**
  * This is the Flight datatype. Flight segments are sub-flights (i.e. layovers, connecting flights),
@@ -15,9 +12,10 @@ import takeoff.cis350.upenn.edu.takeoff.ui.results.*;
  * true.Flight is one level recursive.
  */
 public class Flight implements Serializable {
-
+    //The delimiter used to split the flight information provided
     static String delimiter = "-";
 
+    //----Default values of Flight class variables---
     ArrayList<SubFlight> subFlights = new ArrayList<SubFlight>();
 
     public String id = "";              // unique per flight
@@ -55,7 +53,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the number of connections of this Flight
+     * Description: Get the number of connections of this Flight
      * @return the number of connections
      */
     public int getNumOfConnections() {
@@ -63,7 +61,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the boolean representing if this Flight is a return Flight
+     * Description: Get the boolean representing if this Flight is a return Flight
      * @return the boolean
      */
     public boolean isReturnTrip() {
@@ -71,15 +69,15 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the boolean representing if this Flight is a direct Flight
-     * @return the boolean
+     * Description: Get the boolean representing if this Flight is a direct Flight
+     * @return the boolean indicating if its a direct flight
      */
     public boolean isDirectFlight() {
         return this.isDirectFlight;
     }
 
     /**
-     * Get the unique ID of this Flight
+     * Description: Get the unique ID of this Flight
      * @return the unique ID
      */
     public String getId() {
@@ -87,7 +85,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the city code of the city from which this Flight departs
+     * Description: Get the city code of the city from which this Flight departs
      * @return the city code
      */
     public String getDepartureCityCode() {
@@ -95,7 +93,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the date on which this Flight departs
+     * Description: Get the date on which this Flight departs
      * @return the date
      */
     public String getDepartureDate() {
@@ -103,7 +101,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the time at which this Flight departs
+     * Description: Get the time at which this Flight departs
      * @return the time
      */
     public String getDepartureTime() {
@@ -111,7 +109,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the city code of the city at which this Flight arrives
+     * Description: Get the city code of the city at which this Flight arrives
      * @return the city code
      */
     public String getArrivalCityCode() {
@@ -119,7 +117,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the date on which this Flight arrives
+     * Description: Get the date on which this Flight arrives
      * @return the date
      */
     public String getArrivalDate() {
@@ -127,7 +125,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the time at which this Flight arrives
+     * Description: Get the time at which this Flight arrives
      * @return the time
      */
     public String getArrivalTime() {
@@ -135,7 +133,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Get the cost of this Flight
+     * Description: Get the cost of this Flight
      * @return the cost
      */
     public double getCost() {
@@ -143,7 +141,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Turns a Flight object into a String that contains the basic information
+     * Description: Turns a Flight object into a String that contains the basic information
      * about the Flight
      * @return a human readable String
      */
@@ -159,7 +157,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Compares two Flights; the id field is assumed to be unique among Flights
+     * Description: Compares two Flights; the id field is assumed to be unique among Flights
      * and is the only field necessary to compare.
      * @return true if the id of this  flight and the id of o are the same
      */
@@ -176,7 +174,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Takes a string representation of a Flight and parses it into a new Flight
+     * Description: Takes a string representation of a Flight and parses it into a new Flight
      * object
      * @param o the string representing the flight
      * @return the new Flight object
@@ -187,15 +185,6 @@ public class Flight implements Serializable {
             return new Flight();
         }
         String[] info = o.split(delimiter);
-
-        /*
-        System.out.println("-----");
-        System.out.println("PRINTING EVERYTHING THAT IS SPLITTING");
-        for(String s : info) {
-            System.out.println(s);
-        }
-        System.out.println("PRINT DONE");
-        System.out.println("-----");*/
 
         Flight f = new Flight();
         if (info.length <= 1) {
@@ -227,14 +216,6 @@ public class Flight implements Serializable {
         f.retArrivalDate = info[18].replace("X", "-");
         f.retArrivalTime = info[19].replace("X", "-");
 
-        /*
-        System.out.println("PRINTING EVERYTHING THAT IS SPLITTING");
-        for(String s : info) {
-            System.out.println(s);
-        }
-        System.out.println("PRINT DONE");
-        System.out.println("-----");
-*/
         // parse each SubFlight
         for (int i = 20; i < info.length; i++) {
             f.subFlights.add(SubFlight.parseSubFlight(info[i]));
@@ -243,7 +224,7 @@ public class Flight implements Serializable {
     }
 
     /**
-     * Generate a string based on the Flight's instance variables that can later
+     * Description: Generate a string based on the Flight's instance variables that can later
      * be parsed into another Flight instance
      * @return the string containing the instance variables
      */

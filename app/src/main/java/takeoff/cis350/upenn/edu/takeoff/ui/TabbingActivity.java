@@ -30,7 +30,7 @@ import java.util.Map;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.FavoritesFragment;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.DashBoardSearchHistory;
+import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchHistory;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 import takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupPage;
@@ -39,11 +39,13 @@ import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ImageOps;
 import takeoff.cis350.upenn.edu.takeoff.ui.usersui.ProfileFragment;
 
 /**
+ * Description:
  * This activity handles all of the tabs and fragments associated with them; after a user logs in
  * or a guest session begins, this activity will be the main use of the app.
  */
 public class TabbingActivity extends AppCompatActivity {
 
+    //Variables to find out which activity is returning here
     private static final int SEARCH_PAGE_REQUEST = 100;
     private static final int PROFILE_PICK_IMAGE = 110;
     private static final int GROUP_PAGE_REQUEST = 120;
@@ -58,7 +60,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * Create all the tabs to see in this activity and assign their contents
+     * Description: Creates all the tabs to see in this activity and assign their contents
      */
     private void createTabHost() {
         tabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
@@ -70,21 +72,11 @@ public class TabbingActivity extends AppCompatActivity {
         TabSpec searchHistoryTab = tabHost.newTabSpec(getString(R.string.dashboard_his));
         TabSpec profileTab = tabHost.newTabSpec(getString(R.string.dashboard_pro));
 
+        //Get the images for the tabs in the srawable folder
         Drawable dashTab = ResourcesCompat.getDrawable(getResources(), R.drawable.dashboard, null);
-        dashTab.setBounds(0, 0, (int)(dashTab.getIntrinsicWidth()*0.5),
-                (int)(dashTab.getIntrinsicHeight()*0.5));
-
         Drawable favTab = ResourcesCompat.getDrawable(getResources(), R.drawable.star, null);
-        dashTab.setBounds(0, 0, (int)(favTab.getIntrinsicWidth()*0.5),
-                (int)(favTab.getIntrinsicHeight()*0.5));
-
         Drawable histTab = ResourcesCompat.getDrawable(getResources(), R.drawable.time, null);
-        dashTab.setBounds(0, 0, (int)(histTab.getIntrinsicWidth()*0.5),
-                (int)(histTab.getIntrinsicHeight()*0.5));
-
         Drawable profTab = ResourcesCompat.getDrawable(getResources(), R.drawable.profile, null);
-        dashTab.setBounds(0, 0, (int) (profTab.getIntrinsicWidth() * 0.5),
-                (int) (profTab.getIntrinsicHeight() * 0.5));
 
         // set the names shown for each tag
         dashboardTab.setIndicator("", dashTab);
@@ -94,7 +86,7 @@ public class TabbingActivity extends AppCompatActivity {
 
         // set the correct fragment corresponding to each tag
         tabHost.addTab(dashboardTab, Dashboard.class, null);
-        tabHost.addTab(searchHistoryTab, DashBoardSearchHistory.class, null);
+        tabHost.addTab(searchHistoryTab, SearchHistory.class, null);
         tabHost.addTab(favoritesTab, FavoritesFragment.class, null);
         tabHost.addTab(profileTab, ProfileFragment.class, null);
     }
@@ -113,13 +105,13 @@ public class TabbingActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // inflate the menu; this adds items to the action bar if it is present.
-        // getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
         return true;
     }
 
     /**
-     * Make a call to the dashboard to sort the Flight results in it. The MenuItem's id, defined in
-     * menu_dashboard.xml, determines the feature by which we sort.
+     * Description: Makes a call to the dashboard to sort the Flight results in it.
+     * The MenuItem's id, defined in menu_dashboard.xml, determines the feature by which we sort.
      * @param item the MenuItem selected
      */
     public void sortDashboardResults(MenuItem item) {
@@ -131,7 +123,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * Make a call to the dashboard to start the Advanced Filter activity
+     * Description: Makes a call to the dashboard to start the Advanced Filter activity
      * @param item the MenuItem selected
      */
     public void dashboardAdvancedFilter(MenuItem item) {
@@ -143,7 +135,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * Go to the search page after the user has clicked the Search button
+     * Description: Go to the search page after the user has clicked the Search button
      * @param v the view of the search button
      */
     public void goToSearchPage(View v) {
@@ -187,7 +179,7 @@ public class TabbingActivity extends AppCompatActivity {
             image = ImageOps.scaleProfilePictureBitmap(image);
             String base64Image = ImageOps.bitmapToString(image);
 
-            // creaete the icon
+            // create the icon
             Bitmap icon = ImageOps.createProfileIcon(image);
             String base64Icon = ImageOps.bitmapToString(icon);
 
@@ -200,7 +192,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * Display search results
+     * Description: Display search results when resuming
      */
     @Override
     protected void onResume() {
@@ -215,7 +207,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * This method is called when the user clicks on the profile picture
+     * Description: This method is called when the user clicks on the profile picture
      * @param view
      */
     public void onClickProfilePicture(View view){
@@ -230,7 +222,7 @@ public class TabbingActivity extends AppCompatActivity {
             pickIntent.setType(getString(R.string.firebase_img_type));
             String select = getString(R.string.profile_select);
             Intent chooserIntent = Intent.createChooser(getIntent, select);
-            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
+            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
 
             // start the intent
             startActivityForResult(chooserIntent, PROFILE_PICK_IMAGE);
@@ -240,11 +232,10 @@ public class TabbingActivity extends AppCompatActivity {
             String error = (String) getText(R.string.please_sign_in);
             (Toast.makeText(this, error, Toast.LENGTH_SHORT)).show();
         }
-
     }
 
     /**
-     * When a user clicks on the MyGroups button in the Profile tab, go to the GroupPageActivity
+     * Description: When a user clicks on the MyGroups button in the Profile tab, go to the GroupPageActivity
      */
     public void goToMyGroups(View v) {
         if (WelcomeActivity.FIREBASE.getAuth() != null) {
@@ -261,7 +252,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * Create a pop-up dialog asking for the name of the new group
+     * Description: Create a pop-up dialog asking for the name of the new group
      * @param v the view of the New Group button
      */
     public void goToMakeGroup(View v) {
@@ -296,15 +287,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * Takes the newly set profile image and stores it in Firebase as a base64 binary string
-     * @param image the base64 binary string
-     */
-    private void storeProfileImage(String image) {
-
-    }
-
-    /**
-     * This helper method will add the new group to the global list of groups
+     * Description: This helper method will add the new group to the global list of groups
      * @param userUid the user's uid who created the group
      * @param newGroupName the name of the new group
      */
@@ -356,7 +339,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * This helper method will specify a user as a member of a new group in Firebase
+     * Description: This helper method will specify a user as a member of a new group in Firebase
      * @param userUid the unique uid of the user
      * @param newGroupName the name of the new group
      */
@@ -399,7 +382,7 @@ public class TabbingActivity extends AppCompatActivity {
     }
 
     /**
-     * After a new group is confirmed and created, go to the new group page
+     * Description: After a new group is confirmed and created, go to the new group page
      * @param groupName the name of the group
      */
     protected void goToGroupPage(String groupName) {

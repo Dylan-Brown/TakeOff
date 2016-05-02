@@ -33,15 +33,7 @@
             android:name=".ui.authentication.SignUpActivity"
             android:label="@string/title_activity_sign_up" />
         <activity android:name=".ui.search.SearchPage" />
-        <!-- <activity android:name=".ui.search.Dashboard" /> -->
-        <activity android:name=".ui.results.FlightResultActivity" />
-        <activity
-            android:name=".ui.results.FlightListActivity"
-            android:label="Favorite " />
-        <activity
-            android:name=".ui.results.FlightInfo"
-            android:label="@string/title_activity_flight_info"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".ui.results.FlightInfoActivity"
             android:label="@string/title_activity_flight_info"
@@ -50,24 +42,10 @@
             android:name=".ui.search.FilterSearch"
             android:label="@string/title_activity_filter_search"/>
 
-        DashBoardSearchHistory
-        <!--
-             activity
-            android:name=".ExternalFlightSearch"
-            android:label="@string/title_activity_external_flight_search"
-            android:theme="@style/AppTheme.NoActionBar"></
-        -->
-
-        <!-- <activity
-            android:name=".ui.search.DashBoardSearchHistory"
-            android:label="@string/title_activity_dash_board_search_history"
-            android:theme="@style/AppTheme.NoActionBar"></activity> -->
         <activity
             android:name=".ui.TabbingActivity"
             android:label="@string/title_activity_tabbing"
             android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".ui.search.SearchHistoryWrapper">
         </activity>
 
         <activity android:name=".ui.usersui.GroupListActivity" android:label="GroupPage"/>

@@ -1,12 +1,10 @@
 package takeoff.cis350.upenn.edu.takeoff.flight;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,29 +17,25 @@ import com.firebase.client.ValueEventListener;
 import java.util.*;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
-import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
-import takeoff.cis350.upenn.edu.takeoff.flight.SubFlight;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 /**
  * Created by tangson on 2/23/16.
  *
- * TODO: have a prevent-duplicate favorites in the addFavorites method.
  */
 public class FlightAdapter extends ArrayAdapter {
 
-
     List list = new ArrayList();
-    private TextView arrivalDate;
 
     /**
-     * Default constructor for the class
+     * Description: Default constructor for the class
      */
     public FlightAdapter(Context context, int resource) {
         super(context, resource);
     }
 
     /**
+     * Description: class to hold all the Textviews to display flight information on the Dashboard
      *
      */
     static class DataHandler {
@@ -66,7 +60,7 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
+     * Description: add the given object to the adapter
      * @param object
      */
     @Override
@@ -76,8 +70,8 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
-     * @return
+     * Description: Used to see how many items are in this item)
+     * @return int (how many things add to adapter )
      */
     @Override
     public int getCount() {
@@ -85,8 +79,8 @@ public class FlightAdapter extends ArrayAdapter {
     }
 
     /**
-     *
-     * @param position
+     * Description: Given the position, return the object added and stored at given position
+     * @param position - indicate which item to get by this given position
      * @return
      */
     @Override
@@ -109,36 +103,42 @@ public class FlightAdapter extends ArrayAdapter {
         final Flight flight = (Flight) this.getItem(position);
 
 
-
+        // If null, inflate new row layout
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            Context c = this.getContext();
+            LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            //Determine which layout to inflate for return flights or one way flights
             if (flight.isReturnTrip()) {
                 row = inflater.inflate(R.layout.flight_item_round, parent, false);
             } else {
                 row = inflater.inflate(R.layout.flight_item_one, parent, false);
             }
 
+            //Creates the button for this individual row
             final ImageButton favoriteButton = (ImageButton) row.findViewById(R.id.favoriteButton);
             favoriteButton.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
+                    //Give it a listener that will add the flight to favorites if user is logged in
                     if(WelcomeActivity.USER_FIREBASE.getAuth() !=  null) {
-//                  favoriteButton.setBackgroundResource(android.R.drawable.star_off);
                         favoriteButton.setBackgroundResource(android.R.drawable.star_on);
                         addFavorite(WelcomeActivity.FIREBASE.getAuth().getUid(), flight);
                     } else {
+                        //If not logged in, simply show that the user has to be signed in to use this
                         Context c = getContext();
                         String message = c.getString(R.string.please_sign_in);
                         Toast toast = Toast.makeText(c,
                                 message, Toast.LENGTH_LONG);
                         toast.show();
                     }
-
                 }
             });
 
+            //If there is a new row, then set the textviews to the newly
+            //inflated ones
             handler = new DataHandler();
             handler.departureCityCode = (TextView) row.findViewById(R.id.departureTextView);
             handler.arrivalCityCode = (TextView) row.findViewById(R.id.arrivalTextView);
@@ -167,9 +167,11 @@ public class FlightAdapter extends ArrayAdapter {
             }
             row.setTag(handler);
         } else {
+            //If the view is not null, just update the handler
             handler = (DataHandler) row.getTag();
         }
 
+        //Set the rest of the handler's textviews to display the correct flight's information
         String connectionCities = getConCities(flight);
         handler.departureCityCode.setText(flight.getDepartureCityCode());
         handler.arrivalCityCode.setText(flight.getArrivalCityCode());
@@ -187,7 +189,6 @@ public class FlightAdapter extends ArrayAdapter {
         } else if (flight.getNumOfConnections() == 0) {
             handler.connections.setText("Direct");
         } else if (flight.getNumOfConnections() > 1) {
-
             handler.connections.setText(flight.getNumOfConnections() + "Conxns\n" + connectionCities);
         } else {
             handler.connections.setText("BOOP\n");
@@ -208,35 +209,39 @@ public class FlightAdapter extends ArrayAdapter {
             } else if (flight.retNumOfConnections == 0) {
                 handler.retConnections.setText("Direct");
             } else if (flight.retNumOfConnections > 1) {
-
                 handler.retConnections.setText(flight.getNumOfConnections() + "Conxns\n" + connectionCities);
             } else {
                 handler.retConnections.setText("BOOP\n");
             }
-
         }
-
         return row;
     }
 
     /**
-     * @param flight
-     * @return
+     * Description: This method will return the connecting cities that make up this entire flight
+     * @param flight - The flight to find connecting cities for
+     * @return A string with all the connecting cities separated by "\n"
      **/
     private String getConCities(Flight flight) {
-        List destinations = new ArrayList<String>();
         String destinationString = "";
-        for (SubFlight sf : flight.getSubFlights()) {
-            destinations.add(sf.getArrivalCityCode());
-        }
-        for (int i = 0; i < destinations.size() - 1; i++) {
-            destinationString += destinations.get(i) + "\n";
-        }
 
+        //Get all the subflight cities unless it's the final flight
+        for (SubFlight sf : flight.getSubFlights()) {
+            String city = sf.getArrivalCityCode();
+            if(!city.equals(flight.getArrivalCityCode())) {
+                destinationString += sf.getArrivalCityCode() + "\n";
+            }
+        }
         return destinationString;
     }
 
-
+    /**
+     * Description: If the star button is pressed on the dashboard, then this method is called
+     * to add the indicated flight in that row to the user's set of favorites on firebase
+     *
+     * @param uid - the user's unique id on firebase
+     * @param flight - the unique flight to be added
+     */
     private void addFavorite(final String uid, final Flight flight) {
 
         final Firebase ref = WelcomeActivity.USER_FIREBASE.child(uid);

@@ -19,6 +19,7 @@ import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.ui.authentication.SignUpActivity;
 
 /**
+ * Description:
  * This Activity is the first activity that starts when the App is opened; it has the name of the
  * app displayed, and buttons to continue as guest, log in, or sign up.
  */
@@ -69,7 +70,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     }
 
     /**
-     * Log In button clicked; go to the LogInActivity
+     * Description: Log In button clicked; go to the LogInActivity
      * @param view the view of the Log In button
      */
     public void login(View view) {
@@ -78,7 +79,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     }
 
     /**
-     * Continue as Guest button clicked; go to the TabbingActivity
+     * Description: Continue as Guest button clicked; go to the TabbingActivity
      * @param view the view of the Continue as Guest button
      */
     public void guest (View view) {
@@ -87,7 +88,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     }
 
     /**
-     * Sign Up button clicked; go to the SignUpActivity
+     * Description: Sign Up button clicked; go to the SignUpActivity
      * @param view the view of the Sign Up button
      */
     public void sign (View view) {

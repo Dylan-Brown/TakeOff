@@ -76,7 +76,7 @@ Judy: 			AIzaSyAdM9ny3j-ahi526so97XHcE9LBA_iyrrU
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
-        + "search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ";
+        + "search?key=AIzaSyDoavIZSjsa5TAWSa29u-W71v4wbADIEos";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
@@ -660,13 +660,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-
-    // Modified by Anaka
-    public void DashBoardHistory(View view) {
-        //start an intent
-        Intent intent = new Intent(this, SearchHistoryWrapper.class);
-        startActivity(intent);
     }
 
 

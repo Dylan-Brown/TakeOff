@@ -40,15 +40,6 @@
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.authentication.SignUpActivity"
             android:label="@string/title_activity_sign_up" />
         <activity android:name="takeoff.cis350.upenn.edu.takeoff.ui.search.SearchPage" />
-        <!-- <activity android:name=".ui.search.Dashboard" /> -->
-        <activity android:name="takeoff.cis350.upenn.edu.takeoff.ui.results.FlightResultActivity" />
-        <activity
-            android:name="takeoff.cis350.upenn.edu.takeoff.ui.results.FlightListActivity"
-            android:label="Favorite " />
-        <activity
-            android:name="takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfo"
-            android:label="@string/title_activity_flight_info"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfoActivity"
             android:label="@string/title_activity_flight_info"
@@ -56,27 +47,10 @@
         <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.search.FilterSearch"
             android:label="@string/title_activity_filter_search" />
-        DashBoardSearchHistory
-        <!--
-             activity
-            android:name=".ExternalFlightSearch"
-            android:label="@string/title_activity_external_flight_search"
-            android:theme="@style/AppTheme.NoActionBar"></
-        -->
-
-
-        <!--
-             <activity
-            android:name=".ui.search.DashBoardSearchHistory"
-            android:label="@string/title_activity_dash_board_search_history"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        -->
         <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.TabbingActivity"
             android:label="@string/title_activity_tabbing"
             android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity android:name="takeoff.cis350.upenn.edu.takeoff.ui.search.SearchHistoryWrapper" >
         </activity>
         <activity
             android:name="takeoff.cis350.upenn.edu.takeoff.ui.usersui.GroupListActivity"
