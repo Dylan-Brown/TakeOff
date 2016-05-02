@@ -102,13 +102,6 @@ public class TabbingActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
-        return true;
-    }
-
     /**
      * Description: Makes a call to the dashboard to sort the Flight results in it.
      * The MenuItem's id, defined in menu_dashboard.xml, determines the feature by which we sort.

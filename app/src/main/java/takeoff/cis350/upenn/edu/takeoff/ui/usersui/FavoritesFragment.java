@@ -1,5 +1,6 @@
 package takeoff.cis350.upenn.edu.takeoff.ui.usersui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -121,6 +122,13 @@ public class FavoritesFragment extends ListFragment {
                             (Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT)).show();
                         }
                     });
+        } else {
+            //If not logged in, simply show that the user has to be signed in to use this
+            Context c = getContext();
+            String message = c.getString(R.string.please_sign_in);
+            Toast toast = Toast.makeText(c,
+                    message, Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 }
