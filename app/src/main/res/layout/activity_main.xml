@@ -33,16 +33,6 @@
         android:layout_below="@+id/signupButton"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/favoriteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="favorite"
-        android:text="Favorites"
-        android:layout_below="@+id/guestButton"
-        android:layout_alignEnd="@+id/signupButton" />
-
-
     <TextView
         android:id="@+id/welcome"
         android:layout_width="wrap_content"

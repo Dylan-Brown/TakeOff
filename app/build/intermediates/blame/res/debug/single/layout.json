@@ -20,20 +20,20 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\activity_filter.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_dashboard.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_navigation_menu.xml"
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_dashboard.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
     },
     {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_navigation_menu.xml"
     },
     {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
@@ -112,12 +112,12 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_flight_info.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\content_flight_info.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\flightresult_page.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\flightresult_page.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_flight_info.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\content_flight_info.xml"
     },
     {
         "merged": "D:\\Judy\\AndroidStudioWorkspace\\Final versions\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
@@ -160,12 +160,12 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\content_main.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_tabbing.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\content_tabbing.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_dashboard.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_tabbing.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\content_tabbing.xml"
     },
     {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
@@ -208,12 +208,12 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "D:\\Judy\\AndroidStudioWorkspace\\Final versions\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_group_page.xml",
@@ -256,12 +256,12 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\content_dashboard.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search_info2.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\activity_search_info2.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_log_in.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\activity_log_in.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search_info2.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\activity_search_info2.xml"
     },
     {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
@@ -308,12 +308,12 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_navigation_item_separator.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_layout.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
@@ -364,12 +364,12 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\content_tabbing.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_menu_item_action_area.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
@@ -432,12 +432,12 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\activity_search_info.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_navigation_menu_item.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_tabbing.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\activity_tabbing.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search_page.xml",
@@ -452,12 +452,12 @@
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\layout\\favorite_list.xml"
     },
     {
-        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_alert_dialog_material.xml"
-    },
-    {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
         "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
         "merged": "D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
