@@ -62,8 +62,8 @@
       <file leaf-file-name="SearchPage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/SearchPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9288991">
-              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.27522936">
+              <caret line="67" column="61" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -3534,8 +3534,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/takeoff/cis350/upenn/edu/takeoff/ui/search/SearchPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9288991">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.27522936">
+          <caret line="67" column="61" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="61" />
           <folding />
         </state>
       </provider>
