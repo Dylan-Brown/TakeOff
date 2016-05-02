@@ -11,6 +11,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -20,7 +21,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- * Created by dylan on 4/23/16.
+ * This class contains static methods  to handleimage operations, especially those related to the
+ * user's profile picture and icon.
  */
 public class ImageOps {
 
@@ -28,12 +30,12 @@ public class ImageOps {
     private static int iconDimension = 50;
 
     /**
-     * Code sourced from the following:
-     *  https://stackoverflow.com/questions/11202754/android-how-to-enlarge-a-bitmap
-     *  https://stackoverflow.com/questions/2789276/android-get-real-path-by-uri-getpath
-     *  https://stackoverflow.com/questions/10796660/convert-image-to-bitmap
-     *  https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
-     *  https://stackoverflow.com/questions/14050813/how-to-make-an-image-fit-into-a-circular-frame-in-android
+     * Code in this class was sourced from the following references:
+     * https://stackoverflow.com/questions/11202754/android-how-to-enlarge-a-bitmap
+     * https://stackoverflow.com/questions/2789276/android-get-real-path-by-uri-getpath
+     * https://stackoverflow.com/questions/10796660/convert-image-to-bitmap
+     * https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
+     * https://stackoverflow.com/questions/14050813/how-to-make-an-image-fit-into-a-circular-frame-in-android
      */
 
     /**
@@ -48,8 +50,8 @@ public class ImageOps {
 
     /**
      * Turns a profile bitmap image into a small, round icon
-     * @param bitmap
-     * @return
+     * @param bitmap the bitmap of the image
+     * @return the icon bitmap
      */
     public static Bitmap createProfileIcon(Bitmap bitmap) {
         Bitmap scaled = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
@@ -108,7 +110,7 @@ public class ImageOps {
             Bitmap bMap = BitmapFactory.decodeByteArray(bMapArray, 0, bMapArray.length);
             return bMap;
         } catch (IOException e) {
-            // TODO: Handle
+            Log.e("stringToBitmap", e.getMessage());
         }
         return null;
     }
@@ -138,8 +140,7 @@ public class ImageOps {
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             return bitmap;
         } catch(Exception e) {
-            // TODO: Handle
-            e.getMessage();
+            Log.e("stringToBitmap", e.getMessage());
             return null;
         }
     }

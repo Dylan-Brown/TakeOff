@@ -22,7 +22,6 @@ import java.util.List;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
-import takeoff.cis350.upenn.edu.takeoff.ui.search.Dashboard;
 
 /**
  * Description: The class representing the Favorites fragment of TabbedActivity
@@ -50,7 +49,6 @@ public class FavoritesFragment extends ListFragment {
      * Description: Sets the global vairables
      */
     private void setVariables() {
-
         // get the flight results
         flightResults = new ArrayList<>();
         listView = (ListView) getView().findViewById(android.R.id.list);
@@ -93,20 +91,14 @@ public class FavoritesFragment extends ListFragment {
                     new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                           //  Log.e("loadFavorites", "here");
-
                             if (snapshot.getValue() != null) {
-                                // Log.e("loadFavorites", "here2");
                                 for (String s : (ArrayList<String>) snapshot.getValue()) {
-                                    // Log.e("loadFavorites", s);
                                     try {
                                         Flight f = Flight.parseFlight(s);
                                         if (f != null) {
                                             flightResults.add(f);
-                                            // Log.e("loadFavorites", "parsed Flight;  id is " + f.getId());
                                         }
                                     } catch (Exception e) {
-                                        // Log.e("loadFavorites", "====failed to parse");
                                         continue;
                                     }
                                 }
@@ -121,7 +113,7 @@ public class FavoritesFragment extends ListFragment {
                         }
                     });
         } else {
-            //If not logged in, simply show that the user has to be signed in to use this
+            // if not logged in, simply show that the user has to be signed in to use this
             Context c = getContext();
             String message = c.getString(R.string.please_sign_in);
             Toast toast = Toast.makeText(c,

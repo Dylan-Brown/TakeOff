@@ -397,8 +397,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                     newDate.set(year, monthOfYear, dayOfMonth);
                     departureDateText.setText(dateFormatter.format(newDate.getTime()));
                     departureDateInput = dateFormatter.format(newDate.getTime());
-
-                    Log.e("OnDateSetListener", "DEPARTURE LISTENER: " + departureDateInput);
                 }
             };
         } else {
@@ -409,8 +407,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
                     newDate.set(year, monthOfYear, dayOfMonth);
                     returningDateText.setText(dateFormatter.format(newDate.getTime()));
                     returningDateInput = dateFormatter.format(newDate.getTime());
-
-                    Log.e("OnDateSetListener", "RETURN LISTENER: " + returningDateInput);
                 }
             };
         }
@@ -567,11 +563,7 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         for (String iata : airportCodes) {
             cityCodes += iata + " ";
         }
-        cityCodes =  cityCodes.trim();
-
-        // log and return the results
-        Log.e("getCityCodes", "Final result: " + cityCodes);
-        return cityCodes;
+        return cityCodes.trim();
     }
 
 
@@ -639,7 +631,6 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
         @Override
         protected JSONArray doInBackground(String... params) {
             try {
-                Log.e("SearchPage", "doInBackground()");
                 JSONObject json = new JSONObject(params[0]);
                 System.out.println(json.toString(4));
                 HttpPost httpPost = new HttpPost(HTTP_LINK);
@@ -663,25 +654,17 @@ public class SearchPage extends Activity implements OnClickListener, AdapterView
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Log.e("SearchPage","OH??");
             return null;
         }
 
         @Override
         protected void onPostExecute(JSONArray result) {
             try {
-                Log.e("SearchPage", "IN POST EXECUTE");
                 QPXJSONReader.getAPIResultsAsFlights(result);
-                Log.e("SearchPage", "ASyncTask: IT WORKS!");
                 finish();
-                if(result != null) {
-                    Log.e("SearchPage", "result.toString(2) = " + result.toString(2));
-                }
-
             } catch (JSONException e) {
-                Log.e("SearchPage", "ASyncTask: FAILED!");
+                Log.e("SearchPage,ASyncTask", e.getMessage());
             }
-            Log.e("SearchPage", "ENDING SEARCH PAGE");
         }
     }
 }

@@ -37,7 +37,6 @@ public class SearchParameterProcessor {
      * @param countries
      */
     public void setCountries(String countries) {
-        Log.e("SPP", "COUNTRIES BEING SEARCHED: " + countries);
         String[] c = countries.split(",");
         for (int i = 0; i < c.length; i++) {
             this.countries.add(c[i].trim().replace(" ", "_"));

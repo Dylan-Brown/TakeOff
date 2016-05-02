@@ -14,12 +14,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +24,7 @@ import takeoff.cis350.upenn.edu.takeoff.flight.FlightAdapter;
 import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfoActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 import java.util.*;
+
 /**
  * Description:
  * This class is the list fragment for the dashboard, to display the search results
@@ -56,7 +51,6 @@ public class Dashboard extends ListFragment {
      */
     public void loadDashboard() {
         listView = getListView();
-        Log.e("Dashboard","LogDashboard");
         flightResults = QPXJSONReader.getFlightResultsFromMostRecentSearch();
 
         if (flightResults != null && !initialLoad) {
@@ -120,14 +114,12 @@ public class Dashboard extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new  Intent(getActivity(), FlightInfoActivity.class);
-        Log.e("ViewName", v.getClass().getName());
         // find the corresponding Flight object
         Flight f = (Flight) adapter.getItem(position);
         String flightTostring = f.toString();
 
         //Prepare a bundle/intent
         String extraMesg = getString(R.string.dashboard_flight_mesg);
-        Log.e("Dashboard", "flighReferenced.toString() is " + flightTostring);
         intent.putExtra(extraMesg, flightTostring);
 
         // start the FlightInfoActivity
@@ -144,20 +136,16 @@ public class Dashboard extends ListFragment {
      * Description: Go to the AdvancedFilter activity after the user has selected that menu option
      */
     public void advancedFilter() {
-        Log.e("AdvancedFilter", "Here");
         SearchQuery sq = new SearchQuery();
 
-        // make a dummy SearchQuery
-        // one slice is direct, 2 slices implies a round trip
+        // make a dummy SearchQuery; one slice is direct, 2 slices implies a round trip
         sq.no_of_Slices = 1;
         sq.origin = "PHL";
         sq.destination = "NYC";
         sq.date = "2017-01-01";
 
         Intent intent = new Intent(getActivity(), FilterSearch.class);
-        intent.putExtra("searchQuery", sq.toString());
         startActivity(intent);
-        // TODO: Start new activity called FilterSearch
     }
 
     /**
@@ -165,9 +153,6 @@ public class Dashboard extends ListFragment {
      * @param feature the feature by which we sort the results
      */
     public void sortBy(int feature) {
-        // TODO: Change the sorting algorithm. While bubbleSort is efficient enough for our
-        // TODO: purposes, I'd like to not go halfway on this
-
         if(flightResults != null) {
             // create the auxiliary array to assist sort
             Flight[] array = new Flight[flightResults.size()];
@@ -199,7 +184,7 @@ public class Dashboard extends ListFragment {
 
 
     /**
-     * Description: Get the compareTo value between to Flights based on a specific feature of the Flight class
+     * Get the compareTo value between to Flights based on a specific feature of the Flight class
      * @param feature the parameter to compare
      * @param array the array of flights
      * @param i the index of the first flight to compare
@@ -264,91 +249,5 @@ public class Dashboard extends ListFragment {
         int layout = android.R.layout.simple_list_item_1;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), layout, info);
         listView.setAdapter(adapter);
-    }
-
-    /**
-     * Description: Gets the List of Flight results from the search
-     * @return the List of Flights
-     */
-    public List<Flight> getFlightResults() {
-        return this.flightResults;
-    }
-
-
-    /**
-     * Description: Make a call to Firebase to remove the favorite from the user's list of favorites
-     * @param uid the unique identifier for the user's Firebase information
-     */
-    private void removeFavorite(final String uid, final Flight flight) {
-
-        final Firebase ref = WelcomeActivity.USER_FIREBASE.child(uid);
-        final String favKey = getResources().getString(R.string.firebase_fav);
-
-        ref.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
-
-                        if (userData != null && !userData.containsKey(favKey)) {
-                            // the user does not have a list of favorite flights; set an empty list
-                            ArrayList<Object> favFlights = new ArrayList<>();
-                            userData.put(favKey, favFlights);
-                            ref.updateChildren(userData);
-
-                        } else {
-                            // the user has a list of favorite flights; remove the flight
-                            ArrayList<Object> fav = (ArrayList<Object>) userData.get(favKey);
-                            fav.remove(flight.toString());
-                            userData.put(favKey, fav);
-                            ref.updateChildren(userData);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                        // the user cancelled the request; do nothing
-                    }
-                });
-
-    }
-
-    /**
-     * Make a call to Firebase to add the flight to the user's list of favorites
-     * @param uid the unique identifier for the user's Firebase information
-     */
-    private void addFavorite(final String uid, final Flight flight) {
-
-        final Firebase ref = WelcomeActivity.USER_FIREBASE.child(uid);
-        final String favKey = getResources().getString(R.string.firebase_fav);
-
-        ref.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        Map<String, Object> userData = (Map<String, Object>) snapshot.getValue();
-
-                        if (userData != null && !userData.containsKey(favKey)) {
-                            // the user does not have a list of favorite flights
-                            ArrayList<Object> favFlights = new ArrayList<>();
-                            favFlights.add(flight.toString());
-                            userData.put(favKey, favFlights);
-                            ref.updateChildren(userData);
-
-                        } else {
-                            // the user does have favorites; add this flight to the list
-                            List<Object> favFlights = (List<Object>) userData.get(favKey);
-                            favFlights.add(flight.toString());
-                            userData.put(favKey, favFlights);
-                            ref.updateChildren(userData);
-                        }
-                    }
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-                        // the user cancelled the request; do nothing
-                    }
-                });
     }
 }

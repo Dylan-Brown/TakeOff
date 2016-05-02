@@ -44,10 +44,9 @@ public class SearchHistory extends ListFragment {
                     SearchQuery sq = SearchQuery.fromHumanReadable(s);
                     for (SearchQuery q : searches) {
                         if (SearchQuery.compare(sq, q)) {
-                            Log.e("DashboardSearchHistory", "Found Search Query");
-                             String jsonSearch = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
+                            String jsonSearch = SearchQuerytoQPXReader.makeJSONSearchObject(sq);
                             SearchPage sp= new SearchPage();
-                             sp.new JSONAsyncTask(getContext()).execute(jsonSearch);
+                            sp.new JSONAsyncTask(getContext()).execute(jsonSearch);
                         }
                     }
                 } catch (Exception e) {

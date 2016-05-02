@@ -39,6 +39,7 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup vGroup, Bundle savedInstanceState) {
+        //  get the views
         rootView = inflater.inflate(R.layout.fragment_profile, vGroup, false);
         profilePic = (ImageView) rootView.findViewById(R.id.userpic);
         username = (TextView) rootView.findViewById(R.id.username_tv);
@@ -75,6 +76,13 @@ public class ProfileFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Stores the profile picture in the User's Firebase as a Base64 String
+     * @param image the bitmap profile image to be stored
+     * @param base64Image the string representing the profile picture
+     * @param icon the bitmap profile icon to be stored
+     * @param base64Icon the string representing the icon
+     */
     public void setProfilePictrue(Bitmap image, final String base64Image, Bitmap icon, final String base64Icon) {
         profilePic.setImageBitmap(image);
 
@@ -98,9 +106,6 @@ public class ProfileFragment extends Fragment {
                 (Toast.makeText(getContext(), error, Toast.LENGTH_SHORT)).show();
             }
         });
-
-        // TODO: Set the icon (Bitmap icon)
-
         profilePic.invalidate();
     }
 }

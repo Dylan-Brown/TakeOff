@@ -2,7 +2,7 @@
     <string name="app_name">TakeOff</string>
     <string name="action_settings">Settings</string>
 
-    <!-- SEARCH PAGE STRINGS START HERE-->
+    <!-- Search Page-->
        <string name="search_message">Please set your search parameters.\nDeparture Date and
        at least one airport code or one city and country is required.</string>
     <string name="continent_message">Continent:</string>
@@ -60,8 +60,6 @@
     <string name="alliance_oneworld">Oneworld</string>
     <string name="alliance_star">Star Alliance</string>
     <string name="alliance_sky">SkyTeam</string>
-    <!-- SEARCH PAGE STRINGS END HERE -->
-
 
     <!-- Error Handling -->
     <string name="error_invalid_credentials">Invalid email or password</string>
@@ -137,6 +135,4 @@
     <string name="action_log_in">Log In</string>
     <string name="title_activity_sign_up">Sign Up</string>
     <string name="title_activity_log_in">Log In</string>
-
-
 </resources>
