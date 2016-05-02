@@ -16,12 +16,6 @@ public class FlightInfoView extends View {
     private Flight flight;
     private int canvasWidth = 0;
     private int canvasHeight = 0;
-    private int favButtonRadius = 0;
-    private int favButtonXCoord, favButtonYCoord;
-    private double[] buyBound;
-    private double[] bckBound;
-    private boolean isFavorite = false;
-    private boolean ticket = false;
 
     /**
      * Description: The constructor for the class. Calls View's constructor and sets the FireBase reference.
@@ -45,9 +39,6 @@ public class FlightInfoView extends View {
         // get the canvas information
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
-        favButtonRadius = canvasHeight / 30;
-        favButtonXCoord = canvasWidth / 2;
-        favButtonYCoord = canvasHeight - canvasHeight / 10;
 
         Paint paint = new Paint();
         canvas.drawPaint(paint);
