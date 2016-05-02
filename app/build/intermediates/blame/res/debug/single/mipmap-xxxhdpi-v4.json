@@ -1,5 +1,17 @@
 [
     {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Final versions\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Final versions\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "/Users/anakagold/Desktop/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
+        "source": "/Users/anakagold/Desktop/17-Flight-Search-Engine/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
@@ -12,23 +24,15 @@
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Final versions\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Judy\\AndroidStudioWorkspace\\Final versions\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
-        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
         "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
         "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     }
 ]

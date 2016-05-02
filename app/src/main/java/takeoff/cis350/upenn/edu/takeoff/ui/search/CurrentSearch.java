@@ -5,7 +5,7 @@ package takeoff.cis350.upenn.edu.takeoff.ui.search;
  */
 
 /**
- * TODO: WRITE CLASS DESCRIPTION, WHAT THIS CLASS IS FOR
+ * The class stores the information of the current search parameters.
  */
 public class CurrentSearch {
 
@@ -21,7 +21,8 @@ public class CurrentSearch {
     }
 
     /**
-     * TODO: WRITE METHOD HEADER, DESCRIPTION + WHEN ITS USED RIGHT NOW
+     * When we search for flight, we call this method to store
+     * the search parameters
      * @param c
      */
     public void storeCurrentSearch(SearchParameterProcessor c) {
@@ -29,7 +30,7 @@ public class CurrentSearch {
     }
 
     /**
-     * TODO: WRITE METHOD HEADER, DESCRIPTION + WHEN ITS USED RIGHT NOW
+     * Returns the latest search parameters
      * @return
      */
     public SearchParameterProcessor getCurrentSearch() {

@@ -42,9 +42,6 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_search);
         flightResult = QPXJSONReader.getFlightResultsFromMostRecentSearch();
-        /*for (Flight f : flightResult) {
-            System.out.println(f.toString());
-        }*/
 
         filteredList = new Flight[flightResult.size()];
 
@@ -57,14 +54,9 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
         budgetMin.addTextChangedListener(textWatcher2);
         budgetMin.setOnFocusChangeListener(getOnFocusChangeListener());
 
-        /*Quantity = (EditText) findViewById(R.id.quantity);
-        Quantity.setText("1");
-        Quantity.setOnFocusChangeListener(getOnFocusChangeListener());*/
+
         setClassSpinner();
         setAllianceSpinner();
-
-        //Bundle extras = getIntent().getExtras();
-        // TODO: Finish implementing this method
     }
 
     /**
@@ -76,8 +68,11 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
         // TODO: Implement
     }
 
+
+    /**
+     * Sets the values of this spinner and gets the users input as well
+     */
     private void setClassSpinner() {
-        //Log.e("ENTER")
         cabin = "";
         Spinner spinner = (Spinner) findViewById(R.id.spinner2);
         spinner.setOnItemSelectedListener(this);
@@ -97,6 +92,9 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
         spinner.setAdapter(adapter);
     }
 
+    /**
+     * Sets the values of this spinner and gets the users input as well
+     */
     private void setAllianceSpinner() {
         alliance = "";
         Spinner spinner = (Spinner) findViewById(R.id.spinner1);
@@ -152,14 +150,6 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
         String bMin = budgetMin.getText().toString().replace("$", "");
         Double bmax = Double.parseDouble(bMax);
         Double bmin = Double.parseDouble(bMin);
-        //int quantity = Integer.parseInt(Quantity.getText().toString());
-
-        //if (budgetMax.getText().)
-        // go to Search
-        Log.e("MAX : ", budgetMax.getText().toString());
-        Log.e("MIN : ", budgetMin.getText().toString());
-        Log.e("Checking spp", "Meh" + spp.getQuery().adultCount);
-        Log.e("Size of my Flight List", "is " + flightResult.size());
 
         // Checking if the inputted budget is valid
         if(budgetMax.getText() == null || budgetMax.getText().toString().equals("")
@@ -188,6 +178,9 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
             for (Flight f : flightResult) {
                 //if the price of this flight isn't in our range, we delte it
                 if (f.getCost() > bmin && f.getCost() < bmax) {
+                    /** Prints out the flights that needs to be added to the dashboad
+                     * We get the right flights but Dashboard doesn't get updated
+                     * correctly. **/
                     Log.e("Cost of flight added: ", "" +f.getCost());
                     filteredList[i] = f;
                     i++;
@@ -195,7 +188,7 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
             }
 
 
-            // get the Dashboard fragmetn
+            // get the Dashboard fragments
             String tag = getString(R.string.dashboard_tag);
             Dashboard dash;
             if ((dash = (Dashboard) this.getSupportFragmentManager().findFragmentByTag(tag)) != null) {
@@ -207,7 +200,7 @@ public class FilterSearch extends FragmentActivity implements View.OnClickListen
     }
 
 
-    // Extra classes/methods
+    // Extra classes/methods. Similar as the ones present in our Search Page
 
     /**
      * Description: A TextWatcher to handle parsing changes in the

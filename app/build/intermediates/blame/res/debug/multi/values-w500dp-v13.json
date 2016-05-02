@@ -24,54 +24,6 @@
         ]
     },
     {
-        "outputFile": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 54,
-                    "endOffset": 105
-                },
-                "from": {
-                    "file": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-w500dp\\values-w500dp.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 232,
-                        "endColumn": 54,
-                        "endOffset": 282
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 54,
-                    "endOffset": 105
-                },
-                "from": {
-                    "file": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-w500dp\\values-w500dp.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 232,
-                        "endColumn": 54,
-                        "endOffset": 282
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\tangson\\Google Drive\\CIS350\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
         "map": [
             {
@@ -96,6 +48,30 @@
         ]
     },
     {
+        "outputFile": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-w500dp\\values-w500dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 232,
+                        "endColumn": 54,
+                        "endOffset": 282
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
         "map": [
             {
@@ -108,6 +84,30 @@
                 },
                 "from": {
                     "file": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\Project\\New folder\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-w500dp\\values-w500dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 232,
+                        "endColumn": 54,
+                        "endOffset": 282
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\home\\dylan\\AndroidStudioProjects\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-w500dp\\values-w500dp.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -168,7 +168,7 @@
         ]
     },
     {
-        "outputFile": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
+        "outputFile": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\res\\merged\\debug\\values-w500dp-v13\\values-w500dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -179,7 +179,31 @@
                     "endOffset": 105
                 },
                 "from": {
-                    "file": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-w500dp\\values-w500dp.xml",
+                    "file": "/home/dylan/AndroidStudioProjects/17-Flight-Search-Engine/D:\\Users\\anakagold\\Desktop\\17-Flight-Search-Engine\\D:\\Judy\\AndroidStudioWorkspace\\workingsearch\\17-Flight-Search-Engine\\17-Flight-Search-Engine\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\values-w500dp\\values-w500dp.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 232,
+                        "endColumn": 54,
+                        "endOffset": 282
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/anakagold/Desktop/17-Flight-Search-Engine/app/build/intermediates/res/merged/debug/values-w500dp-v13/values-w500dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "/Users/anakagold/Desktop/17-Flight-Search-Engine/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-w500dp/values-w500dp.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

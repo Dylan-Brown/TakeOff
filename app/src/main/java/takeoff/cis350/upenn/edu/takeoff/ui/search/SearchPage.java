@@ -65,7 +65,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 public class SearchPage extends Activity implements OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String HTTP_LINK = "https://www.googleapis.com/qpxExpress/v1/trips/"
-        + "search?key=AIzaSyCNtycZLQXy0LB5mHLZyopE1JepuxJ46Ow";
+        + "search?key=AIzaSyAvcsE9zxl3GvGtSncJYQf9zmSrRwSyAJQ";
     private EditText departureDateText;
     private EditText returningDateText;
     private String departureDateInput;
