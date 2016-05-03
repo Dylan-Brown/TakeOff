@@ -21,7 +21,7 @@ import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 import takeoff.cis350.upenn.edu.takeoff.R;
 import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
 
-import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightAdapter;
+import takeoff.cis350.upenn.edu.takeoff.flight.FlightAdapter;
 import takeoff.cis350.upenn.edu.takeoff.ui.results.FlightInfoActivity;
 import takeoff.cis350.upenn.edu.takeoff.flight.QPXJSONReader;
 import java.util.*;
