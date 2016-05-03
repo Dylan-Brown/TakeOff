@@ -22,6 +22,7 @@ public class QPXJSONReader {
     public static ArrayList<Flight> getAPIResultsAsFlights(JSONArray jsonArray) throws JSONException {
         //reset the search results
         Dashboard.FlightCache = new ArrayList<Flight>();
+
         ArrayList<Flight> flightResults = new ArrayList<Flight>();
 
         // tripOptions, a list of flights
@@ -44,6 +45,7 @@ public class QPXJSONReader {
             String costWithoutUSD = tripOption.getString("saleTotal").replaceAll("[^0-9\\.]+", "");
             fullFlight.cost = Double.parseDouble(costWithoutUSD);
 
+            /*Now we look at unique legs, which represent subflights*/
             // slice, divided into one way or two way.
             for (int i_sl = 0; i_sl < numOfSlices; i_sl++) {
                 JSONArray segments = slices.getJSONObject(i_sl).getJSONArray("segment");
@@ -57,13 +59,16 @@ public class QPXJSONReader {
 
                     for (int i = 0; i < numOfLegs; i++) {
                         JSONObject leg = legs.getJSONObject(i);
+                        //create a subflight object.
                         SubFlight sf;
                         sf = new SubFlight();
+                        //if there are two slices, then the flight is roundtrip, and the subflight
+                        // represents a roundtrip flight.
                         if (i_sl == 1) {
                             fullFlight.isReturnTrip = true;
                             sf.isReturnTrip = true;
                         }
-
+                        //set variables.
                         sf.flightNumber = segment.getJSONObject("flight").getString("carrier")
                                 + segment.getJSONObject("flight").getString("number");
                         sf.cabinClass = segment.getString("cabin") + "";
@@ -82,12 +87,13 @@ public class QPXJSONReader {
                     }
                 }
             }
-
+            //add subflight to the list of subflights
             ArrayList<SubFlight> sfList = (ArrayList) fullFlight.subFlights;
             SubFlight firstF = fullFlight.getSubFlights().get(0);
             int roundTripCounter = 0;
-            for (int i = 0; i < sfList.size(); i++) {
-                if (sfList.get(i).isReturnTrip == false) {
+            //roundtrip counter is the index where the subflight becomes a return flight.
+            for (SubFlight sf: sfList) {
+                if (!sf.isReturnTrip) {
                     roundTripCounter++;
                 } else {
                     break;
@@ -124,10 +130,13 @@ public class QPXJSONReader {
             if ((fullFlight.isReturnTrip && sfList.size() == 2) || sfList.size() == 1) {
                 fullFlight.isDirectFlight = true;
             }
+            else {fullFlight.isDirectFlight=false;}
+            //add
             flightResults.add(fullFlight);
         }
-
+        //update the FlightCache
         Dashboard.FlightCache.addAll(flightResults);
+        //return the results for other use
         return flightResults;
     }
 
