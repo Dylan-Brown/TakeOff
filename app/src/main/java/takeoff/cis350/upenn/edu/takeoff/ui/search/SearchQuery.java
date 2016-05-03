@@ -2,13 +2,16 @@ package takeoff.cis350.upenn.edu.takeoff.ui.search;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * TODO: Write the class description
  */
 public class SearchQuery {
 
     public int no_of_Slices=1;              // number of total trips; one-way is 1, roundtrip is 2
-    public String origin=" ";
+    public String origin="PHL";             //set by default; this can easily be adjusted in the GUI.
     public String destination="";
     public String date="";                  // in the format of YYYY-MM-DD
     public boolean isRoundtrip;
@@ -25,7 +28,8 @@ public class SearchQuery {
     public int maxConnectionDuration=4320;  // maximum amount in minutes
     public String alliance="";              // NONE, STAR, ONEWORLD, XXX, ...
 
-
+    public boolean isMultiCity=false;
+    public List<String> multiCityDestinations=new ArrayList();
     public SearchQuery() {
     };
 
