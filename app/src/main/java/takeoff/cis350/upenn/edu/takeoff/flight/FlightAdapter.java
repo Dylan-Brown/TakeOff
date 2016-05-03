@@ -1,4 +1,4 @@
-package takeoff.cis350.upenn.edu.takeoff.ui.results;
+package takeoff.cis350.upenn.edu.takeoff.flight;
 
 import android.content.Context;
 import android.view.LayoutInflater;
