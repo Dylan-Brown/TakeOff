@@ -1,4 +1,4 @@
-package takeoff.cis350.upenn.edu.takeoff.flight;
+package takeoff.cis350.upenn.edu.takeoff.ui.results;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,6 +17,8 @@ import com.firebase.client.ValueEventListener;
 import java.util.*;
 
 import takeoff.cis350.upenn.edu.takeoff.R;
+import takeoff.cis350.upenn.edu.takeoff.flight.Flight;
+import takeoff.cis350.upenn.edu.takeoff.flight.SubFlight;
 import takeoff.cis350.upenn.edu.takeoff.ui.WelcomeActivity;
 
 /**
@@ -191,6 +193,7 @@ public class FlightAdapter extends ArrayAdapter {
         } else if (flight.getNumOfConnections() > 1) {
             handler.connections.setText(flight.getNumOfConnections() + "Conxns\n" + connectionCities);
         } else {
+            //this shouldn't happen, so nonsensical text is inserted.
             handler.connections.setText("BOOP\n");
         }
 
